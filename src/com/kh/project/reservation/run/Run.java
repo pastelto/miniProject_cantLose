@@ -4,7 +4,7 @@ public class Run {
 
 	public static void main(String[] args) {
 		
-		System.out.println("default");
+		System.out.println("default 주연수정");
 
 	}
 
