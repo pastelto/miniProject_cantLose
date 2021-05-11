@@ -7,6 +7,8 @@ public class Run {
 		System.out.println("default");
 		System.out.println("DH first commit testing");
     System.out.println("주연 수정");
+    System.out.println("A ");
+
 	}
 
 }
