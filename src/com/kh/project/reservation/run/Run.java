@@ -5,7 +5,11 @@ public class Run {
 	public static void main(String[] args) {
 		
 		System.out.println("default");
-		System.out.println("±è¸í¼±");
+		System.out.println("ê¹€ëª…ì„ ");
+		System.out.println("add dayeong");
+		System.out.println("DH first commit testing");
+    System.out.println("ì£¼ì—° ìˆ˜ì •");
+    System.out.println("A ");
 
 	}
 
