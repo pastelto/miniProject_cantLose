@@ -4,8 +4,8 @@ public class Run {
 
 	public static void main(String[] args) {
 		
-		System.out.println("defaultaaaa");
-		
+		System.out.println("default");
+		System.out.println("add");
 
 	}
 
