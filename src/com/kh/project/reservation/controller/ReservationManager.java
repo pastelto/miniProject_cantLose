@@ -6,6 +6,7 @@ public class ReservationManager {
 		
 		// (1) 현재 예약 상황 --> 없으면 return null; / 있으면 현재 예약 정보 보여주기
 		// (2) 커밋 수정중
+		// (3) 커밋 수정중 문제 오류 해결중
 		
 	}
 
