@@ -111,6 +111,8 @@ public class Book extends JFrame {
 			}
 		}
 		public void pSeatForWoman() { //칸막이, 여성 
+			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
+
 			for(int i = 0 ; i < PSEATFF.length ; i ++) {
 				for(int j = 0 ; j <PSEATFF[i].length ; j++) {
 					if( j % 2 == 1) {
@@ -122,6 +124,8 @@ public class Book extends JFrame {
 			
 		}
 		public void pSeatForMan() {	//칸막이, 남성
+			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
+
 			for(int i = 0 ; i < PSEATFM.length ; i ++) {
 				for(int j = 0 ; j <PSEATFM[i].length ; j++) {
 					if( j % 2 == 1) {
@@ -132,6 +136,8 @@ public class Book extends JFrame {
 		}
 		
 		public void oSeat() {	//오픈형
+			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
+			
 			for(int i = 0 ; i < OSEAT.length ; i ++) {
 				for(int j = 0 ; j <OSEAT[i].length ; j++) {
 					if( j % 2 == 1) {
