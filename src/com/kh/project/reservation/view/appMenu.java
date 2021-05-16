@@ -9,20 +9,12 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class appMenu {
 	Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
+
 	ReservationManager rm = new ReservationManager();
 	InOutManager io = new InOutManager();
 	Account a = new Account(); // 테스트용이다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	public void Menu() {
-
-		// 로그인 창, 회원가입 창은 여기 위에??
-
-		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
-
-=======
-	ReservationManager rm = new ReservationManager(); 		
-		
+			
 		public void Menu() {
 		
 		//로그인 창
@@ -31,7 +23,7 @@ public class appMenu {
 		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
+
 			System.out.println("******* MENU *******");
 			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
@@ -69,64 +61,32 @@ public class appMenu {
 		ArrayList ss = io.checkInSave();
 		if (ss.get(3) == "") {// 체크인 안한 버전
 			while (true) {
-				System.out.println(ss.get(0) + " 님"+"\n" + "체크인 또는 체크아웃 또는 이전을 입력하세요");
+				System.out.println(ss.get(0) + " 님" + "\n" + "체크인 또는 체크아웃 또는 이전을 입력하세요");
 				String str = sc.nextLine();
 				if (str.equals("체크인")) {
-					checkIn();
+					io.checkIn(); // 체크인 메소드
 					break;
 				} else if (str.equals("체크아웃")) {
-					System.out.println("체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
+					System.out.println(ss.get(0) + " 님" + "\n" + "체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
 					Menu();
 				} else if (str.equals("이전")) {
 					Menu();
 				}
 			}
-		} else if (ss.get(3) == "체크인불가") { // 체크아웃 한 후
-			System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
-		} else {// 체크인 한 버전 // 상태 확인
+		} else if (ss.get(3) == "체크인") {// 체크인 한 버전 // 상태 확인
 			io.chechkedIn();
 			String str = sc.nextLine();
 			if (str.equals("체크아웃")) {
-				checkOut();
-			}
-			if (str.equals("이전")) {
+				io.checkOut(); // 체크아웃 메소드
+			}else if (str.equals("이전")) {
 				Menu();
 			}
-		}
-		
-	}
-
-	private void checkIn() {
-		io.checkInSave();
-
-		//io.checkInPrint();
-		System.out.println("체크인 하시겠습니까? (Y/N)");
-		String str = sc.nextLine();
-
-		if (str.equals("Y") || str.equals("y")) {
-			io.checkInPrint();
-			System.out.println("체크인 되었습니다.");
-		} else if (str.equals("N") || str.equals("n")) {
-			System.out.println("메인 메뉴로 돌아갑니다. ");
-			Menu();
-		}
-
-	}
-
-	private void checkOut() {
-		//io.checkOutPrint(); //정보
-		System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
-		String str = sc.nextLine();
-
-		if (str.equals("Y") || str.equals("y")) {
-			io.checkOutPrint();
-			io.timeUsed();
-			System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
-			io.checkOutAfter();
-		} else if (str.equals("N") || str.equals("n")) {
-			Menu();
+		} else { // 체크아웃 한 후
+			System.out.println(ss.get(0) + " 님" + "\n" + "체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
 		}
 	}
+
+	
 
 	private void checkMyReservation() {
 		
