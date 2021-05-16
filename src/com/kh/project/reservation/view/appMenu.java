@@ -24,6 +24,7 @@ public class appMenu {
 			case 1: // 예약 
 					break;
 			case 2: // 이용권 구매
+					buyTicket();
 					break;
 			case 3: // 음료 구매
 					break;
@@ -49,6 +50,25 @@ public class appMenu {
 		
 	}
 
+	private void buyTicket() {
+			while(true) {
+			System.out.println("***이용권 구매***");
+			System.out.println("1. 1인좌석");
+			System.out.println("2. 스터디룸");
+			int num = sc.nextInt();
+			sc.nextLine();
+			
+			switch(num) {
+			case 1 : 
+					break;
+			case 2 : 
+					break;
+			case 3 : Menu();
+					break;
+			}
+			
+		}
+	}
 	private void checkMyReservation() {
 		
 		System.out.println("***예약 정보 확인***");
