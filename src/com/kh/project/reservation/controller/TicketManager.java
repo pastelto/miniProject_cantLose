@@ -12,9 +12,11 @@ public class TicketManager {
 	}
 	// 종류별 금액 * 기간(기간에 따른 할인율 적용)
 	public int onePrice(int option, int num1) {
-		if(option == 1) { 
-			return tp.getonePrice()*num1; // 1일
-		}else if(option == 2) {
+		return tp.getonePrice()*num1; // 1일
+	}
+	
+	public int onePrice(int option) {
+		if(option == 2) {
 			return (int)Math.round(tp.getonePrice()*30); // 1개월
 		}else if (option == 3) {
 			return (int)Math.round(tp.getonePrice()*30*6*0.85); // 6개월
@@ -23,8 +25,8 @@ public class TicketManager {
 		}
 	}
 	
-	public int strPrice() {
-		return tp.getstrPrice();
+	public int strPrice(int num2) {
+		return tp.getstrPrice()*num2;
 	}
 
 	public void addCntTicket(int num1) {

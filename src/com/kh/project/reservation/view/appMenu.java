@@ -85,7 +85,8 @@ public class appMenu {
 			System.out.println("2. 스터디룸");
 			int num = sc.nextInt();
 			sc.nextLine();
-
+			int num1 = 0;
+			
 			switch (num) {
 			case 1: // 기간에 따른 할인률 적용하여 반환
 				System.out.println("***기간 선택***");
@@ -95,22 +96,33 @@ public class appMenu {
 				System.out.println("4. 1 년권 ");
 				int option = sc.nextInt();
 				sc.nextLine();
+				
+				if(option == 1) {
 				System.out.println("수량 : ");
-				int num1 = sc.nextInt();
-				sc.nextLine();
+				num1 = sc.nextInt();
 				tm.onePrice(option, num1);
 				tm.addCntTicket(num1);
 				System.out.println("총 금액은 " + tm.onePrice(option,num1) +" 입니다.");
 				break;
+				} else {
+				tm.onePrice(option);
+				System.out.println("총 금액은 " + tm.onePrice(option) +" 입니다.");
+				break;
+				}
+				
 			case 2:
 				System.out.println("수량 : ");
-				System.out.println("총 금액은 " + tm.strPrice()+ "입니다.");
+				int num2 = sc.nextInt();
+				sc.nextLine();
+				System.out.println("총 금액은 " + tm.strPrice(num2)+ "입니다.");
 				break;
 			case 3:
 				Menu();
 				break;
+			default : System.out.println("다시입력해주세요.");
+			    break;
 			}
-			
+			Menu();
 		}
 	}
 
