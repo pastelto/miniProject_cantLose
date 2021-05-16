@@ -57,13 +57,14 @@ public class appMenu {
 		
 		String myR = rm.checkMyReservation();
 		if(myR == null) {
-			System.out.println("예약정보가 없습니다." + "\n" + "새롭게 예약을 하시겠습니까?" + "\n" + "(수락시 예약화면으로 넘어갑니다.");
+			System.out.println("예약정보가 없습니다." + "\n" + "새롭게 예약을 하시겠습니까?" + "\n" + "(수락시 예약화면으로 넘어갑니다.)");
 			// 예약화면으로 연결
 		} else {
 			// 예약정보 가져오기
 		
-	}
-		
+			// 예약정보 창 
+			
+			// 그 밑에 예약변경 메뉴 버튼
 		while(true) {
 			
 			System.out.println("*** 예약 변경 메뉴 ***");
@@ -75,12 +76,17 @@ public class appMenu {
 			
 			switch(click) {
 			case 1 : rm.changeReservation();
+					// 시간이 지나면 예약변경 X
 					break;
 			case 2 : rm.cancelReservation();
+					// 시간이 지나면 예약취소 X
 					break;
 			case 3 : Menu();
 					break;
 			}
+		}
+		
+		
 		}
 }
 }
