@@ -2,8 +2,8 @@ package com.kh.project.reservation.model.vo;
 
 public class Account {
 
-	private String id; // 아이디
-	private String pw; // 비밀번호
+	private String id;  // 아이디
+	private String pw ; // 비밀번호
 	private String name; // 이름
 	private String idNum; // 주민번호
 	private char gender; // 성별
