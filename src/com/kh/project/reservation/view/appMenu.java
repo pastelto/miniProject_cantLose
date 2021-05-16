@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.ReservationManager;
+
 import com.kh.project.reservation.model.vo.Account;
+
 import com.kh.project.reservation.model.vo.Book;
 
 
@@ -15,9 +17,11 @@ public class appMenu {
 
 	ReservationManager rm = new ReservationManager();
 	InOutManager io = new InOutManager();
-	Account a = new Account(); // 테스트용이다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!		
-		
+	
+
+
 		public void mainMenu() { //화면 구현 후 사라질 클래스.. Maybe..
+
 		
 
 		//로그인 창
@@ -44,6 +48,7 @@ public class appMenu {
 			sc.nextLine();
 
 
+			
 			switch(num) {
 			case 1:
 				Book bk = new Book();
@@ -81,7 +86,7 @@ public class appMenu {
 				System.out.println(ss.get(0) + " 님" + "\n" + "체크인 또는 체크아웃 또는 이전을 입력하세요");
 				String str = sc.nextLine();
 				if (str.equals("체크인")) {
-					io.checkIn(); // 체크인 메소드
+					checkIn(); // 체크인 메소드
 					break;
 				} else if (str.equals("체크아웃")) {
 					System.out.println(ss.get(0) + " 님" + "\n" + "체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
@@ -94,12 +99,41 @@ public class appMenu {
 			io.chechkedIn();
 			String str = sc.nextLine();
 			if (str.equals("체크아웃")) {
-				io.checkOut(); // 체크아웃 메소드
+				checkOut(); // 체크아웃 메소드
 			}else if (str.equals("이전")) {
 				mainMenu();
 			}
 		} else { // 체크아웃 한 후
 			System.out.println(ss.get(0) + " 님" + "\n" + "체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
+		}
+	}
+	
+	private void checkIn() { // 체크인
+		io.checkInSave();
+
+		System.out.println("체크인 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkInPrint();
+			System.out.println("체크인 되었습니다.");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+			mainMenu();
+		}
+
+	}
+	
+	public void checkOut() { // 체크아웃
+		System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkOutPrint();
+			System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+			mainMenu();
 		}
 	}
 

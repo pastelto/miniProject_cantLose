@@ -18,24 +18,9 @@ public class InOutManager {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void checkIn() { // 체크인
-		checkInSave();
-
-		System.out.println("체크인 하시겠습니까? (Y/N)");
-		String str = sc.nextLine();
-
-		if (str.equals("Y") || str.equals("y")) {
-			checkInPrint();
-			System.out.println("체크인 되었습니다.");
-		} else if (str.equals("N") || str.equals("n")) {
-			System.out.println("메인 메뉴로 돌아갑니다. ");
-		}
-
-	}
-
 	public ArrayList checkInSave() { // 이름 좌석 체크인시간 상태 저장
 
-		if (a.getId() == a.getPw() /* &&예약정보가 존재한다면 */ ) {
+		if (a.getId() == a.getPw() /* &&예약정보가 존재한다면-> 예약정보가져오는거로 바꾸기 */ ) {
 
 			{
 				in.add(a.getName());
@@ -65,18 +50,6 @@ public class InOutManager {
 		checkInPrint();
 
 		System.out.println("현재 체크인 중 입니다." + "\n" + "체크아웃 또는 이전을 입력하세요");
-	}
-
-	public void checkOut() { // 체크아웃
-		System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
-		String str = sc.nextLine();
-
-		if (str.equals("Y") || str.equals("y")) {
-			checkOutPrint();
-			System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
-		} else if (str.equals("N") || str.equals("n")) {
-			System.out.println("메인 메뉴로 돌아갑니다. ");
-		}
 	}
 
 	public void checkOutPrint() { // 체크아웃 정보 출력

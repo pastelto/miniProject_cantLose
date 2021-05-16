@@ -8,11 +8,7 @@ public class Run {
 	public static void main(String[] args) {
 
 		//테스트
-		new appMenu().mainMenu();;
-
-		
-//		Login l = new Login();
-//		SignUp s = new SignUp();
+		new appMenu().mainMenu();
 
 
 //		Update u = new Update();
