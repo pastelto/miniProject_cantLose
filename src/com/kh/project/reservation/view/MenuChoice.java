@@ -24,7 +24,9 @@ public class MenuChoice extends JFrame {
 	JButton b6 = new JButton("내 정보");
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("로그아웃");
+	
 
+	
 	public MenuChoice() {
 
 		// Menu 기본
@@ -39,7 +41,7 @@ public class MenuChoice extends JFrame {
 		// 메뉴 타이틀
 		this.setTitle("MENU");
 
-		JLabel bar = new JLabel(new ImageIcon("images/b.png"));
+		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
 		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
 		bar.setHorizontalTextPosition(JLabel.CENTER); // 왜 가운데가 안되는건가..
@@ -134,7 +136,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 예약확인
+			checkBooking cb = new checkBooking();
 					setVisible(false);
 				}
 			}
