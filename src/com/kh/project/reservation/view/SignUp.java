@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class SignUp extends JFrame{
+public class SignUp extends JFrame {
 	
-	JLabel bar = new JLabel();
+	JLabel bar = new JLabel(); 
 	JButton done = new JButton("입력 완료");
 	JTextField idTF = new JTextField("아이디");
 	JPasswordField pwTF= new JPasswordField("비밀번호");

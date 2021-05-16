@@ -21,7 +21,7 @@ public class Login extends JFrame {
 
 	HashMap<String, Account> account = new HashMap<>();
 	JButton login = new JButton("로그인");
-	JButton signout = new JButton("회원가입");
+	JButton signout = new JButton("회원가입"); 
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF= new JPasswordField();
 	JPanel loginP= new JPanel(); 
@@ -84,7 +84,7 @@ public class Login extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if(e.getButton()==1) {
-						new SignOut();
+						new SignUp();
 						setVisible(false);
 					}
 				}
