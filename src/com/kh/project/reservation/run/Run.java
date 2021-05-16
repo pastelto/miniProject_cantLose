@@ -1,6 +1,8 @@
 package com.kh.project.reservation.run;
 
+
 import com.kh.project.reservation.view.appMenu;
+
 import com.kh.project.reservation.view.checkBooking;
 
 public class Run {
@@ -11,6 +13,10 @@ public class Run {
 		new appMenu().mainMenu();
 
 
+
+		
+//		Login l = new Login();
+//		SignUp s = new SignUp();
 //		Update u = new Update();
 //		Check c = new Check();
 	

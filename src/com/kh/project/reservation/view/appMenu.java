@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.ReservationManager;
+import com.kh.project.reservation.model.vo.Book;
 
 import com.kh.project.reservation.model.vo.Account;
 
@@ -14,15 +15,11 @@ import com.kh.project.reservation.model.vo.Book;
 public class appMenu {
 	Scanner sc = new Scanner(System.in);
 
-
 	ReservationManager rm = new ReservationManager();
 	InOutManager io = new InOutManager();
-	
-
-
+  
 		public void mainMenu() { //화면 구현 후 사라질 클래스.. Maybe..
 
-		
 
 		//로그인 창
 		
