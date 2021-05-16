@@ -3,27 +3,41 @@ package com.kh.project.reservation.view;
 import java.util.Scanner;
 
 import com.kh.project.reservation.controller.ReservationManager;
+import com.kh.project.reservation.model.vo.Book;
 
 public class appMenu {
 	Scanner sc = new Scanner(System.in);
 	ReservationManager rm = new ReservationManager(); 		
 		
-		public void Menu() {
+		public void mainMenu() {
 		
+
 		//로그인 창
 		
 		//회원가입 창 
 		
+
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
 			System.out.println("******* MENU *******");
-			System.out.println("메뉴를 선택해주세요");
+			System.out.println("1. 예약");
+			System.out.println("2. 이용권 구매");
+			System.out.println("3. 음료 구매");
+			System.out.println("4. 프린트 서비스");
+			System.out.println("5. 예약 정보 확인");
+			System.out.println("6. 내 정보 ");
+			System.out.println("7. 체크인/체크아웃 ");
+			System.out.println("********************");
+
+			System.out.print("메뉴를 선택해주세요 : ");
 			int num = sc.nextInt();
 			sc.nextLine();
 
 			
 			switch(num) {
-			case 1: // 예약 
+			case 1:
+				Book bk = new Book();
+				bk.Booking();
 					break;
 			case 2: // 이용권 구매
 					break;
@@ -81,7 +95,7 @@ public class appMenu {
 			case 2 : rm.cancelReservation();
 					// 시간이 지나면 예약취소 X
 					break;
-			case 3 : Menu();
+			case 3 : mainMenu();
 					break;
 			}
 		}
