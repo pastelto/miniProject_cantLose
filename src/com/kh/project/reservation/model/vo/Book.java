@@ -84,7 +84,7 @@ public class Book extends JFrame {
 			System.out.println();
 
 			
-			System.out.print("선택하실 좌석 번호를 입력해주세요 : ");
+			System.out.print("선택하실 좌석 유형의 번호를 입력해주세요 : ");
 			int num = sc.nextInt();
 
 			switch(num) {
@@ -110,49 +110,134 @@ public class Book extends JFrame {
 			
 			}
 		}
-		public void pSeatForWoman() { //칸막이, 여성 
-			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
 
-			for(int i = 0 ; i < PSEATFF.length ; i ++) {
-				for(int j = 0 ; j <PSEATFF[i].length ; j++) {
-					if( j % 2 == 1) {
-						PSEATFF[i][j] = "예약 불가";
+		public void pSeatForWoman() { //칸막이, 여성 
+			System.out.println("******** 여성 전용 1인 칸막이 좌석 입니다. *********");
+			System.out.println("*** 사회적 거리두기를 위해 연석 예약이 불가능합니다. ***");
+			System.out.println();
+			int num = 97;
+			for (int i = 0; i < PSEATFF.length; i++) {
+				for (int j = 0; j < PSEATFF[i].length; j++) {
+					if (j % 2 == 1) {
+						PSEATFF[i][j] = "[ 예약불가 ]";
+						System.out.print(PSEATFF[i][j] + " ");
+
+					} else {
+						PSEATFF[i][j] = "[ a, " + (char)(num++) + " ]";
+						System.out.print(PSEATFF[i][j] + " ");
+
+					}
+				}
+				System.out.println();
+
+			} 
+			
+			System.out.println();
+			System.out.println("예약하실 좌석의 번호를 입력해주세요. (,포함) ");
+			System.out.println("'back'을 입력하시면 이전 창으로 돌아갑니다.");
+			String pick = sc.nextLine();
+			
+			if(pick.equalsIgnoreCase("back")) {
+				yourSeat();
+			}else {
+				for (int i = 0; i < PSEATFF.length; i++) {
+					for (int j = 0; j < PSEATFF[i].length; j++) {
+						if(PSEATFF[i][j].contains(pick)) {
+							//PSEATFF[i][j] = getName + "님이 예약하신 좌석입니다.";
+						}
 					}
 				}
 			}
-			
-			
+
 		}
 		public void pSeatForMan() {	//칸막이, 남성
-			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
+			System.out.println("******** 남성 전용 1인 칸막이 좌석 입니다. *********");
+			System.out.println("*** 사회적 거리두기를 위해 연석 예약이 불가능합니다. ***");
+			System.out.println();
+			int num = 97;
+			for (int i = 0; i < PSEATFM.length; i++) {
+				for (int j = 0; j < PSEATFM[i].length; j++) {
+					if (j % 2 == 1) {
+						PSEATFM[i][j] = "[ 예약불가 ]";
+						System.out.print(PSEATFM[i][j] + " ");
 
-			for(int i = 0 ; i < PSEATFM.length ; i ++) {
-				for(int j = 0 ; j <PSEATFM[i].length ; j++) {
-					if( j % 2 == 1) {
-						PSEATFM[i][j] = "예약 불가";
+					} else {
+						PSEATFM[i][j] = "[ b" + ", " + (char)(num++) + " ]";
+						System.out.print(PSEATFM[i][j] + " ");
+
+					}
+				}
+				System.out.println();
+
+			} 
+			
+			System.out.println();
+			System.out.println("예약하실 좌석의 번호를 입력해주세요. (,포함) ");
+			System.out.println("'back'을 입력하시면 이전 창으로 돌아갑니다.");
+			String pick = sc.nextLine();
+			
+			if(pick.equalsIgnoreCase("back")) {
+				yourSeat();
+			}else {
+				for (int i = 0; i < PSEATFM.length; i++) {
+					for (int j = 0; j < PSEATFM[i].length; j++) {
+						if(PSEATFM[i][j].contains(pick)) {
+							//PSEATFM[i][j] = getName + "님이 예약하신 좌석입니다.";
+						}
 					}
 				}
 			}
+
+			
 		}
-		
 		public void oSeat() {	//오픈형
-			System.out.println("사회적 거리두기를 위해 한 칸씩 띄어서 앉기를 권장합니다.");
+			System.out.println("************ 1인 오픈형 좌석 입니다. ************");
+			System.out.println("*** 사회적 거리두기를 위해 연석 예약이 불가능합니다. ***");
+			System.out.println();
+			int num = 97;
+			for (int i = 0; i < OSEAT.length; i++) {
+				for (int j = 0; j < OSEAT[i].length; j++) {
+					if (j % 2 == 1) {
+						OSEAT[i][j] = "[ 예약불가 ]";
+						System.out.print(OSEAT[i][j] + " ");
+
+					} else {
+						OSEAT[i][j] = "[ c" + ", " + (char)(num++) + " ]";
+						System.out.print(OSEAT[i][j] + " ");
+
+					}
+				}
+				System.out.println();
+
+			} 
 			
-			for(int i = 0 ; i < OSEAT.length ; i ++) {
-				for(int j = 0 ; j <OSEAT[i].length ; j++) {
-					if( j % 2 == 1) {
-						OSEAT[i][j] = "예약 불가";
+			System.out.println();
+			System.out.println("예약하실 좌석의 번호를 입력해주세요. (,포함) ");
+			System.out.println("'back'을 입력하시면 이전 창으로 돌아갑니다.");
+			String pick = sc.nextLine();
+			
+			if(pick.equalsIgnoreCase("back")) {
+				yourSeat();
+			}else {
+				for (int i = 0; i < OSEAT.length; i++) {
+					for (int j = 0; j < OSEAT[i].length; j++) {
+						if(OSEAT[i][j].contains(pick)) {
+							//OSEAT[i][j] = getName + "님이 예약하신 좌석입니다.";
+						}
 					}
 				}
 			}
-			
-			
 			
 		}
 		public void studyRoom() { //스터디룸
 			int count = 4; 
 			System.out.println("현재 선택 가능한 스터디 룸은 " + count + "개 입니다.");
-
+			//SROOM
+			for(int i = 0 ; i < SROOM.length ; i++) {
+				for(int j = 0 ; j < SROOM[i].length ; j ++) {
+					
+				}
+			}
 			System.out.println("프로젝터를 대여하시겠습니까?");
 			char ch = sc.nextLine().charAt(0);
 			if(ch == 'y') {
