@@ -2,11 +2,12 @@ package com.kh.project.reservation.controller;
 
 public class ReservationManager {
 
+
 	public String checkMyReservation() { // 매개변수 : 예약날짜, 예약좌석, 예약성함, 예약상태 등
+
 		// (1) 현재 예약 상황 --> 없으면 return null; / 있으면 현재 예약 정보 보여주기
 		
 		return null;   // 결과 없으면 null, 있으면 true?
-		
 		
 	}
 	
