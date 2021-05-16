@@ -9,7 +9,7 @@ public class appMenu {
 	Scanner sc = new Scanner(System.in);
 	ReservationManager rm = new ReservationManager(); 		
 		
-		public void mainMenu() {
+		public void mainMenu() { //화면 구현 후 사라질 클래스.. Maybe..
 		
 
 		//로그인 창
@@ -20,14 +20,15 @@ public class appMenu {
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
 			System.out.println("******* MENU *******");
+			System.out.println("메뉴를 선택해주세요");
 			System.out.println("1. 예약");
 			System.out.println("2. 이용권 구매");
 			System.out.println("3. 음료 구매");
 			System.out.println("4. 프린트 서비스");
-			System.out.println("5. 예약 정보 확인");
-			System.out.println("6. 내 정보 ");
-			System.out.println("7. 체크인/체크아웃 ");
-			System.out.println("********************");
+			System.out.println("5. 예약정보 확인");
+			System.out.println("6. 내정보");
+			System.out.println("7. 체크인 / 체크아웃");
+			System.out.println("8. 로그아웃");
 
 			System.out.print("메뉴를 선택해주세요 : ");
 			int num = sc.nextInt();
@@ -71,13 +72,14 @@ public class appMenu {
 		
 		String myR = rm.checkMyReservation();
 		if(myR == null) {
-			System.out.println("예약정보가 없습니다." + "\n" + "새롭게 예약을 하시겠습니까?" + "\n" + "(수락시 예약화면으로 넘어갑니다.");
+			System.out.println("예약정보가 없습니다." + "\n" + "새롭게 예약을 하시겠습니까?" + "\n" + "(수락시 예약화면으로 넘어갑니다.)");
 			// 예약화면으로 연결
 		} else {
 			// 예약정보 가져오기
 		
-	}
-		
+			// 예약정보 창 
+			
+			// 그 밑에 예약변경 메뉴 버튼
 		while(true) {
 			
 			System.out.println("*** 예약 변경 메뉴 ***");
@@ -89,12 +91,17 @@ public class appMenu {
 			
 			switch(click) {
 			case 1 : rm.changeReservation();
+					// 시간이 지나면 예약변경 X
 					break;
 			case 2 : rm.cancelReservation();
+					// 시간이 지나면 예약취소 X
 					break;
 			case 3 : mainMenu();
 					break;
 			}
+		}
+		
+		
 		}
 }
 }

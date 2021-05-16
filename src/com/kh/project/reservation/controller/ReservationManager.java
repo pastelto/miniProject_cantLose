@@ -12,17 +12,29 @@ public class ReservationManager {
 	}
 	
 	public void cancelReservation() {
+		// 예약정보 Booking information 
 		
+		if(bi = null) { // 시간 지난 거
+			// booking 메소드로 연결 or
+			// 취소버튼 비활성화
+		} else {
+			// booking 정보 delete --> 확인 --> delete 완료!!
+		}
 		// (3) 예약정보 O, 취소가능한 정보 O 경우
 		// 예약 취소 가능
 		// Booking 정보 삭제 .delete??
 		
 		// 예약 취소 불가능 -> 메세지 or 버튼 효과 X
+		
+		// 예약 취소 이용권 반환
 	}
 
 	public void changeReservation() {
 		
-		// 예약변경 
+		
+		// 예약변경 // 날짜 변경 or 좌석 변경
+		
+		// 예약메소드 가져오기?
 	}
 	
 	
