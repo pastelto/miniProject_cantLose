@@ -1,7 +1,6 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Menu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -36,15 +36,8 @@ public class Login extends JFrame {
 			loginP.setBackground(new Color(249, 242, 242)); // 배경색 설정
 			
 			
-			
-			
-			
-			
-			
-			
-			//imgTest = new ImageIcon("images/logo.png");
-			//JLabel image = new JLabel(new ImageIcon("images/logo.png"));
-			//image.setBounds(95,50,150,150);
+			JLabel image = new JLabel(new ImageIcon("images/logo.png"));
+			image.setBounds(95,50,150,150);
 			/*Image icon = new ImageIcon("images/커피.png").getImage().getScaledInstance(100, 100, 0);
 			imLabel = new JLabel(new ImageIcon(icon)); 
 			imLabel.setBounds(100,100,100,100); */// 이건 왜 안됨,,,,?
@@ -99,7 +92,8 @@ public class Login extends JFrame {
 			});
 
 			
-			
+			this.setVisible(true);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 
 	}

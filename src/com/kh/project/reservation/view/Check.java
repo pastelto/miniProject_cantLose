@@ -25,10 +25,8 @@ public class Check extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(0,0,360,600);
 		
-		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		
 		// 컴포넌트 생성
 		
@@ -120,11 +118,12 @@ public class Check extends JFrame {
 			
 		});
 		
-
+		
+		
+		
 	}
 	public static void main(String args[]) {
 		new Check();
-		
 	}
 
 }
