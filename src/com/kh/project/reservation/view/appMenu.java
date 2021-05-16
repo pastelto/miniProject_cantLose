@@ -18,6 +18,14 @@ public class appMenu {
 			
 			System.out.println("******* MENU *******");
 			System.out.println("메뉴를 선택해주세요");
+			System.out.println("1. 예약");
+			System.out.println("2. 이용권 구매");
+			System.out.println("3. 음료 구매");
+			System.out.println("4. 프린트 서비스");
+			System.out.println("5. 예약정보 확인");
+			System.out.println("6. 내정보");
+			System.out.println("7. 체크인 / 체크아웃");
+			System.out.println("8. 로그아웃");
 			int num = sc.nextInt();
 			sc.nextLine();
 

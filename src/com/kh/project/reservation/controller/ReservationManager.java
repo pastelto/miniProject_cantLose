@@ -31,6 +31,7 @@ public class ReservationManager {
 
 	public void changeReservation() {
 		
+		
 		// 예약변경 // 날짜 변경 or 좌석 변경
 		
 		// 예약메소드 가져오기?
