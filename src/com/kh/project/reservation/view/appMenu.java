@@ -9,6 +9,7 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class appMenu {
 	Scanner sc = new Scanner(System.in);
+<<<<<<< HEAD
 	ReservationManager rm = new ReservationManager();
 	InOutManager io = new InOutManager();
 	Account a = new Account(); // 테스트용이다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -19,6 +20,18 @@ public class appMenu {
 
 		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
+=======
+	ReservationManager rm = new ReservationManager(); 		
+		
+		public void Menu() {
+		
+		//로그인 창
+		
+		//회원가입 창 
+		
+		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+			
+>>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
 			System.out.println("******* MENU *******");
 			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
