@@ -10,7 +10,9 @@ public class appMenu {
 		
 		public void Menu() {
 		
-		// 로그인 창, 회원가입 창은 여기 위에?? 
+		//로그인 창
+		
+		//회원가입 창 
 		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
