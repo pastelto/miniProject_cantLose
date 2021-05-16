@@ -3,6 +3,8 @@ package com.kh.project.reservation.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -84,6 +86,16 @@ public class CheckIn extends JFrame {
 		back.setFont(back.getFont().deriveFont(10.0f));
 		back.setSize(70, 30);
 
+		back.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					MenuChoice mc = new MenuChoice();
+					setVisible(false);
+				}
+			}
+		});
+		
 		cc.add(name);
 		cc.add(checkin);
 		cc.add(checkout);

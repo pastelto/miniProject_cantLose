@@ -20,10 +20,10 @@ public class Run {
 	
 //		checkBooking c = new checkBooking();
 
-		appMenu am = new appMenu();
+		//appMenu am = new appMenu();
 //		am.mainMenu();
 		
-		MenuChoice m = new MenuChoice();
+		//MenuChoice m = new MenuChoice();
 		
 
 	}

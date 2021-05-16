@@ -156,7 +156,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 체크인/체크아웃
+					CheckIn ci = new CheckIn();
 					setVisible(false);
 				}
 			}
