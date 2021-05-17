@@ -1,11 +1,12 @@
 package com.kh.project.reservation.view;
 
+import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
 import javax.swing.text.html.HTMLDocument.Iterator;
-
 import com.kh.project.reservation.controller.BeverageManager;
+import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
@@ -13,6 +14,7 @@ import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.model.vo.Book;
 import com.kh.project.reservation.model.vo.pay.Drink;
+import com.kh.project.reservation.model.vo.pay.Print;
 
 
 public class appMenu {
@@ -21,17 +23,83 @@ public class appMenu {
 
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
+
+	InOutManager io = new InOutManager();
 	Drink d = new Drink();
 	Account a = new Account();
-	
+
+	PrintServiceManager psm = new PrintServiceManager();
+	Print p = new Print();
+
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
+
+		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+
+	HashMap<String, Account> membership = new HashMap<>();
+
 	
+		
+		
 		// 로그인 창
+
 
 		// 회원가입 창
 
+					System.out.println("로그인");
+					String id = sc.nextLine().trim();
+					
+					System.out.println("비밀번호");
+					String pw = sc.nextLine().trim();
+					
+					//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+					
+					if(membership.containsKey(id)||membership.get(id).equals(pw))
+					{
+						System.out.println("로그인 완료");
+						break;
+					} else
+						{
+							System.out.println("id나 비밀번호가 일치 하지 않습니다.");
+							continue;
+						}
+					}
+				
+				//회원가입 창 - 회원가입 버튼 클릭시 추가
+				System.out.println("로그인");
+				String id = sc.nextLine();
+				
+				System.out.println("비밀번호");
+				String pw = sc.nextLine();
+				
+				System.out.println("이름");
+				String name = sc.nextLine();
+				
+				System.out.println("주민번호");
+				String idNum = sc.nextLine();
+				
+				System.out.println("성별");
+				char gender = sc.nextLine().charAt(0);
+				
+				System.out.println("핸드폰 번호");
+				String pNum = sc.nextLine();
+				
+				System.out.println("은행");
+				String bank = sc.nextLine();
+				
+				System.out.println("카드번호");
+				String pay = sc.nextLine();
+				
+				//if()문으로 일치 확인
 
-			
+				if(membership.isEmpty()) {
+					System.out.println("없습니다.");
+				}else {
+					Iterator<String> it = map.keySet().iterator();
+					while(it.hasNext()) {
+						System.out.println(map.get(it.next()));
+					}
+				}
+
 
 		
 	
@@ -40,9 +108,9 @@ public class appMenu {
 		ReservationManager rm = new ReservationManager();
 		CheckAccount ca = new CheckAccount();
 	
+
 		Scanner sc = new Scanner(System.in);
 		
-		//로그인 창
 		while(true) {
 
 			System.out.println("로그인");
@@ -72,6 +140,7 @@ public class appMenu {
 				// 회원가입 버튼 클릭시 추가
 			}
 		}
+
 		//회원가입 창 
 		System.out.println("로그인");
 		String id = sc.nextLine();
@@ -99,6 +168,12 @@ public class appMenu {
 		
 		//if()문으로 일치 확인
 
+	//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+			break;
+		}	
+		
+
+
 		if(membership.isEmpty()) {
 			System.out.println("없습니다.");
 		}else {
@@ -108,7 +183,9 @@ public class appMenu {
 			}
 		}
 
-		
+
+
+
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
 			System.out.println("******* MENU *******");
@@ -138,7 +215,7 @@ public class appMenu {
 			case 6: // 내정보
 					break;
 			case 7: // 체크인 / 체크아웃
-				new InOutMenu().checkInOutM();
+				checkInOutM();
 				break;
 			case 8: // 로그아웃
 					return; // 또는 초기화면 이동
@@ -148,17 +225,106 @@ public class appMenu {
 		}
 
 	}
+	private void checkInOutM() {
+		ArrayList ss = io.checkInSave();
+		
+		if (ss.get(3).equals("")) {// 체크인 안했을 때 
+			while (true) {
+				System.out.println("체크인 또는 체크아웃 또는 이전을 입력하세요");
+				String str = sc.nextLine();
+				if (str.equals("체크인")) {
+					checkIn(); // 체크인 메소드
+					break;
+				} else if (str.equals("체크아웃")) {
+					System.out.println("체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
+					break;
+				} else if (str.equals("이전")) {
+					System.out.println("메인메뉴로 돌아갑니다.");
+				}
+			}
+		} else if (ss.get(3).equals("체크인")) {// 체크인 한 버전 // 상태 확인
+			io.chechkedIn();
+			String str = sc.nextLine();
+			if (str.equals("체크아웃")) {
+				checkOut(); // 체크아웃 메소드
+			}else if (str.equals("이전")) {
+				System.out.println("메인메뉴로 돌아갑니다.");
+			}
+		} else { 
+			System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
+		}
+	}
+	
+
+	private void checkIn() {
+		io.checkInSave();
+
+		System.out.println("체크인 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkInPrint(); 
+			System.out.println("체크인 되었습니다.");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+		}
+
+	}
+	
+	private void checkOut() {
+		System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkOutPrint();
+			System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+		}
+	}
 
 	private void printService() {
 		PrintServiceManager psm = new PrintServiceManager();
 			while(true) {
 				System.out.println("***프린트 서비스***");
+				System.out.println("1. 프린트포인트 조회");
+				System.out.println("2. 프린트포인트 충전");
+				System.out.println("3. 프린트하기");
+				System.out.println("4. mainMenu");
+				
+				System.out.println("메뉴선택: ");
+				int num1 = sc.nextInt();
+				sc.nextLine();
+				
+				switch(num1) {
+				case 1 :
+					psm.prtPointInfo();
+					break;
+				case 2 : 
+					System.out.println("충전금액: ");
+					int num2 = sc.nextInt();
+					sc.nextLine();
+					psm.prtPointCharge(num2);
+					break;
+				case 3 : 
+					System.out.println("흑백 매수: ");
+					System.out.println("컬러 매수: ");
+					psm.prtPointUse();
+					break;
+				case 4: 
+					mainMenu();
+					break;
+				default:
+					System.out.println("다시 입력해주세요."); 
+					return;
+				}
+
 			}
-		
-	}
+
+		}
 
 	private void orderBeverage() {
-		BeverageManager bm = new BeverageManager();
+		
 		while (true) {
 			System.out.println("***움료 메뉴***");
 			System.out.println("1. 아메리카노");
@@ -202,7 +368,7 @@ public class appMenu {
 	private void buybCoupon() {
 		
 			System.out.println("***음료쿠폰 구매***");
-			System.out.println("구매하실 수량을 입력해주세요.");
+			System.out.println("수량 : ");
 			int num = sc.nextInt();
 			sc.nextLine();
 			a.setCoupon(a.getCoupon()+num);
@@ -218,6 +384,7 @@ public class appMenu {
 			System.out.println("***이용권 구매***");
 			System.out.println("1. 1인좌석");
 			System.out.println("2. 스터디룸");
+			System.out.println("3. mainMenu 돌아가기");
 			int num = sc.nextInt();
 			sc.nextLine();
 			int num1 = 0;
@@ -263,6 +430,7 @@ public class appMenu {
 				sc.nextLine();
 				System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
 				break;
+			case 3 : mainMenu();
 			default:
 				System.out.println("다시입력해주세요.");
 				break;
