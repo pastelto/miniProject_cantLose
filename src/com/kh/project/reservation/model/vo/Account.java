@@ -10,17 +10,14 @@ public class Account {
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
-	private int ticket;
-	private int bevticket;
-	private int printpoint;
-	
-	
-	
-	public Account() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int bevticket, int printpoint) {
+	private int coupon; // 쿠폰
+
+	
+	public Account() {}
+
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay,int coupon) {
+
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -30,11 +27,8 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-		this.ticket = ticket;
-		this.bevticket = bevticket;
-		this.printpoint = printpoint;
-		
-	}
+		this.coupon=coupon;
+
 	
 
 	public String getId() {
@@ -101,9 +95,18 @@ public class Account {
 		this.pay = pay;
 	}
 	
+	public String getCoupon() {
+		return pay;
+	}
+
+	public void setCoupon(int coupon) {
+		this.coupon = coupon;
+	}
+	
+	
 	public String info() {
 		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
-				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay;
+				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay +", 쿠폰 : "+coupon;
 	}
 
 }
