@@ -2,6 +2,7 @@ package com.kh.project.reservation.view;
 
 import java.util.Scanner;
 
+
 import com.kh.project.reservation.controller.BeverageManager;
 import com.kh.project.reservation.controller.ReservationManager;
 
@@ -11,16 +12,12 @@ import com.kh.project.reservation.model.vo.Book;
 
 
 public class appMenu {
+
 	Scanner sc = new Scanner(System.in);
 
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
 
-	public void Menu() {
-
-
-	ReservationManager rm = new ReservationManager();
-	}
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
 
 
@@ -31,17 +28,51 @@ public class appMenu {
 		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
 			System.out.println("******* MENU *******");
-			System.out.println("메뉴를 선택해주세요");
-			System.out.println("1. 예약");
-			System.out.println("2. 이용권 구매");
-			System.out.println("3. 음료 구매");
-			System.out.println("4. 프린트 서비스");
-			System.out.println("5. 예약정보 확인");
-			System.out.println("6. 내정보");
-			System.out.println("7. 체크인 / 체크아웃");
-			System.out.println("8. 로그아웃");
 
-			System.out.print("메뉴를 선택해주세요 : ");
+	
+	public appMenu() {
+		
+		ReservationManager rm = new ReservationManager();
+		
+	
+		Scanner sc = new Scanner(System.in);
+		
+		//로그인 창
+		while(true) {
+		//회원가입 창 
+		System.out.println("로그인");
+		String id = sc.nextLine();
+		
+		System.out.println("비밀번호");
+		String pw = sc.nextLine();
+		
+		System.out.println("이름");
+		String name = sc.nextLine();
+		
+		System.out.println("주민번호");
+		String idNum = sc.nextLine();
+		
+		System.out.println("성별");
+		char gender = sc.nextLine().charAt(0);
+		
+		System.out.println("핸드폰 번호");
+		String pNum = sc.nextLine();
+		
+		System.out.println("은행");
+		String bank = sc.nextLine();
+		
+		System.out.println("카드번호");
+		String pay = sc.nextLine();
+		
+		//if()문으로 일치 확인
+	//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+			break;
+		}	
+		
+		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+			
+
+			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
 			sc.nextLine();
 
@@ -50,31 +81,31 @@ public class appMenu {
 			case 1: // 예약
 			Book bk = new Book();
 				bk.Booking();
-
 				break;
 			case 2: // 이용권 구매
 				buyTicket();
 				break;
 			case 3: // 음료 구매
-				break;
+					break;
 			case 4: // 프린트 서비스
-				break;
+					break;
 			case 5: // 예약정보 확인
-				checkMyReservation();
-				// (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
-				break;
+					rm.checkMyReservation();
+					// (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
+					break;
 			case 6: // 내정보
-				break;
+					break;
 			case 7: // 체크인 / 체크아웃
 				new InOutMenu().checkInOutM();
 				break;
 			case 8: // 로그아웃
-				return; // 또는 초기화면 이동
-
+					return; // 또는 초기화면 이동
+				
 			}
-
+			
+			
+			
 		}
-
 
 	}
 
