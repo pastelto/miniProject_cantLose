@@ -10,13 +10,14 @@ public class Account {
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
+
 	private int coupon; // 쿠폰
+
 	
-	public Account() {
-		
-	}
+	public Account() {}
 
 	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay,int coupon) {
+
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -27,7 +28,7 @@ public class Account {
 		this.bank = bank;
 		this.pay = pay;
 		this.coupon=coupon;
-	}
+
 	
 
 	public String getId() {

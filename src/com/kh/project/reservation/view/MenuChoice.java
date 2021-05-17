@@ -166,7 +166,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 로그아웃 // 로그인창으로~
+					Login l = new Login();
 					setVisible(false);
 				}
 			}

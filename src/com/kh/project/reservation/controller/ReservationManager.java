@@ -47,7 +47,7 @@ public ReservationManager() {
 		
 		// 예약메소드 가져오기?
 	}
-	
+}	
 	
 	
 
