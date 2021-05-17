@@ -13,6 +13,7 @@ public class Account {
 	private int ticket;
 	private int bevticket;
 	private int printpoint;
+	private int totalHours; // 누적시간 
 	
 	
 	
@@ -20,7 +21,7 @@ public class Account {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int bevticket, int printpoint) {
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int bevticket, int printpoint, int totalHours) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -33,6 +34,7 @@ public class Account {
 		this.ticket = ticket;
 		this.bevticket = bevticket;
 		this.printpoint = printpoint;
+		this.totalHours = totalHours;
 		
 	}
 	

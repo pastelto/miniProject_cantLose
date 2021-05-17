@@ -25,8 +25,8 @@ public class InOutManager {
 			{
 				in.add(a.getName());
 				in.add("좌석");
-				in.add(io.getCheckIn()); // 체크인 시간
-				in.add(io.getDoubleCheck()); // 체크인 상태 ""
+				in.add(io.getCheckIn());
+				in.add(io.getDoubleCheck());
 
 			}
 			
@@ -73,6 +73,8 @@ public class InOutManager {
 		{
 			in.set(3, "체크인불가"); // 체크아웃 후 체크아웃을 눌렀을때 재입실을 다시 못하게
 		}
+		
+		//누적시간 저장하기 
 
 	}
 
