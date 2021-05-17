@@ -86,6 +86,7 @@ public class Login extends JFrame {
 			loginP.add(signout);
 			loginP.add(image);
 			
+
 			loginP.add(id);
 			loginP.add(pw);
 			loginP.add(m);

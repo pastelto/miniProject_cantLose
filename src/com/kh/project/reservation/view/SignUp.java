@@ -12,7 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.kh.project.reservation.model.vo.Account;
+
 public class SignUp extends JFrame {
+	
+	Account ac = new Account();
 	
 	JLabel bar = new JLabel(); 
 	JButton done = new JButton("입력 완료");
@@ -91,7 +95,7 @@ public class SignUp extends JFrame {
 				}
 				JLabel popupCoffee = new JLabel();
 				popupCoffee.setBounds(20,110,280,333);
-				
+				ac.setCoupon(1);
 			} 
 		
 		});

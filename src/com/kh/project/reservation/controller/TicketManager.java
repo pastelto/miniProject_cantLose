@@ -1,11 +1,12 @@
 package com.kh.project.reservation.controller;
 
 import com.kh.project.reservation.model.vo.TicketPrice;
+import com.kh.project.reservation.model.vo.pay.Ticket;
 
 public class TicketManager {
 	
 	TicketPrice tp = new TicketPrice();
-	
+	Ticket t = new Ticket();
 	
 	public TicketManager() {
 		// TODO Auto-generated constructor stub
@@ -16,6 +17,7 @@ public class TicketManager {
 	}
 	
 	public int onePrice(int option) {
+	
 		if(option == 2) {
 			return (int)Math.round(tp.getonePrice()*30); // 1개월
 		}else if (option == 3) {
@@ -29,8 +31,9 @@ public class TicketManager {
 		return tp.getstrPrice()*num2;
 	}
 
-	public void addCntTicket(int num1) {
-		//회원정보.ticket+num1; // 구매갯수만큼 회원 티켓 추가하여 회원정보에 넘겨줘야 할것 같은데
+	public void addCntTicket(int tNum) {
+		t.setTicket(t.getTicket()+tNum); // 자기가 가지고 있던 티켓 + 구매한 수량만큼 더해줘서 넣기
+		System.out.println("누적 티켓 : " + t.getTicket()); // 누적갯수 확인
 	}
 
 }
