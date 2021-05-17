@@ -9,11 +9,8 @@ public class Run {
 
 	public static void main(String[] args) {
 
-//		new BoardManager().maxim();
-	//		MenuChoice m = new MenuChoice();
-	//		Login l = new Login();
-		appMenu a = new appMenu();
-		a.mainMenu();
+		MenuChoice m = new MenuChoice();
+
 
 
 	}
