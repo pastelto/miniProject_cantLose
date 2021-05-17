@@ -1,7 +1,6 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Menu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,19 +9,20 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.model.vo.Account;
 
-
 public class Login extends JFrame {
 
 	HashMap<String, Account> account = new HashMap<>();
 	JButton login = new JButton("로그인");
-	JButton signout = new JButton("회원가입"); 
+	JButton signout = new JButton("회원가입");
 	JTextField logTF = new JTextField();
+
 	JPasswordField pwTF= new JPasswordField();
 	JPanel loginP= new JPanel(); 
 	
@@ -86,25 +86,28 @@ public class Login extends JFrame {
 						new Menu();
 						setVisible(false);
 					}
-				}
-				
-			});
-			
-			signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
 
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					if(e.getButton()==1) {
-						new SignUp();
-						setVisible(false);
-					}
 				}
-				
-			});
+			}
 
-			
-			
-		}
+		});
+
+		signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					new SignUp();
+					setVisible(false);
+				}
+			}
+
+		});
+
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 
 	}
 
+}
