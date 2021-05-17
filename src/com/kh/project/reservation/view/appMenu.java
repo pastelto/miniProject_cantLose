@@ -1,11 +1,19 @@
 package com.kh.project.reservation.view;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.kh.project.reservation.controller.BeverageManager;
+
 import com.kh.project.reservation.controller.PrintServiceManager;
+
+import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
+
+import com.kh.project.reservation.model.vo.Account;
+
 import com.kh.project.reservation.model.vo.Book;
 
 
@@ -23,21 +31,48 @@ public class appMenu {
 
 		// 회원가입 창
 
-		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
-			System.out.println("******* MENU *******");
+			
 
 		}
 	}
 	public appMenu() {
-		
+		HashMap<String, Account> membership = new HashMap<String, Account>();
 		ReservationManager rm = new ReservationManager();
-		
+		CheckAccount ca = new CheckAccount();
 	
 		Scanner sc = new Scanner(System.in);
 		
 		//로그인 창
 		while(true) {
+
+			System.out.println("로그인");
+			String id = sc.nextLine().trim();
+			
+			System.out.println("비밀번호");
+			String pw = sc.nextLine().trim();
+			
+			//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+			
+			if(!membership.containsKey(id))
+			{
+				System.out.println("입력하신 id는 존재하지 않습니다." + " 다시 입력해주세요.");
+				continue;
+			}
+			else
+			{
+				if(!membership.get(id).equals(pw))
+				{
+					System.out.println("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+				}
+				else
+				{
+					System.out.println("id와 비밀번호가 일치합니다!");
+					break;
+				}
+				// 회원가입 버튼 클릭시 추가
+			}
+		}
 		//회원가입 창 
 		System.out.println("로그인");
 		String id = sc.nextLine();
@@ -64,13 +99,20 @@ public class appMenu {
 		String pay = sc.nextLine();
 		
 		//if()문으로 일치 확인
-	//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
-			break;
-		}	
+
+		if(membership.isEmpty()) {
+			System.out.println("없습니다.");
+		}else {
+			Iterator<String> it = map.keySet().iterator();
+			while(it.hasNext()) {
+				System.out.println(map.get(it.next()));
+			}
+		}
+
 		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
-
+			System.out.println("******* MENU *******");
 			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
 			sc.nextLine();
