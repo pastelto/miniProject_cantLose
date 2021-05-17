@@ -49,6 +49,7 @@ public class Login extends JFrame {
 			imLabel = new JLabel(new ImageIcon(icon)); 
 			imLabel.setBounds(100,100,100,100); */// 이건 왜 안됨,,,,?
 			
+			
 
 			loginP.setLayout(null);
 			loginP.setSize(getMaximumSize());
