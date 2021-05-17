@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.text.html.HTMLDocument.Iterator;
-import com.kh.project.reservation.controller.BeverageManager;
 import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.PrintServiceManager;
