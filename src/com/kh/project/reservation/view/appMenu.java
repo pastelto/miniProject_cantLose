@@ -22,24 +22,76 @@ public class appMenu {
 
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
+
 	InOutManager io = new InOutManager();
 	Drink d = new Drink();
 	Account a = new Account();
 
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
-/*
+
 		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
-=======
+
+	HashMap<String, Account> membership = new HashMap<>();
+
 	
 		// 로그인 창
 
-		// 회원가입 창
 
->>>>>>> refs/heads/master
+					System.out.println("로그인");
+					String id = sc.nextLine().trim();
+					
+					System.out.println("비밀번호");
+					String pw = sc.nextLine().trim();
+					
+					//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+					
+					if(membership.containsKey(id)||membership.get(id).equals(pw))
+					{
+						System.out.println("로그인 완료");
+						break;
+					} else
+						{
+							System.out.println("id나 비밀번호가 일치 하지 않습니다.");
+							continue;
+						}
+					}
+				
+				//회원가입 창 - 회원가입 버튼 클릭시 추가
+				System.out.println("로그인");
+				String id = sc.nextLine();
+				
+				System.out.println("비밀번호");
+				String pw = sc.nextLine();
+				
+				System.out.println("이름");
+				String name = sc.nextLine();
+				
+				System.out.println("주민번호");
+				String idNum = sc.nextLine();
+				
+				System.out.println("성별");
+				char gender = sc.nextLine().charAt(0);
+				
+				System.out.println("핸드폰 번호");
+				String pNum = sc.nextLine();
+				
+				System.out.println("은행");
+				String bank = sc.nextLine();
+				
+				System.out.println("카드번호");
+				String pay = sc.nextLine();
+				
+				//if()문으로 일치 확인
 
-			
-<<<<<<< HEAD
-=======
+				if(membership.isEmpty()) {
+					System.out.println("없습니다.");
+				}else {
+					Iterator<String> it = map.keySet().iterator();
+					while(it.hasNext()) {
+						System.out.println(map.get(it.next()));
+					}
+				}
+
 
 		
 	
@@ -48,12 +100,9 @@ public class appMenu {
 		ReservationManager rm = new ReservationManager();
 		CheckAccount ca = new CheckAccount();
 	
->>>>>>> refs/heads/master
+
 		Scanner sc = new Scanner(System.in);
 		
-		//로그인 창
-<<<<<<< HEAD
-=======
 		while(true) {
 
 			System.out.println("로그인");
@@ -83,7 +132,7 @@ public class appMenu {
 				// 회원가입 버튼 클릭시 추가
 			}
 		}
->>>>>>> refs/heads/master
+
 		//회원가입 창 
 		System.out.println("로그인");
 		String id = sc.nextLine();
@@ -125,7 +174,8 @@ public class appMenu {
 				System.out.println(map.get(it.next()));
 			}
 		}
-*/
+
+
 
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
