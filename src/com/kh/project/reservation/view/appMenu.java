@@ -236,15 +236,15 @@ public class appMenu {
 		BeverageManager bm = new BeverageManager();
 		while (true) {
 			System.out.println("***움료 메뉴***");
-			System.out.println("1. 아메리카노");
-			System.out.println("2. 아이스아메리카노");
-			System.out.println("3. 카페라떼");
-			System.out.println("4. 아이스카페라떼");
-			System.out.println("5. 핫초코");
-			System.out.println("6. 아이스초코");
-			System.out.println("7. 딸기우유");
-			System.out.println("8. 레몬에이드");
-			System.out.println("9. 허브티");
+			System.out.println("1. 아메리카노"); //2000
+			System.out.println("2. 아이스아메리카노"); //2000
+			System.out.println("3. 카페라떼"); //3000
+			System.out.println("4. 아이스카페라떼"); //3000
+			System.out.println("5. 핫초코"); //2000
+			System.out.println("6. 아이스초코"); //2000
+			System.out.println("7. 딸기우유"); //4000
+			System.out.println("8. 레몬에이드"); //3000
+			System.out.println("9. 허브티"); // 2000
 			System.out.println("음료선택 : ");
 			int num1 = sc.nextInt();
 			sc.nextLine();
