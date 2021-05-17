@@ -40,7 +40,6 @@ public class BoardManager { // 명언 & 보드
 			
 			break;	
 		}
-		System.out.println(maxim);
 		return maxim;
 		
 	}
