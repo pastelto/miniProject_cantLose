@@ -1,18 +1,18 @@
 package com.kh.project.reservation.view;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
 import javax.swing.text.html.HTMLDocument.Iterator;
-import com.kh.project.reservation.controller.BeverageManager;
-import com.kh.project.reservation.controller.InOutManager;
+
 import com.kh.project.reservation.controller.CheckAccount;
+//import com.kh.project.reservation.controller.BeverageManager;
+import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.Book;
 import com.kh.project.reservation.model.vo.pay.Drink;
 import com.kh.project.reservation.model.vo.pay.Print;
 
@@ -99,6 +99,18 @@ public class appMenu {
 						System.out.println(map.get(it.next()));
 					}
 				}
+				
+
+
+				if(membership.isEmpty()) {
+					System.out.println("없습니다.");
+				}else {
+					Iterator<String> it = map.keySet().iterator();
+					while(it.hasNext()) {
+						System.out.println(map.get(it.next()));
+					}
+				}
+
 
 
 		
@@ -172,16 +184,6 @@ public class appMenu {
 			break;
 		}	
 		
-
-
-		if(membership.isEmpty()) {
-			System.out.println("없습니다.");
-		}else {
-			Iterator<String> it = map.keySet().iterator();
-			while(it.hasNext()) {
-				System.out.println(map.get(it.next()));
-			}
-		}
 
 
 
