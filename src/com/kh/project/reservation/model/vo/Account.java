@@ -14,15 +14,13 @@ public class Account {
 	private int ticket;
 	private int bevticket;
 	private int printpoint;
+	private int coupon; // 쿠폰
 
 	
-	
-	
-	public Account() {
-		// TODO Auto-generated constructor stub
-	}
+	public Account() {}
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int bevticket, int printpoint) {
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay,int coupon) {
+
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -32,12 +30,9 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-		this.ticket = ticket;
-		this.bevticket = bevticket;
-		this.printpoint = printpoint;
-		
+		this.coupon=coupon;
+
 	}
-	
 
 	public String getId() {
 		return id;
@@ -102,7 +97,7 @@ public class Account {
 	public void setPay(String pay) {
 		this.pay = pay;
 	}
-	
+
 
 	public int getTicket() {
 		return ticket;
@@ -128,9 +123,18 @@ public class Account {
 		this.printpoint = printpoint;
 	}
 
+	public String getCoupon() {
+		return pay;
+	}
+
+	public void setCoupon(int coupon) {
+		this.coupon = coupon;
+	}
+	
+	
 	public String info() {
 		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
-				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay;
+				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay +", 쿠폰 : "+coupon;
 	}
 
 
