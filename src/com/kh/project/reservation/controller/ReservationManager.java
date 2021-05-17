@@ -13,13 +13,6 @@ public class ReservationManager {
 public ReservationManager() {
 	// TODO Auto-generated constructor stub
 }
-	
-	public void addSingIn(Account account) { 
-		md.fileSave(account);
-	}
-	public void checkIdNPw() { // ID 와 패스워드 일치시 if 문
-		
-	}
 
 	public String checkMyReservation() { // 매개변수 : 예약날짜, 예약좌석, 예약성함, 예약상태 등
 
