@@ -3,14 +3,13 @@ package com.kh.project.reservation.controller;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.kh.collection.silsub2.model.vo.Book;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 
 public class CheckAccount {
 
 	private MemberDao md = new MemberDao();
-	
+	HashMap<String, Account> membership= new HashMap<>();
 	
 	Account account = new Account();
 	String id ="";
@@ -31,7 +30,6 @@ public class CheckAccount {
 	}
 	
 	public void checkSingIn() { 
-		HashMap<String, Account> membership = bm.selectAll();
 	if(membership.isEmpty()) {
 		System.out.println("없습니다.");
 	}else {
