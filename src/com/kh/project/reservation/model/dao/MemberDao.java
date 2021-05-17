@@ -8,10 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
-import com.kh.collection.silsub2.model.vo.Book;
 import com.kh.project.reservation.model.vo.Account;
 
-public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와서 내용 일치 확인<ID,PW>과 멤버 정보 저장
+public class MemberDao { // file로 hashmap으로 저장해서 파일 불러와서 내용 일치 확인<ID,PW>과 멤버 정보 저장
 
 	HashMap <String, Account> membership = new HashMap<>();
 		
@@ -27,7 +26,6 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 			
 			System.out.println(membership);
 			loginFile.writeObject(membership);
-			System.out.println("성공정으로 저장되었습니다.");
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -37,14 +35,11 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 		
 	}
 	
-	public void fileOpen() { // 로그인시 정보 확인 부분
+	public void fileOpen(Account account) { // 로그인시 정보 확인 부분
 		try {
 			ObjectInputStream login = new ObjectInputStream(new FileInputStream("member.txt"));
 			System.out.println(membership);
-			Account account;
-			while((account = (Account) login.readObject()) != null) {
-				membership.put(key, value);
-			}
+			membership = (HashMap<String, Account>) login.readObject();
 			
 		}
 			catch (ClassNotFoundException e) {
@@ -59,6 +54,5 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 		
 	}
 
-	
 	}
 
