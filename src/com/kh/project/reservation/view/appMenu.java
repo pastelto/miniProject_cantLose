@@ -7,6 +7,7 @@ import com.kh.project.reservation.controller.ReservationManager;
 public class appMenu {
 	
 	public appMenu() {
+		
 		ReservationManager rm = new ReservationManager();
 		
 	
