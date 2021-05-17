@@ -2,6 +2,7 @@ package com.kh.project.reservation.view;
 
 import java.util.Scanner;
 
+import com.kh.project.reservation.controller.BeverageManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 
@@ -52,29 +53,33 @@ public class appMenu {
 	}
 
 	private void orderBeverage() {
-		while(true) {
-			System.out.println("***움료 메뉴***");
-			System.out.println("1. 아메리카노");
-			System.out.println("2. 아이스아메리카노");
-			System.out.println("3. 카페라떼");
-			System.out.println("4. 아이스카페라떼");
-			System.out.println("5. 핫초코");
-			System.out.println("6. 아이스초코");
-			System.out.println("7. 아이스초코");
-			System.out.println("8. 아이스초코");
-			System.out.println("9. 아이스초코");
-			System.out.println("음료선택 : ");
-			int num1 = sc.nextInt();
-			System.out.println("수량: ");
-			int num2 = sc.nextInt();
-			System.out.println("추가하시겠습니까?");
-			char ch = sc.nextLine().toUpperCase().charAt(0);
-				if(ch =='Y') {
-					return;
-				}else {
-					break;
-				}
-		}
+		BeverageManager bm = new BeverageManager();
+		//		while(true) {
+//			System.out.println("***움료 메뉴***");
+//			System.out.println("1. 아메리카노");
+//			System.out.println("2. 아이스아메리카노");
+//			System.out.println("3. 카페라떼");
+//			System.out.println("4. 아이스카페라떼");
+//			System.out.println("5. 핫초코");
+//			System.out.println("6. 아이스초코");
+//			System.out.println("7. 딸기우유");
+//			System.out.println("8. 레몬에이드");
+//			System.out.println("9. 허브티");
+//			System.out.println("음료선택 : ");
+//			int num1 = sc.nextInt();
+//			sc.nextLine();
+//			System.out.println("수량: ");
+//			int num2 = sc.nextInt();
+//			sc.nextLine();
+//			
+//			System.out.println("추가하시겠습니까?");
+//			char ch = sc.nextLine().toUpperCase().charAt(0);
+//				if(ch =='Y') {
+//					return;
+//				}else {
+//					break;
+//				}
+//		}
 		
 	}
 
