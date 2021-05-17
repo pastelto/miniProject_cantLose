@@ -16,13 +16,13 @@ import javax.swing.JTextField;
 
 import com.kh.project.reservation.model.vo.Account;
 
+
 public class Login extends JFrame {
 
 	HashMap<String, Account> account = new HashMap<>();
 	JButton login = new JButton("로그인");
-	JButton signout = new JButton("회원가입");
+	JButton signout = new JButton("회원가입"); 
 	JTextField logTF = new JTextField();
-
 	JPasswordField pwTF= new JPasswordField();
 	JPanel loginP= new JPanel(); 
 	
@@ -76,7 +76,8 @@ public class Login extends JFrame {
 			
 
 			this.setVisible(true);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+
 			
 			login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
 
@@ -86,28 +87,25 @@ public class Login extends JFrame {
 						new Menu();
 						setVisible(false);
 					}
-
 				}
-			}
+				
+			});
+			
+			signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
 
-		});
-
-		signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-					new SignUp();
-					setVisible(false);
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(e.getButton()==1) {
+						new SignUp();
+						setVisible(false);
+					}
 				}
-			}
+				
+			});
 
-		});
-
-		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+		
+			
+		}
 
 	}
 
-}
