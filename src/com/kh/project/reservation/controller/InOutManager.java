@@ -26,9 +26,10 @@ public class InOutManager {
 				in.add(a.getName());
 				in.add("좌석");
 				in.add(io.getCheckIn()); // 체크인 시간
-				in.add(io.getDoubleCheck()); // 체크인 상태
+				in.add(io.getDoubleCheck()); // 체크인 상태 ""
 
 			}
+			
 		}
 		return in;
 	}
