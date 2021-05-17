@@ -2,6 +2,7 @@ package com.kh.project.reservation.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.kh.project.reservation.model.vo.Account;
@@ -56,6 +57,7 @@ public class InOutManager {
 	public void checkOutPrint() { // 체크아웃 정보 출력
 		io.setCheckOut(System.currentTimeMillis());
 		String end = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckOut());
+		
 
 		// 초를 시간으로 분으로
 		int ss = (int) Math.round((io.getCheckOut() - io.getCheckIn()) / 1000.0); // 초
@@ -71,11 +73,19 @@ public class InOutManager {
 		System.out.printf("이용 시간 : %d시 %d분 %d초 \n", hour, min, sec);
 
 		{
-			in.set(3, "체크인불가"); // 체크아웃 후 체크아웃을 눌렀을때 재입실을 다시 못하게
+			in.set(3, "체크인 불가");// 체크아웃 후 체크아웃을 눌렀을때 재입실을 다시 못하게
 		}
 		
-		//누적시간 저장하기 
+		//누적시간 -> 조건 필요함?? 다시 테스트 해보기 
+		a.setTotalH(a.getTotalH() + ss);
+	
+		}
 
 	}
 
-}
+	
+
+	
+
+
+

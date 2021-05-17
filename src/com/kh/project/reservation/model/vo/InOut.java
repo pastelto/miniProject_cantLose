@@ -6,8 +6,8 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class InOut {
 	
-	private long checkIn = System.currentTimeMillis();
-	private long checkOut /*=System.currentTimeMillis()*/;
+	private long checkIn = System.currentTimeMillis() ;
+	private long checkOut;
 	private String doubleCheck = ""; // 체크인 상태 
 	
 	public InOut() {

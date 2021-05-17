@@ -2,29 +2,16 @@ package com.kh.project.reservation.view;
 
 
 import java.util.ArrayList;
-=======
 import java.util.HashMap;
->>>>>>> refs/heads/master
 import java.util.Scanner;
-
-<<<<<<< HEAD
-=======
 import javax.swing.text.html.HTMLDocument.Iterator;
-
->>>>>>> refs/heads/master
 import com.kh.project.reservation.controller.BeverageManager;
-<<<<<<< HEAD
 import com.kh.project.reservation.controller.InOutManager;
-=======
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.PrintServiceManager;
->>>>>>> refs/heads/master
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
-<<<<<<< HEAD
-=======
 import com.kh.project.reservation.model.vo.Account;
->>>>>>> refs/heads/master
 import com.kh.project.reservation.model.vo.Book;
 import com.kh.project.reservation.model.vo.pay.Drink;
 
