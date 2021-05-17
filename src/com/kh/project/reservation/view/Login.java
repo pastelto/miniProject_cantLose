@@ -1,7 +1,6 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Menu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -43,7 +43,7 @@ public class Login extends JFrame {
 			
 			
 			//imgTest = new ImageIcon("images/logo.png");
-			//JLabel image = new JLabel(new ImageIcon("images/logo.png"));
+			JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 			//image.setBounds(95,50,150,150);
 			/*Image icon = new ImageIcon("images/커피.png").getImage().getScaledInstance(100, 100, 0);
 			imLabel = new JLabel(new ImageIcon(icon)); 
@@ -74,6 +74,9 @@ public class Login extends JFrame {
 			loginP.add(image);
 			this.add(loginP);
 			
+			this.setVisible(true);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+			
 			login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
 
 				@Override
@@ -98,7 +101,7 @@ public class Login extends JFrame {
 				
 			});
 
-			
+		
 			
 		}
 

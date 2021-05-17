@@ -17,6 +17,7 @@ public ReservationManager() {
 	public void addSingIn(Account account) { 
 		md.fileSave(account);
 	}
+	
 	public void checkIdNPw() { // ID 와 패스워드 일치시 if 문
 		
 	}
@@ -54,7 +55,7 @@ public ReservationManager() {
 		
 		// 예약메소드 가져오기?
 	}
-	
+}	
 	
 	
 

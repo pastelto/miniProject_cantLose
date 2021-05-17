@@ -165,8 +165,10 @@ public class MenuChoice extends JFrame {
 		b8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() ==1 ) {
-					// 로그아웃 // 로그인창으로~
+
+				if (e.getButton() == 1) {
+					Login l = new Login();
+
 					setVisible(false);
 				}
 			}
