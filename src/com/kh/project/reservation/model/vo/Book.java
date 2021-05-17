@@ -6,6 +6,8 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import com.kh.project.reservation.view.appMenu;
+
 public class Book extends JFrame {
 
 		//날짜 및 시간에 따른 이용 가능 좌석 확인 (5/28 기준 한 달 이내)
@@ -14,6 +16,8 @@ public class Book extends JFrame {
 	
 		//스터디룸 -> 최대 4인
 		//프로젝터 대여 가능
+	
+		private Account ac = new Account(); 
 		private static final String MAY[][] = {{"일","월","화","수","목","금","토"},{" "," "," "," "," "," ","1일"},{"2일","3일","4일","5일","6일","7일","8일"},{"9일","10일","11일","12일","13일","14일","15일"},{"16일","17일","18일","19일","20일","21일","22일"},{"23일","24일","25일","26일","27일","28일","29일"},{"30일","31일"," ", " ", " ", " "," "}};
 		private static final String JUNE[][] = {{"일","월","화","수","목","금","토"},{" "," ","1일","2일","3일","4일","5일"},{"6일","7일","8일","9일","10일","11일","12일"},{"13일","14일","15일","16일","17일","18일","19일"},{"20일","21일","22일","23일","24일","25일","26일"},{"27일","28일","29일","30일"," "," "," "},{" "," "," "," "," "," "," "}};
 		
@@ -21,8 +25,9 @@ public class Book extends JFrame {
 		private static final String PSEATFF[][] = new String [5][5]; //1인 칸막이 - 여
 		private static final String PSEATFM[][] = new String [5][5]; //1인 칸막이 - 남
 		private static final String OSEAT[][] = new String [5][5]; // 오픈형
-		private static final String SROOM[][] = new String [4][4]; // 스터디룸
-		
+		private static final String SROOM[] = new String [4]; // 스터디룸
+		private static String bDate; //예약일
+		private static String cSeat; //선택한 좌석 
 		private Scanner sc = new Scanner(System.in);
 		
 		private int projector = 4;
@@ -32,6 +37,8 @@ public class Book extends JFrame {
 		}
 		
 		public void Booking() {
+			
+			
 			JFrame mainFrame1 = new JFrame("예약일 선택 (5월)");
 		
 			mainFrame1.setSize(360, 600);
@@ -57,7 +64,8 @@ public class Book extends JFrame {
 					
 				}
 			}
-
+			//선택 이후 bdate에 담기
+			
 
 			mainFrame1.setVisible(true);
 			mainFrame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,7 +156,14 @@ public class Book extends JFrame {
 					}
 				}
 			}
+			
+			//선택 이후 Cseat에 담기
+			cSeat = pick;
+			Booked();
 
+
+
+			
 		}
 		public void pSeatForMan() {	//칸막이, 남성
 			System.out.println("******** 남성 전용 1인 칸막이 좌석 입니다. *********");
@@ -188,7 +203,9 @@ public class Book extends JFrame {
 				}
 			}
 
-			
+			cSeat = pick;
+			Booked();
+
 		}
 		public void oSeat() {	//오픈형
 			System.out.println("************ 1인 오픈형 좌석 입니다. ************");
@@ -208,6 +225,7 @@ public class Book extends JFrame {
 					}
 				}
 				System.out.println();
+				
 
 			} 
 			
@@ -227,24 +245,46 @@ public class Book extends JFrame {
 					}
 				}
 			}
-			
+			cSeat = pick;
+			Booked();
+
+
 		}
 		public void studyRoom() { //스터디룸
 			int count = 4; 
 			System.out.println("현재 선택 가능한 스터디 룸은 " + count + "개 입니다.");
 			//SROOM
 			for(int i = 0 ; i < SROOM.length ; i++) {
-				for(int j = 0 ; j < SROOM[i].length ; j ++) {
+				SROOM[i] = (char)(65+i) + " ";
 					
-				}
 			}
-			System.out.println("프로젝터를 대여하시겠습니까?");
-			char ch = sc.nextLine().charAt(0);
-			if(ch == 'y') {
+			System.out.print("선택하실 스터디룸의 번호를 입력하세요 : ");
+			String str = sc.nextLine();
+			
+			if(!str.equals(null)) {
+				for(int i = 0 ; i < SROOM.length ; i++) {
+					if(SROOM[i].contains(str)) {
+						System.out.println(SROOM[i]= ac.getName() + "님께서 예약하신 좌석입니다.");
+						
+					}
+				}
+			}	
+			
+			System.out.println("프로젝터를 대여하시겠습니까? (y/n)");
+			String yn = sc.nextLine();
+			if(yn.contains("y")) {
 				projector--;
 			}
+			cSeat = str;
+			Booked();
+
 			
 		}
+		public String Booked() { //예약완료확인(창)
+			return  " " +ac.getName() + "님께서 선택하신 일자 [" + bDate + "] 에, \n 예약하신 좌석 [" + cSeat + "] 으로 예약 되었습니다. \n  예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다."; 
+		}
+		
 	}
+
 
 
