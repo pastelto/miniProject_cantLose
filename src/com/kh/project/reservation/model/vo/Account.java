@@ -11,6 +11,7 @@ public class Account {
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
 
+
 	private int coupon; // 쿠폰
 
 	

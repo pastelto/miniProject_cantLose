@@ -90,6 +90,7 @@ public class Login extends JFrame {
 			loginP.add(pw);
 			loginP.add(m);
 			this.add(loginP);
+
 			
 			login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
 
