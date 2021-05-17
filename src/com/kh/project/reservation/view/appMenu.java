@@ -1,17 +1,18 @@
 package com.kh.project.reservation.view;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Scanner;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+import com.kh.project.reservation.controller.BeverageManager;
 import com.kh.project.reservation.controller.CheckAccount;
-
+import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
-import com.kh.project.reservation.model.vo.Account;
-
 import com.kh.project.reservation.controller.TicketManager;
-
+import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.model.vo.Book;
+import com.kh.project.reservation.model.vo.pay.Drink;
 
 
 public class appMenu {
@@ -21,11 +22,16 @@ public class appMenu {
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
 	HashMap<String, Account> membership = new HashMap<>();
+  
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
-
-
 		//로그인 창
 				while(true) {
+	Drink d = new Drink();
+	Account a = new Account();
+
+	
+		// 로그인 창
+
 
 					System.out.println("로그인");
 					String id = sc.nextLine().trim();
@@ -82,10 +88,9 @@ public class appMenu {
 					}
 				}
 
-		//while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
-			//System.out.println("******* MENU *******");
 
+		
 	
 	public appMenu() {
 		HashMap<String, Account> membership = new HashMap<String, Account>();
@@ -99,7 +104,7 @@ public class appMenu {
 		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
-
+			System.out.println("******* MENU *******");
 			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
 			sc.nextLine();
@@ -107,16 +112,18 @@ public class appMenu {
 			switch (num) {
 
 			case 1: // 예약
-			Book bk = new Book();
+				Book bk = new Book();
 				bk.Booking();
 				break;
 			case 2: // 이용권 구매
 				buyTicket();
 				break;
 			case 3: // 음료 구매
-					break;
+				orderBeverage();
+				break;
 			case 4: // 프린트 서비스
-					break;
+				printService();	
+				break;
 			case 5: // 예약정보 확인
 					rm.checkMyReservation();
 					// (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
@@ -130,16 +137,22 @@ public class appMenu {
 					return; // 또는 초기화면 이동
 				
 			}
-			
-			
-			
+	
 		}
 
 	}
 
+	private void printService() {
+		PrintServiceManager psm = new PrintServiceManager();
+			while(true) {
+				System.out.println("***프린트 서비스***");
+			}
+		
+	}
+
 	private void orderBeverage() {
 		BeverageManager bm = new BeverageManager();
-			while(true) {
+		while (true) {
 			System.out.println("***움료 메뉴***");
 			System.out.println("1. 아메리카노");
 			System.out.println("2. 아이스아메리카노");
@@ -153,22 +166,46 @@ public class appMenu {
 			System.out.println("음료선택 : ");
 			int num1 = sc.nextInt();
 			sc.nextLine();
+			if(num1> 0 && num1 < 10 ) {
+			System.out.println("현재 사용가능한 쿠폰은 " + a.getCoupon() + "개 입니다.");
+			
 			System.out.println("수량: ");
 			int num2 = sc.nextInt();
 			sc.nextLine();
 			
-			System.out.println("추가하시겠습니까?");
-			char ch = sc.nextLine().toUpperCase().charAt(0);
-				if(ch =='Y') {
-					return;
-				} else {
-					
-					break;
+			
+				if(a.getCoupon() > 0) { 
+					if(a.getCoupon()>=num2){
+						System.out.println(num2 +" 장의 쿠폰이 사용되었습니다. 맛있게 드세요!");
+						a.setCoupon(a.getCoupon()-num2);
+						System.out.println("현재 쿠폰갯수 : " + a.getCoupon());
+						return;
+					}else if(a.getCoupon()<num2) {
+						System.out.println("사용가능하신 쿠폰을 초과하였습니다.");
+						orderBeverage();
+					}
+				} else if(a.getCoupon() <= 0) {
+					System.out.println("사용가능한 쿠폰이 없습니다.");
+					buybCoupon();
 				}
 			}
-
 		}
+	}
 
+	private void buybCoupon() {
+		
+			System.out.println("***음료쿠폰 구매***");
+			System.out.println("구매하실 수량을 입력해주세요.");
+			int num = sc.nextInt();
+			sc.nextLine();
+			a.setCoupon(a.getCoupon()+num);
+			System.out.println("쿠폰 " + num + "개를 구매하셔서 총 " + (num*2000) + "원 입니다.");
+			System.out.println(a.getPay() + " 로 결제완료되었습니다.");
+			System.out.println("보유하고 있는 쿠폰갯수는 총 " + a.getCoupon()+ "입니다.");
+	
+	}
+	
+	
 	private void buyTicket() {
 		while (true) {
 			System.out.println("***이용권 구매***");
@@ -177,7 +214,7 @@ public class appMenu {
 			int num = sc.nextInt();
 			sc.nextLine();
 			int num1 = 0;
-			
+
 			switch (num) {
 			case 1: // 기간에 따른 할인률 적용하여 반환
 				System.out.println("***기간 선택***");
@@ -187,28 +224,41 @@ public class appMenu {
 				System.out.println("4. 1 년권 ");
 				int option = sc.nextInt();
 				sc.nextLine();
-				
-				if(option == 1) {
-				System.out.println("수량 : ");
-				num1 = sc.nextInt();
-				tm.onePrice(option, num1);
-				tm.addCntTicket(num1);
-				System.out.println("총 금액은 " + tm.onePrice(option,num1) +" 입니다.");
-				break;
-				} else {
-				tm.onePrice(option);
-				System.out.println("총 금액은 " + tm.onePrice(option) +" 입니다.");
-				break;
+
+				if (option == 1) {
+					System.out.println("수량 : ");
+					num1 = sc.nextInt();
+					tm.onePrice(option, num1);
+					tm.addCntTicket(num1);
+					System.out.println("총 금액은 " + tm.onePrice(option, num1) + " 입니다.");
+					break;
+				} else if (option == 2){
+					tm.onePrice(option);
+					int num2 = 30; // 한달치
+					tm.addCntTicket(num2);
+					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+					break;
+				} else if(option == 3) {
+					tm.onePrice(option);
+					int num3 = 30*6; // 6개월
+					tm.addCntTicket(num3);
+					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+				} else if(option == 4) {
+					tm.onePrice(option);
+					int num4 = 30*12; // 12개월
+					tm.addCntTicket(num4);
+					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
 				}
-				
-			case 2: //스터디룸은 수량만 확인해서 반환
+
+			case 2: // 스터디룸은 수량만 확인해서 반환
 				System.out.println("수량 : ");
 				int num2 = sc.nextInt();
 				sc.nextLine();
-				System.out.println("총 금액은 " + tm.strPrice(num2)+ "입니다.");
+				System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
 				break;
-			default : System.out.println("다시입력해주세요.");
-			    break;
+			default:
+				System.out.println("다시입력해주세요.");
+				break;
 			}
 			mainMenu();
 		}
@@ -248,38 +298,15 @@ public class appMenu {
 				rm.cancelReservation();
 				break;
 			case 3:
-				Menu();
+				mainMenu();
 				break;
 
 			// 예약정보 창
 
 			// 그 밑에 예약변경 메뉴 버튼
-			while (true) {
-
-				System.out.println("*** 예약 변경 메뉴 ***");
-				System.out.println("1. 예약변경");
-				System.out.println("2. 예약취소");
-
-				int click = sc.nextInt();
-				// 버튼 클릭
-
-				switch (click) {
-				case 1:
-					rm.changeReservation();
-					// 시간이 지나면 예약변경 X
-					break;
-				case 2:
-					rm.cancelReservation();
-					// 시간이 지나면 예약취소 X
-					break;
-				case 3:
-					mainMenu();
-					break;
-				}
 
 			}
 
 		}
 	}
-}
 }

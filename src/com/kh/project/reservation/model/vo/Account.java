@@ -10,13 +10,11 @@ public class Account {
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
-
-	private int coupon; // 쿠폰
-
+	private int coupon; // 회원가입시 주는 쿠폰
 	
 	public Account() {}
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay,int coupon) {
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int coupon) {
 
 		super();
 		this.id = id;
@@ -28,8 +26,18 @@ public class Account {
 		this.bank = bank;
 		this.pay = pay;
 		this.coupon = coupon;
-
 	}
+	
+	public Account(String id, int coupon) { // 음료쿠폰으로 결제시
+		this.id = id;
+		this.coupon = coupon;
+	}
+	public Account(String id, String pay) { // 음료구매, 티켓, 프린트에서 상속받아 결제시
+		this.id = id;
+		this.pay = pay;
+	}
+	
+
 
 	public String getId() {
 		return id;
@@ -94,9 +102,9 @@ public class Account {
 	public void setPay(String pay) {
 		this.pay = pay;
 	}
-	
-	public String getCoupon() {
-		return pay;
+
+	public int getCoupon() {
+		return coupon;
 	}
 
 	public void setCoupon(int coupon) {
@@ -108,5 +116,6 @@ public class Account {
 		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
 				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay +", 쿠폰 : "+coupon;
 	}
+
 
 }
