@@ -20,7 +20,7 @@ public class appMenu {
 
 
 	ReservationManager rm = new ReservationManager();
-
+	}
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
 
 
@@ -80,36 +80,35 @@ public class appMenu {
 
 	private void orderBeverage() {
 		BeverageManager bm = new BeverageManager();
-		//		while(true) {
-//			System.out.println("***움료 메뉴***");
-//			System.out.println("1. 아메리카노");
-//			System.out.println("2. 아이스아메리카노");
-//			System.out.println("3. 카페라떼");
-//			System.out.println("4. 아이스카페라떼");
-//			System.out.println("5. 핫초코");
-//			System.out.println("6. 아이스초코");
-//			System.out.println("7. 딸기우유");
-//			System.out.println("8. 레몬에이드");
-//			System.out.println("9. 허브티");
-//			System.out.println("음료선택 : ");
-//			int num1 = sc.nextInt();
-//			sc.nextLine();
-//			System.out.println("수량: ");
-//			int num2 = sc.nextInt();
-//			sc.nextLine();
-//			
-//			System.out.println("추가하시겠습니까?");
-//			char ch = sc.nextLine().toUpperCase().charAt(0);
-//				if(ch =='Y') {
-//					return;
-//				}else {
-//					break;
-//				}
-//		}
-		
+			while(true) {
+			System.out.println("***움료 메뉴***");
+			System.out.println("1. 아메리카노");
+			System.out.println("2. 아이스아메리카노");
+			System.out.println("3. 카페라떼");
+			System.out.println("4. 아이스카페라떼");
+			System.out.println("5. 핫초코");
+			System.out.println("6. 아이스초코");
+			System.out.println("7. 딸기우유");
+			System.out.println("8. 레몬에이드");
+			System.out.println("9. 허브티");
+			System.out.println("음료선택 : ");
+			int num1 = sc.nextInt();
+			sc.nextLine();
+			System.out.println("수량: ");
+			int num2 = sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println("추가하시겠습니까?");
+			char ch = sc.nextLine().toUpperCase().charAt(0);
+				if(ch =='Y') {
+					return;
+				} else {
+					
+					break;
+				}
+			}
 
-
-	}
+		}
 
 	private void buyTicket() {
 		while (true) {
@@ -143,31 +142,18 @@ public class appMenu {
 				break;
 				}
 				
-			case 2:
+			case 2: //스터디룸은 수량만 확인해서 반환
 				System.out.println("수량 : ");
 				int num2 = sc.nextInt();
 				sc.nextLine();
 				System.out.println("총 금액은 " + tm.strPrice(num2)+ "입니다.");
 				break;
-			case 3:
-				Menu();
-				break;
 			default : System.out.println("다시입력해주세요.");
 			    break;
-
-			switch(num) {
-			case 1 : 
-					break;
-			case 2 : 
-					break;
-			case 3 : mainMenu();
-					break;
-
 			}
-			Menu();
+			mainMenu();
 		}
 	}
-
 	private void checkMyReservation() {
 
 		System.out.println("***예약 정보 확인***");
@@ -236,4 +222,5 @@ public class appMenu {
 
 		}
 	}
+}
 }

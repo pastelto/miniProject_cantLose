@@ -16,9 +16,7 @@ public class Beverage {
 		this.bPrice = bPrice;
 		this.bCoupon = bCoupon;
 	}
-
-
-
+	
 	public String getBeverage() {
 		return beverage;
 	}
