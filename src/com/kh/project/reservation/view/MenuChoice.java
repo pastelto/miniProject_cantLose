@@ -50,6 +50,7 @@ public class MenuChoice extends JFrame {
 		bar.setHorizontalTextPosition(JLabel.CENTER); // 왜 가운데가 안되는건가..
 		bar.setVerticalTextPosition(JLabel.CENTER);
 		
+		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 		
 		// 메뉴 버튼
 //		b1.setBounds(70, 80, 200, 50);
@@ -103,7 +104,7 @@ public class MenuChoice extends JFrame {
 		this.add(b8);
 		this.add(b9);
 		this.add(mc);
-		
+		this.add(image);
 
 		// 각 버튼 클릭시 연결 기능
 		b1.addMouseListener(new MouseAdapter() {
