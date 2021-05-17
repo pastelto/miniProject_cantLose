@@ -93,8 +93,8 @@ public class Account {
 	}
 	
 	public String info() {
-		return "아이디 : " + id + " 비밀번호 : " + pw + " 이름 : " + name + " 주민번호 : " + idNum + " 성별 : " + gender + " 전화번호 : "
-				+ pNum + " 은행 : " + bank + " 카드번호 : " + pay;
+		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
+				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay;
 	}
 
 }
