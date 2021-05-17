@@ -2,12 +2,10 @@ package com.kh.project.reservation.view;
 
 import java.util.Scanner;
 
-
 import com.kh.project.reservation.controller.BeverageManager;
+import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
-
 import com.kh.project.reservation.controller.TicketManager;
-
 import com.kh.project.reservation.model.vo.Book;
 
 
@@ -79,16 +77,18 @@ public class appMenu {
 			switch (num) {
 
 			case 1: // 예약
-			Book bk = new Book();
+				Book bk = new Book();
 				bk.Booking();
 				break;
 			case 2: // 이용권 구매
 				buyTicket();
 				break;
 			case 3: // 음료 구매
-					break;
+				orderBeverage();
+				break;
 			case 4: // 프린트 서비스
-					break;
+				printService();	
+				break;
 			case 5: // 예약정보 확인
 					rm.checkMyReservation();
 					// (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
@@ -102,16 +102,27 @@ public class appMenu {
 					return; // 또는 초기화면 이동
 				
 			}
-			
-			
-			
+	
 		}
 
 	}
 
+	private void printService() {
+		PrintServiceManager psm = new PrintServiceManager();
+			while(true) {
+				System.out.println("***프린트 서비스***");
+				
+				
+				
+				
+				
+			}
+		
+	}
+
 	private void orderBeverage() {
 		BeverageManager bm = new BeverageManager();
-			while(true) {
+		while (true) {
 			System.out.println("***움료 메뉴***");
 			System.out.println("1. 아메리카노");
 			System.out.println("2. 아이스아메리카노");
@@ -128,18 +139,18 @@ public class appMenu {
 			System.out.println("수량: ");
 			int num2 = sc.nextInt();
 			sc.nextLine();
-			
+
 			System.out.println("추가하시겠습니까?");
 			char ch = sc.nextLine().toUpperCase().charAt(0);
-				if(ch =='Y') {
-					return;
-				} else {
-					
-					break;
-				}
-			}
+			if (ch == 'Y') {
+				return;
+			} else {
 
+				break;
+			}
 		}
+
+	}
 
 	private void buyTicket() {
 		while (true) {
@@ -149,7 +160,7 @@ public class appMenu {
 			int num = sc.nextInt();
 			sc.nextLine();
 			int num1 = 0;
-			
+
 			switch (num) {
 			case 1: // 기간에 따른 할인률 적용하여 반환
 				System.out.println("***기간 선택***");
@@ -159,28 +170,29 @@ public class appMenu {
 				System.out.println("4. 1 년권 ");
 				int option = sc.nextInt();
 				sc.nextLine();
-				
-				if(option == 1) {
-				System.out.println("수량 : ");
-				num1 = sc.nextInt();
-				tm.onePrice(option, num1);
-				tm.addCntTicket(num1);
-				System.out.println("총 금액은 " + tm.onePrice(option,num1) +" 입니다.");
-				break;
+
+				if (option == 1) {
+					System.out.println("수량 : ");
+					num1 = sc.nextInt();
+					tm.onePrice(option, num1);
+					tm.addCntTicket(num1);
+					System.out.println("총 금액은 " + tm.onePrice(option, num1) + " 입니다.");
+					break;
 				} else {
-				tm.onePrice(option);
-				System.out.println("총 금액은 " + tm.onePrice(option) +" 입니다.");
-				break;
+					tm.onePrice(option);
+					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+					break;
 				}
-				
-			case 2: //스터디룸은 수량만 확인해서 반환
+
+			case 2: // 스터디룸은 수량만 확인해서 반환
 				System.out.println("수량 : ");
 				int num2 = sc.nextInt();
 				sc.nextLine();
-				System.out.println("총 금액은 " + tm.strPrice(num2)+ "입니다.");
+				System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
 				break;
-			default : System.out.println("다시입력해주세요.");
-			    break;
+			default:
+				System.out.println("다시입력해주세요.");
+				break;
 			}
 			mainMenu();
 		}

@@ -10,7 +10,7 @@ public class Account {
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
-	
+	private int coupon; // 쿠폰 
 	
 	
 	
@@ -95,9 +95,20 @@ public class Account {
 		this.pay = pay;
 	}
 	
+
+	public int getCoupon() {
+		return coupon;
+	}
+
+	public void setCoupon(int coupon) {
+		this.coupon = coupon;
+	}
+
+	
 	public String info() {
 		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
 				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay;
 	}
+
 
 }

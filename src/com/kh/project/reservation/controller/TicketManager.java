@@ -16,6 +16,7 @@ public class TicketManager {
 	}
 	
 	public int onePrice(int option) {
+	
 		if(option == 2) {
 			return (int)Math.round(tp.getonePrice()*30); // 1개월
 		}else if (option == 3) {
