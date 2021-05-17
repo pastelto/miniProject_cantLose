@@ -11,6 +11,9 @@ public class Account {
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
 	
+	
+	
+	
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
@@ -93,8 +96,8 @@ public class Account {
 	}
 	
 	public String info() {
-		return "아이디 : " + id + " 비밀번호 : " + pw + " 이름 : " + name + " 주민번호 : " + idNum + " 성별 : " + gender + " 전화번호 : "
-				+ pNum + " 은행 : " + bank + " 카드번호 : " + pay;
+		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
+				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay;
 	}
 
 }

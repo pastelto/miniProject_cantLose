@@ -18,7 +18,7 @@ public class SignUp extends JFrame {
 	JButton done = new JButton("입력 완료");
 	JTextField idTF = new JTextField("아이디");
 	JPasswordField pwTF= new JPasswordField("비밀번호");
-	JPasswordField idNTF = new JPasswordField("주민법호");
+	JPasswordField idNTF = new JPasswordField("주민번호");
 	JTextField phone = new JTextField("전화번호");
 	JTextField card = new JTextField("결제 방법 :     CARD");
 	JTextField bankTF = new JTextField("결제 정보");
