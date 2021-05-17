@@ -51,6 +51,7 @@ public class appMenu {
 		
 		//if()문으로 일치 확인
 		
+		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
 			System.out.println("메뉴를 선택해주세요");
