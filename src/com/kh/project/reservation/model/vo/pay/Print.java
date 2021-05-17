@@ -4,7 +4,7 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class Print extends Account{
 	
-	private int printPoint; // 프린트 포인트
+	private int printPoint = 5000; // 프린트 포인트
 	private int printCode; // 프린트 코드
 	private int colorPrint = 100; // 컬러프린트 비용
 	private int blackPrint = 50; // 흑백프린트 비용
@@ -51,11 +51,5 @@ public class Print extends Account{
 		this.blackPrint = blackPrint;
 	}
 
-	@Override
-	public String info() {
-		// TODO Auto-generated method stub
-		return super.info();
-	}
-	
 	
 }

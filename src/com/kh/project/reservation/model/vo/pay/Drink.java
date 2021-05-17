@@ -10,12 +10,12 @@ public class Drink extends Account{
 		// TODO Auto-generated constructor stub
 	}
 	
-	// 음료 결제시 필요한 정보(아이디, 쿠폰, 음료구매내역) --> 쿠폰으로만 결제할때
+	// 음료 결제시 필요한 정보(아이디, 쿠폰, 음료구매내역) 
 	public Drink(String id, int coupon, int drink) {
 		super(id, coupon);
 		this.drink = drink;
 	}
-	// 음료 결제시 필요한 정보(아이디, 카드, 음료구매내역) --> 카드로 결제할때
+	// 음료 결제시 필요한 정보(아이디, 카드, 음료구매내역) 
 	public Drink(String id, String pay, int drink) {
 		super(id, pay);
 		this.drink = drink;
@@ -29,7 +29,7 @@ public class Drink extends Account{
 		this.drink = drink;
 	}
 
-	@Override // 쓸수도 있어서...
+	@Override 
 	public String info() {
 		
 		return super.info();
