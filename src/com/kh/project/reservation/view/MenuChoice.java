@@ -180,6 +180,7 @@ public class MenuChoice extends JFrame {
 		b8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				if (e.getButton() == 1) {
 					// 내 노트 
 					setVisible(false);
@@ -192,6 +193,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					Login l = new Login();
+
 					setVisible(false);
 				}
 			}
