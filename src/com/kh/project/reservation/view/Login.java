@@ -74,8 +74,10 @@ public class Login extends JFrame {
 			loginP.add(image);
 			this.add(loginP);
 			
+
 			this.setVisible(true);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+
 			
 			login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
 
