@@ -27,7 +27,8 @@ public class appMenu {
 
 			System.out.println("******* MENU *******");
 
-	
+		}
+	}
 	public appMenu() {
 		
 		ReservationManager rm = new ReservationManager();
@@ -232,7 +233,7 @@ public class appMenu {
 				rm.cancelReservation();
 				break;
 			case 3:
-				Menu();
+				mainMenu();
 				break;
 
 			// 예약정보 창
