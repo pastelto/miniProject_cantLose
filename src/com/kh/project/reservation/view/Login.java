@@ -1,6 +1,7 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Menu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -76,7 +77,6 @@ public class Login extends JFrame {
 				if (e.getButton() == 1) {
 					new MenuChoice();
 					setVisible(false);
-
 				}
 			}
 
@@ -96,7 +96,6 @@ public class Login extends JFrame {
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
 	}
 

@@ -27,9 +27,9 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-		this.coupon=coupon;
+		this.coupon = coupon;
 
-	
+	}
 
 	public String getId() {
 		return id;
