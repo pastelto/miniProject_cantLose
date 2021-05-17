@@ -13,13 +13,48 @@ public class appMenu {
 		Scanner sc = new Scanner(System.in);
 		
 		//로그인 창
-		
+		while(true) {
+			System.out.println("로그인");
+			String id = sc.nextLine();
+			
+			System.out.println("비밀번호");
+			String pw = sc.nextLine();
+			
+			//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+			break;
+		}
 		//회원가입 창 
+		System.out.println("로그인");
+		String id = sc.nextLine();
+		
+		System.out.println("비밀번호");
+		String pw = sc.nextLine();
+		
+		System.out.println("이름");
+		String name = sc.nextLine();
+		
+		System.out.println("주민번호");
+		String idNum = sc.nextLine();
+		
+		System.out.println("성별");
+		char gender = sc.nextLine().charAt(0);
+		
+		System.out.println("핸드폰 번호");
+		String pNum = sc.nextLine();
+		
+		System.out.println("은행");
+		String bank = sc.nextLine();
+		
+		System.out.println("카드번호");
+		String pay = sc.nextLine();
+		
+		//if()문으로 일치 확인
 		
 		while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 			
 			System.out.println("메뉴를 선택해주세요");
 			int num = sc.nextInt();
+			sc.nextLine();
 			
 			switch(num) {
 			case 1: // 예약 
