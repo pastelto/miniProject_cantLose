@@ -1,10 +1,13 @@
-package com.kh.project.reservation.view;
+package com.kh.project.reservation.view.Print;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.PrintServiceManager;
+import com.kh.project.reservation.view.MenuChoice;
 
 public class PrintService extends JFrame{
 
@@ -44,6 +48,13 @@ public class PrintService extends JFrame{
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
+		try {
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG"))); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		// 프린트 정보조회 버튼
 		prtPointInfo.setLocation(110, 140);

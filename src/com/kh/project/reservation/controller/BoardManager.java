@@ -43,5 +43,10 @@ public class BoardManager { // 명언 & 보드
 		return maxim;
 		
 	}
+	
+	public void myMemo() { // 메모장
+		
+		
+	}
 
 }

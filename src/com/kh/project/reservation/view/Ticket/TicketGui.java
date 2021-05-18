@@ -1,10 +1,13 @@
-package com.kh.project.reservation.view;
+package com.kh.project.reservation.view.Ticket;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.TicketManager;
+import com.kh.project.reservation.view.MenuChoice;
 
-public class Ticket extends JFrame{
+public class TicketGui extends JFrame {
 	JLabel title = new JLabel("이용권구매"); // 타이틀
 	JButton oneSeat = new JButton("1인석"); // 1인석
 	JButton stdR = new JButton("스터디룸"); // 스터디룸
@@ -21,9 +25,8 @@ public class Ticket extends JFrame{
 	JPanel t = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	TicketManager tm = new TicketManager();
-	
-	
-	public Ticket() {
+
+	public TicketGui() {
 
 		super("이용권 구매");
 		this.setSize(360, 600);
@@ -42,7 +45,13 @@ public class Ticket extends JFrame{
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
-		
+		try {
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		// 1인석
 		oneSeat.setLocation(110, 140);
 		oneSeat.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
@@ -57,8 +66,8 @@ public class Ticket extends JFrame{
 		stdR.setFocusPainted(false);
 		stdR.setFont(stdR.getFont().deriveFont(15.0f));
 		stdR.setSize(140, 50);
-		
-		//이전 버튼 
+
+		// 이전 버튼
 		back.setLocation(30, 500);
 		back.setBackground(new Color(248, 248, 248));
 		back.setFocusPainted(false);
@@ -74,17 +83,17 @@ public class Ticket extends JFrame{
 				}
 			}
 		});
-		
+
 		stdR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					 //  스터디룸
+					// 스터디룸
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -94,7 +103,7 @@ public class Ticket extends JFrame{
 				}
 			}
 		});
-		
+
 		t.add(bar);
 		t.add(title);
 		t.add(oneSeat);
@@ -104,10 +113,7 @@ public class Ticket extends JFrame{
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 
 	}
-	
-	
+
 }
