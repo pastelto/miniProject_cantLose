@@ -1,9 +1,7 @@
 package com.kh.project.reservation.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.kh.project.reservation.model.vo.Account;
 
@@ -58,14 +56,12 @@ public class DrinkManager {
 		while (true) {
 			System.out.println("메뉴이름");
 			String menu = sc.nextLine();
-			{
-				al.add(menu);
-			}
-			
 			System.out.println("갯수선택");
 			int num = sc.nextInt();
 			sc.nextLine();
+			
 			{
+				al.add(menu);
 				al.add(num);
 			}
 			
@@ -73,40 +69,22 @@ public class DrinkManager {
 			String str = sc.nextLine();
 
 			if (str.equals("y")) { 
-				//메뉴와 갯수 Array에 저장
-			
 				continue;
 			} else {
 				//결제메소드
 				buydrink();
-				
 			}
-
 		}
-
-	}
-
-	
-
-
-	
-
-	private void test() {
-		//리스트를 출력 
-		//System.out.println(sb);
-	
-		
-		
-		
 	}
 
 	private void buydrink() {
-		
 		//장바구니 메소드 불러오기
 		menusave();
 		
+		//총금액 total 계산 메소드
+		totalmoney();
 		
-		//총금액 total
+		
 		
 //		//System.out.println("총 " + total + "원 입니다.");
 //		
@@ -128,6 +106,14 @@ public class DrinkManager {
 
 
 	}
+
+	private void totalmoney() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 	private void buybCoupon() {
 
