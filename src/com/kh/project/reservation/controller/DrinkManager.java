@@ -1,9 +1,7 @@
 package com.kh.project.reservation.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -13,53 +11,17 @@ public class DrinkManager {
 
 	private Account a = new Account();
 	private Scanner sc = new Scanner(System.in);
-	private ArrayList<String> al = new ArrayList<>(); //키 값만 ㄸ로 저장
-	private HashMap<String, Integer> hm = new HashMap<>();
-	private StringBuilder sb = new StringBuilder("");
-	Set<Entry<String, Integer>> eSet1 = hm.entrySet();
-
-	Iterator<Entry<String, Integer>> it1 = eSet1.iterator();
-	{
-		hm.put("1", 2000);
-		hm.put("2", 2000);
-		hm.put("3", 3000);
-		hm.put("4", 3000);
-		hm.put("5", 2000);
-		hm.put("6", 2000);
-		hm.put("7", 3000);
-		hm.put("8", 3000);
-		hm.put("9", 2000);
-	}
-	
-	
+	private ArrayList al = new ArrayList();
 
 	public DrinkManager() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void hashsave() { // 메뉴와 가격 저장 
 	
-
-		
-		
-		
-	}
-
+	
+	
+	//돌아가는 while문 
 	public void orderBeverage() {
-
-		while (it1.hasNext()) {
-
-			Entry<String, Integer> entry = (Entry) it1.next();
-
-			//System.out.println(entry.getKey() + " = " + entry.getValue()); 키값 벨류값
-			
-			al.add(entry.getKey()); // 키값 어레이 리스트에 담겨서 출력 됌 
-		}
-		
-		for(int i=0; i < al.size(); i++) {
-			System.out.println(al.get(i));
-		}
-
 		while (true) {
 			System.out.println("***움료 메뉴***");
 			System.out.println("1.아메리카노"); // 2000
@@ -70,46 +32,53 @@ public class DrinkManager {
 			System.out.println("6.아이스초코"); // 2000
 			System.out.println("7.딸기우유"); // 4000
 			System.out.println("8.레몬에이드"); // 3000
-			System.out.println("9.허브티"); // 2000
-			System.out.println(al.toString());
 			select();
 		}
 	}
+	
+	 // 메뉴와 가격 저장 - 장바구니 메소드
+	public void menusave() {
+		System.out.println("***장바구니***");
+		
+		for(int i=0; i < al.size(); i++) {
+			
+			if( i%2 == 0 ) {
+				System.out.println("주문 메뉴 : " + al.get(i));
+			}else {
+				System.out.println("갯수 : " + al.get(i));
+			}
+		}
+		
+		
 
-	private void select() {// 음료선택
-		
-		
+	}
+
+	// 음료선택
+	private void select() {
 		while (true) {
 			System.out.println("메뉴이름");
-			String num1 = sc.nextLine();
-			
+			String menu = sc.nextLine();
+			{
+				al.add(menu);
+			}
 			
 			System.out.println("갯수선택");
-			int num2 = sc.nextInt();
+			int num = sc.nextInt();
 			sc.nextLine();
+			{
+				al.add(num);
+			}
 			
 			System.out.println("장바구니에 더 담으시겠습니까? (Y/N)");
 			String str = sc.nextLine();
 
-			if (str.equals("y")) {
-				//키값과 num1이 같다면 key값과 value값 뽑기 
-				
-				for(int i = 0; i < al.size(); i++) {
-					System.out.println("dddddd");
-					if(al.get(i) == num1)//키값과 num1이 같다면
-					sb.append(al.get(i));
-					sb.append(" ");
-					sb.append(num2);
-					System.out.println(sb);
-				}
-				
-				System.out.println(sb);
-				
+			if (str.equals("y")) { 
+				//메뉴와 갯수 Array에 저장
+			
 				continue;
 			} else {
 				//결제메소드
-				//buydrink();
-				test();
+				buydrink();
 				
 			}
 
@@ -124,7 +93,7 @@ public class DrinkManager {
 
 	private void test() {
 		//리스트를 출력 
-		System.out.println(sb);
+		//System.out.println(sb);
 	
 		
 		
@@ -132,34 +101,28 @@ public class DrinkManager {
 	}
 
 	private void buydrink() {
-		System.out.println("***선택한 메뉴와 갯수***");
-		Set<String> kset = map.keySet();
-		//선택한 것들 출렦
-		Iterator<String> iter = kset.iterator();
-		while (iter.hasNext()) {
-			String key = String.valueOf(iter.next()); // key 얻어오기
-			Object val = map.get(key);// value값 얻어오기
-
-			System.out.println(key + " " + val);
-		}
+		
+		//장바구니 메소드 불러오기
+		menusave();
+		
 		
 		//총금액 total
 		
-		//System.out.println("총 " + total + "원 입니다.");
-		
-		//쿠폰이 1나라면 두개라면 
-		if(a.getCoupon() == 1) {
-			System.out.println("사용가능한 쿠폰이 1장 있습니다. 사용하시겠습니까? ");
-			String s = sc.nextLine();
-			if(s.equals("Y")) {
-				System.out.println("쿠폰을 사용하여 " + 총금액*0.2 + " 할인되었습니다. ");
-				System.out.println("남은 금액은 등록하신 "+ a.getPay()+ "로 자동결제 되었습니다. 맛있게 먹어라 ");
-				총금액 * 0.8 
-			}else if(s.equals("N")) {
-				System.out.println("등록하신 " + a.getPay()+ "로 자동결제 되었습니다. 맛있게 먹어라 ");
-			}
-			
-		}//쿠폰이 2장이상이라면?
+//		//System.out.println("총 " + total + "원 입니다.");
+//		
+//		//쿠폰이 1나라면 두개라면 
+//		if(a.getCoupon() == 1) {
+//			System.out.println("사용가능한 쿠폰이 1장 있습니다. 사용하시겠습니까? ");
+//			String s = sc.nextLine();
+//			if(s.equals("Y")) {
+//				System.out.println("쿠폰을 사용하여 " + 총금액*0.2 + " 할인되었습니다. ");
+//				System.out.println("남은 금액은 등록하신 "+ a.getPay()+ "로 자동결제 되었습니다. 맛있게 먹어라 ");
+//				총금액 * 0.8 
+//			}else if(s.equals("N")) {
+//				System.out.println("등록하신 " + a.getPay()+ "로 자동결제 되었습니다. 맛있게 먹어라 ");
+//			}
+//			
+//		}//쿠폰이 2장이상이라면?
 		
 	
 
