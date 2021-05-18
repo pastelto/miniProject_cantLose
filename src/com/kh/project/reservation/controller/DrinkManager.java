@@ -108,7 +108,11 @@ public class DrinkManager {
 	}
 
 	private void totalmoney() {
-		// TODO Auto-generated method stub
+		
+		StringBuilder sb = new StringBuilder();
+		
+		
+		
 		
 	}
 
