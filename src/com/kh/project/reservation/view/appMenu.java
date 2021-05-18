@@ -82,7 +82,7 @@ public class appMenu {
 			String pw = sc.nextLine().trim();
 
 			// if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
-			ca.checkIdNPw();
+			ca.checkId();
 			if (membership.containsKey(id) && (membership.get(id).getPw()).equals(pw)) {
 				System.out.println("로그인 완료");
 

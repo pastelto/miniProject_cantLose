@@ -3,6 +3,7 @@ package com.kh.project.reservation.controller;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import com.kh.collection.silsub1.model.vo.Board;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 
@@ -18,24 +19,18 @@ public class CheckAccount {
 		md.fileSave(account);
 		
 	}
-	public void checkId(String id) { // ID 일치시 
-		md.fileOpen();
+	public String checkId(String id) { // id 
+	   md.fileOpen();
+	return id;
 	}
-	public void checkPw(String pw) { // 패스워드 일치시
+	public String checkPw(String pw) { // 패스워드 일치시
 		md.fileOpen();
+		return pw;
 	}
 	
 	public void checkSingIn() { 
-		HashMap<String, Account> membership = md.selectAll();
-	if(membership.isEmpty()) {
-		System.out.println("없습니다.");
-	}else {
-		Iterator<String> it = membership.keySet().iterator();
-		while(it.hasNext()) {
-			System.out.println(membership.get(it.next()));
+		md.writeList(new Account());
 		}
-	}
-	}
 	public void check() {
 		
 	}
