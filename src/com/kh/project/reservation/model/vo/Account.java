@@ -1,17 +1,16 @@
 package com.kh.project.reservation.model.vo;
 
-public class Account {
+public class Account { // 수정!!
 
-	private String id="ㅇ";  // 아이디
-	private String pw="ㅇ"; // 비밀번호
-	private String name="조아혜"; // 이름
+	private String id;  // 아이디
+	private String pw; // 비밀번호
+	private String name; // 이름
 	private String idNum; // 주민번호
 	private char gender; // 성별
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
 	private int ticket;
-	private int bevticket;
 	private int printpoint;
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
 	private int coupon; // 회원가입시 주는 쿠폰
@@ -20,7 +19,7 @@ public class Account {
 	public Account() {}
 
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int bevticket, int printpoint, int totalH) {
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int printpoint, int totalH) {
 
 
 		super();
@@ -34,7 +33,6 @@ public class Account {
 		this.pay = pay;
 
 		this.ticket = ticket;
-		this.bevticket = bevticket;
 		this.printpoint = printpoint;
 		this.totalH = totalH;
 		
