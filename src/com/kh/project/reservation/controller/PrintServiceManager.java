@@ -25,16 +25,16 @@ public class PrintServiceManager {
 		return p.getPrintPoint();
 	}
 	
-	public int prtPointUse(int bkPage, int clPage) { // 프린트 포인트 사용
-		if(p.getPrintPoint()>(p.getPrintPoint()-(bkPage*p.getBlackPrint()+clPage*p.getColorPrint()))) 
+	public void prtPointUse(int bkPage, int clPage) { // 프린트 포인트 사용
+		if(p.getPrintPoint()>((bkPage*p.getBlackPrint()+clPage*p.getColorPrint()))) 
 		{
 		p.setPrintPoint(p.getPrintPoint()-(bkPage*p.getBlackPrint()+clPage*p.getColorPrint()));
 		}else {
 			System.out.println("충전이 필요합니다.");
 			
 		}
-		System.out.println(p.getPrintPoint());
-		return p.getPrintPoint();
+		System.out.println("남은 포인트: "  + p.getPrintPoint());
+		
 	}
 
 	public void prtCode() { // 프린트 코드발급

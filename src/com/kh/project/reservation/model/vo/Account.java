@@ -32,14 +32,12 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-<<<<<<< HEAD
 
-		this.ticket = ticket;
-		this.bevticket = bevticket;
-		this.printpoint = printpoint;
-		this.totalH = totalH;
-=======
->>>>>>> refs/heads/master
+
+//		this.ticket = ticket;
+//		this.printpoint = printpoint;
+//		this.totalH = totalH;
+
 		this.coupon = coupon;
 
 	}
