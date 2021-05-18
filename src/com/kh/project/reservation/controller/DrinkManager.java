@@ -1,9 +1,7 @@
 package com.kh.project.reservation.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.kh.project.reservation.model.vo.Account;
 
@@ -83,7 +81,10 @@ public class DrinkManager {
 		//장바구니 메소드 불러오기
 		menusave();
 		
-		//총금액 total
+		//총금액 total 계산 메소드
+		totalmoney();
+		
+		
 		
 //		//System.out.println("총 " + total + "원 입니다.");
 //		
@@ -105,6 +106,14 @@ public class DrinkManager {
 
 
 	}
+
+	private void totalmoney() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 	private void buybCoupon() {
 

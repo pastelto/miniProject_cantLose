@@ -19,9 +19,7 @@ public class Account { // 수정!!
 	public Account() {}
 
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int printpoint, int totalH) {
-
-
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int printpoint, int totalH , int coupon) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -31,18 +29,9 @@ public class Account { // 수정!!
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-
 		this.ticket = ticket;
 		this.printpoint = printpoint;
 		this.totalH = totalH;
-		
-
-		this.coupon = coupon;
-	}
-	
-	
-	public Account(String id, int coupon) { // 음료쿠폰으로 결제시
-		this.id = id;
 		this.coupon = coupon;
 	}
 	
@@ -50,7 +39,6 @@ public class Account { // 수정!!
 		this.id = id;
 		this.pay = pay;
 	}
-	
 
 
 	public String getId() {
@@ -134,6 +122,27 @@ public class Account { // 수정!!
 	public void setTotalH(int totalH) {
 		this.totalH = totalH;
 	}
+	
+
+	public int getTicket() {
+		return ticket;
+	}
+
+
+	public void setTicket(int ticket) {
+		this.ticket = ticket;
+	}
+
+
+	public int getPrintpoint() {
+		return printpoint;
+	}
+
+
+	public void setPrintpoint(int printpoint) {
+		this.printpoint = printpoint;
+	}
+
 
 
 	
