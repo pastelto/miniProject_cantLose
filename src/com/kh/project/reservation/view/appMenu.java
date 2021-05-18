@@ -72,7 +72,7 @@ public class appMenu {
 		case 6: // 내정보
 			break;
 		case 7: // 체크인 / 체크아웃
-			checkInOutM();
+			checkIn();
 			break;
 		case 8: // 로그아웃
 			return; // 또는 초기화면 이동
