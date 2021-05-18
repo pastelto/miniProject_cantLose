@@ -17,11 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
 import com.kh.project.reservation.controller.CheckAccount;
-
-import com.kh.project.reservation.controller.BoardManager;
-
 import com.kh.project.reservation.model.vo.Account;
 
 public class Login extends JFrame {
@@ -33,14 +29,12 @@ public class Login extends JFrame {
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
-
 	
 	String pw="";
 	String id="";
 	
 	
 	public Login() {
-
 
 		super("Login");
 		this.setSize(360, 600);
@@ -97,10 +91,8 @@ public class Login extends JFrame {
 						
 					//}
 				}
-
 			}
 		});
-
 
 		signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
 

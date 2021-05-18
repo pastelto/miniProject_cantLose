@@ -20,16 +20,8 @@ import javax.swing.JTextField;
 import com.kh.project.reservation.model.vo.Account;
 
 public class SignUp extends JFrame {
-
 	Scanner sc = new Scanner(System.in);
-
 	ArrayList<Account> list = new ArrayList<>();
-
-	HashMap<String, Account> membership = new HashMap<>();
-
-	
-	Account ac = new Account();
-	
 	JLabel bar = new JLabel(); 
 	JButton done = new JButton("입력 완료");
 	JTextField idTF = new JTextField("아이디");
@@ -145,7 +137,7 @@ public class SignUp extends JFrame {
 				}
 				JLabel popupCoffee = new JLabel();
 				popupCoffee.setBounds(20,110,280,333);
-				ac.setCoupon(1);
+				
 			} 
 		
 		});
