@@ -6,7 +6,7 @@ public class BoardManager { // 명언 & 보드
 		
 		int num = (int)(Math.random()*10 + 1);
 		String maxim = "";
-		switch(10) {
+		switch(num) {
 		
 		case 1: 
 			maxim = "<html>	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;	창조의 모든 행위는 파괴에서 시작된다. <br><br>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -파블로 피카소</html>";
