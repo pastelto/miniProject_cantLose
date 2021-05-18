@@ -1,8 +1,9 @@
 package com.kh.project.reservation.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Menu;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -23,7 +24,9 @@ public class MenuChoice extends JFrame {
 	JButton b5 = new JButton("예약정보 확인");
 	JButton b6 = new JButton("내 정보");
 	JButton b7 = new JButton("체크인 / 체크아웃");
-	JButton b8 = new JButton("로그아웃");
+	JButton b8 = new JButton("내 노트");
+	JButton b9 = new JButton("로그아웃");
+	
 	
 
 	
@@ -46,18 +49,28 @@ public class MenuChoice extends JFrame {
 		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
 		bar.setHorizontalTextPosition(JLabel.CENTER); // 왜 가운데가 안되는건가..
 		bar.setVerticalTextPosition(JLabel.CENTER);
-
-		//JLabel mTitle = new JLabel("MENU");
-
+		
+		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
+		
 		// 메뉴 버튼
-		b1.setBounds(70, 80, 200, 50);
-		b2.setBounds(70, 140, 200, 50);
-		b3.setBounds(70, 200, 200, 50);
-		b4.setBounds(70, 260, 200, 50);
-		b5.setBounds(70, 320, 200, 50);
-		b6.setBounds(70, 380, 200, 50);
-		b7.setBounds(70, 440, 200, 50);
-		b8.setBounds(120, 500, 100, 30);
+//		b1.setBounds(70, 80, 200, 50);
+//		b2.setBounds(70, 140, 200, 50);
+//		b3.setBounds(70, 200, 200, 50);
+//		b4.setBounds(70, 260, 200, 50);
+//		b5.setBounds(70, 320, 200, 50);
+//		b6.setBounds(70, 380, 200, 50);
+//		b7.setBounds(70, 440, 200, 50);
+//		b8.setBounds(120, 500, 100, 30);
+		
+		b1.setBounds(10, 80, 150, 50);
+		b2.setBounds(180, 80, 150, 50);
+		b3.setBounds(10, 140, 150, 50);
+		b4.setBounds(180, 140, 150, 50);
+		b5.setBounds(10, 200, 150, 50);
+		b6.setBounds(180, 200, 150, 50);
+		b7.setBounds(10, 260, 150, 50);
+		b8.setBounds(10, 260, 150, 50);
+		b9.setBounds(120, 500, 100, 30);
 
 		// 메뉴 색상 --> 원하는대로 바꿔주세요~
 		b1.setBackground(new Color(209, 102, 85)); // 택 (1) 색상 정하기
@@ -67,6 +80,7 @@ public class MenuChoice extends JFrame {
 		b5.setBackground(new Color(214, 168, 168));
 		b6.setBackground(new Color(214, 168, 168));
 		b7.setBackground(new Color(214, 168, 168));
+		b8.setBackground(new Color(214, 168, 168));
 		
 		b1.setFocusPainted(true);
 		
@@ -88,8 +102,9 @@ public class MenuChoice extends JFrame {
 		this.add(b6);
 		this.add(b7);
 		this.add(b8);
+		this.add(b9);
 		this.add(mc);
-		
+		this.add(image);
 
 		// 각 버튼 클릭시 연결 기능
 		b1.addMouseListener(new MouseAdapter() {
@@ -165,8 +180,20 @@ public class MenuChoice extends JFrame {
 		b8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				if (e.getButton() == 1) {
+					// 내 노트 
+					setVisible(false);
+				}
+			}
+		});
+		
+		b9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					Login l = new Login();
+
 					setVisible(false);
 				}
 			}

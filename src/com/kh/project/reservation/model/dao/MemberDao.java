@@ -8,7 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
-import com.kh.collection.silsub2.model.vo.Book;
 import com.kh.project.reservation.model.vo.Account;
 
 public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와서 내용 일치 확인<ID,PW>과 멤버 정보 저장
@@ -44,6 +43,7 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 			ObjectInputStream login = new ObjectInputStream(new FileInputStream("member.txt"));
 			Account account;
 			while((account = (Account) login.readObject()) != null) {
+
 				login.put(account);
 				login.close();
 			}
