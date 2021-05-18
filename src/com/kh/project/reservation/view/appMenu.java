@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.controller.DrinkManager;
 import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
@@ -21,7 +22,7 @@ public class appMenu {
 
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
-
+	DrinkManager dm = new DrinkManager();
 	InOutManager io = new InOutManager();
 	Drink d = new Drink();
 	Account a = new Account();
@@ -125,7 +126,7 @@ public class appMenu {
 				buyTicket();
 				break;
 			case 3: // 음료 구매
-				orderBeverage();
+				dm.orderBeverage();
 				break;
 			case 4: // 프린트 서비스
 				printService();
@@ -227,6 +228,7 @@ public class appMenu {
 				int num2 = sc.nextInt();
 				sc.nextLine();
 				psm.prtPointCharge(num2);
+				System.out.println("충전완료. \n프린트포인트: " + p.getPrintPoint());
 				break;
 			case 3:
 				System.out.println("흑백 매수: ");
@@ -245,59 +247,7 @@ public class appMenu {
 
 	}
 
-	private void orderBeverage() {
-
-		while (true) {
-			System.out.println("***움료 메뉴***");
-			System.out.println("1. 아메리카노"); //2000
-			System.out.println("2. 아이스아메리카노"); //2000
-			System.out.println("3. 카페라떼"); //3000
-			System.out.println("4. 아이스카페라떼"); //3000
-			System.out.println("5. 핫초코"); //2000
-			System.out.println("6. 아이스초코"); //2000
-			System.out.println("7. 딸기우유"); //4000
-			System.out.println("8. 레몬에이드"); //3000
-			System.out.println("9. 허브티"); // 2000
-			System.out.println("음료선택 : ");
-			int num1 = sc.nextInt();
-			sc.nextLine();
-			if (num1 > 0 && num1 < 10) {
-				System.out.println("현재 사용가능한 쿠폰은 " + a.getCoupon() + "개 입니다.");
-
-				System.out.println("수량: ");
-				int num2 = sc.nextInt();
-				sc.nextLine();
-
-				if (a.getCoupon() > 0) {
-					if (a.getCoupon() >= num2) {
-						System.out.println(num2 + " 장의 쿠폰이 사용되었습니다. 맛있게 드세요!");
-						a.setCoupon(a.getCoupon() - num2);
-						System.out.println("현재 쿠폰갯수 : " + a.getCoupon());
-						return;
-					} else if (a.getCoupon() < num2) {
-						System.out.println("사용가능하신 쿠폰을 초과하였습니다.");
-						orderBeverage();
-					}
-				} else if (a.getCoupon() <= 0) {
-					System.out.println("사용가능한 쿠폰이 없습니다.");
-					buybCoupon();
-				}
-			}
-		}
-	}
-
-	private void buybCoupon() {
-
-		System.out.println("***음료쿠폰 구매***");
-		System.out.println("수량 : ");
-		int num = sc.nextInt();
-		sc.nextLine();
-		a.setCoupon(a.getCoupon() + num);
-		System.out.println("쿠폰 " + num + "개를 구매하셔서 총 " + (num * 2000) + "원 입니다.");
-		System.out.println(a.getPay() + " 로 결제완료되었습니다.");
-		System.out.println("보유하고 있는 쿠폰갯수는 총 " + a.getCoupon() + "입니다.");
-
-	}
+	
 
 	private void buyTicket() {
 		while (true) {
