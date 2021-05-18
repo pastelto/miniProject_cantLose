@@ -37,8 +37,6 @@ public class Account {
 		this.bevticket = bevticket;
 		this.printpoint = printpoint;
 		this.totalH = totalH;
-		
-
 		this.coupon = coupon;
 	}
 	

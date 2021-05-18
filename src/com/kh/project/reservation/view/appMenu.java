@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.text.html.HTMLDocument.Iterator;
-import com.kh.project.reservation.controller.BeverageManager;
 import com.kh.project.reservation.controller.InOutManager;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.PrintServiceManager;
@@ -32,74 +31,74 @@ public class appMenu {
 
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
 
-		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
-
-		HashMap<String, Account> membership = new HashMap<String, Account>();
-		ReservationManager rm = new ReservationManager();
-		CheckAccount ca = new CheckAccount();
-	
-
-		Scanner sc = new Scanner(System.in);	
-		
-		// 로그인 창
-
-
-		// 회원가입 창
-
-					System.out.println("로그인");
-					String id = sc.nextLine().trim();
-					
-					System.out.println("비밀번호");
-					String pw = sc.nextLine().trim();
-					
-					//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
-					
-					if(membership.containsKey(id)||membership.get(id).equals(pw))
-					{
-						System.out.println("로그인 완료");
-						break;
-					} else
-						{
-							System.out.println("id나 비밀번호가 일치 하지 않습니다.");
-							continue;
-						}
-					}
-				
-				//회원가입 창 - 회원가입 버튼 클릭시 추가
-				System.out.println("로그인");
-				String id = sc.nextLine();
-				
-				System.out.println("비밀번호");
-				String pw = sc.nextLine();
-				
-				System.out.println("이름");
-				String name = sc.nextLine();
-				
-				System.out.println("주민번호");
-				String idNum = sc.nextLine();
-				
-				System.out.println("성별");
-				char gender = sc.nextLine().charAt(0);
-				
-				System.out.println("핸드폰 번호");
-				String pNum = sc.nextLine();
-				
-				System.out.println("은행");
-				String bank = sc.nextLine();
-				
-				System.out.println("카드번호");
-				String pay = sc.nextLine();
-				
-				//if()문으로 일치 확인
-
-				if(membership.isEmpty()) {
-					System.out.println("없습니다.");
-				}else {
-					Iterator<String> it = map.keySet().iterator();
-					while(it.hasNext()) {
-						System.out.println(map.get(it.next()));
-					}
-				}
+//		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+//
+//		HashMap<String, Account> membership = new HashMap<String, Account>();
+//		ReservationManager rm = new ReservationManager();
+//		CheckAccount ca = new CheckAccount();
+//	
+//
+//		Scanner sc = new Scanner(System.in);	
+//		
+//		// 로그인 창
+//
+//
+//		// 회원가입 창
+//
+//					System.out.println("로그인");
+//					String id = sc.nextLine().trim();
+//					
+//					System.out.println("비밀번호");
+//					String pw = sc.nextLine().trim();
+//					
+//					//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+//					
+//					if(membership.containsKey(id)||membership.get(id).equals(pw))
+//					{
+//						System.out.println("로그인 완료");
+//						break;
+//					} else
+//						{
+//							System.out.println("id나 비밀번호가 일치 하지 않습니다.");
+//							continue;
+//						}
+//					}
+//				
+//				//회원가입 창 - 회원가입 버튼 클릭시 추가
+//				System.out.println("로그인");
+//				String id = sc.nextLine();
+//				
+//				System.out.println("비밀번호");
+//				String pw = sc.nextLine();
+//				
+//				System.out.println("이름");
+//				String name = sc.nextLine();
+//				
+//				System.out.println("주민번호");
+//				String idNum = sc.nextLine();
+//				
+//				System.out.println("성별");
+//				char gender = sc.nextLine().charAt(0);
+//				
+//				System.out.println("핸드폰 번호");
+//				String pNum = sc.nextLine();
+//				
+//				System.out.println("은행");
+//				String bank = sc.nextLine();
+//				
+//				System.out.println("카드번호");
+//				String pay = sc.nextLine();
+//				
+//				//if()문으로 일치 확인
+//
+//				if(membership.isEmpty()) {
+//					System.out.println("없습니다.");
+//				}else {
+//					Iterator<String> it = map.keySet().iterator();
+//					while(it.hasNext()) {
+//						System.out.println(map.get(it.next()));
+//					}
+//				}
 	
 
 	while(true)
@@ -215,19 +214,23 @@ public class appMenu {
 			sc.nextLine();
 
 			switch (num1) {
-			case 1:
+			case 1: // 프린트 정보
 				psm.prtPointInfo();
 				break;
-			case 2:
+			case 2: // 프린트 충전
 				System.out.println("충전금액: ");
 				int num2 = sc.nextInt();
 				sc.nextLine();
 				psm.prtPointCharge(num2);
+				
 				break;
-			case 3:
+			case 3: // 사용후 포인트 출력 및 코드발급
 				System.out.println("흑백 매수: ");
+				int bkPage = sc.nextInt();
 				System.out.println("컬러 매수: ");
-				psm.prtPointUse();
+				int clPage = sc.nextInt();
+				psm.prtPointUse(bkPage, clPage);
+				psm.prtCode();
 				break;
 			case 4:
 				mainMenu();
@@ -321,23 +324,27 @@ public class appMenu {
 					tm.onePrice(option, num1);
 					tm.addCntTicket(num1);
 					System.out.println("총 금액은 " + tm.onePrice(option, num1) + " 입니다.");
+					System.out.println(a.getPay() + " 로 결제완료되었습니다.");
 					break;
 				} else if (option == 2) {
 					tm.onePrice(option);
 					int num2 = 30; // 한달치
 					tm.addCntTicket(num2);
 					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+					System.out.println(a.getPay() + " 로 결제완료되었습니다.");
 					break;
 				} else if (option == 3) {
 					tm.onePrice(option);
 					int num3 = 30 * 6; // 6개월
 					tm.addCntTicket(num3);
 					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+					System.out.println(a.getPay() + " 로 결제완료되었습니다.");
 				} else if (option == 4) {
 					tm.onePrice(option);
 					int num4 = 30 * 12; // 12개월
 					tm.addCntTicket(num4);
 					System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+					System.out.println(a.getPay() + " 로 결제완료되었습니다.");
 				}
 
 			case 2: // 스터디룸은 수량만 확인해서 반환
@@ -345,6 +352,7 @@ public class appMenu {
 				int num2 = sc.nextInt();
 				sc.nextLine();
 				System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
+				System.out.println(a.getPay() + " 로 결제완료되었습니다.");
 				break;
 			case 3:
 				mainMenu();

@@ -121,7 +121,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 이용권구매
+					Ticket t = new Ticket();// 이용권구매
 					setVisible(false);
 				}
 			}
@@ -141,7 +141,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 프린트
+					PrintService ps = new PrintService();// 프린트
 					setVisible(false);
 				}
 			}
