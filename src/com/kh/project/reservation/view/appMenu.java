@@ -1,13 +1,24 @@
 package com.kh.project.reservation.view;
 
+
+import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import com.kh.project.reservation.controller.BeverageManager;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import com.kh.project.reservation.controller.CheckAccount;
-import com.kh.project.reservation.controller.ReservationManager;
+import com.kh.project.reservation.controller.DrinkManager;
+import com.kh.project.reservation.controller.InOutManager;
+import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.TicketManager;
+import com.kh.project.reservation.model.vo.pay.Drink;
+import com.kh.project.reservation.model.vo.pay.Print;
+import com.kh.project.reservation.controller.BeverageManager;
+import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.model.vo.Book;
 
@@ -18,6 +29,12 @@ public class appMenu {
 
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
+
+	DrinkManager dm = new DrinkManager();
+	InOutManager io = new InOutManager();
+	Drink d = new Drink();
+	Account a = new Account();
+
 	CheckAccount ca = new CheckAccount();
 	
 	HashMap<String, Account> membership = new HashMap<>();
@@ -132,47 +149,148 @@ public class appMenu {
 					ca.addSingIn(addAccount());	
 				}
 				}
+
+	public appMenu() {
+		HashMap<String, Account> membership = new HashMap<String, Account>();
+		ReservationManager rm = new ReservationManager();
+		CheckAccount ca = new CheckAccount();
+
+
+		while (true)
+
+		{ // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+
+			System.out.println("******* MENU *******");
+			System.out.println("메뉴를 선택해주세요");
+			int num = sc.nextInt();
+			sc.nextLine();
+
+			switch (num) {
+
+			case 1: // 예약
+				//Book bk = new Book();
+				// bk.Booking(); // 메소드 명을 바꾸신건가요?
+				break;
+			case 2: // 이용권 구매
+				buyTicket();
+				break;
+			case 3: // 음료 구매
+				dm.orderBeverage();
+				break;
+			case 4: // 프린트 서비스
+				printService();
+				break;
+			case 5: // 예약정보 확인
+				rm.checkMyReservation();
+				// (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
+				break;
+			case 6: // 내정보
+				break;
+			case 7: // 체크인 / 체크아웃
+				checkInOutM();
+				break;
+			case 8: // 로그아웃
+				return; // 또는 초기화면 이동
+
+			}
+
+		}
+
+	}
+
+	private void checkInOutM() {
+		ArrayList ss = io.checkInSave();
 		
 				public Account addAccount() {
 					return new Account(id,pw, name, idNum, gender, pNum, bank, coupon);
 				}
 				}
 
+			}
+		} else if (ss.get(3).equals("체크인")) {// 체크인 한 버전 // 상태 확인
+			io.chechkedIn();
+			String str = sc.nextLine();
+			if (str.equals("체크아웃")) {
+				checkOut(); // 체크아웃 메소드
+			}else if (str.equals("이전")) {
+				System.out.println("메인메뉴로 돌아갑니다.");
+			}
+		} else { 
+			System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
+		}
+	}
+
+	private void checkIn() {
+		io.checkInSave();
+
+		System.out.println("체크인 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkInPrint();
+			System.out.println("체크인 되었습니다.");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+		}
+
+	}
+
+	private void checkOut() {
+		System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
+		String str = sc.nextLine();
+
+		if (str.equals("Y") || str.equals("y")) {
+			io.checkOutPrint();
+			System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
+		} else if (str.equals("N") || str.equals("n")) {
+			System.out.println("메인 메뉴로 돌아갑니다. ");
+		}
+	}
+
+	private void printService() {
+		PrintServiceManager psm = new PrintServiceManager();
+		while (true) {
+			System.out.println("***프린트 서비스***");
+			System.out.println("1. 프린트포인트 조회");
+			System.out.println("2. 프린트포인트 충전");
+			System.out.println("3. 프린트하기");
+			System.out.println("4. mainMenu");
+
+			System.out.println("메뉴선택: ");
+			int num1 = sc.nextInt();
+			sc.nextLine();
+
+			switch (num1) {
+			case 1:
+				psm.prtPointInfo();
+				break;
+			case 2:
+				System.out.println("충전금액: ");
+				int num2 = sc.nextInt();
+				sc.nextLine();
+				psm.prtPointCharge(num2);
+				System.out.println("충전완료. \n프린트포인트: " + p.getPrintPoint());
+				break;
+			case 3:
+				System.out.println("흑백 매수: ");
+				System.out.println("컬러 매수: ");
+				psm.prtPointUse();
+				break;
+			case 4:
+				mainMenu();
+				break;
+			default:
+				System.out.println("다시 입력해주세요.");
+				return;
+			}
+
+
 	//while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
 	//System.out.println("******* MENU *******");
 
-	private void orderBeverage() {
-		BeverageManager bm = new BeverageManager();
-			while(true) {
-			System.out.println("***움료 메뉴***");
-			System.out.println("1. 아메리카노");
-			System.out.println("2. 아이스아메리카노");
-			System.out.println("3. 카페라떼");
-			System.out.println("4. 아이스카페라떼");
-			System.out.println("5. 핫초코");
-			System.out.println("6. 아이스초코");
-			System.out.println("7. 딸기우유");
-			System.out.println("8. 레몬에이드");
-			System.out.println("9. 허브티");
-			System.out.println("음료선택 : ");
-			int num1 = sc.nextInt();
-			sc.nextLine();
-			System.out.println("수량: ");
-			int num2 = sc.nextInt();
-			sc.nextLine();
-			
-			System.out.println("추가하시겠습니까?");
-			char ch = sc.nextLine().toUpperCase().charAt(0);
-				if(ch =='Y') {
-					return;
-				} else {
-					
-					break;
-				}
-			}
 
-		}
+
 
 	private void buyTicket() {
 		while (true) {

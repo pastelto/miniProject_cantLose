@@ -18,11 +18,13 @@ public class PrintServiceManager {
 
 	}
 
+
 	public int prtPointCharge(int num2) { // 프린트 포인트 충전
 		
 		p.setPrintPoint(p.getPrintPoint()+num2);
 		System.out.println("충전완료! \n프린트포인트: " + p.getPrintPoint());
 		return p.getPrintPoint();
+
 	}
 	
 	public int prtPointUse(int bkPage, int clPage) { // 프린트 포인트 사용
