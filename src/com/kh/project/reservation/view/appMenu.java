@@ -4,9 +4,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import com.kh.project.reservation.controller.CheckAccount;
 import javax.swing.text.html.HTMLDocument.Iterator;
 import com.kh.project.reservation.controller.InOutManager;
-import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
@@ -22,6 +23,10 @@ public class appMenu {
 	ReservationManager rm = new ReservationManager();
 	TicketManager tm = new TicketManager();
 
+	CheckAccount ca = new CheckAccount();
+	
+	HashMap<String, Account> membership = new HashMap<>();
+
 	InOutManager io = new InOutManager();
 	Drink d = new Drink();
 	Account a = new Account();
@@ -31,79 +36,14 @@ public class appMenu {
 
 	public void mainMenu() { // 화면 구현 후 사라질 클래스.. Maybe..
 
-		while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
 		HashMap<String, Account> membership = new HashMap<String, Account>();
 		ReservationManager rm = new ReservationManager();
 		CheckAccount ca = new CheckAccount();
 	
-
-		Scanner sc = new Scanner(System.in);	
+		Scanner sc = new Scanner(System.in);
 		
-		// 로그인 창
-
-
-		// 회원가입 창
-
-					System.out.println("로그인");
-					String id = sc.nextLine().trim();
-					
-					System.out.println("비밀번호");
-					String pw = sc.nextLine().trim();
-					
-					//if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
-					
-					if(membership.containsKey(id)||membership.get(id).equals(pw))
-					{
-						System.out.println("로그인 완료");
-						break;
-					} else
-						{
-							System.out.println("id나 비밀번호가 일치 하지 않습니다.");
-							continue;
-						}
-					}
-				
-				//회원가입 창 - 회원가입 버튼 클릭시 추가
-				System.out.println("로그인");
-				String id = sc.nextLine();
-				
-				System.out.println("비밀번호");
-				String pw = sc.nextLine();
-				
-				System.out.println("이름");
-				String name = sc.nextLine();
-				
-				System.out.println("주민번호");
-				String idNum = sc.nextLine();
-				
-				System.out.println("성별");
-				char gender = sc.nextLine().charAt(0);
-				
-				System.out.println("핸드폰 번호");
-				String pNum = sc.nextLine();
-				
-				System.out.println("은행");
-				String bank = sc.nextLine();
-				
-				System.out.println("카드번호");
-				String pay = sc.nextLine();
-				
-				//if()문으로 일치 확인
-
-				if(membership.isEmpty()) {
-					System.out.println("없습니다.");
-				}else {
-					Iterator<String> it = map.keySet().iterator();
-					while(it.hasNext()) {
-						System.out.println(map.get(it.next()));
-					}
-				}
-	
-
-	while(true)
-
-	{ // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
+	while(true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
 		System.out.println("******* MENU *******");
 		System.out.println("메뉴를 선택해주세요");
@@ -143,38 +83,10 @@ public class appMenu {
 
 	}
 
-	private void checkInOutM() {
-		ArrayList ss = io.checkInSave();
-		
-		if (ss.get(3).equals("")) {// 체크인 안했을 때 
-			while (true) {
-				System.out.println("체크인 또는 체크아웃 또는 이전을 입력하세요");
-				String str = sc.nextLine();
-				if (str.equals("체크인")) {
-					checkIn(); // 체크인 메소드
-					break;
-				} else if (str.equals("체크아웃")) {
-					System.out.println("체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
-					break;
-				} else if (str.equals("이전")) {
-					System.out.println("메인메뉴로 돌아갑니다.");
-				}
-			}
-		} else if (ss.get(3).equals("체크인")) {// 체크인 한 버전 // 상태 확인
-			io.chechkedIn();
-			String str = sc.nextLine();
-			if (str.equals("체크아웃")) {
-				checkOut(); // 체크아웃 메소드
-			}else if (str.equals("이전")) {
-				System.out.println("메인메뉴로 돌아갑니다.");
-			}
-		} else { 
-			System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
-		}
-	}
 
 	private void checkIn() {
 		io.checkInSave();
+
 
 		System.out.println("체크인 하시겠습니까? (Y/N)");
 		String str = sc.nextLine();
@@ -239,6 +151,73 @@ public class appMenu {
 		}
 
 	}
+
+	// 로그인 창
+	public void login() {
+		while (true) {
+
+			System.out.println("로그인");
+			String id = sc.nextLine().trim();
+
+			System.out.println("비밀번호");
+			String pw = sc.nextLine().trim();
+
+			// if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
+			ca.checkIdNPw();
+			if (membership.containsKey(id) && (membership.get(id).getPw()).equals(pw)) {
+				System.out.println("로그인 완료");
+
+				break;
+			} else {
+				System.out.println("아이디, 비밀번호가 일치 하지 않습니다.");
+				continue;
+			}
+		}
+	}
+
+	public void singIn() {
+				while(true) {
+				//회원가입 창 - 회원가입 버튼 클릭시 추가
+				System.out.println("로그인");
+				String id = sc.nextLine();
+				
+				System.out.println("비밀번호");
+				String pw = sc.nextLine();
+				
+				System.out.println("이름");
+				String name = sc.nextLine();
+				
+				System.out.println("주민번호");
+				String idNum = sc.nextLine();
+				
+				System.out.println("성별");
+				char gender = sc.nextLine().charAt(0);
+				
+				System.out.println("핸드폰 번호");
+				String pNum = sc.nextLine();
+				
+				System.out.println("은행");
+				String bank = sc.nextLine();
+				
+				System.out.println("카드번호");
+				String pay = sc.nextLine();
+				
+				int coupon = 1;
+				
+				//if()문으로 일치 확인
+				if(membership.containsKey(id)) {
+					System.out.println("해당 아이디는 사용이 불가능합니다.");
+				}else if((membership.get(id).getIdNum()).equals(idNum)) {
+					System.out.println("이미 회원가입된 회원입니다.");
+				}else {
+					ca.addSingIn(addAccount());	
+				}
+				}
+		
+				public Account addAccount() {
+					return new Account(id,pw, name, idNum, gender, pNum, bank, coupon);
+				}
+				}
 
 	private void orderBeverage() {
 

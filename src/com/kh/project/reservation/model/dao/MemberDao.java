@@ -19,14 +19,16 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 		membership = new HashMap<String, Account>();
 	}
 	
-	public void fileSave(Account account) { // 회원가입시 - key -ID // value - ID, PassWord, 주민번호 등등
+	
+	
+	 public void fileSave(Account account) { // 회원가입시 - key -ID // value - ID, PassWord, 주민번호 등등
 		try {
 			membership.put(account.getId(), account);
 			ObjectOutputStream loginFile = new ObjectOutputStream(new FileOutputStream("member.txt"));
 			
-			System.out.println(membership);
 			loginFile.writeObject(membership);
 			System.out.println("성공정으로 저장되었습니다.");
+			loginFile.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -39,12 +41,12 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 	public void fileOpen() { // 로그인시 정보 확인 부분
 		try {
 			ObjectInputStream login = new ObjectInputStream(new FileInputStream("member.txt"));
-			System.out.println(membership);
 			Account account;
 			while((account = (Account) login.readObject()) != null) {
-				//membership.put(key, value);
+
+				login.put(account);
+				login.close();
 			}
-			
 		}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -57,6 +59,13 @@ public class MemberDao { // file로 Hashmap으로 저장해서 파일 불러와�
 	public void writeSignIn() {
 		
 	}
+
+
+
+	public HashMap<String, Account> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 
 	
 	}

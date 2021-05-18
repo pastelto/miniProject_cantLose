@@ -1,11 +1,12 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Menu;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,17 +16,26 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+
+import com.kh.project.reservation.controller.CheckAccount;
+
 import com.kh.project.reservation.controller.BoardManager;
+
 import com.kh.project.reservation.model.vo.Account;
 
 public class Login extends JFrame {
 
+	Scanner sc = new Scanner(System.in);
+	CheckAccount ca = new CheckAccount();
 	HashMap<String, Account> account = new HashMap<>();
 	JButton login = new JButton("로그인");
 	JButton signout = new JButton("회원가입");
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
+
+	String pw;
+	String id;
 
 	
 	public Login () {
@@ -145,14 +155,38 @@ public class Login extends JFrame {
 		loginP.add(signout);
 		loginP.add(image);
 		this.add(loginP);
+		
+		
+		logTF.addKeyListener(new KeyAdapter() { // 로그인 id 키보드 입력시
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String id = e.get();
+				ca.checkId(id);
+			}
+			
+		});
+		pwTF.addKeyListener(new KeyAdapter() { // 로그인 pw 키보드 입력시
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String pw = sc.nextLine();
+				ca.checkPw(pw);
+			}
+			
+		});
 
 		login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					if(ca.checkId(id.equals(ca.checkId(id))&&ca.checkPw(pw).equals())) { // 일치하는지 확인
 					new MenuChoice();
 					setVisible(false);
+					} else {
+						// 불일치시에 팝업창 뜨기
+					}
 				}
 			});
 

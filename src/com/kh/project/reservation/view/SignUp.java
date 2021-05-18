@@ -3,6 +3,8 @@ package com.kh.project.reservation.view;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,9 +17,14 @@ import javax.swing.JTextField;
 import com.kh.project.reservation.model.vo.Account;
 
 public class SignUp extends JFrame {
+
+	Scanner sc = new Scanner(System.in);
+	HashMap<String, Account> membership = new HashMap<>();
+
 	
 	Account ac = new Account();
 	
+
 	JLabel bar = new JLabel(); 
 	JButton done = new JButton("입력 완료");
 	JTextField idTF = new JTextField("아이디");
@@ -86,12 +93,47 @@ public class SignUp extends JFrame {
 		
 		this.add(SignUp);
 		
-		done.addMouseListener(new MouseAdapter() { // 회원가입 클릭시 일치하면 여기
+		System.out.println("로그인");
+		String id = sc.nextLine();
+		
+		System.out.println("비밀번호");
+		String pw = sc.nextLine();
+		
+		System.out.println("이름");
+		String name = sc.nextLine();
+		
+		System.out.println("주민번호");
+		String idNum = sc.nextLine();
+		
+		System.out.println("성별");
+		char gender = sc.nextLine().charAt(0);
+		
+		System.out.println("핸드폰 번호");
+		String pNum = sc.nextLine();
+		
+		System.out.println("은행");
+		String bank = sc.nextLine();
+		
+		System.out.println("카드번호");
+		String pay = sc.nextLine();
+		
+		int coupon = 1;
+		
+		//if()문으로 일치 확인
+		if(membership.containsKey(id)) {
+			System.out.println("해당 아이디는 사용이 불가능합니다.");
+		}else if((membership.get(id).getIdNum()).equals(idNum)) {
+			System.out.println("이미 회원가입된 회원입니다.");
+		}else {
+			ca.addSingIn(addAccount());	
+		}
+		
+		done.addMouseListener(new MouseAdapter() { // 회원가입완료 클릭시 일치하면 여기
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton()==1) {
-				
+				if()
 				}
 				JLabel popupCoffee = new JLabel();
 				popupCoffee.setBounds(20,110,280,333);
