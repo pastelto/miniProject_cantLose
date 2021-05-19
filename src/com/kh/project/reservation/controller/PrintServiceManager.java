@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.controller;
 
 import java.util.Random;
@@ -18,23 +19,25 @@ public class PrintServiceManager {
 
 	}
 
+
 	public int prtPointCharge(int num2) { // 프린트 포인트 충전
 		
 		p.setPrintPoint(p.getPrintPoint()+num2);
 		System.out.println("충전완료! \n프린트포인트: " + p.getPrintPoint());
 		return p.getPrintPoint();
+
 	}
 	
-	public void prtPointUse(int bkPage, int clPage) { // 프린트 포인트 사용
-		if(p.getPrintPoint()>((bkPage*p.getBlackPrint()+clPage*p.getColorPrint()))) 
+	public int prtPointUse(int bkPage, int clPage) { // 프린트 포인트 사용
+		if(p.getPrintPoint()>(p.getPrintPoint()-(bkPage*p.getBlackPrint()+clPage*p.getColorPrint()))) 
 		{
 		p.setPrintPoint(p.getPrintPoint()-(bkPage*p.getBlackPrint()+clPage*p.getColorPrint()));
 		}else {
 			System.out.println("충전이 필요합니다.");
 			
 		}
-		System.out.println("남은 포인트: "  + p.getPrintPoint());
-		
+		System.out.println(p.getPrintPoint());
+		return p.getPrintPoint();
 	}
 
 	public void prtCode() { // 프린트 코드발급
@@ -50,3 +53,4 @@ public class PrintServiceManager {
 		}System.out.println("프린트에 코드 입력: " + pin);
 	}
 }
+
