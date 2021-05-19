@@ -20,24 +20,17 @@ public class CheckAccount {
 		md.fileSave(account);
 		
 	}
-	
-	
-	public void checkIdNPw() { // ID 와 패스워드 일치시 if 문
-		
+	public String checkId(String id) { // id 
+	   md.fileOpen();
+	return id;
 	}
-	public HashMap<String, Account> selectAll() {
-		return md.selectAll();
+	public String checkPw(String pw) { // 패스워드 일치시
+		md.fileOpen();
+		return pw;
 	}
 	
 	public void checkSingIn() { 
-	if(membership.isEmpty()) {
-		System.out.println("없습니다.");
-	}else {
-		Iterator<String> it = map.keySet().iterator();
-		while(it.hasNext()) {
-			System.out.println(map.get(it.next()));
-		}
-	}
+		
 	}
 	public void check() {
 		

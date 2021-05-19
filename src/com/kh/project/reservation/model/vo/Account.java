@@ -1,7 +1,12 @@
 package com.kh.project.reservation.model.vo;
 
+import java.io.File;
+import java.util.HashMap;
+
 public class Account {
 
+	private HashMap<String, Account> membership;
+	private File member;
 	private String id;  // 아이디
 	private String pw; // 비밀번호
 	private String name; // 이름
@@ -27,9 +32,9 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
-		this.coupon=coupon;
+		this.coupon = coupon;
 
-	
+	}
 
 	public String getId() {
 		return id;
@@ -103,10 +108,16 @@ public class Account {
 		this.coupon = coupon;
 	}
 	
+	public File getMember() {
+		return member;
+	}
+	public HashMap<String, Account> getMembership() {
+		return membership;
+	}
 	
 	public String info() {
-		return "아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 주민번호 : " + idNum + ", 성별 : " + gender + ", 전화번호 : "
-				+ pNum + ", 은행 : " + bank + ", 카드번호 : " + pay +", 쿠폰 : "+coupon;
+		return  id + "," + pw + "," + name + "," + idNum + "," + gender + ","
+				+ pNum + "," + bank + "," + pay +","+coupon;
 	}
 
 }
