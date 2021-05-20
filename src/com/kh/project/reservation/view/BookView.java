@@ -14,30 +14,59 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 
-public class BookView extends JFrame implements ActionListener {
-	private String may[][] = {{" "," ", " ","5월", " "," "," "},{"일","월","화","수","목","금","토"},{" "," "," "," "," "," ","1일"},{"2일","3일","4일","5일","6일","7일","8일"},{"9일","10일","11일","12일","13일","14일","15일"},{"16일","17일","18일","19일","20일","21일","22일"},{"23일","24일","25일","26일","27일","28일","29일"},{"30일","31일"," ", " ", " ", " "," "}};
-	private String june[][] = {{" "," ", " ","6월", " "," "," "},{"일","월","화","수","목","금","토"},{" "," ","1일","2일","3일","4일","5일"},{"6일","7일","8일","9일","10일","11일","12일"},{"13일","14일","15일","16일","17일","18일","19일"},{"20일","21일","22일","23일","24일","25일","26일"},{"27일","28일","29일","30일"," "," "," "},{" "," "," "," "," "," "," "}};
+import com.kh.project.reservation.model.vo.Account;
 
-	//좌석
+public class BookView extends JFrame implements ActionListener {
+	Account ac = new Account();
+	
+	//calendar
+	private String may[][] = {{"****","****", "****","5월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," "," "," "," "," ","1일"},{"2일","3일","4일","5일","6일","7일","8일"},{"9일","10일","11일","12일","13일","14일","15일"},{"16일","17일","18일","19일","20일","21일","22일"},{"23일","24일","25일","26일","27일","28일","29일"},{"30일","31일"," ", " ", " ", " "," "}};
+	private String june[][] = {{" "," "," "," "," "," "," "},{"****","****", "****","6월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," ","1일","2일","3일","4일","5일"},{"6일","7일","8일","9일","10일","11일","12일"},{"13일","14일","15일","16일","17일","18일","19일"},{"20일","21일","22일","23일","24일","25일","26일"},{"27일","28일","29일","30일"," "," "," "}};
+
+	//seats
 	private String PSEATFF[][] = new String [5][5]; //1인 칸막이 - 여
 	private String PSEATFM[][] = new String [5][5]; //1인 칸막이 - 남
-	private String OSEAT[][] = new String [5][5]; // 오픈형
-	private String SROOM[] = new String [4]; // 스터디룸
-	private String input;
-	//프로젝터
+	private String OSEAT[][] = new String [5][5]; // 오픈형	
+	
+	//dropdowns
+	private String yourDate;
+	private String yourSeat;
+	
+	//프로젝터**
 	private int projector = 4;
 	
-	JTable table = new JTable();
-	JButton button = new JButton();
-	JPanel panel = new JPanel();
+	//buttons
+	JButton block = new JButton("1인 칸막이 좌석");
+	JButton open = new JButton("1인 오픈형 좌석");
+	JButton company = new JButton("스터디룸");
 		
-	public BookView() {}
+	public BookView() {
+		
+	}
 	
-	public void mon5() {
+	/* GETTER SETTER
+	public String getYourDate() {
+		return yourDate;
+	}
+
+	public void setYourDate(String yourDate) {
+		this.yourDate = yourDate;
+	}
+
+	public String getYourSeat() {
+		return yourSeat;
+	}
+
+	public void setYourSeat(String yourSeat) {
+		this.yourSeat = yourSeat;
+	}
+
+	*/
+	
+	public void monAndSeat() {
 		JFrame mon = new JFrame();
 		mon.setSize(360,600);
 		mon.setBackground(new Color(249,242,242));
@@ -46,7 +75,8 @@ public class BookView extends JFrame implements ActionListener {
 		
 		for(int i = 0 ; i < may.length ; i ++) {
 			for(int j = 0 ; j < may[i].length ; j++) {
-				mon.add(new JButton(may[i][j])); 
+				mon.add(new JButton(may[i][j]));
+				
 			}
 		}
 		for(int i = 0 ; i <	june.length ; i ++) {
@@ -55,10 +85,10 @@ public class BookView extends JFrame implements ActionListener {
 			}
 		}
 	
-		
-		
 		mon.setVisible(true);
 		mon.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//calendar output
 		
 		Date now = new Date();
 		
@@ -69,7 +99,7 @@ public class BookView extends JFrame implements ActionListener {
 				"6월 23일","6월 24일","6월 25일","6월 26일","6월 27일"
 		};
 		
-		 input = (String)JOptionPane.showInputDialog(
+		yourDate = (String)JOptionPane.showInputDialog(
 				null,
 				
 				"오늘 " + now + " 기준으로 하단에 보이는 날짜만 선택이 가능합니다.",
@@ -79,24 +109,21 @@ public class BookView extends JFrame implements ActionListener {
 				selDate,
 				"5월 28일"
 				);
-		System.out.println(input);
 		mon.setVisible(false);
+		cSeat();
+	}	
+		//drop down
 		
+	public void cSeat() {	
 		JFrame seat = new JFrame();
  		seat.setVisible(true);
  		seat.setSize(360,600);
 		seat.setTitle("좌석을 선택하세요.");
 		seat.setBackground(new Color(249,242,242));
 
-		JButton block = new JButton("1인 칸막이 좌석");
  		seat.add(block);
- 		
-		JButton open = new JButton("1인 오픈형 좌석");
  		seat.add(open);
-
-		JButton company = new JButton("스터디룸");
  		seat.add(company); 
-
 		seat.setLayout(null);
 		
 		block.setLocation(40,170);
@@ -108,258 +135,345 @@ public class BookView extends JFrame implements ActionListener {
  		company.setLocation(40, 310);
  		company.setSize(270,50);
  		
+ 		
  		block.addActionListener(new ActionListener() {
- 			public void actionPerformed(ActionEvent e) {
- 				JButton block = (JButton)e.getSource();
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton block = (JButton)e.getSource();
  				if(block.getText().equals("1인 칸막이 좌석")) {
  					seat.setVisible(false);
+ 					forWomen();
  					
- 					JFrame ForWomen = new JFrame();
- 					ForWomen.setSize(360,600);
- 					ForWomen.setTitle("1인 칸막이 좌석 (여성전용)");
- 					ForWomen.setLayout(new GridLayout(5,5));
- 					ForWomen.setBackground(new Color(249,242,242));
- 					
- 					int num = 97;
- 					
- 					//초기화
- 					for (int i = 0; i < PSEATFF.length; i++) {
- 						for (int j = 0; j < PSEATFF[i].length; j++) {
- 							if (j % 2 == 1) {
- 								PSEATFF[i][j] = "거리두기";
- 							} else {
- 								PSEATFF[i][j] = "a , " + (char)(num++);
-
- 							}
- 						}
- 					}
- 					
- 					//출력
- 					for(int i = 0 ; i < PSEATFF.length ; i++) {
- 						for( int j = 0 ; j <PSEATFF[i].length ; j ++) {
- 							ForWomen.add(new JButton(PSEATFF[i][j]));
- 						}
- 					}
- 					
- 					ForWomen.setVisible(true);
- 					ForWomen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 				}else if(open.getText().equals("1인 오픈형 좌석")) {
- 					seat.setVisible(false);
-
- 					JFrame open = new JFrame();
- 					open.setSize(360,600);
- 					open.setTitle("1인 오픈형 좌석");
- 					open.setLayout(new GridLayout(5,5));
- 					open.setBackground(new Color(249,242,242));
- 					
- 					int num = 97;
- 					
- 					//초기화
- 					for (int i = 0; i < OSEAT.length; i++) {
- 						for (int j = 0; j < OSEAT[i].length; j++) {
- 							if (j % 2 == 1) {
- 								OSEAT[i][j] = "거리두기";
- 							} else {
- 								OSEAT[i][j] = "c, " + (char)(num++);
-
- 							}
- 						}
- 					}
- 					
- 					//출력
- 					for(int i = 0 ; i < OSEAT.length ; i++) {
- 						for( int j = 0 ; j <OSEAT[i].length ; j ++) {
- 							open.add(new JButton(OSEAT[i][j]));
- 						}
- 					}
- 					
- 					open.setVisible(true);
- 					open.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 					
- 				}
- 			}
+ 				} 				
+			}
+ 		
+ 		
  		});
  		
+		open.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton open = (JButton) e.getSource();
+				if (open.getText().equals("1인 오픈형 좌석")) {
+					seat.setVisible(false);
+					open();
+
+				}
+			}
+
+		});
+		
+		company.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton company = (JButton) e.getSource();
+				if (company.getText().equals("스터디룸")) {
+					seat.setVisible(false);
+					studyRoom();
+				}
+			}
+
+		});
  		seat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
-	
-	public void forMan() {
-		this.setSize(360,600);
-		this.setTitle("1인 칸막이 좌석 (남성전용)");
-		this.setLayout(new GridLayout(5,5));
-		this.setBackground(new Color(249,242,242));
+
+	public void forWomen() {
+		JFrame ForWomen = new JFrame();
+		ForWomen.setSize(360, 600);
+		ForWomen.setTitle("1인 칸막이 좌석 (여성전용)");
+		ForWomen.setLayout(new GridLayout(5, 5));
+		ForWomen.setBackground(new Color(249, 242, 242));
 		
+		ForWomen.setVisible(true);
+		ForWomen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		int num = 97;
+
+		// 초기화
+		for (int i = 0; i < PSEATFF.length; i++) {
+			for (int j = 0; j < PSEATFF[i].length; j++) {
+				if (j % 2 == 1) {
+					PSEATFF[i][j] = "거리두기";
+				} else {
+					PSEATFF[i][j] = "a , " + (char) (num++);
+
+				}
+			}
+		}
+
+		// 출력
+		for (int i = 0; i < PSEATFF.length; i++) {
+			for (int j = 0; j < PSEATFF[i].length; j++) {
+				ForWomen.add(new JButton(PSEATFF[i][j]));
+			}
+		}
+		String[] seats = { "a,a","a,b","a,c","a,d","a,e","a,f","a,g",
+				"a,h","a,i","a,j","a,k","a,l","a,m","a,n","a,o"
+		};
 		
-		//초기화
+		yourSeat = (String)JOptionPane.showInputDialog(
+				null,
+				"하단에 보이는 좌석은 선택 가능합니다.",
+				"예약 좌석 선택",
+				JOptionPane.INFORMATION_MESSAGE,
+				null,
+				seats,
+				"a,a"
+				);
+		ForWomen.setVisible(false);
+		done();
+		
+	}
+
+	public void forMen() {
+		JFrame ForMen = new JFrame();
+
+		ForMen.setSize(360, 600);
+		ForMen.setTitle("1인 칸막이 좌석 (남성전용)");
+		ForMen.setLayout(new GridLayout(5, 5));
+		ForMen.setBackground(new Color(249, 242, 242));
+		ForMen.setVisible(true);
+		ForMen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+		int num = 97;
+
+		// 초기화
 		for (int i = 0; i < PSEATFM.length; i++) {
 			for (int j = 0; j < PSEATFM[i].length; j++) {
 				if (j % 2 == 1) {
 					PSEATFM[i][j] = "거리두기";
 				} else {
-					PSEATFM[i][j] = "b, " + (char)(num++);
+					PSEATFM[i][j] = "b, " + (char) (num++);
 
 				}
 			}
 		}
-		
-		//출력
-		for(int i = 0 ; i < PSEATFM.length ; i++) {
-			for( int j = 0 ; j <PSEATFM[i].length ; j ++) {
-				this.add(new JButton(PSEATFM[i][j]));
+
+		// 출력
+		for (int i = 0; i < PSEATFM.length; i++) {
+			for (int j = 0; j < PSEATFM[i].length; j++) {
+				ForMen.add(new JButton(PSEATFM[i][j]));
 			}
 		}
+		String[] seats = { "b,a","b,b","b,c","b,d","b,e","b,f","b,g",
+				"b,h","b,i","b,j","b,k","b,l","b,m","b,n","b,o"
+		};
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		yourSeat = (String)JOptionPane.showInputDialog(
+				null,
+				"하단에 보이는 좌석은 선택 가능합니다.",
+				"예약 좌석 선택",
+				JOptionPane.INFORMATION_MESSAGE,
+				null,
+				seats,
+				"b,a"
+				);
+		ForMen.setVisible(false);
+		done();
+
 		
 	}
-	
+
 	public void open() {
-		this.setSize(360,600);
-		this.setTitle("1인 오픈형 좌석");
-		this.setLayout(new GridLayout(5,5));
-		this.setBackground(new Color(249,242,242));
-		
+		JFrame open = new JFrame();
+		open.setSize(360, 600);
+		open.setTitle("1인 오픈형 좌석");
+		open.setLayout(new GridLayout(5, 5));
+		open.setBackground(new Color(249, 242, 242));
+		open.setVisible(true);
+		open.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		int num = 97;
-		
-		//초기화
+
+		// 초기화
 		for (int i = 0; i < OSEAT.length; i++) {
 			for (int j = 0; j < OSEAT[i].length; j++) {
 				if (j % 2 == 1) {
 					OSEAT[i][j] = "거리두기";
 				} else {
-					OSEAT[i][j] = "c, " + (char)(num++);
+					OSEAT[i][j] = "c, " + (char) (num++);
 
 				}
 			}
 		}
-		
-		//출력
-		for(int i = 0 ; i < OSEAT.length ; i++) {
-			for( int j = 0 ; j <OSEAT[i].length ; j ++) {
-				this.add(new JButton(OSEAT[i][j]));
+
+		// 출력
+		for (int i = 0; i < OSEAT.length; i++) {
+			for (int j = 0; j < OSEAT[i].length; j++) {
+				open.add(new JButton(OSEAT[i][j]));
 			}
 		}
+
+		String[] seats = { "c,a","c,b","c,c","c,d","c,e","c,f","c,g",
+				"c,h","c,i","c,j","c,k","c,l","c,m","c,n","c,o"
+		};
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		yourSeat = (String)JOptionPane.showInputDialog(
+				null,
+				"하단에 보이는 좌석은 선택 가능합니다.",
+				"예약 좌석 선택",
+				JOptionPane.INFORMATION_MESSAGE,
+				null,
+				seats,
+				"c,a"
+				);
+		open.setVisible(false);
+		done();
 		
+
 	}
-	
-	public void studyRoom() { 
-		this.setSize(360,600);
-		this.setTitle("스터디룸");
-		this.setLayout(new GridLayout(2,2));
-		this.setBackground(new Color(249,242,242));
-		int num = 65;
+
+	public void studyRoom() {
+		JFrame study = new JFrame();
+		study.setSize(360, 600);
+		study.setTitle("스터디룸");
+		study.setBackground(new Color(249,242,242));
+
+		JButton A = new JButton("A");
+		JButton B = new JButton("B");
+		JButton C = new JButton("C");
+		JButton D = new JButton("D");
+
+		A.setLocation(40,100);
+ 		A.setSize(270,50);
+ 		
+ 		B.setLocation(40, 170);
+ 		B.setSize(270,50);
+ 		
+ 		C.setLocation(40, 240);
+ 		C.setSize(270,50);
 		
-			for(int i = 0 ; i < SROOM.length ; i++) {
-				SROOM[i] = (char)(num++) + "(4인실)";
-				this.add(new JButton(SROOM[i]));
-						
-			}
-			this.setVisible(true);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-				
-	}	
-	
+ 		D.setLocation(40, 310);
+ 		D.setSize(270,50);
+		
+ 		study.add(A);
+ 		study.add(B);
+ 		study.add(C); 
+ 		study.add(D);
+ 		study.setLayout(null);
+		
+		study.setVisible(true);
+		study.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		String[] rooms = { "A","B","C","D"
+		};
+		
+		yourSeat = (String)JOptionPane.showInputDialog(
+				null,
+				"예약 하고자 하는 방을 선택하세요.",
+				"스터디룸 예약",
+				JOptionPane.INFORMATION_MESSAGE,
+				null,
+				rooms,
+				"A"
+				);
+		 study.setVisible(false);
+		 pj();
+	}
+
 	public void pj() {
-		this.setSize(360,600);
-		this.setTitle("주의 사항");
-		this.setBackground(new Color(249,242,242));
+		JFrame pj = new JFrame();
+		pj.setSize(360, 600);
+		pj.setTitle("주의 사항");
+		pj.setBackground(new Color(249, 242, 242));
+		pj.setLayout(null);
 		
+		pj.setVisible(true);
+		pj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		JCheckBox pro = new JCheckBox("프로젝터 대여를 원하실 경우 체크하세요 ");
 		pro.setLocation(40, 170);
-		pro.setSize(270,50);
-		
+		pro.setSize(270, 50);	
+
 		JCheckBox dont = new JCheckBox("사용 인원이 4인 이하인 경우 체크하세요 ");
 		dont.setLocation(40, 240);
-		dont.setSize(270,50);
-		
-		JButton confirm = new JButton(" 확                       인");
-		confirm.setLocation(40, 310);
-		confirm.setSize(270,50);
-		confirm.setBackground(new Color(188, 26, 135));
-		
-		JButton blank = new JButton("");
-		blank.setLocation(40, 310);
-		blank.setSize(270,50);
-		
-		this.add(pro);
-		this.add(dont);
-		this.add(confirm);
-		this.add(blank);
+		dont.setSize(270, 50);
 
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-	}
-	
-	
-	public void done() {
-		//클릭한 날짜와 좌석에 정상적으로 예약 됨,
-		//예약 취소/ 수정 여부 
-		//확인
+		JButton confirm = new JButton("확                       인");
+		confirm.setLocation(40, 310);
+		confirm.setSize(270, 50);
+		confirm.setBackground(new Color(188, 26, 135));
+
+		pj.add(pro);
+		pj.add(dont);
+		pj.add(confirm);
+		//dont 가 체크되어 있지 않으면 예약할 수 없고
+		//pro 가 체크되어 있지 않으면 프로젝터를 -- 하지 말기.
 		
-		/**
-		 * public String Booked() { 
-			return  " " +ac.getName() + "님께서 선택하신 일자 [" + bDate + "] 에, \n 예약하신 좌석 [" + cSeat + "] 으로 예약 되었습니다. \n  예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다."; 
-		}
-		 */
+		confirm.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton confirm = (JButton)e.getSource();
+				if(confirm.getText().equals("확                       인")) {
+					pj.setVisible(false);
+					done();
+				}
+			}
+			
+		});
 	}
-	
+
+	public void done() {
+		JOptionPane.showMessageDialog(
+				null,
+				" " + ac.getName() + "님께서 선택하신 일자 [" + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.",		
+				"예약 완료!!",
+				JOptionPane.WARNING_MESSAGE
+				);
+		//메인화면으로
+	}
+
 	public void cbooking() {
 		JTable table = new JTable(); // 예약정보 표
 		JButton btn1 = new JButton(); // 예약변경 버튼
 		JButton btn2 = new JButton(); // 예약취소 버튼
 		JButton back = new JButton(); // 뒤로가기 버튼
-		
-		
-		JRadioButton b1= new JRadioButton(" 버 튼 "); // 표 안에 삽입
+
+		JRadioButton b1 = new JRadioButton(" 버 튼 "); // 표 안에 삽입
 		ButtonGroup bg = new ButtonGroup();
 
 		// bg.add(b1);
 		this.setSize(360, 600);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
-		this.setBackground(new Color(249, 242, 242)); 
-		
+		this.setBackground(new Color(249, 242, 242));
+
 		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
-		image.setBounds(34,80,54,54);
-		
+		image.setBounds(34, 80, 54, 54);
+
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
-		bar.setBounds(0,0,360,53);
-		
+		bar.setBounds(0, 0, 360, 53);
+
 		/*
-		JLabel lTitle = new JLabel("예약정보");
-		lTitle.setLocation(140, 80);
-		lTitle.setSize(100, 54);
-		*/
-		
+		 * JLabel lTitle = new JLabel("예약정보"); lTitle.setLocation(140, 80);
+		 * lTitle.setSize(100, 54);
+		 */
+
 		// 폰트 설정
 		Font font = new Font("HY견명조", Font.BOLD, 20);
-		
-		//lTitle.setFont(font);
-		
+
+		// lTitle.setFont(font);
+
 		this.setTitle("예약정보");
-		
-		//this.add(lTitle);
+
+		// this.add(lTitle);
 		this.add(bar);
 		this.add(image);
 		this.add(b1);
-		
-		
-		
-		
+
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
