@@ -1,6 +1,5 @@
 package com.kh.project.reservation.run;
 import com.kh.project.reservation.view.Login;
-import com.kh.project.reservation.view.SignUp;
 
 
 public class Run {
@@ -11,9 +10,11 @@ public class Run {
 		
 		//MenuChoice m = new MenuChoice();
 
+
 		Login l = new Login();
 		
-		SignUp u = new SignUp();
+		//SignUp u = new SignUp();
+
 
 	}
 

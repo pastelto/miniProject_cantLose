@@ -97,7 +97,6 @@ public class MenuChoice extends JFrame {
 
 		// 붙여넣기
 		this.add(bar);
-		//this.add(mTitle);
 		this.add(b1);
 		this.add(b2);
 		this.add(b3);
@@ -115,7 +114,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 예약메소드
+					new BookView();
 					setVisible(false);
 				}
 			}
