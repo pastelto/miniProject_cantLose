@@ -125,11 +125,14 @@ public class SignUp extends JFrame {
 				public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장
 					try{
 						BufferedWriter bos = new BufferedWriter(new FileWriter( id+ ".txt",true));
-						bos.write(t1.getText()+"/");
-						bos.write(t2.getText()+"/");
-						bos.write(t3.getText()+"/");
-						bos.write(t4.getText()+"/");
-						bos.write(t5.getText()+"\r\n");
+						bos.write(idTF.getText()+"/");
+						bos.write(pwTF.getText()+"/");
+						bos.write(nameTF.getText()+"/");
+						bos.write(idNTF.getText()+"/");
+						bos.write(phone.getText()+"\r\n");
+						bos.write(card.getText()+"/");
+						bos.write(bankTF.getText()+"\r\n");
+						bos.write(bankNTF.getText()+"\r\n");
 						bos.close();
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
 						dispose();

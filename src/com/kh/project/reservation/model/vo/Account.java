@@ -16,12 +16,18 @@ public class Account {
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
 
-	private int coupon; // 쿠폰
+	private int ticket;
+	private int printpoint;
+	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
+	private int coupon; // 회원가입시 주는 쿠폰
+
 
 	
 	public Account() {}
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay,int coupon) {
+
+
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int printpoint, int totalH , int coupon) {
 
 		super();
 		this.id = id;
@@ -32,8 +38,15 @@ public class Account {
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
+		this.ticket = ticket;
+		this.printpoint = printpoint;
+		this.totalH = totalH;
 		this.coupon = coupon;
-
+	}
+	
+	public Account(String id, String pay) { // 음료구매, 티켓, 프린트에서 상속받아 결제시
+		this.id = id;
+		this.pay = pay;
 	}
 
 	public String getId() {
@@ -114,6 +127,34 @@ public class Account {
 	public HashMap<String, Account> getMembership() {
 		return membership;
 	}
+
+	public int getTicket() {
+		return ticket;
+	}
+
+
+	public void setTicket(int ticket) {
+		this.ticket = ticket;
+	}
+
+
+	public int getPrintpoint() {
+		return printpoint;
+	}
+
+
+	public void setPrintpoint(int printpoint) {
+		this.printpoint = printpoint;
+	}
+  
+  	public int getTotalH() {
+		return totalH;
+	}
+  
+  public void setTotalH(int totalH) {
+		this.totalH = totalH;
+	}
+
 	
 	public String info() {
 		return  id + "," + pw + "," + name + "," + idNum + "," + gender + ","

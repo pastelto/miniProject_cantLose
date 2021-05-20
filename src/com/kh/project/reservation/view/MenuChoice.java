@@ -97,7 +97,6 @@ public class MenuChoice extends JFrame {
 
 		// 붙여넣기
 		this.add(bar);
-		//this.add(mTitle);
 		this.add(b1);
 		this.add(b2);
 		this.add(b3);
@@ -115,53 +114,53 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 예약메소드
+					new BookView();
 					setVisible(false);
 				}
 			}
 		});
 		
-		b2.addMouseListener(new MouseAdapter() {
+		b2.addMouseListener(new MouseAdapter() { // 이용권구매
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 이용권구매
+					new Ticket();
 					setVisible(false);
 				}
 			}
 		});
 		
-		b3.addMouseListener(new MouseAdapter() {
+		b3.addMouseListener(new MouseAdapter() { // 음료 구매
+			@Override
+			public void mouseClicked(MouseEvent e) { 
+				if (e.getButton() == 1) {
+					new Drink();
+					setVisible(false);
+				}
+			}
+		});
+		
+		b4.addMouseListener(new MouseAdapter() { // 프린트
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 음료구매
+					new PrintService();
 					setVisible(false);
 				}
 			}
 		});
 		
-		b4.addMouseListener(new MouseAdapter() {
+		b5.addMouseListener(new MouseAdapter() { // 예약확인
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) { 
 				if (e.getButton() == 1) {
-					// 프린트
+					new checkBooking();
 					setVisible(false);
 				}
 			}
 		});
 		
-		b5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-			checkBooking cb = new checkBooking();
-					setVisible(false);
-				}
-			}
-		});
-		
-		b6.addMouseListener(new MouseAdapter() {
+		b6.addMouseListener(new MouseAdapter() { // 내정보
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
@@ -171,17 +170,17 @@ public class MenuChoice extends JFrame {
 			}
 		});
 		
-		b7.addMouseListener(new MouseAdapter() {
+		b7.addMouseListener(new MouseAdapter() { // 체크인/체크아웃
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					CheckIn ci = new CheckIn();
+					new CheckIn();
 					setVisible(false);
 				}
 			}
 		});
 		
-		b8.addMouseListener(new MouseAdapter() {
+		b8.addMouseListener(new MouseAdapter() { // 내노트
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
@@ -192,7 +191,7 @@ public class MenuChoice extends JFrame {
 			}
 		});
 		
-		b9.addMouseListener(new MouseAdapter() {
+		b9.addMouseListener(new MouseAdapter() { // 로그아웃 - 로그인화면
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
