@@ -1,13 +1,19 @@
 package com.kh.project.reservation.view;
 
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -16,92 +22,127 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class SignUp extends JFrame {
 	
-	Account ac = new Account();
+	private static final JFrame JFrame = null;
 	
+	Scanner sc = new Scanner(System.in);
+	ArrayList<Account> list = new ArrayList<>();
 	JLabel bar = new JLabel(); 
 	JButton done = new JButton("입력 완료");
 	JTextField idTF = new JTextField("아이디");
 	JPasswordField pwTF= new JPasswordField("비밀번호");
+	JTextField nameTF = new JTextField("이름");
 	JPasswordField idNTF = new JPasswordField("주민번호");
 	JTextField phone = new JTextField("전화번호");
 	JTextField card = new JTextField("결제 방법 :     CARD");
 	JTextField bankTF = new JTextField("결제 정보");
 	JTextField bankNTF = new JTextField();
+	JDialog dialog = new JDialog();
+	JLabel label = new JLabel("Congraturation"); // 다이얼로그 문구
+	JButton okBtn = new JButton("변경"); // 버튼 1
+	JButton noBtn = new JButton("취소"); // 버튼 2
 	
 	JPanel SignUp= new JPanel(); 
 	JLabel SignUp2= new JLabel(); 
+	String id;
+	String pw;
+	String name;
+	String idNum;
+	String phNum;
+	String cardN;
+	String bank;
+	String bankN;
 	
 	public SignUp() {
 		
 		super("SignUp");
 		this.setSize(360,600);
-		this.setLocationRelativeTo(null);  // 창 가운데로 켜지게 설정
-		this.setLayout(null);
-		SignUp.setBackground(new Color(249, 242, 242)); // 배경색 설정
-				
-		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
-		image.setBounds(34,80,54,54);
-		
-		SignUp.setLayout(null);
-		SignUp.setSize(getMaximumSize());
-		
-		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
-		bar.setBounds(0,0,360,53);
-		
-		idTF.setLocation(100,80);
-		idTF.setSize(210,54);
-		
-		pwTF.setLocation(40,145);
-		pwTF.setSize(270,54);
-		
-		idNTF.setLocation(40,210);
-		idNTF.setSize(270,54);
-		
-		phone.setLocation(40,275);
-		phone.setSize(270,54);
-		
-		card.setLocation(40,340);
-		card.setSize(270,54);
-		
-		bankTF.setLocation(40,405);
-		bankTF.setSize(80,54);
-		
-		bankNTF.setLocation(130,405);
-		bankNTF.setSize(180,54);
-		
-		done.setLocation(40,470);
-		done.setSize(270,54);
-		
-		SignUp.add(image);
-		SignUp.add(idTF);
-		SignUp.add(pwTF);
-		SignUp.add(idNTF);
-		SignUp.add(phone);
-		SignUp.add(card);
-		SignUp.add(idTF);
-		SignUp.add(bankTF);
-		SignUp.add(bankNTF);
-		SignUp.add(bar);
-		SignUp.add(done);
-		
-		this.add(SignUp);
-		
-		done.addMouseListener(new MouseAdapter() { // 회원가입 클릭시 일치하면 여기
+		this.setLocationRelativeTo(null);
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getButton()==1) {
+		JLabel bar = new JLabel();
+		JPanel p = new JPanel();
+		Label l1 = new Label("아이디");
+		Label l2 = new Label("비밀번호");
+		Label l3 = new Label("이름");
+		Label l4 = new Label("주민번호");
+		Label l5 = new Label("전화번호");
+		Label l6 = new Label("결제 방법");
+		Label l7 = new Label("결제 정보");
+
+		JButton done = new JButton();
+		JTextField idTF = new JTextField();
+		JPasswordField pwTF = new JPasswordField();
+		JTextField nameTF = new JTextField();
+		JPasswordField idNTF = new JPasswordField();
+		JTextField phone = new JTextField();
+		JTextField card = new JTextField();
+		JTextField bankTF = new JTextField();
+		JTextField bankNTF = new JTextField();
+			    	
+			add(bar);
+			        add(l1);
+			        add(l2);
+			        add(l3);
+			        add(l4);
+			        add(l5);
+			        add(l6);
+			        add(l7);
+			        add(done);
+			        add(idTF);
+			        add(pwTF);
+			        add(nameTF);
+			        add(idNTF);
+			        add(phone);
+			        add(card);
+			        add(bankTF);
+			        add(bankNTF);
+			   
+			        JButton j1 = new JButton("저장");
+			        JButton j2 = new JButton("취소");
+			        add(j1);
+			        add(j2);
+			        l1.setBounds(40, 10, 40, 40);
+			        l2.setBounds(40, 50, 40, 40);
+			        l3.setBounds(40,90,60,40);
+			        l4.setBounds(40, 130, 40, 40);
+			        l5.setBounds(40, 170, 60, 40);
+			        idTF.setBounds(120, 10, 200, 30);
+			        pwTF.setBounds(120, 50, 200, 30);
+			        nameTF.setBounds(120, 90, 200, 30);
+			        idNTF.setBounds(120, 130, 280, 30);
+			        phone.setBounds(120, 180, 280, 120);
+			        card.setBounds(120, 130, 280, 30);
+			        bankTF.setBounds(120, 180, 280, 120);
+			        bankNTF.setBounds(120, 180, 280, 120);
+			        j1.setBounds(125, 330, 80, 30);
+			        j2.setBounds(240, 330, 80, 30); 
+			    add(p);
 				
+				setTitle("회원가입");
+		       setVisible(true);
+		       
+		       j1.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장
+					try{
+						BufferedWriter bos = new BufferedWriter(new FileWriter( id+ ".txt",true));
+						bos.write(idTF.getText()+"/");
+						bos.write(pwTF.getText()+"/");
+						bos.write(nameTF.getText()+"/");
+						bos.write(idNTF.getText()+"/");
+						bos.write(phone.getText()+"\r\n");
+						bos.write(card.getText()+"/");
+						bos.write(bankTF.getText()+"\r\n");
+						bos.write(bankNTF.getText()+"\r\n");
+						bos.close();
+						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
+						dispose();
+					}catch (Exception ex){
+						JOptionPane.showMessageDialog(null, "회원가입에 실패하였습니다.");
+					}
 				}
-				JLabel popupCoffee = new JLabel();
-				popupCoffee.setBounds(20,110,280,333);
-				ac.setCoupon(1);
-			} 
-		
-		});
-		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-} 
+			});
+		       this.setVisible(true);
+				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}    
+}
 
