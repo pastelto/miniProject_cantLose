@@ -1,22 +1,19 @@
 package com.kh.project.reservation.run;
-import com.kh.project.reservation.view.MenuChoice;
-import com.kh.project.reservation.view.Board.MemoList;
-import com.kh.project.reservation.view.Board.MyMemo;
-
-
-
-import com.kh.project.reservation.view.appMenu;
 import com.kh.project.reservation.view.Login;
-import com.kh.project.reservation.view.MenuChoice;
+import com.kh.project.reservation.view.SignUp;
 
 
 public class Run {
 
 	public static void main(String[] args) {
 
-		new Login();
+		//new Login();
+		
+		//MenuChoice m = new MenuChoice();
 
-
+		Login l = new Login();
+		
+		SignUp u = new SignUp();
 
 	}
 
