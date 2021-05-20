@@ -1,11 +1,19 @@
 package com.kh.project.reservation.model.vo;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Account {
+public class Account implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8415970906280605681L;
+	
 	private HashMap<String, Account> membership;
+	
+	
 	private File member;
 	private String id;  // 아이디
 	private String pw; // 비밀번호
@@ -42,6 +50,20 @@ public class Account {
 		this.printpoint = printpoint;
 		this.totalH = totalH;
 		this.coupon = coupon;
+	}
+	
+	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay) {
+
+		
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.idNum = idNum;
+		this.gender = gender;
+		this.pNum = pNum;
+		this.bank = bank;
+		this.pay = pay;
+		
 	}
 	
 	public Account(String id, String pay) { // 음료구매, 티켓, 프린트에서 상속받아 결제시
@@ -156,7 +178,7 @@ public class Account {
 	}
 
 	
-	public String info() {
+	public String toString() {
 		return  id + "," + pw + "," + name + "," + idNum + "," + gender + ","
 				+ pNum + "," + bank + "," + pay +","+coupon;
 	}

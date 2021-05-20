@@ -1,24 +1,17 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-<<<<<<< HEAD
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-=======
-import java.awt.Font;
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
-<<<<<<< HEAD
-import java.io.FileReader;
-=======
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.imageio.ImageIO;
@@ -33,21 +26,17 @@ import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.BoardManager;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.reservation.view.MenuChoice;
-import com.kh.project.reservation.reservation.view.SignUp;
+import com.kh.project.reservation.model.vo.User;
 
 public class Login extends JFrame { 
 
+	private User user = new User();
 	Scanner sc = new Scanner(System.in);
-	HashMap<String, Account> account = new HashMap<>();
+	Account account = new Account();
 	JButton login = new JButton("로그인");
-<<<<<<< HEAD
 	JButton signUp = new JButton("회원가입");
-=======
-	JButton signout = new JButton("회원가입");
 	JLabel idL = new JLabel("ID : ");
 	JLabel pwL = new JLabel("PW : ");
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
@@ -103,13 +92,10 @@ public class Login extends JFrame {
 		login.setLocation(40, 430);
 		login.setSize(270, 40);
 
-<<<<<<< HEAD
 		signUp.setLocation(40, 440);
 		signUp.setSize(270, 54);
-=======
-		signout.setLocation(40, 480);
-		signout.setSize(270, 40);
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
+		signUp.setLocation(40, 480);
+		signUp.setSize(270, 40);
 
 		loginP.add(logTF);
 		loginP.add(pwTF);
@@ -120,12 +106,9 @@ public class Login extends JFrame {
 		loginP.add(pwL);
 		this.add(loginP);
 		
-<<<<<<< HEAD
 		/*id = logTF.getText();
-=======
 		
 		id = logTF.getText();
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
 		pw = pwTF.getText(); //?????왜 줄쳐지는거지...
 		
 		login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
@@ -158,31 +141,41 @@ public class Login extends JFrame {
 		
 		login.addActionListener(new ActionListener() { // 로그인 클릭시 일치하면 여기
 
+			@SuppressWarnings("deprecation")
 			@Override
-			public void actionPerformed(ActionEvent e2) {//로그인 할때 
+			public void actionPerformed(ActionEvent e1) {// 로그인 할때
 				// TODO Auto-generated method stub
-				try{
 					String s;
-					String[] array;
-					BufferedReader bos = new BufferedReader(new FileReader(id+".txt"));
-					while((s=bos.readLine())!=null){
-						array=s.split("/");
-					if(logTF.getText().equals(array[0])&&pwTF.getText().equals(array[1]))
-					{
-						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
-						MenuChoice menu = new MenuChoice();
+					ArrayList<User> list = new ArrayList<>();
+					try (ObjectInputStream oss = new ObjectInputStream(new FileInputStream("user.txt"))) {
+
+						int i=0;
+						while (true) {
+							list.add((User)oss.readObject());
+							System.out.println(list.get(i));
+							i++;
+						}
+
+					} catch (EOFException e2) {
+						int i = 0;
+						while (true) {
+							if (logTF.getText().equals(list.get(i).getId())
+									&& pwTF.getText().equals(list.get(i).getPw())) {
+								JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
+							 new MenuChoice();
+								break;
+							} else {
+								JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
+							}
+							i++;
+						}
+					} catch (ClassNotFoundException e3) {
+						e3.printStackTrace();
+					} catch (IOException e4) {
+						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.");
 					}
-					else 
-					{
-						JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
-					}
-					}
-					bos.close();
-					dispose();
-				}catch (IOException e){
-					JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.");
 				}
-			}
+			
 		});
 
 		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기
@@ -196,8 +189,6 @@ public class Login extends JFrame {
 			}
 		}); 
 
-<<<<<<< HEAD
-=======
 		// 상단바 로고
 				try {
 					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
@@ -207,7 +198,6 @@ public class Login extends JFrame {
 				}
 
 
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -216,7 +206,4 @@ public class Login extends JFrame {
 
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
