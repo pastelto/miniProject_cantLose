@@ -20,9 +20,9 @@ public class TicketManager {
 		if(option == 2) {
 			return (int)Math.round(t.getOnePrice()*30); // 1개월
 		}else if (option == 3) {
-			return (int)Math.round(t.getOnePrice()*30*6*0.85); // 6개월
+			return (int)Math.round(t.getOnePrice()*30*6*0.85); // 6개월 * 할인율
 		}else{
-			return (int)Math.round(t.getOnePrice()*30*12*0.70); // 12개월
+			return (int)Math.round(t.getOnePrice()*30*12*0.70); // 12개월 * 할인율
 		}
 	}
 	// 스터디룸

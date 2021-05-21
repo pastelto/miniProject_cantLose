@@ -14,9 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.kh.project.reservation.model.vo.pay.Ticket;
 import com.kh.project.reservation.view.Board.MemoList;
-import com.kh.project.reservation.view.Print.PrintService;
+import com.kh.project.reservation.view.Print.PrintServiceGui;
+import com.kh.project.reservation.view.Ticket.TicketGui;
 
 public class MenuChoice extends JFrame {
 
@@ -127,8 +127,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					Ticket t = new Ticket();// 이용권구매
-					new Ticket();
+					new TicketGui();// 이용권구매
 					setVisible(false);
 				}
 			}
@@ -148,8 +147,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					PrintService ps = new PrintService();// 프린트
-					new PrintService();
+					new PrintServiceGui();// 프린트
 					setVisible(false);
 				}
 			}

@@ -11,7 +11,6 @@ import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.pay.Drink;
 import com.kh.project.reservation.model.vo.pay.Print;
 
 public class appMenu {
@@ -25,6 +24,7 @@ public class appMenu {
    InOutManager io = new InOutManager();
    Drink d = new Drink();
    Account a = new Account();
+   Print r = new Print();
 
    CheckAccount ca = new CheckAccount();
 
@@ -123,7 +123,7 @@ public class appMenu {
             printService();
             break;
          case 5: // 예약정보 확인
-            rm.checkMyReservation();
+            //rm.checkMyReservation();
             // (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
             break;
          case 6: // 내정보
@@ -142,8 +142,35 @@ public class appMenu {
 
    // 체크인&체크아웃 메뉴
    private void checkInOutM() {
-      ArrayList ss = io.checkInSave();
-   }
+         ArrayList ss = io.checkInSave();
+         
+         if (ss.get(3).equals("")) {// 체크인 안했을 때 
+            while (true) {
+               System.out.println("체크인 또는 체크아웃 또는 이전을 입력하세요");
+               String str = sc.nextLine();
+               if (str.equals("체크인")) {
+                  checkIn(); // 체크인 메소드
+                  break;
+               } else if (str.equals("체크아웃")) {
+                  System.out.println("체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
+                  break;
+               } else if (str.equals("이전")) {
+                  System.out.println("메인메뉴로 돌아갑니다.");
+               }
+            }
+         } else if (ss.get(3).equals("체크인")) {// 체크인 한 버전 // 상태 확인
+            io.chechkedIn();
+            String str = sc.nextLine();
+            if (str.equals("체크아웃")) {
+               checkOut(); // 체크아웃 메소드
+            }else if (str.equals("이전")) {
+               System.out.println("메인메뉴로 돌아갑니다.");
+            }
+         } else { 
+            System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
+         }
+      }
+      
 
    
    // 체크인 
@@ -192,22 +219,22 @@ public class appMenu {
 
          switch (num1) {
          case 1:
-            psm.prtPointInfo();
+        	 psm.prtPointInfo();
             break;
          case 2:
             System.out.println("충전금액: ");
             int num2 = sc.nextInt();
             sc.nextLine();
             psm.prtPointCharge(num2);
-            System.out.println("충전완료. : " + p.getPrintPoint());
             break;
-         case 3:
-            System.out.println("흑백 매수: ");
-            int b = sc.nextInt();
-            System.out.println("컬러 매수: ");
-            int c = sc.nextInt();
-            sc.nextLine();
-            psm.prtPointUse(b, c);
+		case 3:
+			System.out.println("흑백 매수: ");
+			int b = sc.nextInt();
+			System.out.println("컬러 매수: ");
+			int c = sc.nextInt();
+			sc.nextLine();
+		    psm.prtPointUse(b, c);
+        	
             break;
          case 4:
             menu();

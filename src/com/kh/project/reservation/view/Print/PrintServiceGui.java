@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.view.MenuChoice;
 
-public class PrintService extends JFrame{
+public class PrintServiceGui extends JFrame {
 
 	JLabel title = new JLabel("프린트서비스"); // 타이틀
 	JButton prtPointInfo = new JButton("포인트 조회"); // 프린트포인트 조회버튼
@@ -27,9 +27,8 @@ public class PrintService extends JFrame{
 	JPanel ps = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	PrintServiceManager psm = new PrintServiceManager();
-	
-	
-	public PrintService() {
+
+	public PrintServiceGui() {
 
 		super("프린트서비스");
 		this.setSize(360, 600);
@@ -49,13 +48,12 @@ public class PrintService extends JFrame{
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
 		try {
-			this.setIconImage(ImageIO.read(new File("images/logo.PNG"))); 
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		// 프린트 정보조회 버튼
 		prtPointInfo.setLocation(110, 140);
 		prtPointInfo.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
@@ -70,7 +68,7 @@ public class PrintService extends JFrame{
 		prtPointCharge.setFocusPainted(false);
 		prtPointCharge.setFont(prtPointCharge.getFont().deriveFont(15.0f));
 		prtPointCharge.setSize(140, 50);
-		
+
 		// 프린트포인트 사용버튼
 		prtPointUse.setLocation(110, 340);
 		prtPointUse.setBackground(new Color(248, 248, 248));
@@ -78,7 +76,7 @@ public class PrintService extends JFrame{
 		prtPointUse.setFont(prtPointUse.getFont().deriveFont(15.0f));
 		prtPointUse.setSize(140, 50);
 
-		//이전 버튼 
+		// 이전 버튼
 		back.setLocation(30, 500);
 		back.setBackground(new Color(248, 248, 248));
 		back.setFocusPainted(false);
@@ -94,17 +92,17 @@ public class PrintService extends JFrame{
 				}
 			}
 		});
-		
+
 		prtPointCharge.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					 //  포인트 충전연결
+					// 포인트 충전연결
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		prtPointUse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -114,8 +112,7 @@ public class PrintService extends JFrame{
 				}
 			}
 		});
-		
-		
+
 		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -135,12 +132,7 @@ public class PrintService extends JFrame{
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 
 	}
-	
-	
-	
-	
+
 }
