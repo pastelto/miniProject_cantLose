@@ -19,7 +19,7 @@ public class Account {
 	private int ticket;
 	private int printpoint;
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
-	private int coupon; // 회원가입시 주는 쿠폰
+	private int coupon = 2; // 회원가입시 주는 쿠폰
 
 
 	
@@ -113,8 +113,8 @@ public class Account {
 		this.pay = pay;
 	}
 	
-	public String getCoupon() {
-		return pay;
+	public int getCoupon() {
+		return coupon;
 	}
 
 	public void setCoupon(int coupon) {
