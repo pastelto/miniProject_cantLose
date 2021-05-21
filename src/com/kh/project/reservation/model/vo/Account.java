@@ -135,8 +135,8 @@ public class Account implements Serializable{
 		this.pay = pay;
 	}
 	
-	public String getCoupon() {
-		return pay;
+	public int getCoupon() {
+		return coupon;
 	}
 
 	public void setCoupon(int coupon) {
