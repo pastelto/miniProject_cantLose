@@ -76,7 +76,7 @@ public class MemoList extends JFrame { // 메모 목록창
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == 1) {
-				MenuChoice mc = new MenuChoice(a); 
+				new MenuChoice(a); 
 				setVisible(false);
 			}
 		}
