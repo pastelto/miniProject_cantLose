@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.run;
 import com.kh.project.reservation.view.MenuChoice;
 import com.kh.project.reservation.view.Board.MemoList;
@@ -22,3 +23,4 @@ public class Run {
 	}
 
 }
+
