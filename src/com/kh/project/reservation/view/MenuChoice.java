@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Board.MemoList;
 
 public class MenuChoice extends JFrame {
@@ -33,7 +35,7 @@ public class MenuChoice extends JFrame {
 	
 
 	
-	public MenuChoice() {
+	public MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");
@@ -166,6 +168,7 @@ public class MenuChoice extends JFrame {
 				if (e.getButton() == 1) {
 					// 내정보
 					setVisible(false);
+					new Check(account);
 				}
 			}
 		});
@@ -207,3 +210,4 @@ public class MenuChoice extends JFrame {
 
 	}
 }
+
