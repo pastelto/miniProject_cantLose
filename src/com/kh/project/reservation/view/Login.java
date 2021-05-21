@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -25,14 +26,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.BoardManager;
+import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.User;
 
 public class Login extends JFrame { 
 
-	private User user = new User();
-	Scanner sc = new Scanner(System.in);
-	Account account = new Account();
+	private Scanner sc = new Scanner(System.in);
+	private Account account = new Account();
 	JButton login = new JButton("로그인");
 	JButton signUp = new JButton("회원가입");
 	JLabel idL = new JLabel("ID : ");
@@ -40,9 +40,7 @@ public class Login extends JFrame {
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
-
-	String pw="";
-	String id="";
+	CheckAccount ca = new CheckAccount();
 	
 	
 	public Login() {
@@ -144,25 +142,41 @@ public class Login extends JFrame {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e1) {// 로그인 할때
-				// TODO Auto-generated method stub
-					String s;
-					ArrayList<User> list = new ArrayList<>();
-					try (ObjectInputStream oss = new ObjectInputStream(new FileInputStream("user.txt"))) {
-
-						int i=0;
-						while (true) {
-							list.add((User)oss.readObject());
-							System.out.println(list.get(i));
-							i++;
+				
+					Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
+					
+					if (check==null) {
+						System.out.println("검색 결과가 없습니다.");
+					} else {
+						
+						System.out.println(check);
+						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
+						 new MenuChoice();
 						}
-
-					} catch (EOFException e2) {
+					
+	
+					
+					
+						/*Account account = ca.checkIdnPw(logTF.getText(),pwTF.getText());
+						if(account == null) {		
+							System.out.println("조회된 게시글이 없습니다.");
+							JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
+						}else {		*/		
+							
+							
+						/*while ((Account)oss.readObject()!=-1) {
+							list.add((Account)oss.readObject());
+							System.out.println(list.get(i));
+							i++; */
+							
+					/*} catch (EOFException e2) {
 						int i = 0;
 						while (true) {
 							if (logTF.getText().equals(list.get(i).getId())
 									&& pwTF.getText().equals(list.get(i).getPw())) {
 								JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
 							 new MenuChoice();
+							 setVisible(false);
 								break;
 							} else {
 								JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
@@ -170,13 +184,14 @@ public class Login extends JFrame {
 							i++;
 						}
 					} catch (ClassNotFoundException e3) {
-						e3.printStackTrace();
+						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
 					} catch (IOException e4) {
 						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.");
 					}
-				}
-			
+				}*/
+			}
 		});
+
 
 		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기
 

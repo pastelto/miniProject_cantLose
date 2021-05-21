@@ -12,28 +12,24 @@ public class CheckAccount {
 	HashMap<String, Account> membership= new HashMap<>();
 	
 	Account account = new Account();
-	String id ="";
 	
 	public CheckAccount() {}
 	
-	public void addSingIn(Account account) { 
+	/*public void addSingIn(Account account) { 
 		md.fileSave(account);
 		
+	}*/
+	public Account searchAccount(String id, String pw) { // id 
+	   md.searchAccount(id,pw);
+	return account;
 	}
-	public String checkId(String id) { // id 
-	   md.fileOpen();
-	return id;
+
+	public void writeAccount(Account account) {
+		md.writeAccount(account);
 	}
-	public String checkPw(String pw) { // 패스워드 일치시
-		md.fileOpen();
-		return pw;
-	}
-	
-	public void checkSingIn() { 
-		
-	}
-	public void check() {
-		
+
+	public void saveAccount() {
+		md.saveAccount();		
 	}
 	
 }
