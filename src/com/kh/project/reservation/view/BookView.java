@@ -431,56 +431,60 @@ public class BookView extends JFrame implements ActionListener {
 	}
 	
 	public void cbooking() {
+		
 	JFrame haveYouBooked = new JFrame();
-	haveYouBooked.setVisible(true);
-	haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 	JButton btn1 = new JButton(); // 예약변경 버튼
 	JButton btn2 = new JButton(); // 예약취소 버튼
 	JButton back = new JButton(); // 뒤로가기 버튼
 	
 	haveYouBooked.setSize(360, 600);
-	haveYouBooked.setLocationRelativeTo(null);
 	panel.setLayout(null);
 	panel.setBackground(new Color(249, 242, 242));
 	
+	/*
 	JLabel image = new JLabel(new ImageIcon("images/humanIcon3.pngpek160114_273"));
 	image.setBounds(34, 80, 54, 54);
-	
 	JLabel bar = new JLabel(new ImageIcon("images/bar.pngpek160114_273"));
 	bar.setBounds(0, 0, 360, 53);
-
+	*/
 	JLabel lTitle = new JLabel(ac.getName() + "님의 에약정보"); 
 	lTitle.setLocation(140, 80);
 	lTitle.setSize(100, 54);
-
+	
 	JLabel bInfo = new JLabel("[" + yourDate + "] 에 [" + yourSeat + "] 를 예약하셨습니다.");
-
 	bInfo.setLocation(40, 150);
 	bInfo.setSize(270, 50);
-
+	
 	JButton reBook = new JButton("예약 변경");
 	JButton cancelB = new JButton("예약 취소");
+	
 	cancelB.setBackground(new Color(249, 242, 242));
 	reBook.setBackground(new Color(249, 242, 242));
 
-	cancelB.setSize(270, 50);
+	cancelB.setSize(270,50);
 	reBook.setSize(270,50);
 
 	cancelB.setLocation(40, 220);
 	reBook.setLocation(40,290);
 	
-	//Font font = new Font("HY견명조", Font.BOLD, 20);
-	//lTitle.setFont(font);
-
-	haveYouBooked.add(lTitle);
+	/*
+	Font font = new Font("HY견명조", Font.BOLD, 20);
+	lTitle.setFont(font);
+	panel.add(bar);
+	panel.add(image);
+	*/
+	
+	panel.add(lTitle);
+	panel.add(bInfo);
+	panel.add(cancelB);
+	panel.add(reBook);
+	
 	haveYouBooked.setTitle("예약정보");
-	haveYouBooked.add(bar);
-	haveYouBooked.add(image);
-	haveYouBooked.add(bInfo);
-	haveYouBooked.add(cancelB);
-	haveYouBooked.add(reBook);
 	haveYouBooked.add(panel);
-
+	panel.setVisible(true);
+	haveYouBooked.setVisible(true);
+	haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	@Override

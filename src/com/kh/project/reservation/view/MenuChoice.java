@@ -114,8 +114,9 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new BookView();
 					setVisible(false);
+					new BookView().monAndSeat();
+
 				}
 			}
 		});
