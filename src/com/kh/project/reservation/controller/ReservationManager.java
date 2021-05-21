@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.controller;
 
 import java.util.Scanner;
@@ -50,4 +51,3 @@ public ReservationManager() {
 }	
 	
 	
-
