@@ -23,10 +23,7 @@ public class appMenu {
 
    DrinkManager dm = new DrinkManager();
    InOutManager io = new InOutManager();
-<<<<<<< HEAD
-   Drink d = new Drink();
-=======
->>>>>>> refs/heads/A
+
    Account a = new Account();
 
    CheckAccount ca = new CheckAccount();
@@ -44,7 +41,7 @@ public class appMenu {
          String pw = sc.nextLine().trim();
 
          // if(rm.checkIdNPw() 가 맞는지 체크 맞으면 메뉴 페이지, 아니면 팝업창도록 수정
-         ca.checkId(id);
+        // ca.checkId(id);
          if (membership.containsKey(id) && (membership.get(id).getPw()).equals(pw)) {
             System.out.println("로그인 완료");
 
@@ -92,7 +89,7 @@ public class appMenu {
          } else if ((membership.get(id).getIdNum()).equals(idNum)) {
             System.out.println("이미 회원가입된 회원입니다.");
          } else {
-            ca.addSingIn(addAccount(id, pw, name, idNum, gender, pNum, bank, coupon));
+          //  ca.addSingIn(addAccount(id, pw, name, idNum, gender, pNum, bank, coupon));
          }
       }
    }

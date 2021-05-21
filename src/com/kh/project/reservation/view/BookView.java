@@ -427,7 +427,7 @@ public class BookView extends JFrame implements ActionListener {
 	"예약 완료!!",
 	JOptionPane.PLAIN_MESSAGE
 	);
-	new MenuChoice(); //메인메뉴로
+	new MenuChoice(ac); //메인메뉴로
 	}
 	
 	public void cbooking() {
