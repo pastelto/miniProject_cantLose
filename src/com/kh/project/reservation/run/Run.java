@@ -14,11 +14,8 @@ public class Run {
 
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
-		MenuChoice m = new MenuChoice();
 		//MenuChoice m = new MenuChoice();
-=======
->>>>>>> branch 'master' of https://github.com/pastelto/miniProject_cantLose
+		//MenuChoice m = new MenuChoice();
 		new Login();
 
 
