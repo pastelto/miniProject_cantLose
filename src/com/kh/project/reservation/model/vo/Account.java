@@ -14,12 +14,10 @@ public class Account implements Serializable{
 	private HashMap<String, Account> membership;
 	
 	
-	private File member;
 	private String id;  // 아이디
 	private String pw; // 비밀번호
 	private String name; // 이름
 	private String idNum; // 주민번호
-	private char gender; // 성별
 	private String pNum; // 전화번호
 	private String bank; // 은행 
 	private String pay; // 결제 정보(카드)
@@ -35,14 +33,13 @@ public class Account implements Serializable{
 
 
 
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay, int ticket, int printpoint, int totalH , int coupon) {
+	public Account(String id, String pw, String name, String idNum, String pNum, String bank, String pay, int ticket, int printpoint, int totalH , int coupon) {
 
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.idNum = idNum;
-		this.gender = gender;
 		this.pNum = pNum;
 		this.bank = bank;
 		this.pay = pay;
@@ -52,19 +49,6 @@ public class Account implements Serializable{
 		this.coupon = coupon;
 	}
 	
-	public Account(String id, String pw, String name, String idNum, char gender, String pNum, String bank, String pay) {
-
-		
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.idNum = idNum;
-		this.gender = gender;
-		this.pNum = pNum;
-		this.bank = bank;
-		this.pay = pay;
-		
-	}
 	
 	public Account(String id, String pay) { // 음료구매, 티켓, 프린트에서 상속받아 결제시
 		this.id = id;
@@ -103,14 +87,6 @@ public class Account implements Serializable{
 		this.idNum = idNum;
 	}
 
-	public char getGender() {
-		return gender;
-	}
-
-	public void setGender(char gender) {
-		this.gender = gender;
-	}
-
 	public String getpNum() {
 		return pNum;
 	}
@@ -143,9 +119,6 @@ public class Account implements Serializable{
 		this.coupon = coupon;
 	}
 	
-	public File getMember() {
-		return member;
-	}
 	public HashMap<String, Account> getMembership() {
 		return membership;
 	}
@@ -179,8 +152,8 @@ public class Account implements Serializable{
 
 	
 	public String toString() {
-		return  id + "," + pw + "," + name + "," + idNum + "," + gender + ","
-				+ pNum + "," + bank + "," + pay +","+coupon;
+		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + ticket + ","
+				+ printpoint + "," + totalH + "," + coupon;
 	}
 
 }
