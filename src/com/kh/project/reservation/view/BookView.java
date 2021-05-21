@@ -19,12 +19,12 @@ import javax.swing.JTable;
 
 import com.kh.project.reservation.model.vo.Account;
 
-public class BookView extends JFrame implements ActionListener {
+public class BookView extends JFrame implements ActionListener {	
 	Account ac = new Account();
 	
 	//calendar
 	private String may[][] = {{"****","****", "****","5월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," "," "," "," "," ","1일"},{"2일","3일","4일","5일","6일","7일","8일"},{"9일","10일","11일","12일","13일","14일","15일"},{"16일","17일","18일","19일","20일","21일","22일"},{"23일","24일","25일","26일","27일","28일","29일"},{"30일","31일"," ", " ", " ", " "," "}};
-	private String june[][] = {{" "," "," "," "," "," "," "},{"****","****", "****","6월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," ","1일","2일","3일","4일","5일"},{"6일","7일","8일","9일","10일","11일","12일"},{"13일","14일","15일","16일","17일","18일","19일"},{"20일","21일","22일","23일","24일","25일","26일"},{"27일","28일","29일","30일"," "," "," "}};
+	private String june[][] = {{"****","****", "****","6월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," ","1일","2일","3일","4일","5일"},{"6일","7일","8일","9일","10일","11일","12일"},{"13일","14일","15일","16일","17일","18일","19일"},{"20일","21일","22일","23일","24일","25일","26일"},{"27일","28일","29일","30일"," "," "," "}};
 
 	//seats
 	private String PSEATFF[][] = new String [5][5]; //1인 칸막이 - 여
@@ -35,9 +35,6 @@ public class BookView extends JFrame implements ActionListener {
 	private String yourDate;
 	private String yourSeat;
 	
-	//프로젝터**
-	private int projector = 4;
-	
 	//buttons
 	JButton block = new JButton("1인 칸막이 좌석");
 	JButton open = new JButton("1인 오픈형 좌석");
@@ -47,31 +44,12 @@ public class BookView extends JFrame implements ActionListener {
 		
 	}
 	
-	/* GETTER SETTER
-	public String getYourDate() {
-		return yourDate;
-	}
-
-	public void setYourDate(String yourDate) {
-		this.yourDate = yourDate;
-	}
-
-	public String getYourSeat() {
-		return yourSeat;
-	}
-
-	public void setYourSeat(String yourSeat) {
-		this.yourSeat = yourSeat;
-	}
-
-	*/
-	
 	public void monAndSeat() {
 		JFrame mon = new JFrame();
 		mon.setSize(360,600);
 		mon.setBackground(new Color(249,242,242));
 		mon.setTitle("예약일 선택");
-		mon.setLayout(new GridLayout(16, 16));
+		mon.setLayout(new GridLayout(15, 16));
 		
 		for(int i = 0 ; i < may.length ; i ++) {
 			for(int j = 0 ; j < may[i].length ; j++) {
@@ -89,7 +67,6 @@ public class BookView extends JFrame implements ActionListener {
 		mon.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//calendar output
-		
 		Date now = new Date();
 		
 		String[] selDate = { "5월 28일", "5월 29일", "5월 30일", "5월 31일", "6월 1일",
@@ -101,8 +78,7 @@ public class BookView extends JFrame implements ActionListener {
 		
 		yourDate = (String)JOptionPane.showInputDialog(
 				null,
-				
-				"오늘 " + now + " 기준으로 하단에 보이는 날짜만 선택이 가능합니다.",
+				"오늘 기준으로 하단에 보이는 날짜만 선택이 가능합니다.",
 				"예약일 선택",
 				JOptionPane.INFORMATION_MESSAGE,
 				null,
