@@ -3,8 +3,6 @@ package com.kh.project.reservation.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,14 +16,13 @@ import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.User;
 
 public class SignUp extends JFrame {
 
+	private ArrayList<Account> check = new ArrayList<>();
 	private Account account = new Account();
 	private CheckAccount ca = new CheckAccount();
 	Scanner sc = new Scanner(System.in);
-	ArrayList<User> list = new ArrayList<>();
 	JLabel bar = new JLabel();
 
 	JPanel SignUp = new JPanel();

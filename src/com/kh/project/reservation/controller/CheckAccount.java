@@ -19,8 +19,8 @@ public class CheckAccount {
 		md.fileSave(account);
 		
 	}*/
-	public Account searchAccount(String id, String pw) { // id 
-	   md.searchAccount(id,pw);
+	public Account searchAccount(String id) { // id 
+	   md.searchAccount(id);
 	return account;
 	}
 

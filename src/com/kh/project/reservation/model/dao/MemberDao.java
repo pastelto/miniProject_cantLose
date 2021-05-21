@@ -22,9 +22,11 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 	public MemberDao() { 
 		
 		try(ObjectInputStream ois = new ObjectInputStream (new FileInputStream("account.txt"))){
-			 Account b; 
+			list.addAll((ArrayList<Account>)ois.readObject());
+			
+			/* Account b; 
 			 while((b=(Account)ois.readObject()) != null) { 
-				 list.add(b); }
+				 list.add(b); }*/
 			 
 		}catch(ClassNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.1");
@@ -163,12 +165,12 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 		}
 		
 	}
-	public ArrayList<Account> searchAccount(String id, String pw) {
+	public ArrayList<Account> searchAccount(String id) {
 
 		ArrayList<Account> check = new ArrayList<Account>();
 
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId().contains(id)&&list.get(i).getPw().contains(pw)) {
+			if (list.get(i).getId().contains(id)) {
 				check.add(list.get(i));
 				
 			}

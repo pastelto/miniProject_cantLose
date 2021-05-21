@@ -143,13 +143,13 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e1) {// 로그인 할때
 				
-					Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
-					
-					if (check==null) {
+					//Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
+					Account check1 = ca.searchAccount(logTF.getText());
+					if (check1==null) {
 						System.out.println("검색 결과가 없습니다.");
 					} else {
 						
-						System.out.println(check);
+						System.out.println(check1);
 						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
 						 new MenuChoice();
 						}
