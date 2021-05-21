@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
@@ -152,7 +153,7 @@ public class Login extends JFrame {
 					else {
 						
 						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
-						 new MenuChoice();
+						 new MenuChoice(check.get(0));
 						}
 					
 	
@@ -221,5 +222,4 @@ public class Login extends JFrame {
 
 
 }
-
 

@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.model.vo;
 
 import java.io.File;
@@ -157,3 +158,4 @@ public class Account implements Serializable{
 	}
 
 }
+
