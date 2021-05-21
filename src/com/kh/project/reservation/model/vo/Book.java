@@ -10,9 +10,13 @@ public class Book {
 		
 	}
 	
-	public void haveYou() {
-		ac.getId();
+	public void loginCheck() {
+		if(!ac.getId().equals(null)&&!ac.getName().equals(null)/*ticket이 0이 아닌 경우*/) {
+			new BookView().monAndSeat();
+		}
 	}
+	
+	
 	
 	
 }

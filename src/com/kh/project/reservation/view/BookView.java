@@ -403,11 +403,11 @@ public class BookView extends JFrame implements ActionListener {
 				"예약 완료!!",
 				JOptionPane.WARNING_MESSAGE
 				);
-		//메인화면으로
+		new appMenu().mainMenu(); //메인메뉴로
 	}
 
 	public void cbooking() {
-		JTable table = new JTable(); // 예약정보 표
+		JFrame haveYouBooked = new JFrame();
 		JButton btn1 = new JButton(); // 예약변경 버튼
 		JButton btn2 = new JButton(); // 예약취소 버튼
 		JButton back = new JButton(); // 뒤로가기 버튼
@@ -416,10 +416,10 @@ public class BookView extends JFrame implements ActionListener {
 		ButtonGroup bg = new ButtonGroup();
 
 		// bg.add(b1);
-		this.setSize(360, 600);
-		this.setLocationRelativeTo(null);
-		this.setLayout(null);
-		this.setBackground(new Color(249, 242, 242));
+		haveYouBooked.setSize(360, 600);
+		haveYouBooked.setLocationRelativeTo(null);
+		haveYouBooked.setLayout(null);
+		haveYouBooked.setBackground(new Color(249, 242, 242));
 
 		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
 		image.setBounds(34, 80, 54, 54);
@@ -432,20 +432,21 @@ public class BookView extends JFrame implements ActionListener {
 		 * lTitle.setSize(100, 54);
 		 */
 
-		// 폰트 설정
+		/*
+		폰트 설정
 		Font font = new Font("HY견명조", Font.BOLD, 20);
 
-		// lTitle.setFont(font);
+		lTitle.setFont(font);
 
 		this.setTitle("예약정보");
-
+		 */
 		// this.add(lTitle);
-		this.add(bar);
-		this.add(image);
-		this.add(b1);
+		haveYouBooked.add(bar);
+		haveYouBooked.add(image);
+		haveYouBooked.add(b1);
 
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		haveYouBooked.setVisible(true);
+		haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override
