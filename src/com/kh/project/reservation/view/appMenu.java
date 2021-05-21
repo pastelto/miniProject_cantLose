@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.view;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.model.vo.pay.Drink;
 import com.kh.project.reservation.model.vo.pay.Print;
 
 public class appMenu {
@@ -24,7 +26,6 @@ public class appMenu {
    InOutManager io = new InOutManager();
    Drink d = new Drink();
    Account a = new Account();
-   Print r = new Print();
 
    CheckAccount ca = new CheckAccount();
 
@@ -123,7 +124,7 @@ public class appMenu {
             printService();
             break;
          case 5: // 예약정보 확인
-            //rm.checkMyReservation();
+            rm.checkMyReservation();
             // (2) 현재 예약 정보 없으면 null -> 예약하기 case 2로 연결
             break;
          case 6: // 내정보
@@ -219,22 +220,22 @@ public class appMenu {
 
          switch (num1) {
          case 1:
-        	 psm.prtPointInfo();
+            psm.prtPointInfo();
             break;
          case 2:
             System.out.println("충전금액: ");
             int num2 = sc.nextInt();
             sc.nextLine();
             psm.prtPointCharge(num2);
+            System.out.println("충전완료. : " + p.getPrintPoint());
             break;
-		case 3:
-			System.out.println("흑백 매수: ");
-			int b = sc.nextInt();
-			System.out.println("컬러 매수: ");
-			int c = sc.nextInt();
-			sc.nextLine();
-		    psm.prtPointUse(b, c);
-        	
+         case 3:
+            System.out.println("흑백 매수: ");
+            int b = sc.nextInt();
+            System.out.println("컬러 매수: ");
+            int c = sc.nextInt();
+            sc.nextLine();
+            psm.prtPointUse(b, c);
             break;
          case 4:
             menu();
@@ -337,4 +338,5 @@ public class appMenu {
 
          }
       }
+
    }

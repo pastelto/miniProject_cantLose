@@ -1,12 +1,19 @@
+
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.imageio.ImageIO;
@@ -14,27 +21,27 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.BoardManager;
+import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
 
 public class Login extends JFrame { 
 
-	Scanner sc = new Scanner(System.in);
-	HashMap<String, Account> account = new HashMap<>();
+	private Scanner sc = new Scanner(System.in);
+	private Account account = new Account();
 	JButton login = new JButton("로그인");
-	JButton signout = new JButton("회원가입");
+	JButton signUp = new JButton("회원가입");
 	JLabel idL = new JLabel("ID : ");
 	JLabel pwL = new JLabel("PW : ");
 	JTextField logTF = new JTextField();
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
-
-	String pw="";
-	String id="";
+	CheckAccount ca = new CheckAccount();
 	
 	
 	public Login() {
@@ -84,18 +91,21 @@ public class Login extends JFrame {
 		login.setLocation(40, 430);
 		login.setSize(270, 40);
 
-		signout.setLocation(40, 480);
-		signout.setSize(270, 40);
+		signUp.setLocation(40, 440);
+		signUp.setSize(270, 54);
+		signUp.setLocation(40, 480);
+		signUp.setSize(270, 40);
 
 		loginP.add(logTF);
 		loginP.add(pwTF);
 		loginP.add(login);
-		loginP.add(signout);
+		loginP.add(signUp);
 		loginP.add(image);
 		loginP.add(idL);
 		loginP.add(pwL);
 		this.add(loginP);
 		
+		/*id = logTF.getText();
 		
 		id = logTF.getText();
 		pw = pwTF.getText(); //?????왜 줄쳐지는거지...
@@ -114,9 +124,78 @@ public class Login extends JFrame {
 					//}
 				}
 			}
-		});
+		}); 
 
 		signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+						new SignUp();
+						setVisible(false);
+			} 
+			}
+		});  */
+
+		
+		login.addActionListener(new ActionListener() { // 로그인 클릭시 일치하면 여기
+
+			@SuppressWarnings("deprecation")
+			@Override
+			public void actionPerformed(ActionEvent e1) {// 로그인 할때
+				
+					//Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
+				ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());
+				
+					if (check.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "회원 가입이 필요합니다.");
+					} 
+					else {
+						
+						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
+						 new MenuChoice(check.get(0));
+						}
+					
+	
+					
+					
+						/*Account account = ca.checkIdnPw(logTF.getText(),pwTF.getText());
+						if(account == null) {		
+							System.out.println("조회된 게시글이 없습니다.");
+							JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
+						}else {		*/		
+							
+							
+						/*while ((Account)oss.readObject()!=-1) {
+							list.add((Account)oss.readObject());
+							System.out.println(list.get(i));
+							i++; */
+							
+					/*} catch (EOFException e2) {
+						int i = 0;
+						while (true) {
+							if (logTF.getText().equals(list.get(i).getId())
+									&& pwTF.getText().equals(list.get(i).getPw())) {
+								JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
+							 new MenuChoice();
+							 setVisible(false);
+								break;
+							} else {
+								JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
+							}
+							i++;
+						}
+					} catch (ClassNotFoundException e3) {
+						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
+					} catch (IOException e4) {
+						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.");
+					}
+				}*/
+			}
+		});
+
+
+		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -143,5 +222,4 @@ public class Login extends JFrame {
 
 
 }
-
 
