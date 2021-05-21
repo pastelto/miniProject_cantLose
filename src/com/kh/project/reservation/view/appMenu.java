@@ -11,7 +11,6 @@ import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.pay.Drink;
 import com.kh.project.reservation.model.vo.pay.Print;
 
 public class appMenu {
@@ -23,7 +22,10 @@ public class appMenu {
 
    DrinkManager dm = new DrinkManager();
    InOutManager io = new InOutManager();
+<<<<<<< HEAD
    Drink d = new Drink();
+=======
+>>>>>>> refs/heads/A
    Account a = new Account();
 
    CheckAccount ca = new CheckAccount();

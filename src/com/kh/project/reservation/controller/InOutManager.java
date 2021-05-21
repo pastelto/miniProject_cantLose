@@ -30,7 +30,7 @@ public class InOutManager {
 				in.add(io.getDoubleCheck());
 
 			}
-			
+
 		}
 		return in;
 	}
@@ -57,7 +57,6 @@ public class InOutManager {
 	public void checkOutPrint() { // 체크아웃 정보 출력
 		io.setCheckOut(System.currentTimeMillis());
 		String end = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckOut());
-		
 
 		// 초를 시간으로 분으로
 		int ss = (int) Math.round((io.getCheckOut() - io.getCheckIn()) / 1000.0); // 초
@@ -75,13 +74,23 @@ public class InOutManager {
 		{
 			in.set(3, "체크인 불가");// 체크아웃 후 체크아웃을 눌렀을때 재입실을 다시 못하게
 		}
-		
-		//누적시간 -> 조건 필요함?? 다시 테스트 해보기 
+
+		// 누적시간 -> 조건 필요함?? 다시 테스트 해보기
 		a.setTotalH(a.getTotalH() + ss);
-	
+		pluscoupon();
+	}
+
+	public void pluscoupon() {
+		// 100시간이 될때마다 쿠폰 +1씩
+		if ((a.getTotalH() % 360000 == 0)) {
+			a.setCoupon(a.getCoupon() + 1);
 		}
 
 	}
+
+}
+
+
 
 	
 
