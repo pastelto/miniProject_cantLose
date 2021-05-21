@@ -1,21 +1,18 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
+import javax.swing.JPanel;
 
 import com.kh.project.reservation.model.vo.Account;
 
@@ -35,10 +32,33 @@ public class BookView extends JFrame implements ActionListener {
 	private String yourDate;
 	private String yourSeat;
 	
+	public String getYourDate() {
+		return yourDate;
+	}
+
+	public void setYourDate(String yourDate) {
+		this.yourDate = yourDate;
+	}
+
+	public String getYourSeat() {
+		return yourSeat;
+	}
+
+	public void setYourSeat(String yourSeat) {
+		this.yourSeat = yourSeat;
+	}
+
 	//buttons
 	JButton block = new JButton("1인 칸막이 좌석");
 	JButton open = new JButton("1인 오픈형 좌석");
 	JButton company = new JButton("스터디룸");
+	
+	//checkBox
+	JCheckBox pro = new JCheckBox("프로젝터 대여를 원하실 경우 체크하세요 ");
+	JCheckBox dont = new JCheckBox("사용 인원이 4인 이하인 경우 체크하세요 ");
+
+	//for color
+	JPanel panel = new JPanel();
 		
 	public BookView() {
 		
@@ -47,7 +67,6 @@ public class BookView extends JFrame implements ActionListener {
 	public void monAndSeat() {
 		JFrame mon = new JFrame();
 		mon.setSize(360,600);
-		mon.setBackground(new Color(249,242,242));
 		mon.setTitle("예약일 선택");
 		mon.setLayout(new GridLayout(15, 16));
 		
@@ -80,7 +99,7 @@ public class BookView extends JFrame implements ActionListener {
 				null,
 				"오늘 기준으로 하단에 보이는 날짜만 선택이 가능합니다.",
 				"예약일 선택",
-				JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.PLAIN_MESSAGE,
 				null,
 				selDate,
 				"5월 28일"
@@ -95,12 +114,15 @@ public class BookView extends JFrame implements ActionListener {
  		seat.setVisible(true);
  		seat.setSize(360,600);
 		seat.setTitle("좌석을 선택하세요.");
-		seat.setBackground(new Color(249,242,242));
-
+		panel.setLayout(null);
+		panel.setBackground(new Color(249,242,242));
+		
  		seat.add(block);
  		seat.add(open);
  		seat.add(company); 
-		seat.setLayout(null);
+		seat.add(panel);
+
+		//seat.setLayout(null);
 		
 		block.setLocation(40,170);
  		block.setSize(270,50);
@@ -188,18 +210,18 @@ public class BookView extends JFrame implements ActionListener {
 				ForWomen.add(new JButton(PSEATFF[i][j]));
 			}
 		}
-		String[] seats = { "a,a","a,b","a,c","a,d","a,e","a,f","a,g",
-				"a,h","a,i","a,j","a,k","a,l","a,m","a,n","a,o"
+		String[] seats = { "1인 칸막이 좌석 (여성전용) a,a","1인 칸막이 좌석 (여성전용) a,b","1인 칸막이 좌석 (여성전용) a,c","1인 칸막이 좌석 (여성전용) a,d","1인 칸막이 좌석 (여성전용) a,e","1인 칸막이 좌석 (여성전용) a,f","1인 칸막이 좌석 (여성전용) a,g",
+				"1인 칸막이 좌석 (여성전용) a,h","1인 칸막이 좌석 (여성전용) a,i","1인 칸막이 좌석 (여성전용) a,j","1인 칸막이 좌석 (여성전용) a,k","1인 칸막이 좌석 (여성전용) a,l","1인 칸막이 좌석 (여성전용) a,m","1인 칸막이 좌석 (여성전용) a,n","1인 칸막이 좌석 (여성전용) a,o"
 		};
 		
 		yourSeat = (String)JOptionPane.showInputDialog(
 				null,
 				"하단에 보이는 좌석은 선택 가능합니다.",
 				"예약 좌석 선택",
-				JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.PLAIN_MESSAGE,
 				null,
 				seats,
-				"a,a"
+				"1인 칸막이 좌석 (여성전용) a,a"
 				);
 		ForWomen.setVisible(false);
 		done();
@@ -237,18 +259,18 @@ public class BookView extends JFrame implements ActionListener {
 				ForMen.add(new JButton(PSEATFM[i][j]));
 			}
 		}
-		String[] seats = { "b,a","b,b","b,c","b,d","b,e","b,f","b,g",
-				"b,h","b,i","b,j","b,k","b,l","b,m","b,n","b,o"
+		String[] seats = { "1인 칸막이 좌석 (남성전용) b,a","1인 칸막이 좌석 (남성전용) b,b","1인 칸막이 좌석 (남성전용) b,c","1인 칸막이 좌석 (남성전용) b,d","1인 칸막이 좌석 (남성전용) b,e","1인 칸막이 좌석 (남성전용) b,f","1인 칸막이 좌석 (남성전용) b,g",
+				"1인 칸막이 좌석 (남성전용) b,h","1인 칸막이 좌석 (남성전용) b,i","1인 칸막이 좌석 (남성전용) b,j","1인 칸막이 좌석 (남성전용) b,k","1인 칸막이 좌석 (남성전용) b,l","1인 칸막이 좌석 (남성전용) b,m","1인 칸막이 좌석 (남성전용) b,n","1인 칸막이 좌석 (남성전용) b,o"
 		};
 		
 		yourSeat = (String)JOptionPane.showInputDialog(
 				null,
 				"하단에 보이는 좌석은 선택 가능합니다.",
 				"예약 좌석 선택",
-				JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.PLAIN_MESSAGE,
 				null,
 				seats,
-				"b,a"
+				"1인 칸막이 좌석 (남성전용) b,a"
 				);
 		ForMen.setVisible(false);
 		done();
@@ -286,18 +308,18 @@ public class BookView extends JFrame implements ActionListener {
 			}
 		}
 
-		String[] seats = { "c,a","c,b","c,c","c,d","c,e","c,f","c,g",
-				"c,h","c,i","c,j","c,k","c,l","c,m","c,n","c,o"
+		String[] seats = { "1인 오픈형 좌석 c,a","1인 오픈형 좌석 c,b","1인 오픈형 좌석 c,c","1인 오픈형 좌석 c,d","1인 오픈형 좌석 c,e","1인 오픈형 좌석 c,f","1인 오픈형 좌석 c,g",
+				"1인 오픈형 좌석 c,h","1인 오픈형 좌석 c,i","1인 오픈형 좌석 c,j","1인 오픈형 좌석 c,k","1인 오픈형 좌석 c,l","1인 오픈형 좌석 c,m","1인 오픈형 좌석 c,n","1인 오픈형 좌석 c,o"
 		};
 		
-		yourSeat = (String)JOptionPane.showInputDialog(
+		 yourSeat = (String)JOptionPane.showInputDialog(
 				null,
 				"하단에 보이는 좌석은 선택 가능합니다.",
 				"예약 좌석 선택",
-				JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.PLAIN_MESSAGE,
 				null,
 				seats,
-				"c,a"
+				"1인 오픈형 좌석 c,a"
 				);
 		open.setVisible(false);
 		done();
@@ -309,12 +331,13 @@ public class BookView extends JFrame implements ActionListener {
 		JFrame study = new JFrame();
 		study.setSize(360, 600);
 		study.setTitle("스터디룸");
-		study.setBackground(new Color(249,242,242));
-
-		JButton A = new JButton("A");
-		JButton B = new JButton("B");
-		JButton C = new JButton("C");
-		JButton D = new JButton("D");
+		panel.setLayout(null);
+		panel.setBackground(new Color(249,242,242));
+		
+		JButton A = new JButton("스터디룸 A");
+		JButton B = new JButton("스터디룸 B");
+		JButton C = new JButton("스터디룸 C");
+		JButton D = new JButton("스터디룸 D");
 
 		A.setLocation(40,100);
  		A.setSize(270,50);
@@ -332,44 +355,43 @@ public class BookView extends JFrame implements ActionListener {
  		study.add(B);
  		study.add(C); 
  		study.add(D);
- 		study.setLayout(null);
-		
+ 		study.add(panel);
 		study.setVisible(true);
 		study.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		String[] rooms = { "A","B","C","D"
+		String[] rooms = { "스터디룸 A","스터디룸 B","스터디룸 C","스터디룸 D"
 		};
 		
 		yourSeat = (String)JOptionPane.showInputDialog(
 				null,
 				"예약 하고자 하는 방을 선택하세요.",
 				"스터디룸 예약",
-				JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.PLAIN_MESSAGE,
 				null,
 				rooms,
-				"A"
+				"스터디룸 A"		
 				);
 		 study.setVisible(false);
-		 pj();
+		 done();
 	}
 
-	public void pj() {
+	/*public void pj() {
 		JFrame pj = new JFrame();
 		pj.setSize(360, 600);
 		pj.setTitle("주의 사항");
-		pj.setBackground(new Color(249, 242, 242));
 		pj.setLayout(null);
+		pj.setBackground(new Color(249, 242, 242));
+
 		
 		pj.setVisible(true);
 		pj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JCheckBox pro = new JCheckBox("프로젝터 대여를 원하실 경우 체크하세요 ");
 		pro.setLocation(40, 170);
 		pro.setSize(270, 50);	
 
-		JCheckBox dont = new JCheckBox("사용 인원이 4인 이하인 경우 체크하세요 ");
 		dont.setLocation(40, 240);
 		dont.setSize(270, 50);
+		
 
 		JButton confirm = new JButton("확                       인");
 		confirm.setLocation(40, 310);
@@ -390,63 +412,85 @@ public class BookView extends JFrame implements ActionListener {
 				if(confirm.getText().equals("확                       인")) {
 					pj.setVisible(false);
 					done();
-				}
+				}/*else {
+					JOptionPane.showMessageDialog(
+							null,
+							"4인 초과는 예약하실 수 없습니다.",
+							"경고",
+							JOptionPane.ERROR_MESSAGE
+							
+							);
+					
+					
+				}*//*
 			}
 			
 		});
+		
 	}
-
+*/
 	public void done() {
 		JOptionPane.showMessageDialog(
 				null,
-				" " + ac.getName() + "님께서 선택하신 일자 [" + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.",		
+				" " + ac.getName() + "님께서 선택하신 일자 [ 2021년 " + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.",		
 				"예약 완료!!",
-				JOptionPane.WARNING_MESSAGE
+				JOptionPane.PLAIN_MESSAGE
 				);
-		new appMenu().mainMenu(); //메인메뉴로
+		new MenuChoice(); //메인메뉴로
 	}
 
 	public void cbooking() {
 		JFrame haveYouBooked = new JFrame();
+		haveYouBooked.setVisible(true);
+		haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JButton btn1 = new JButton(); // 예약변경 버튼
 		JButton btn2 = new JButton(); // 예약취소 버튼
 		JButton back = new JButton(); // 뒤로가기 버튼
 
-		JRadioButton b1 = new JRadioButton(" 버 튼 "); // 표 안에 삽입
-		ButtonGroup bg = new ButtonGroup();
-
-		// bg.add(b1);
 		haveYouBooked.setSize(360, 600);
 		haveYouBooked.setLocationRelativeTo(null);
-		haveYouBooked.setLayout(null);
-		haveYouBooked.setBackground(new Color(249, 242, 242));
+		panel.setLayout(null);
+		panel.setBackground(new Color(249, 242, 242));
 
 		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
 		image.setBounds(34, 80, 54, 54);
 
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
+		
+		JLabel lTitle = new JLabel(ac.getName() + "님의 에약정보"); 
+		lTitle.setLocation(140, 80);
+		lTitle.setSize(100, 54);
+		
+		JLabel bInfo = new JLabel("[" + yourDate + "] 에 [" + yourSeat + "] 를 예약하셨습니다.");
+		
+		bInfo.setLocation(40, 150);
+		bInfo.setSize(270, 50);
+		
+		JButton reBook = new JButton("예약 변경");
+		JButton cancelB = new JButton("예약 취소");
+		cancelB.setBackground(new Color(249, 242, 242));
+		reBook.setBackground(new Color(249, 242, 242));
 
-		/*
-		 * JLabel lTitle = new JLabel("예약정보"); lTitle.setLocation(140, 80);
-		 * lTitle.setSize(100, 54);
-		 */
+		
+		cancelB.setSize(270, 50);
+		reBook.setSize(270,50);
+		
+		cancelB.setLocation(40, 220);
+		reBook.setLocation(40,290);
 
-		/*
-		폰트 설정
-		Font font = new Font("HY견명조", Font.BOLD, 20);
-
-		lTitle.setFont(font);
-
-		this.setTitle("예약정보");
-		 */
-		// this.add(lTitle);
+		//Font font = new Font("HY견명조", Font.BOLD, 20);
+		//lTitle.setFont(font);
+		
+		haveYouBooked.add(lTitle);
+		haveYouBooked.setTitle("예약정보");
 		haveYouBooked.add(bar);
 		haveYouBooked.add(image);
-		haveYouBooked.add(b1);
-
-		haveYouBooked.setVisible(true);
-		haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		haveYouBooked.add(bInfo);
+		haveYouBooked.add(cancelB);
+		haveYouBooked.add(reBook);
+		haveYouBooked.add(panel);
+		
 	}
 
 	@Override
