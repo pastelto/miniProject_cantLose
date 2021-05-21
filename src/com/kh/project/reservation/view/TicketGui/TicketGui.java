@@ -1,4 +1,4 @@
-package com.kh.project.reservation.view.Ticket;
+package com.kh.project.reservation.view.TicketGui;
 
 import java.awt.Color;
 import java.awt.Font;

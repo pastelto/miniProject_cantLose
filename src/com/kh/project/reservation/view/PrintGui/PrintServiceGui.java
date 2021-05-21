@@ -1,4 +1,4 @@
-package com.kh.project.reservation.view.Print;
+package com.kh.project.reservation.view.PrintGui;
 
 import java.awt.Color;
 import java.awt.Font;
