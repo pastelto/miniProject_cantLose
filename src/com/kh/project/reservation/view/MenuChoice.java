@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
@@ -209,3 +210,4 @@ public class MenuChoice extends JFrame {
 
 	}
 }
+

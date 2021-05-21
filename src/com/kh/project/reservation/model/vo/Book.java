@@ -1,22 +1,17 @@
 package com.kh.project.reservation.model.vo;
 
-import com.kh.project.reservation.view.BookView;
+import java.util.Scanner;
 
 public class Book {
 	
-	Account ac =  new Account();
+	 //객체 가져오기	
+	private Account ac = new Account();
+	private Scanner sc = new Scanner(System.in);
 
-	public Book() {
-		
-	}
-	
-	public void haveYou() {
-		ac.getId();
-	}
-	
-	
-}
+	//생성자
+	public Book() {}
 
+	}
 
 
 

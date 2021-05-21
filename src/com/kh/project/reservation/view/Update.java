@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
@@ -245,3 +246,4 @@ class MyDialog extends JDialog {
 	}
 
 }
+
