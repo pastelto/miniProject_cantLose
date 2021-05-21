@@ -17,8 +17,10 @@ import javax.swing.JPanel;
 
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Board.MemoList;
-import com.kh.project.reservation.view.Print.PrintServiceGui;
-import com.kh.project.reservation.view.Ticket.TicketGui;
+import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
+import com.kh.project.reservation.view.TicketGui.TicketGui;
+
+
 
 public class MenuChoice extends JFrame {
 
@@ -37,7 +39,7 @@ public class MenuChoice extends JFrame {
 	
 
 	
-	public MenuChoice(Account account) {
+	private MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");

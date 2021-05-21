@@ -12,7 +12,7 @@ public class Run {
 		//MenuChoice m = new MenuChoice();
 		//MenuChoice m = new MenuChoice();
 
-		new Login();
+		//new Login();
 
 
 

@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.model.vo.Account;
+
 public class CheckIn extends JFrame {
 
 	JLabel name = new JLabel("조아혜 님"); // 이름
@@ -21,6 +23,7 @@ public class CheckIn extends JFrame {
 	JButton back = new JButton("< prev");
 	JPanel cc = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
+	Account ac = new Account();
 
 	public CheckIn() {
 
@@ -90,7 +93,7 @@ public class CheckIn extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice();
+					MenuChoice mc = new MenuChoice(ac);
 					setVisible(false);
 				}
 			}

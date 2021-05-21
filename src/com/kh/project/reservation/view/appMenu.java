@@ -100,7 +100,7 @@ public class appMenu {
    }
 
    // 로그인 후 메뉴
-   private void menu() {
+   public void menu() {
       while (true) { // 나중에 GUI랑 연결 // true값 대신 로그인 조건 받아와야할듯..?
 
          System.out.println("******* MENU *******");
