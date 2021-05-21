@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.PrintServiceManager;
+import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
 
 public class PrintServiceGui extends JFrame {
@@ -27,7 +28,9 @@ public class PrintServiceGui extends JFrame {
 	JPanel ps = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	PrintServiceManager psm = new PrintServiceManager();
-
+	
+	Account a = new Account();
+	
 	public PrintServiceGui() {
 
 		super("프린트서비스");
@@ -117,7 +120,7 @@ public class PrintServiceGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice();
+					MenuChoice mc = new MenuChoice(a);
 					setVisible(false);
 				}
 			}

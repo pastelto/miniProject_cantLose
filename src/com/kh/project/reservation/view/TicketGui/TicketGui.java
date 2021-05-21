@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.TicketManager;
+import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
 
 public class TicketGui extends JFrame {
@@ -26,6 +27,8 @@ public class TicketGui extends JFrame {
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	TicketManager tm = new TicketManager();
 
+	Account a = new Account();
+	
 	public TicketGui() {
 
 		super("이용권 구매");
@@ -98,7 +101,7 @@ public class TicketGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice();
+					MenuChoice mc = new MenuChoice(a);
 					setVisible(false);
 				}
 			}
