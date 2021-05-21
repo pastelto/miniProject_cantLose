@@ -15,8 +15,8 @@ public class Run {
 	public static void main(String[] args) {
 
 		//MenuChoice m = new MenuChoice();
-		//MenuChoice m = new MenuChoice();
-		new Login();
+		MenuChoice m = new MenuChoice();
+//		new Login();
 
 
 	}

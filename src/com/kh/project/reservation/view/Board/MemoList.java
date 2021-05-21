@@ -92,6 +92,17 @@ public class MemoList extends JFrame { // 메모 목록창
 
 		});
 		
+		editM.addMouseListener(new MouseAdapter() { // 메뉴로 돌아가기
+			@Override 
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					MyMemo mm = new MyMemo(); 
+					mm.editM();
+					setVisible(false);
+				}
+			}
+
+		});
 		this.add(mM);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
