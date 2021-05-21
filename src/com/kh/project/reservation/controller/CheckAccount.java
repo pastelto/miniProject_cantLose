@@ -1,7 +1,7 @@
 package com.kh.project.reservation.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
@@ -19,9 +19,9 @@ public class CheckAccount {
 		md.fileSave(account);
 		
 	}*/
-	public Account searchAccount(String id) { // id 
-	   md.searchAccount(id);
-	return account;
+	public ArrayList<Account> searchAccount(String id, String pw) { // id 
+	   ArrayList<Account> list = md.searchAccount(id,pw);
+	return list;
 	}
 
 	public void writeAccount(Account account) {

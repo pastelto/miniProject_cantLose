@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.Login;
 
 
 public class MemberDao { // file로 으로 저장해서 파일 불러와서 내용 일치 확인<ID,PW>과 멤버 정보 저장
@@ -165,17 +166,17 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 		}
 		
 	}
-	public ArrayList<Account> searchAccount(String id) {
+	public ArrayList<Account> searchAccount(String id, String pw) {
 
 		ArrayList<Account> check = new ArrayList<Account>();
 
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId().contains(id)) {
+			if (list.get(i).getId().contains(id)&&list.get(i).getPw().contains(pw)) {
 				check.add(list.get(i));
-				
-			}
+				System.out.println(list.get(i));
+			} 
 		}
-
+		System.out.println(check);
 		return check;
 	}
 
