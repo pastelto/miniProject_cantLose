@@ -21,7 +21,6 @@ import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
 
 
-
 public class MenuChoice extends JFrame {
 
 	JLabel bar = new JLabel();
@@ -39,7 +38,7 @@ public class MenuChoice extends JFrame {
 	
 
 	
-	private MenuChoice(Account account) {
+	public MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");

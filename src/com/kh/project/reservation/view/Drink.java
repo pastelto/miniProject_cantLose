@@ -127,7 +127,10 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice(ac);
+
+				new MenuChoice(ac);
+
+
 					setVisible(false);
 				}
 			}
