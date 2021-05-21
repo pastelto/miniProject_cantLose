@@ -22,10 +22,7 @@ public class appMenu {
 
    DrinkManager dm = new DrinkManager();
    InOutManager io = new InOutManager();
-<<<<<<< HEAD
-   Drink d = new Drink();
-=======
->>>>>>> refs/heads/A
+
    Account a = new Account();
 
    CheckAccount ca = new CheckAccount();

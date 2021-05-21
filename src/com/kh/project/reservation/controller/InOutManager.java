@@ -18,6 +18,10 @@ public class InOutManager {
 	public InOutManager() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void login(String ) {
+		
+	}
 
 	public ArrayList checkInSave() { // 이름 좌석 체크인시간 상태 저장
 
