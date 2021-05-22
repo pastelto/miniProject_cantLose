@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
 
 public class MemoList extends JFrame { // 메모 목록창
@@ -23,7 +24,8 @@ public class MemoList extends JFrame { // 메모 목록창
 	JButton newM = new JButton("글쓰기"); // 새로 글 작성
 	JButton editM = new JButton("수정"); // 글 수정
 	JButton back = new JButton("뒤로가기"); // 뒤로가기 (or 메뉴)
-
+	Account a = new Account();
+	
 	public MemoList() { // 패널1
 
 		super("MemoList");
@@ -74,7 +76,7 @@ public class MemoList extends JFrame { // 메모 목록창
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == 1) {
-				MenuChoice mc = new MenuChoice(); 
+				new MenuChoice(a); 
 				setVisible(false);
 			}
 		}

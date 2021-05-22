@@ -2,7 +2,6 @@ package com.kh.project.reservation.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import com.kh.project.reservation.model.vo.Account;
+
 public class Drink extends JFrame{
 	
 	JLabel title = new JLabel("음료메뉴");// 타이틀 
@@ -22,7 +23,7 @@ public class Drink extends JFrame{
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	JPanel cc = new JPanel();
 	JPanel input = new JPanel(); // 레이블 박스
-	
+	Account ac = new Account();
 	
 	public Drink() {
 		super("Beverage");
@@ -126,7 +127,7 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice();
+					new MenuChoice(ac);
 					setVisible(false);
 				}
 			}

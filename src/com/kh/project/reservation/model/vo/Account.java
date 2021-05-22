@@ -1,3 +1,4 @@
+
 package com.kh.project.reservation.model.vo;
 
 import java.io.File;
@@ -25,7 +26,7 @@ public class Account implements Serializable{
 	private int ticket;
 	private int printpoint;
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
-	private int coupon; // 회원가입시 주는 쿠폰
+	private int coupon = 2; // 회원가입시 주는 쿠폰
 
 
 	
@@ -157,3 +158,4 @@ public class Account implements Serializable{
 	}
 
 }
+

@@ -1,10 +1,13 @@
-package com.kh.project.reservation.view;
+package com.kh.project.reservation.view.PrintGui;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.PrintServiceManager;
+import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.MenuChoice;
 
-public class PrintService extends JFrame{
+public class PrintServiceGui extends JFrame {
 
 	JLabel title = new JLabel("프린트서비스"); // 타이틀
 	JButton prtPointInfo = new JButton("포인트 조회"); // 프린트포인트 조회버튼
@@ -24,8 +29,9 @@ public class PrintService extends JFrame{
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	PrintServiceManager psm = new PrintServiceManager();
 	
+	Account a = new Account();
 	
-	public PrintService() {
+	public PrintServiceGui() {
 
 		super("프린트서비스");
 		this.setSize(360, 600);
@@ -44,7 +50,13 @@ public class PrintService extends JFrame{
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
-		
+		try {
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		// 프린트 정보조회 버튼
 		prtPointInfo.setLocation(110, 140);
 		prtPointInfo.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
@@ -59,7 +71,7 @@ public class PrintService extends JFrame{
 		prtPointCharge.setFocusPainted(false);
 		prtPointCharge.setFont(prtPointCharge.getFont().deriveFont(15.0f));
 		prtPointCharge.setSize(140, 50);
-		
+
 		// 프린트포인트 사용버튼
 		prtPointUse.setLocation(110, 340);
 		prtPointUse.setBackground(new Color(248, 248, 248));
@@ -67,7 +79,7 @@ public class PrintService extends JFrame{
 		prtPointUse.setFont(prtPointUse.getFont().deriveFont(15.0f));
 		prtPointUse.setSize(140, 50);
 
-		//이전 버튼 
+		// 이전 버튼
 		back.setLocation(30, 500);
 		back.setBackground(new Color(248, 248, 248));
 		back.setFocusPainted(false);
@@ -83,17 +95,17 @@ public class PrintService extends JFrame{
 				}
 			}
 		});
-		
+
 		prtPointCharge.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					 //  포인트 충전연결
+					// 포인트 충전연결
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		prtPointUse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -103,13 +115,12 @@ public class PrintService extends JFrame{
 				}
 			}
 		});
-		
-		
+
 		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice();
+					MenuChoice mc = new MenuChoice(a);
 					setVisible(false);
 				}
 			}
@@ -124,12 +135,7 @@ public class PrintService extends JFrame{
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 
 	}
-	
-	
-	
-	
+
 }

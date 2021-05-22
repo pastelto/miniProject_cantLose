@@ -1,11 +1,13 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +25,6 @@ public class SignUp extends JFrame {
 	private Account account = new Account();
 	private CheckAccount ca = new CheckAccount();
 	Scanner sc = new Scanner(System.in);
-	JLabel bar = new JLabel();
 
 	JPanel SignUp = new JPanel();
 	JLabel SignUp2 = new JLabel();
@@ -85,20 +86,30 @@ public class SignUp extends JFrame {
 		JButton j2 = new JButton("취소");
 		p.add(j1);
 		p.add(j2);
-		l1.setBounds(40, 90, 40, 40);
-		l2.setBounds(40, 130, 80, 40);
-		l3.setBounds(40, 170, 60, 40);
-		l4.setBounds(40, 210, 80, 40);
-		l5.setBounds(40, 250, 60, 40);
-		l6.setBounds(40, 290, 40, 40);
-		l7.setBounds(40, 330, 60, 40);
-		idTF.setBounds(120, 90, 200, 30);
-		pwTF.setBounds(120, 130, 200, 30);
-		nameTF.setBounds(120, 170, 200, 30);
-		idNTF.setBounds(120, 210, 200, 30);
-		phone.setBounds(120, 250, 200, 30);
-		bankTF.setBounds(120, 290, 200, 30);
-		bankNTF.setBounds(120, 330, 200, 30);
+		
+		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
+		image.setBounds(34,80,54,54);
+		
+		JLabel bar1 = new JLabel(new ImageIcon("images/bar.png"));
+		bar1.setBounds(0,0,360,53);
+		p.add(bar1);
+		p.add(image);
+		
+		Font font = new Font("맑은 고딕", Font.BOLD, 20);
+		l1.setBounds(120, 85, 45, 40);
+		l2.setBounds(40, 130, 85, 40);
+		l3.setBounds(40, 170, 65, 40);
+		l4.setBounds(40, 210, 85, 40);
+		l5.setBounds(40, 250, 65, 40);
+		l6.setBounds(40, 290, 45, 40);
+		l7.setBounds(40, 330, 65, 40);
+		idTF.setBounds(180, 90, 145, 30);
+		pwTF.setBounds(120, 130, 205, 30);
+		nameTF.setBounds(120, 170, 205, 30);
+		idNTF.setBounds(120, 210, 205, 30);
+		phone.setBounds(120, 250, 205, 30);
+		bankTF.setBounds(120, 290, 205, 30);
+		bankNTF.setBounds(120, 330, 205, 30);
 		j1.setBounds(80, 400, 80, 30);
 		j2.setBounds(195, 400, 80, 30);
 		this.add(p);
@@ -113,6 +124,10 @@ public class SignUp extends JFrame {
 						bankTF.getText().equals("")||bankNTF.getText().equals(""))
 					{
 						JOptionPane.showMessageDialog(null, "정보를 입력해 주세요");
+					} else if( (ca.checkId(idTF.getText()))) { //아이디 주민번호 중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 아이디 입니다.");
+					} else if(ca.checkIdNum(idNTF.getText())) {
+						JOptionPane.showMessageDialog(null, "이미 가입된 주민번호 입니다.");
 					}
 					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF.getText(), 
 							phone.getText(), bankTF.getText(),bankNTF.getText(), 0,0,0,1 ));
@@ -124,28 +139,6 @@ public class SignUp extends JFrame {
 					}
 				}
 				
-						/*account.setId(idTF.getText());
-						account.setPw(pwTF.getText());
-						account.setName(nameTF.getText());
-						account.setIdNum(idNTF.getText());
-						account.setpNum(phone.getText());
-						account.setBank(bankTF.getText());
-						account.setPay(bankNTF.getText());
-						account.setTicket(0); // 기본 0으로 
-						account.setPrintpoint(0);// 기본 0으로 
-						account.setTotalH(0);// 기본 0으로 
-						account.setCoupon(1);// 커피 쿠폰 1
-						
-						oos.writeObject(account);*/
-						
-						/*oos.write(idTF.getText()+"/");
-						oos.write(pwTF.getText()+"/");
-						oos.write(nameTF.getText()+"/");
-						oos.write(idNTF.getText()+"/");
-						oos.write(phone.getText()+"\r\n");
-						oos.write(card.getText()+"/");
-						oos.write(bankTF.getText()+"\r\n");
-						oos.write(bankNTF.getText()+"\r\n"); */
 					
 			});
 		       this.setVisible(true);
