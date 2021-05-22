@@ -122,10 +122,11 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e1) {// 로그인 할때
 				
+
 				if(logTF.getText().equals("")||pwTF.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 입력해주세요!");
 				}
-				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());
+				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());	
 				
 					if (check.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "회원 가입이 필요합니다.");
@@ -138,7 +139,8 @@ public class Login extends JFrame {
 						 //new MenuChoice();
 						 System.out.println(check.get(0));
 						 new MenuChoice(check.get(0));
-						 setVisible(false);
+							setVisible(false);
+
 						}
 				}
 					
