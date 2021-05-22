@@ -17,10 +17,9 @@ import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
 
 public class BookView extends JFrame implements ActionListener {
+	
 	Account ac = new Account();
-	
 	CheckAccount ca = new CheckAccount();
-	
 	Login lg = new Login();
 
 	//calendar
@@ -51,15 +50,18 @@ public class BookView extends JFrame implements ActionListener {
 	public void setYourSeat(String yourSeat) {
 	this.yourSeat = yourSeat;
 	}
+	//
 	
 	//buttons
 	JButton block = new JButton("1인 칸막이 좌석");
 	JButton open = new JButton("1인 오픈형 좌석");
 	JButton company = new JButton("스터디룸");
 
+	/*
 	//checkBox
 	JCheckBox pro = new JCheckBox("프로젝터 대여를 원하실 경우 체크하세요 ");
 	JCheckBox dont = new JCheckBox("사용 인원이 4인 이하인 경우 체크하세요 ");
+	*/
 	
 	//for color
 	JPanel panel = new JPanel();
@@ -69,29 +71,34 @@ public class BookView extends JFrame implements ActionListener {
 	}
 	
 	public BookView(Account account) {
-		
-	JFrame mon = new JFrame();
-	mon.setSize(360,600);
-	mon.setTitle("예약일 선택");
-	mon.setLayout(new GridLayout(15, 16));
+	JFrame viewDao = new JFrame();
+	
+	viewDao.setSize(360,600);
+	viewDao.setTitle("예약일 선택");
+	viewDao.setLocationRelativeTo(null);
+	viewDao.setVisible(true);
+	viewDao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+	panel.setLayout(new GridLayout(15, 16));
+	panel.setBackground(new Color(249,242,242));
+	
+	/*
 	for(int i = 0 ; i < may.length ; i ++) {
 	for(int j = 0 ; j < may[i].length ; j++) {
-	mon.add(new JButton(may[i][j]));
+		panel.add(new JButton(may[i][j]));
 
 	}
 	}
 	for(int i = 0 ; i < june.length ; i ++) {
 	for(int j = 0 ; j < june[i].length ; j++) {
-	mon.add(new JButton(june[i][j])); 
+		panel.add(new JButton(june[i][j])); 
 	}
 	}
-
-	mon.setVisible(true);
-	mon.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	*/
+	
+	viewDao.add(panel);
+	
 	//calendar output
-
 	String[] selDate = { "5월 28일", "5월 29일", "5월 30일", "5월 31일", "6월 1일",
 	"6월 2일", "6월 3일", "6월 4일", "6월 5일", "6월 6일" ,"6월 7일", "6월 8일",
 	"6월 9일","6월 10일","6월 11일","6월 12일","6월 13일","6월 14일","6월 15일",
@@ -108,25 +115,21 @@ public class BookView extends JFrame implements ActionListener {
 	selDate,
 	"5월 28일"
 	);
-	mon.setVisible(false);
+	viewDao.setVisible(false);
 	cSeat();
 	} 
-	//drop down
-
 
 
 	public void cSeat() { 
 	JFrame seat = new JFrame();
-	 seat.setVisible(true);
-	 seat.setSize(360,600);
+	seat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	seat.setVisible(true);
+	
+	seat.setSize(360,600);
+	seat.setLocationRelativeTo(null);
 	seat.setTitle("좌석을 선택하세요.");
 	panel.setLayout(null);
 	panel.setBackground(new Color(249,242,242));
-
-	seat.add(block);
-	seat.add(open);
-	seat.add(company); 
-	seat.add(panel);
 
 	block.setLocation(40,170);
 	block.setSize(270,50);
@@ -136,7 +139,11 @@ public class BookView extends JFrame implements ActionListener {
 
 	company.setLocation(40, 310);
 	company.setSize(270,50);
-
+	
+	seat.add(block);
+	seat.add(open);
+	seat.add(company); 
+	seat.add(panel);
 
 	block.addActionListener(new ActionListener() {
 
@@ -144,7 +151,7 @@ public class BookView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	JButton block = (JButton)e.getSource();
 	if(block.getText().equals("1인 칸막이 좌석")) {
-	seat.setVisible(false);
+		seat.setVisible(false);
 	forWomen();
 	
 	} 
@@ -158,7 +165,7 @@ public class BookView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	JButton open = (JButton) e.getSource();
 	if (open.getText().equals("1인 오픈형 좌석")) {
-	seat.setVisible(false);
+		seat.setVisible(false);
 	open();
 	
 	}
@@ -172,13 +179,12 @@ public class BookView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	JButton company = (JButton) e.getSource();
 	if (company.getText().equals("스터디룸")) {
-	seat.setVisible(false);
+		seat.setVisible(false);
 	studyRoom();
 	}
 	}
 	
 	});
-	seat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	}
 
@@ -186,9 +192,9 @@ public class BookView extends JFrame implements ActionListener {
 	JFrame ForWomen = new JFrame();
 	ForWomen.setSize(360, 600);
 	ForWomen.setTitle("1인 칸막이 좌석 (여성전용)");
-	ForWomen.setLayout(new GridLayout(5, 5));
-	ForWomen.setBackground(new Color(249, 242, 242));
-
+	panel.setLayout(new GridLayout(5, 5));
+	panel.setBackground(new Color(249, 242, 242));
+	ForWomen.setLocationRelativeTo(null);
 	ForWomen.setVisible(true);
 	ForWomen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
@@ -209,8 +215,11 @@ public class BookView extends JFrame implements ActionListener {
 	// 출력
 	for (int i = 0; i < PSEATFF.length; i++) {
 	for (int j = 0; j < PSEATFF[i].length; j++) {
-	ForWomen.add(new JButton(PSEATFF[i][j]));
+	panel.add(new JButton(PSEATFF[i][j]));
 	}
+	
+	ForWomen.add(panel);
+	
 	}
 	String[] seats = { "1인 칸막이 좌석 (여성전용) a,a","1인 칸막이 좌석 (여성전용) a,b","1인 칸막이 좌석 (여성전용) a,c","1인 칸막이 좌석 (여성전용) a,d","1인 칸막이 좌석 (여성전용) a,e","1인 칸막이 좌석 (여성전용) a,f","1인 칸막이 좌석 (여성전용) a,g",
 	"1인 칸막이 좌석 (여성전용) a,h","1인 칸막이 좌석 (여성전용) a,i","1인 칸막이 좌석 (여성전용) a,j","1인 칸막이 좌석 (여성전용) a,k","1인 칸막이 좌석 (여성전용) a,l","1인 칸막이 좌석 (여성전용) a,m","1인 칸막이 좌석 (여성전용) a,n","1인 칸막이 좌석 (여성전용) a,o"
@@ -232,11 +241,11 @@ public class BookView extends JFrame implements ActionListener {
 	
 	public void forMen() {
 	JFrame ForMen = new JFrame();
-	
 	ForMen.setSize(360, 600);
 	ForMen.setTitle("1인 칸막이 좌석 (남성전용)");
 	ForMen.setLayout(new GridLayout(5, 5));
 	ForMen.setBackground(new Color(249, 242, 242));
+	ForMen.setLocationRelativeTo(null);
 	ForMen.setVisible(true);
 	ForMen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -285,6 +294,7 @@ public class BookView extends JFrame implements ActionListener {
 	open.setTitle("1인 오픈형 좌석");
 	open.setLayout(new GridLayout(5, 5));
 	open.setBackground(new Color(249, 242, 242));
+	open.setLocationRelativeTo(null);
 	open.setVisible(true);
 	open.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
@@ -331,6 +341,7 @@ public class BookView extends JFrame implements ActionListener {
 	JFrame study = new JFrame();
 	study.setSize(360, 600);
 	study.setTitle("스터디룸");
+	study.setLocationRelativeTo(null);
 	panel.setLayout(null);
 	panel.setBackground(new Color(249,242,242));
 
@@ -432,11 +443,10 @@ public class BookView extends JFrame implements ActionListener {
 	public void done() {
 	JOptionPane.showMessageDialog(
 	null,
-	" "/* +name*/ + "님께서 선택하신 일자 [ 2021년 " + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.", 
+	" "+ ac.getName()+ "님께서 선택하신 일자 [ 2021년 " + yourDate + " ] 에, \n 예약하신 좌석 [ " + yourSeat + " ] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.", 
 	"예약 완료!!",
 	JOptionPane.PLAIN_MESSAGE
 	);
-	//new MenuChoice(Account account); //메인메뉴로
 	}
 	
 	/*

@@ -1,11 +1,15 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,9 +23,8 @@ public class checkBooking extends JFrame {
 	// JLabel bar1 = new JLabel("예약정보");
 	//JTable table = new JTable(); // 예약정보 표
 	
-	JButton btn1 = new JButton("예약 변경"); // 예약변경 버튼
-	JButton btn2 = new JButton("예약 취소"); // 예약취소 버튼
-	JTextField bInfo = new JTextField("님께서는 [" + bv.getYourDate() + "] 에 [" + bv.getYourSeat() + "] 좌석을 예약하셨습니다." );
+	JButton modify = new JButton("예약 변경"); // 예약변경 버튼
+	JButton cancel = new JButton("예약 취소"); // 예약취소 버튼
 	//JButton back = new JButton(); // 뒤로가기 버튼
 	
 	/*
@@ -34,52 +37,114 @@ public class checkBooking extends JFrame {
 
 	
 	public checkBooking(Account account) {
-		//super("checkBooking");
-		//this.setLocationRelativeTo(null);
 		
-		this.setSize(360, 600);
-		this.setLayout(null);
+		JFrame bSearch = new JFrame();
+		bSearch.setLocationRelativeTo(null);
+
+		bSearch.setSize(360, 600);
+		cb.setLayout(null);
 		cb.setBackground(new Color(249, 242, 242)); 
-		this.setTitle("예약확인");
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		bSearch.setTitle("예약확인");
+		
+		bSearch.setVisible(true);
+		bSearch.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel image = new JLabel(new ImageIcon("images/humanIcon3.png"));
 		image.setBounds(34,80,54,54);
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0,0,360,53);
 		
+		JLabel bInfo = new JLabel("님께서는 [" + bv.getYourDate() + "] 에 [" + bv.getYourSeat() + "] 좌석을 예약하셨습니다." );
+
+		
 		bInfo.setSize(270,50);
 		bInfo.setLocation(40,170);
 		
-		btn1.setSize(270,50);
-		btn1.setLocation(40, 240);
+		modify.setSize(270,50);
+		modify.setLocation(40, 240);
 		
-		btn2.setSize(270,50);
-		btn2.setLocation(40, 310);
+		cancel.setSize(270,50);
+		cancel.setLocation(40, 310);
 		
-		
+		Font font = new Font("맑은 고딕", Font.BOLD, 20);
 		JLabel lTitle = new JLabel("예약정보");
 		lTitle.setLocation(140, 80);
 		lTitle.setSize(100, 54);
-		
-		
-		// 폰트 설정
-		//Font font = new Font("맑은 고딕", Font.BOLD, 20);
-		//lTitle.setFont(font);
-		
-		this.add(lTitle);
-		this.add(cb);
-		this.add(bar);
-		this.add(image);
-		this.add(bInfo);
-		this.add(btn1);
-		this.add(btn2);
+		lTitle.setFont(font);
+
+		cb.add(lTitle);
+		cb.add(bar);
+		cb.add(image);
+		/*
+		bSearch.add(lTitle);
+		bSearch.add(bar);
+		bSearch.add(image);
+		*/
+		cb.add(bInfo);
+		cb.add(modify);
+		cb.add(cancel);
+		bSearch.add(cb);
 
 		
-		
-		
+		/*
+		 * company.addActionListener(new ActionListener() {
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	JButton company = (JButton) e.getSource();
+	if (company.getText().equals("스터디룸")) {
+	seat.setVisible(false);
+	studyRoom();
+	}
 	}
 	
+	});
+	seat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
+	}
+		 * 
+		 */
+		
+		modify.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton modify = (JButton)e.getSource();
+				if(modify.getText().equals("예약 변경")) {
+					JOptionPane.showMessageDialog(
+							null,
+							"기존 예약은 삭제되었으며 재 예약을 위해 예약화면으로 돌아갑니다.",
+							"예약 변경",
+							JOptionPane.PLAIN_MESSAGE
+							);
+					bSearch.setVisible(false);
+					//컨트롤러에서 해당 회원의 예약 내역을 지우고 예약 초기 창으로 보내기.
+					new BookView(account);
+					
+				}
+			}
+			
+		});
+		
+		cancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton cancel = (JButton)e.getSource();
+				if(cancel.getText().equals("예약 취소")) {
+					JOptionPane.showMessageDialog(
+							null,
+							"예약 취소가 완료되었습니다.",
+							"예약 취소",
+							JOptionPane.PLAIN_MESSAGE
+							);
+					bSearch.setVisible(false);
+					//컨트롤러에서 해당 회원의 예약 내역을 지우고
+					new MenuChoice(account);				
+					}
+			}
+			
+		});
+	}
 }
