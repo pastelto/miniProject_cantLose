@@ -22,11 +22,11 @@ public class Account implements Serializable {
 	private String bank; // 은행
 	private String pay; // 결제 정보(카드)
 
-	private int oneSeat; // 1인석
-	private int stdRoom; // 스터디룸
+	private int oneSeat; // 1인석 이용권개수
+	private int stdRoom; // 스터디룸 이용권개수
 	private int printPoint; // 프린트포인트
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
-	private int coupon = 2; // 회원가입시 주는 쿠폰
+	private int coupon = 2; // 회원가입시 주는 음료쿠폰
 
 	public Account() {
 	}
@@ -153,5 +153,7 @@ public class Account implements Serializable {
 		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + oneSeat + ","
 				+ stdRoom + ","	+ printPoint + "," + totalH + "," + coupon;
 	}
+
+
 
 }

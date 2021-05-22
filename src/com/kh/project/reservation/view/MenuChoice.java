@@ -20,7 +20,6 @@ import com.kh.project.reservation.view.Board.MemoList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
 
-
 public class MenuChoice extends JFrame {
 
 	JLabel bar = new JLabel();
@@ -34,10 +33,7 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
-	
-	
 
-	
 	public MenuChoice(Account account) {
 
 		// Menu 기본
@@ -55,14 +51,14 @@ public class MenuChoice extends JFrame {
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
 		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
-		bar.setHorizontalTextPosition(JLabel.CENTER); 
+		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-		
+
 		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 		image.setLocation(10, 300);
 		image.setSize(100, 100);
-		
-		// 메뉴 버튼		
+
+		// 메뉴 버튼
 		b1.setBounds(10, 80, 150, 50);
 		b2.setBounds(180, 80, 150, 50);
 		b3.setBounds(10, 140, 150, 50);
@@ -83,22 +79,21 @@ public class MenuChoice extends JFrame {
 		b7.setBackground(new Color(220, 118, 112));
 		b8.setBackground(new Color(220, 118, 112));
 		b9.setBackground(new Color(220, 118, 112));
-		
+
 		b1.setFocusPainted(true);
-		
+
 		// 상단바 메뉴 폰트
 		Font font = new Font("맑은 고딕", Font.BOLD, 30);
-		
-		//mTitle.setFont(font);
+
+		// mTitle.setFont(font);
 		bar.setFont(font);
-		
+
 		try {
-			this.setIconImage(ImageIO.read(new File("images/logo.PNG"))); 
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 		// 붙여넣기
 		this.add(bar);
@@ -124,58 +119,57 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b2.addMouseListener(new MouseAdapter() { // 이용권구매
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new TicketGui();// 이용권구매
+					new TicketGui(account);
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b3.addMouseListener(new MouseAdapter() { // 음료 구매
 			@Override
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					new Drink();
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b4.addMouseListener(new MouseAdapter() { // 프린트
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new PrintServiceGui();// 프린트
+					new PrintServiceGui(account);
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b5.addMouseListener(new MouseAdapter() { // 예약확인
 			@Override
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					new checkBooking();
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b6.addMouseListener(new MouseAdapter() { // 내정보
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 내정보
+					new Check(account); 
 					setVisible(false);
-					new Check(account);
 				}
 			}
 		});
-		
+
 		b7.addMouseListener(new MouseAdapter() { // 체크인/체크아웃
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -185,7 +179,7 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b8.addMouseListener(new MouseAdapter() { // 내노트
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -196,7 +190,7 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b9.addMouseListener(new MouseAdapter() { // 로그아웃 - 로그인화면
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -213,4 +207,3 @@ public class MenuChoice extends JFrame {
 
 	}
 }
-
