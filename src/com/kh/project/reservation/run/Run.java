@@ -1,24 +1,27 @@
 
 package com.kh.project.reservation.run;
-import com.kh.project.reservation.view.Login;
+import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.BeverageGui.Drink;
 
 
 public class Run {
 
+	static Account account = new Account();
+	
 	public static void main(String[] args) {
 
 
 
 		//MenuChoice m = new MenuChoice();
-		//MenuChoice m = new MenuChoice();
+//		MenuChoice m = new MenuChoice( account);
 
 		//new Login();
 
 
+		Drink d = new Drink();
 
 
-
-		Login l = new Login();
+		//Login l = new Login();
 		
 
 
