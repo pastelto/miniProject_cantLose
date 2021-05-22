@@ -84,12 +84,6 @@ public class MList extends JFrame {
 			this.setLocation(getLocation());
 			this.setBackground(new Color(249, 242, 242));
 
-//			JLabel label = new JLabel("내 노트");
-//			label.setBounds(20, 20, 450, 50);
-//			label.setForeground(new Color(249, 242, 242));
-//			label.setHorizontalAlignment(JLabel.CENTER);
-//			add(label);
-
 			JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 			bar.setBounds(0, 0, 360, 53);
 			bar.setText("내 노트  ");
@@ -203,7 +197,6 @@ public class MList extends JFrame {
 
 		public Screen(Account account, String str) {
 			this.setSize(360, 600);
-			this.setLocationRelativeTo(null);
 			this.setLayout(null);
 			this.setBackground(new Color(249, 242, 242));
 
@@ -217,7 +210,6 @@ public class MList extends JFrame {
 
 			label = new JLabel(str);
 			label.setBounds(0, 0, 360, 53);
-//			label.setForeground(new Color(249, 242, 242));
 			label.setHorizontalAlignment(JLabel.CENTER);
 			label.setFont(font);
 
@@ -246,7 +238,6 @@ public class MList extends JFrame {
 
 			add(label);
 			add(Title);
-//			add(sp);
 			add(saveM);
 			add(memo);
 			add(back);
@@ -357,15 +348,6 @@ public class MList extends JFrame {
 
 		}
 
-		private void setLocationRelativeTo(Object object) {
-			// TODO Auto-generated method stub
-
-		}
-
-		private void setIconImage(BufferedImage read) {
-			// TODO Auto-generated method stub
-
-		}
 
 		private class Error {
 			public void errorMessage() {
@@ -384,7 +366,4 @@ public class MList extends JFrame {
 		}
 	}
 
-//	public static void main(String[] args) {
-//		new MList();
-//	}
 }
