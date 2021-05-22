@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.model.vo.pay.Ticket;
 import com.kh.project.reservation.view.Board.MemoList;
 
 public class MenuChoice extends JFrame {
@@ -33,7 +35,7 @@ public class MenuChoice extends JFrame {
 	
 
 	
-	public MenuChoice() {
+	public MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");
@@ -115,8 +117,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					setVisible(false);
-					new BookView().monAndSeat();
-
+					new BookView(account);
 				}
 			}
 		});
@@ -145,7 +146,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new PrintService();
+					//new PrintService();
 					setVisible(false);
 				}
 			}
@@ -155,8 +156,8 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) { 
 				if (e.getButton() == 1) {
-					new checkBooking();
 					setVisible(false);
+					new checkBooking(account);
 				}
 			}
 		});

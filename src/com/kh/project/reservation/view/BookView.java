@@ -13,10 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
 
 public class BookView extends JFrame implements ActionListener {
 	Account ac = new Account();
+	
+	CheckAccount ca = new CheckAccount();
+	
+	Login lg = new Login();
 
 	//calendar
 	private String may[][] = {{"****","****", "****","5월", "****","****","****"},{"일","월","화","수","목","금","토"},{" "," "," "," "," "," ","1일"},{"2일","3일","4일","5일","6일","7일","8일"},{"9일","10일","11일","12일","13일","14일","15일"},{"16일","17일","18일","19일","20일","21일","22일"},{"23일","24일","25일","26일","27일","28일","29일"},{"30일","31일"," ", " ", " ", " "," "}};
@@ -60,10 +65,11 @@ public class BookView extends JFrame implements ActionListener {
 	JPanel panel = new JPanel();
 
 	public BookView() {
-
+		// TODO Auto-generated constructor stub
 	}
-
-	public void monAndSeat() {
+	
+	public BookView(Account account) {
+		
 	JFrame mon = new JFrame();
 	mon.setSize(360,600);
 	mon.setTitle("예약일 선택");
@@ -106,6 +112,8 @@ public class BookView extends JFrame implements ActionListener {
 	cSeat();
 	} 
 	//drop down
+
+
 
 	public void cSeat() { 
 	JFrame seat = new JFrame();
@@ -350,7 +358,7 @@ public class BookView extends JFrame implements ActionListener {
 	study.setVisible(true);
 	study.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	String[] rooms = { "스터디룸 A","스터디룸 B","스터디룸 C","스터디룸 D"
+	String[] rooms = { "스터디룸 A (최대 4인)","스터디룸 B (최대 4인)","스터디룸 C (최대 4인)","스터디룸 D (최대 4인)"
 	};
 
 	yourSeat = (String)JOptionPane.showInputDialog(
@@ -360,7 +368,7 @@ public class BookView extends JFrame implements ActionListener {
 	JOptionPane.PLAIN_MESSAGE,
 	null,
 	rooms,
-	"스터디룸 A" 
+	"스터디룸 A (최대 4인)"
 	);
 	study.setVisible(false);
 	done();
@@ -420,16 +428,18 @@ public class BookView extends JFrame implements ActionListener {
 
 	}
 	*/
+	
 	public void done() {
 	JOptionPane.showMessageDialog(
 	null,
-	" " + ac.getName() + "님께서 선택하신 일자 [ 2021년 " + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.", 
+	" "/* +name*/ + "님께서 선택하신 일자 [ 2021년 " + yourDate + "] 에, \n 예약하신 좌석 [" + yourSeat + "] 으로 예약 되었습니다. \n 예약 취소 및 수정은 예약 정보 확인 탭에서 가능합니다.", 
 	"예약 완료!!",
 	JOptionPane.PLAIN_MESSAGE
 	);
-	new MenuChoice(); //메인메뉴로
+	//new MenuChoice(Account account); //메인메뉴로
 	}
 	
+	/*
 	public void cbooking() {
 		
 	JFrame haveYouBooked = new JFrame();
@@ -442,12 +452,11 @@ public class BookView extends JFrame implements ActionListener {
 	panel.setLayout(null);
 	panel.setBackground(new Color(249, 242, 242));
 	
-	/*
 	JLabel image = new JLabel(new ImageIcon("images/humanIcon3.pngpek160114_273"));
 	image.setBounds(34, 80, 54, 54);
 	JLabel bar = new JLabel(new ImageIcon("images/bar.pngpek160114_273"));
 	bar.setBounds(0, 0, 360, 53);
-	*/
+
 	JLabel lTitle = new JLabel(ac.getName() + "님의 에약정보"); 
 	lTitle.setLocation(140, 80);
 	lTitle.setSize(100, 54);
@@ -471,14 +480,16 @@ public class BookView extends JFrame implements ActionListener {
 	/*
 	Font font = new Font("HY견명조", Font.BOLD, 20);
 	lTitle.setFont(font);
+	
+	
 	panel.add(bar);
 	panel.add(image);
-	*/
 	
-	panel.add(lTitle);
-	panel.add(bInfo);
-	panel.add(cancelB);
-	panel.add(reBook);
+	
+	haveYouBooked.add(lTitle);
+	haveYouBooked.add(bInfo);
+	haveYouBooked.add(cancelB);
+	haveYouBooked.add(reBook);
 	
 	haveYouBooked.setTitle("예약정보");
 	haveYouBooked.add(panel);
@@ -486,6 +497,7 @@ public class BookView extends JFrame implements ActionListener {
 	haveYouBooked.setVisible(true);
 	haveYouBooked.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	*/
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
