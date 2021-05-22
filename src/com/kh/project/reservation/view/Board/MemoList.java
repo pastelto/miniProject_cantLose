@@ -26,7 +26,8 @@ public class MemoList extends JFrame { // 메모 목록창
 	JButton back = new JButton("뒤로가기"); // 뒤로가기 (or 메뉴)
 	Account a = new Account();
 	
-	public MemoList() { // 패널1
+	
+	public MemoList(Account account) { // 패널1
 
 		super("MemoList");
 		// 패널 설정
@@ -76,30 +77,30 @@ public class MemoList extends JFrame { // 메모 목록창
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == 1) {
-				new MenuChoice(a); 
+				new MenuChoice(account); 
 				setVisible(false);
 			}
 		}
 
 	});
 		
-		newM.addMouseListener(new MouseAdapter() { // 메뉴로 돌아가기
+		newM.addMouseListener(new MouseAdapter() { // 글쓰기
 			@Override 
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new MyMemo(); 
+					new MyMemo(account);
 					setVisible(false);
 				}
 			}
 
 		});
 		
-		editM.addMouseListener(new MouseAdapter() { // 메뉴로 돌아가기
+		editM.addMouseListener(new MouseAdapter() { // 글 수정하기
 			@Override 
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MyMemo mm = new MyMemo(); 
-					mm.editM();
+					MyMemo m = new MyMemo(account); 
+					m.editM();
 					setVisible(false);
 				}
 			}

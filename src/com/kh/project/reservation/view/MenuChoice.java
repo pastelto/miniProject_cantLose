@@ -191,7 +191,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getButton() == 1) {
-					new MemoList();
+					new MemoList(account);
 					setVisible(false);
 				}
 			}

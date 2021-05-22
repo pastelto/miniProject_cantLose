@@ -18,6 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.kh.project.reservation.controller.BoardManager;
+import com.kh.project.reservation.model.vo.Account;
+
 public class MyMemo extends JFrame {
 
 	JLabel bar = new JLabel();
@@ -27,8 +30,9 @@ public class MyMemo extends JFrame {
 	JTextField title = new JTextField(40); // 메모 제목
 	JTextArea memo = new JTextArea(); // 메모 내용
 	JButton back = new JButton("취소"); // 뒤로가기 (or 메뉴)
-
-	public MyMemo() { // 패널 2
+	BoardManager bm = new BoardManager();
+	
+	public MyMemo(Account account) { // 패널 2
 
 		// 패널 설정
 		this.setSize(360, 600);
@@ -95,7 +99,7 @@ public class MyMemo extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					JOptionPane.showMessageDialog(null, "메모가 취소되었습니다!", "취소", JOptionPane.WARNING_MESSAGE);
-					new MemoList();
+					new MemoList(account);
 					setVisible(false);
 				}
 			}
@@ -109,7 +113,7 @@ public class MyMemo extends JFrame {
 				if (e.getButton() == 1) {
 					newMemo();
 					JOptionPane.showMessageDialog(null, "메모가 저장되었습니다!", "저장완료", JOptionPane.INFORMATION_MESSAGE);
-					new MemoList();
+					new MemoList(account);
 					setVisible(false);
 				}
 			}
@@ -121,7 +125,7 @@ public class MyMemo extends JFrame {
 	}
 
 	// 메모 작성 및 저장
-	protected void newMemo() {
+	private void newMemo() {
 
 		String t = title.getText();
 		String fileTitle = t + ".txt";
@@ -135,7 +139,7 @@ public class MyMemo extends JFrame {
 
 	}
 
-	protected void editM() {
+	private void editM() {
 
 	}
 

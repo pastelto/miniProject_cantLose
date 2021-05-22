@@ -144,7 +144,7 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e1) {// 로그인 할때
 				
-					//Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
+					Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
 				ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());
 				
 					if (check.isEmpty()) {
