@@ -45,4 +45,13 @@ public class CheckAccount {
 		}
 		return false;
 }
+	
+	
+	public ArrayList<Account> find(String name, String idNum) { // id 
+		   ArrayList<Account> a = md.Find(name,idNum);
+		   
+			return a;
+			}
+		
 }
+	
