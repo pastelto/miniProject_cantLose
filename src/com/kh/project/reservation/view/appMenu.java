@@ -117,7 +117,7 @@ public class appMenu {
             buyTicket();
             break;
          case 3: // 음료 구매
-            dm.orderBeverage();
+            dm.select();
             break;
          case 4: // 프린트 서비스
             printService();
@@ -295,7 +295,6 @@ public class appMenu {
 
    // 예약정보 
    private void checkMyReservation() {
-
       System.out.println("***예약 정보 확인***");
 
       String myR = rm.checkMyReservation();

@@ -1,7 +1,7 @@
 
 package com.kh.project.reservation.run;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.BeverageGui.Drink;
+import com.kh.project.reservation.view.Login;
 
 
 public class Run {
@@ -15,10 +15,10 @@ public class Run {
 		//MenuChoice m = new MenuChoice();
 //		MenuChoice m = new MenuChoice( account);
 
-		//new Login();
+		new Login();
 
 
-		Drink d = new Drink();
+		//Drink d = new Drink();
 
 
 		//Login l = new Login();

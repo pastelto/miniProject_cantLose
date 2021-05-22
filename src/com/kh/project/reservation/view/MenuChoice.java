@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.BeverageGui.Drink;
 import com.kh.project.reservation.view.Board.MemoList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;

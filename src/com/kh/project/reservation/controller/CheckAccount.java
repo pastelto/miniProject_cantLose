@@ -15,10 +15,6 @@ public class CheckAccount {
 	
 	public CheckAccount() {}
 	
-	/*public void addSingIn(Account account) { 
-		md.fileSave(account);
-		
-	}*/
 	public ArrayList<Account> searchAccount(String id, String pw) { // id 
 	   ArrayList<Account> list = md.searchAccount(id,pw);
 	return list;
@@ -32,4 +28,19 @@ public class CheckAccount {
 		md.saveAccount();		
 	}
 	
+	public Boolean checkId(String id) { 
+		if(md.CheckId(id)) {
+			return true;
+		}
+		return false;
+		
+}
+	
+	public Boolean checkIdNum(String idNum) { 
+		if(md.CheckIdNum(idNum)) {
+			return true;
+		}
+		return false;
+		
+	}
 }

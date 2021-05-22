@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,7 +39,7 @@ public class Drink extends JFrame{
 	JButton k = new JButton("< prev");
 	JTextField tf = new JTextField();
 	JLabel jl = new JLabel("수량을 숫자로 입력하세요 :)");
-	
+
 	
 	
 	public Drink() {
@@ -59,9 +60,6 @@ public class Drink extends JFrame{
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
-		
-		
-		
 		/*//이거뭐지
 		JLabel la = new JLabel();
 		la.setSize(250, 40);
@@ -141,14 +139,15 @@ public class Drink extends JFrame{
 		tf.setFont(tf.getFont().deriveFont(17.0f));
 		tf.setSize(50, 30);
 		
+		
+		
 		//이벤트 효과
 		a.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "아메리카노";
-				dm.select(menu);
-					setVisible(false);
+				String str = "아메리카노";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -156,9 +155,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "아이스아메리카노";
-				dm.select(menu);
-					setVisible(false);
+				String str = "아이스아메리카노";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -166,9 +164,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "카페라떼";
-				dm.select(menu);
-					setVisible(false);
+				String str = "카페라떼";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -176,9 +173,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "아이스카페라떼";
-				dm.select(menu);
-					setVisible(false);
+				String str = "아이스카페라떼";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -186,9 +182,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "핫초코";
-				dm.select(menu);
-					setVisible(false);
+				String str = "핫초코";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -196,9 +191,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "아이스핫초코";
-				dm.select(menu);
-					setVisible(false);
+				String str = "아이스핫초코";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -206,9 +200,8 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "딸기우유";
-				dm.select(menu);
-					setVisible(false);
+				String str = "딸기우유";
+				dm.menuget(str);
 				}
 			}
 		});
@@ -216,9 +209,18 @@ public class Drink extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				String menu = "레몬에이드";
-				dm.select(menu);
-					setVisible(false);
+				String str = "레몬에이드";
+				dm.menuget(str);
+				}
+			}
+		});
+		i.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					count();
+					dm.select();
+					
 				}
 			}
 		});
@@ -232,9 +234,8 @@ public class Drink extends JFrame{
 				}
 			}
 		});
-		//수량 넘기기 
+		
 		String count = tf.getText();
-		dm.countsave(count);
 		
 		cc.add(bar);
 		cc.add(a);
@@ -252,8 +253,8 @@ public class Drink extends JFrame{
 		cc.add(tf);
 		cc.add(jl);
 		
-
 		
+
 		this.add(cc);
 		this.add(input);
 
@@ -261,11 +262,13 @@ public class Drink extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	
+	public void count() {
+		//수량 넘기기 
+		String count = tf.getText();
+				System.out.println("이거 드링크에 메소드에서 수량 넘기기"+count);
+				
+				dm.countsave(count);
 	}
 	
-
-	
-
-
+}
 

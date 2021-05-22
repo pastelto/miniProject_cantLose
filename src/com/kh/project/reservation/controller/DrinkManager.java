@@ -1,7 +1,6 @@
 
 package com.kh.project.reservation.controller;
 
-import java.awt.Component;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -9,6 +8,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.BeverageGui.Drink;
+import com.kh.project.reservation.view.BeverageGui.ListDialog;
 
 
 public class DrinkManager {
@@ -34,12 +35,13 @@ public class DrinkManager {
 	int temp = 0; // 총금액 담는 변수
 	Set<String> eSet1 = dc.keySet(); //
 	int num; // gui에서 수량을 받아오는 
-
+	String menu;// gui에서 메뉴를 받아오는 
+	
 	public DrinkManager() {
 	}
 
-	// 돌아가는 while문
-	/*public void orderBeverage() {
+	/*// 돌아가는 while문
+	public void orderBeverage() {
 		while (true) {
 			System.out.println("***음료 메뉴***");
 			System.out.println("1.아메리카노"); // 2000
@@ -55,33 +57,47 @@ public class DrinkManager {
 		}
 	}*/
 
+	//수량 받아오기 gui에서
 	public void countsave(String count) {
 		
-		num = Integer.parseInt(count);
+		num = Integer.valueOf(count);
+		
+		System.out.println(num);
 		
 	}
+	
+
+	public void menuget(String str) {
+		
+		menu = str;
+		System.out.println(menu);
+	}
+
 
 	
-		public void select(String menu) {
+		public void select() {
 		while (true) {
-			
 			//메뉴선택
+			
+			//수량입력
+			System.out.println("select 돌아가는 중");
+			{
+				dc.put(menu, num);
+			}
+			
+			new ListDialog();
+			
+			
 			
 			System.out.println("장바구니에 더 담으시겠습니까? (Y/N)");
 			String str = sc.nextLine();
 
 			if (str.equals("y")) {
-				{
-					dc.put(menu, num);
-				}
 				
 				totalmoney();
 				
 
 			} else if (str.equals("n")) {
-				{
-					dc.put(menu, num);
-				}
 
 				totalmoney();
 
@@ -128,7 +144,7 @@ public class DrinkManager {
 
 	}
 
-	private void totalmoney() {
+	public void totalmoney() {
 		int price = 0;
 		int count = 0;
 

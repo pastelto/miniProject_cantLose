@@ -124,6 +124,10 @@ public class SignUp extends JFrame {
 						bankTF.getText().equals("")||bankNTF.getText().equals(""))
 					{
 						JOptionPane.showMessageDialog(null, "정보를 입력해 주세요");
+					} else if( (ca.checkId(idTF.getText()))) { //아이디 주민번호 중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 아이디 입니다.");
+					} else if(ca.checkIdNum(idNTF.getText())) {
+						JOptionPane.showMessageDialog(null, "이미 가입된 주민번호 입니다.");
 					}
 					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF.getText(), 
 							phone.getText(), bankTF.getText(),bankNTF.getText(), 0,0,0,1 ));
@@ -135,28 +139,6 @@ public class SignUp extends JFrame {
 					}
 				}
 				
-						/*account.setId(idTF.getText());
-						account.setPw(pwTF.getText());
-						account.setName(nameTF.getText());
-						account.setIdNum(idNTF.getText());
-						account.setpNum(phone.getText());
-						account.setBank(bankTF.getText());
-						account.setPay(bankNTF.getText());
-						account.setTicket(0); // 기본 0으로 
-						account.setPrintpoint(0);// 기본 0으로 
-						account.setTotalH(0);// 기본 0으로 
-						account.setCoupon(1);// 커피 쿠폰 1
-						
-						oos.writeObject(account);*/
-						
-						/*oos.write(idTF.getText()+"/");
-						oos.write(pwTF.getText()+"/");
-						oos.write(nameTF.getText()+"/");
-						oos.write(idNTF.getText()+"/");
-						oos.write(phone.getText()+"\r\n");
-						oos.write(card.getText()+"/");
-						oos.write(bankTF.getText()+"\r\n");
-						oos.write(bankNTF.getText()+"\r\n"); */
 					
 			});
 		       this.setVisible(true);
