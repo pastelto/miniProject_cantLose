@@ -1,5 +1,8 @@
 package com.kh.project.reservation.controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public class BoardManager { // 명언 & 보드
 	
 	public String maxim() {
@@ -44,9 +47,23 @@ public class BoardManager { // 명언 & 보드
 		
 	}
 	
-	public void myMemo() { // 메모장
+	public void myMemoList() { // 메모장 목록
 		
 		
 	}
+	
+//	public void newMemo(String title, String memo) {
+//
+//		String t = title;
+//		String fileTitle = t + ".txt";
+//		try {
+//			BufferedWriter bw = new BufferedWriter(new FileWriter(fileTitle));
+//			bw.write(memo);
+//			bw.close();
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//
+//	}
 
 }

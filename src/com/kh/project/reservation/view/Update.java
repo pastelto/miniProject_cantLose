@@ -22,9 +22,6 @@ public class Update extends JFrame {
 
 	MyDialog dialog;
 
-	public Update() {
-	}
-
 	public Update(Account account) {
 
 		this.setTitle("내 정보 수정");

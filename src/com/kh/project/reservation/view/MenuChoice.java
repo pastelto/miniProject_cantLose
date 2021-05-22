@@ -2,7 +2,9 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -16,11 +18,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.model.vo.Account;
+
 import com.kh.project.reservation.view.BeverageGui.Drink;
-import com.kh.project.reservation.view.Board.MemoList;
+
+
+import com.kh.project.reservation.view.Board.MList;
+
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
-
 
 public class MenuChoice extends JFrame {
 
@@ -35,20 +40,24 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
-	
-	
 
-	
+	int xL, yL;
+	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
+	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
+
 	public MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");
 		this.setSize(360, 600);
-		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		mc.setBackground(new Color(249, 242, 242));
 		mc.setLayout(null);
 		mc.setSize(360, 600);
+		// 화면 정중앙
+		xL = screenSize.width / 2 - this.getWidth() / 2;
+		yL = screenSize.height / 2 - this.getHeight() / 2;
+		setLocation(xL, yL); // 화면 정중앙
 
 		// 메뉴 타이틀
 		this.setTitle("MENU");
@@ -56,14 +65,14 @@ public class MenuChoice extends JFrame {
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
 		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
-		bar.setHorizontalTextPosition(JLabel.CENTER); 
+		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-		
+
 		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 		image.setLocation(10, 300);
 		image.setSize(100, 100);
-		
-		// 메뉴 버튼		
+
+		// 메뉴 버튼
 		b1.setBounds(10, 80, 150, 50);
 		b2.setBounds(180, 80, 150, 50);
 		b3.setBounds(10, 140, 150, 50);
@@ -84,22 +93,21 @@ public class MenuChoice extends JFrame {
 		b7.setBackground(new Color(220, 118, 112));
 		b8.setBackground(new Color(220, 118, 112));
 		b9.setBackground(new Color(220, 118, 112));
-		
+
 		b1.setFocusPainted(true);
-		
+
 		// 상단바 메뉴 폰트
 		Font font = new Font("맑은 고딕", Font.BOLD, 30);
-		
-		//mTitle.setFont(font);
+
+		// mTitle.setFont(font);
 		bar.setFont(font);
-		
+
 		try {
-			this.setIconImage(ImageIO.read(new File("images/logo.PNG"))); 
+			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 		// 붙여넣기
 		this.add(bar);
@@ -125,7 +133,7 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b2.addMouseListener(new MouseAdapter() { // 이용권구매
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -135,17 +143,17 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b3.addMouseListener(new MouseAdapter() { // 음료 구매
 			@Override
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new Drink();
+					new Drink(account);
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b4.addMouseListener(new MouseAdapter() { // 프린트
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -155,17 +163,17 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b5.addMouseListener(new MouseAdapter() { // 예약확인
 			@Override
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					new checkBooking();
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b6.addMouseListener(new MouseAdapter() { // 내정보
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -176,7 +184,7 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b7.addMouseListener(new MouseAdapter() { // 체크인/체크아웃
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -186,18 +194,18 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-		
+
 		b8.addMouseListener(new MouseAdapter() { // 내노트
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getButton() == 1) {
-					new MemoList();
+					new MList(account);
 					setVisible(false);
 				}
 			}
 		});
-		
+
 		b9.addMouseListener(new MouseAdapter() { // 로그아웃 - 로그인화면
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -214,4 +222,3 @@ public class MenuChoice extends JFrame {
 
 	}
 }
-

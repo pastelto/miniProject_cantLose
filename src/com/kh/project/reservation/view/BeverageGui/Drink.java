@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.DrinkManager;
+import com.kh.project.reservation.controller.UpdateAccount;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
+import com.kh.project.reservation.view.Update;
 
 public class Drink extends JFrame{
 	
@@ -40,9 +42,11 @@ public class Drink extends JFrame{
 	JTextField tf = new JTextField();
 	JLabel jl = new JLabel("수량을 숫자로 입력하세요 :)");
 
+	MyDialog dialog;
 	
+	public Drink() {}
 	
-	public Drink() {
+	public Drink(Account account) {
 		super("Beverage");
 		this.setSize(360, 600);
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
@@ -51,7 +55,7 @@ public class Drink extends JFrame{
 		cc.setBackground(new Color(249, 242, 242)); // 배경색 설정
 		cc.setLayout(null);
 		cc.setSize(getMaximumSize());
-		
+		dialog = new MyDialog(new JFrame(), account , "장바구니");
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
@@ -60,14 +64,7 @@ public class Drink extends JFrame{
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
-		/*//이거뭐지
-		JLabel la = new JLabel();
-		la.setSize(250, 40);
-		la.setLocation(50, 400);
-		la.setFont(la.getFont().deriveFont(15.0f));
-		la.setBackground(new Color(248, 248, 248));
-		*/
-
+	
 		// 버튼
 		a.setLocation(50, 70);
 		a.setBackground(new Color(248, 248, 248));
@@ -148,6 +145,8 @@ public class Drink extends JFrame{
 				if (e.getButton() == 1) {
 				String str = "아메리카노";
 				dm.menuget(str);
+				
+
 				}
 			}
 		});
@@ -220,7 +219,7 @@ public class Drink extends JFrame{
 				if (e.getButton() == 1) {
 					count();
 					dm.select();
-					
+					dialog.setVisible(true);
 				}
 			}
 		});
@@ -265,10 +264,75 @@ public class Drink extends JFrame{
 	public void count() {
 		//수량 넘기기 
 		String count = tf.getText();
-				System.out.println("이거 드링크에 메소드에서 수량 넘기기"+count);
-				
 				dm.countsave(count);
 	}
 	
 }
+
+
+
+//장바구니 다이얼로그
+class MyDialog extends JDialog {
+
+	JLabel label = new JLabel("더 담으시겠습니까?"); // 다이얼로그 문구
+	JButton okBtn = new JButton("OK"); // 버튼 1
+	JButton noBtn = new JButton("NO"); // 버튼 2
+	DrinkManager dm = new DrinkManager();
+	
+	boolean result;
+
+	public MyDialog(JFrame frame,Account account, String title) {
+
+		super(frame, title);
+		setLocation(610,400); // 다이얼로그 위치
+		setSize(250, 150); // 다이얼로그 창 크기
+		setLayout(null); // 다이얼로그 프레임 종류
+
+		label.setBounds(0, 0, 240, 50); // 레이블 위치 및 크기 지정
+		label.setHorizontalAlignment(JLabel.CENTER); // 가운데 정렬
+		label.setFont(label.getFont().deriveFont(17.0f));
+
+		okBtn.setBounds(20, 60, 70, 30); // 버튼 위치 및 크기 지정
+		okBtn.setBackground(new Color(220, 118, 112));
+
+		noBtn.setBounds(140, 60, 70, 30); // 버튼 위치 및 크기 지정
+		noBtn.setBackground(new Color(220, 118, 112));
+
+		add(label);
+		add(okBtn);
+		add(noBtn);
+
+		okBtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 버튼 클릭시 발생 할 이벤트
+				result = true;
+				
+				if (result) {
+					dm.select();
+					
+					setVisible(false);
+				}
+			}
+		});
+
+		noBtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+	
+
+				
+				new DrinkBuy(); // 이창 어케 꺼 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ어카운트 넣어야하나
+				setVisible(false);
+
+			}
+
+		});
+	}
+
+}
+
+
 

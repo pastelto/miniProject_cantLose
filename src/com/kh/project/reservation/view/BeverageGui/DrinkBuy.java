@@ -22,7 +22,10 @@ public class DrinkBuy extends JFrame{
 	JPanel input = new JPanel(); // 레이블 박스
 	Account ac = new Account();
 	DrinkManager dm = new DrinkManager();
-	JButton j = new JButton("구매");
+	
+	//버튼
+	JButton a = new JButton("구매");
+	JLabel list = new JLabel(dm.menusave());
 	
 	public DrinkBuy() {
 		super("Beverage");
@@ -48,20 +51,29 @@ public class DrinkBuy extends JFrame{
 		JPanel onePan = new JPanel();
 		onePan.setLayout(null);
 		onePan.setBorder(oneTb);
-		onePan.setBounds(50, 330, 250, 80);
+		onePan.setBounds(50, 80, 250, 300);
 		onePan.setBackground(new Color(249, 242, 242));
+		onePan.setFont(a.getFont().deriveFont(30.0f)); // 크기 왜 안바뀜 ㅠ
 		
-		j.setLocation(190, 470);
-		j.setBackground(new Color(146, 133, 132));
-		j.setFocusPainted(false);
-		j.setFont(j.getFont().deriveFont(15.0f));
-		j.setSize(125, 40);
+		
+		a.setLocation(110, 470);
+		a.setBackground(new Color(146, 133, 132));
+		a.setFocusPainted(false);
+		a.setFont(a.getFont().deriveFont(15.0f));
+		a.setSize(125, 40);
+		
+		list.setLocation(140, 300);
+		list.setFont(a.getFont().deriveFont(15.0f));
+		list.setSize(125, 40);
+		
+		
 		
 		cc.add(bar);
 		cc.add(onePan);
 		cc.add(bar);
 		cc.add(bar);
-		cc.add(j);
+		cc.add(a);
+		cc.add(list);
 		
 		
 		this.add(onePan);
@@ -73,5 +85,6 @@ public class DrinkBuy extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
 	}
+
 
 }
