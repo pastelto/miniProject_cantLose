@@ -30,6 +30,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.model.vo.Memo;
 import com.kh.project.reservation.view.MenuChoice;
 
 public class MList extends JFrame {
@@ -44,7 +45,10 @@ public class MList extends JFrame {
 	int xL, yL;
 	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
 	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
+	
+	Memo m = new Memo();
 
+	// 내 노트 리스트 
 	public MList(Account account) {
 		super("MList");
 
@@ -74,6 +78,7 @@ public class MList extends JFrame {
 		this.setVisible(true);
 	}
 
+	// 새 글 작성 GUI 
 	private class InitialScreen extends JPanel {
 		private JButton WriteBtn, DeleteBtn, editBtn, backBtn;
 		private JLabel titleLabel, timeLabel;
@@ -185,7 +190,8 @@ public class MList extends JFrame {
 
 	}
 
-	private class Screen extends JPanel { // 글 작성 및 수정 GUI
+	// 글 작성 및 수정 GUI
+	private class Screen extends JPanel { 
 		private JLabel label;
 		private JTextField Title;
 		JTextArea memo = new JTextArea(); // 메모 내용
@@ -274,7 +280,7 @@ public class MList extends JFrame {
 
 					private void newMemo() {
 						String t = Title.getText();
-						String fileTitle = t + ".txt";
+						String fileTitle = t + ".txt"; // txt파일에 따로 저장하는게 아니라 객체에 저장하는 법 ?
 						try {
 							BufferedWriter bw = new BufferedWriter(new FileWriter(fileTitle));
 							bw.write(memo.getText());
@@ -298,7 +304,7 @@ public class MList extends JFrame {
 							return;
 						} else {
 							String format_time = t.FormatTime();
-
+							m.setTime(format_time); // 시간 memo Dao 저장
 							TitleModel.set(index, Title.getText());
 							TitleList.setModel(TitleModel);
 
@@ -319,6 +325,7 @@ public class MList extends JFrame {
 					private void editMemo() {
 						String t = Title.getText();
 						String fileTitle = t + ".txt";
+						
 						try {
 							BufferedWriter bw = new BufferedWriter(new FileWriter(fileTitle, true));
 							bw.write(memo.getText());
