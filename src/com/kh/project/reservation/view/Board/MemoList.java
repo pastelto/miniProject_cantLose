@@ -100,7 +100,7 @@ public class MemoList extends JFrame { // 메모 목록창
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					MyMemo m = new MyMemo(account); 
-					m.editM();
+//					m.editM();
 					setVisible(false);
 				}
 			}

@@ -30,6 +30,7 @@ import com.kh.project.reservation.controller.BoardManager;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
 
+
 public class Login extends JFrame { 
 
 	private Scanner sc = new Scanner(System.in);
@@ -144,17 +145,25 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e1) {// 로그인 할때
 				
-					Account check = ca.searchAccount(logTF.getText(),pwTF.getText());
-				ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());
+
+				if(logTF.getText().equals("")||pwTF.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 입력해주세요!");
+				}
+				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());	
 				
 					if (check.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "회원 가입이 필요합니다.");
+						new SignUp();
+						setVisible(false);
 					} 
 					else {
 						
 						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
+						 //new MenuChoice();
+						 System.out.println(check.get(0));
 						 new MenuChoice(check.get(0));
 						}
+				}
 					
 	
 					

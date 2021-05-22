@@ -39,65 +39,6 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 	}
 
 		/*
-		
-		public void upDateAccount(Account account) {
-			
-			for(Account temp : account) {
-				if(temp.id.equals(account.getId())) {
-					temp = account;
-					saveData();
-					break;
-				}
-			}
-		} */
-		
-		/*try(BufferedReader br = new BufferedReader (new InputStreamReader (new FileInputStream(".txt"))) {
-			Account = b;
-			while((b=(Account)br.readObject())!=null) {
-				list.add(b);
-			}
-		
-	} catch (FileNotFoundException e) {
-		System.out.println("파일을 찾을수 없습니다.");
-	} catch (IOException e) {
-		e.printStackTrace();
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	} finally {
-		br.close();
-	} */
-	
-
-
-	/*public boolean checkUserId(Account account) {
-		for(Account temp : list) {
-			if(temp.id.equals(account.getId())) {return true;}
-		}
-		return false;
-	}
-	
-	public boolean checkUserIdPw(String id, String pw) {
-		for(Account temp : list) {
-			if(temp.id.equals(id)&&temp.pw.equals(pw)) {return true;}
-		}
-		return false;
-	}
-	
-	public Account getUserId(String id) {
-		for(Account temp : list) {
-			if(temp.id.equals(id)) {return temp;}
-		}
-		return null;
-	}
-	
-	
-
-
-		public void writeList(Account account) {
-			list.add(account);
-			
-		}
-	
 	 public void fileSave(Account account) { // ArrayList로 넣어서 append(경로, true)로 넣어서 Input으로 넣기
 		try {
 			if(//폴더가 있면); { //폴더가 있면
@@ -125,28 +66,9 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 			e.printStackTrace();
 		}
 		
-	}
-
-	
-	public void writeSignIn() {
-		
-	}
-
-
-	public void CheckAccountDao() {
-		
 	} */
 
 	
-	/*
-	 * public Account checkIdnPw(String id, String pw) { Account account=null;
-	 * for(int i = 0 ; i < list.size(); i++) {
-	 * if(list.get(i).getId().equals(id)&&list.get(i).getPw().equals(pw)) { // 반복문을
-	 * 돌리면서 list에 있는 Account객체들의 아이디를 확인하고 // 사용자가 입력했던 아이디와 account = list.get(i);
-	 * // 그 Board객체를 저장
-	 * 
-	 * } break; } return account; }
-	 */
 	public void writeAccount(Account account) {
 		list.add(account);
 	}
@@ -178,6 +100,30 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 		}
 		System.out.println(check);
 		return check;
+	}
+
+	public Boolean CheckId(String id) {
+		ArrayList<Account> check = new ArrayList<Account>();
+		for(int i =0; i<check.size();i++) {
+			if(list.get(i).getId().contains(id)) {
+			return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	public Boolean CheckIdNum(String idNum) {
+		ArrayList<Account> check = new ArrayList<Account>();
+		for(int i =0; i<check.size();i++) {
+			if(list.get(i).getIdNum().contains(idNum)) {
+			return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
 
 	}
