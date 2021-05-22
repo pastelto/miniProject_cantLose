@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -97,21 +100,21 @@ public class SignUp extends JFrame {
 		
 		Font font = new Font("맑은 고딕", Font.BOLD, 20);
 		l1.setBounds(120, 85, 45, 40);
-		l2.setBounds(40, 130, 85, 40);
-		l3.setBounds(40, 170, 65, 40);
-		l4.setBounds(40, 210, 85, 40);
-		l5.setBounds(40, 250, 65, 40);
-		l6.setBounds(40, 290, 45, 40);
-		l7.setBounds(40, 330, 65, 40);
-		idTF.setBounds(180, 90, 145, 30);
-		pwTF.setBounds(120, 130, 205, 30);
-		nameTF.setBounds(120, 170, 205, 30);
-		idNTF.setBounds(120, 210, 205, 30);
-		phone.setBounds(120, 250, 205, 30);
-		bankTF.setBounds(120, 290, 205, 30);
-		bankNTF.setBounds(120, 330, 205, 30);
-		j1.setBounds(80, 400, 80, 30);
-		j2.setBounds(195, 400, 80, 30);
+		l2.setBounds(40, 140, 85, 40);
+		l3.setBounds(40, 195, 65, 40);
+		l4.setBounds(40, 250, 85, 40);
+		l5.setBounds(40, 305, 65, 40);
+		l6.setBounds(40, 360, 45, 40);
+		l7.setBounds(40, 415, 65, 40);
+		idTF.setBounds(180, 85, 140, 40);
+		pwTF.setBounds(120, 140, 200, 40);
+		nameTF.setBounds(120, 195, 200, 40);
+		idNTF.setBounds(120, 250, 200, 40);
+		phone.setBounds(120, 305, 200, 40);
+		bankTF.setBounds(120, 360, 200, 40);
+		bankNTF.setBounds(120, 415, 200, 40);
+		j1.setBounds(50, 485, 110, 35);
+		j2.setBounds(200, 485, 110, 35);
 		this.add(p);
 
 		       j1.addActionListener(new ActionListener() {
@@ -121,26 +124,45 @@ public class SignUp extends JFrame {
 					
 					
 					if(idTF.getText().equals("")||pwTF.getText().equals("")|| nameTF.getText().equals("")||idNTF.getText().equals("")||
-						bankTF.getText().equals("")||bankNTF.getText().equals(""))
+						bankTF.getText().equals("")||bankNTF.getText().equals(""))//빈칸일 경우
 					{
 						JOptionPane.showMessageDialog(null, "정보를 입력해 주세요");
-					} else if( (ca.checkId(idTF.getText()))) { //아이디 주민번호 중복일경우
-						JOptionPane.showMessageDialog(null, "이미 가입된 아이디 입니다.");
-					} else if(ca.checkIdNum(idNTF.getText())) {
-						JOptionPane.showMessageDialog(null, "이미 가입된 주민번호 입니다.");
+					} else if((ca.checkId(idTF.getText()))&&ca.checkIdNum(idNTF.getText())) { //아이디중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '아이디'와 '주민번호'입니다.");
+					} else if((ca.checkId(idTF.getText()))) { //아이디중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '아이디'입니다.");
+					} else if(ca.checkIdNum(idNTF.getText())) { //주민번호 중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '주민번호'입니다.");
 					}
 					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF.getText(), 
-							phone.getText(), bankTF.getText(),bankNTF.getText(), 0,0,0,1 ));
+							phone.getText(), bankTF.getText(),bankNTF.getText(),0,0,0,1 ));
 					ca.saveAccount();
 					
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
-						setVisible(false);
 						new Login();
+						setVisible(false);
 					}
 				}
 				
 					
+				
 			});
+		       
+		       j2.addActionListener(new ActionListener() {
+		    	   public void actionPerformed(ActionEvent T) {//로그인 페이지로 돌아감
+		    		   setVisible(false);
+		    		   new Login();
+		    	   }
+		       });
+		       
+		    // 상단바 로고
+				try {
+					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 		       this.setVisible(true);
 				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}    

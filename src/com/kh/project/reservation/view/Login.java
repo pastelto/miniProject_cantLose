@@ -43,7 +43,7 @@ public class Login extends JFrame {
 	JPasswordField pwTF = new JPasswordField();
 	JPanel loginP = new JPanel();
 	CheckAccount ca = new CheckAccount();
-	
+	JLabel find = new JLabel("ID/PW 찾기");
 	
 	public Login() {
 
@@ -68,7 +68,10 @@ public class Login extends JFrame {
 		loginP.add(m);
 		
 		Font font = new Font("맑은 고딕", Font.BOLD, 12);
+		Font font2 = new Font("맑은 고딕", Font.BOLD, 15);
+		
 		m.setFont(font);
+		idL.setFont(font2);
 		
 		/* Image icon = new ImageIcon("images/커피.png").getImage().getScaledInstance(100,
 		 * 100, 0); imLabel = new JLabel(new ImageIcon(icon));
@@ -80,12 +83,12 @@ public class Login extends JFrame {
 
 		logTF.setLocation(90, 290);
 		logTF.setSize(220, 45);
-		idL.setLocation(50, 290);
+		idL.setLocation(53, 290);
 		idL.setSize(220, 45);
 
-		pwTF.setLocation(90, 360);
+		pwTF.setLocation(90, 350);
 		pwTF.setSize(220, 45);
-		pwL.setLocation(50, 360);
+		pwL.setLocation(50, 350);
 		pwL.setSize(220, 45);
 		logTF.setOpaque(true);
 
@@ -97,6 +100,10 @@ public class Login extends JFrame {
 		signUp.setLocation(40, 480);
 		signUp.setSize(270, 40);
 
+		find.setLocation(245, 385);
+		find.setSize(270, 54);
+		find.setForeground(new Color(225, 118, 112));
+		
 		loginP.add(logTF);
 		loginP.add(pwTF);
 		loginP.add(login);
@@ -104,40 +111,10 @@ public class Login extends JFrame {
 		loginP.add(image);
 		loginP.add(idL);
 		loginP.add(pwL);
+		loginP.add(find);
+		
 		this.add(loginP);
 		
-		/*id = logTF.getText();
-		
-		id = logTF.getText();
-		pw = pwTF.getText(); //?????왜 줄쳐지는거지...
-		
-		login.addMouseListener(new MouseAdapter() { // 로그인 클릭시 일치하면 여기
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-					//if(id.equals(ca.checkId(id))&&pw.equals(ca.checkPw(pw))) { // 일치하는지 확인하는 부분 
-					new MenuChoice();
-					setVisible(false);
-					} else {
-						// 불일치시에 팝업창 뜨기 -"아이디, 비밀번호를 확인해 주세요."
-						
-					//}
-				}
-			}
-		}); 
-
-		signout.addMouseListener(new MouseAdapter() { // 회원가입 여기
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-						new SignUp();
-						setVisible(false);
-			} 
-			}
-		});  */
-
 		
 		login.addActionListener(new ActionListener() { // 로그인 클릭시 일치하면 여기
 
@@ -161,44 +138,10 @@ public class Login extends JFrame {
 						 //new MenuChoice();
 						 System.out.println(check.get(0));
 						 new MenuChoice(check.get(0));
+						 setVisible(false);
 						}
 				}
 					
-	
-					
-					
-						/*Account account = ca.checkIdnPw(logTF.getText(),pwTF.getText());
-						if(account == null) {		
-							System.out.println("조회된 게시글이 없습니다.");
-							JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
-						}else {		*/		
-							
-							
-						/*while ((Account)oss.readObject()!=-1) {
-							list.add((Account)oss.readObject());
-							System.out.println(list.get(i));
-							i++; */
-							
-					/*} catch (EOFException e2) {
-						int i = 0;
-						while (true) {
-							if (logTF.getText().equals(list.get(i).getId())
-									&& pwTF.getText().equals(list.get(i).getPw())) {
-								JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
-							 new MenuChoice();
-							 setVisible(false);
-								break;
-							} else {
-								JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
-							}
-							i++;
-						}
-					} catch (ClassNotFoundException e3) {
-						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.2");
-					} catch (IOException e4) {
-						JOptionPane.showMessageDialog(null, "회원가입이 필요합니다.");
-					}
-				}*/
 			}
 		});
 
@@ -213,7 +156,29 @@ public class Login extends JFrame {
 			} 
 			}
 		}); 
+		
+		find.addMouseListener(new MouseAdapter() { // 아이디 비밀번호 찾기
 
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					new FindAccount();
+					setVisible(false);
+			}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) { // 마우스 올리면 회색
+				find.setForeground(Color.DARK_GRAY);
+				}
+
+			@Override
+			public void mouseExited(MouseEvent e) { // 마우스 나가면 원래대로
+				find.setForeground(new Color(225, 118, 112));
+			}
+			
+			}); 
+		
 		// 상단바 로고
 				try {
 					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
