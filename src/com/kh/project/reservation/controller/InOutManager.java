@@ -3,7 +3,6 @@ package com.kh.project.reservation.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import com.kh.project.reservation.model.vo.Account;
@@ -20,9 +19,9 @@ public class InOutManager {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void login(String ) {
+	/*public void login(String ) {
 		
-	}
+	}*/
 
 	public ArrayList checkInSave() { // 이름 좌석 체크인시간 상태 저장
 
@@ -59,7 +58,7 @@ public class InOutManager {
 		System.out.println("현재 체크인 중 입니다." + "\n" + "체크아웃 또는 이전을 입력하세요");
 	}
 
-	public void checkOutPrint() { // 체크아웃 정보 출력
+	public int checkOutPrint() { // 체크아웃 정보 출력
 		io.setCheckOut(System.currentTimeMillis());
 		String end = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckOut());
 
@@ -83,13 +82,17 @@ public class InOutManager {
 		// 누적시간 -> 조건 필요함?? 다시 테스트 해보기
 		a.setTotalH(a.getTotalH() + ss);
 		pluscoupon();
+		
+		return a.getTotalH();
 	}
 
-	public void pluscoupon() {
+	public int pluscoupon() {
 		// 100시간이 될때마다 쿠폰 +1씩
 		if ((a.getTotalH() % 360000 == 0)) {
 			a.setCoupon(a.getCoupon() + 1);
 		}
+		
+		return a.getCoupon();
 
 	}
 
