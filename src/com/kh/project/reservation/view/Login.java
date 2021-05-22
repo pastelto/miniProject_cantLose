@@ -157,7 +157,7 @@ public class Login extends JFrame {
 					else {
 						
 						JOptionPane.showMessageDialog(null, "로그인이 되었습니다!!");
-						 new MenuChoice();
+						 new MenuChoice(account);
 						 
 						}
 				}
