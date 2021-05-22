@@ -162,6 +162,7 @@ public class Login extends JFrame {
 						 //new MenuChoice();
 						 System.out.println(check.get(0));
 						 new MenuChoice(check.get(0));
+							setVisible(false);
 						}
 				}
 					

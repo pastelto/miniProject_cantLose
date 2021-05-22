@@ -1,13 +1,17 @@
 package com.kh.project.reservation.view.Board;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +29,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.MenuChoice;
+
 public class MList extends JFrame {
 	private JList<String> TitleList = new JList<String>();
 	private JList<String> DateList = new JList<String>();
@@ -33,12 +40,24 @@ public class MList extends JFrame {
 	private Vector<JTextField> v1 = new Vector<JTextField>();
 	private Vector<JTextArea> v2 = new Vector<JTextArea>();
 	private int index;
+	// 화면 정중앙 맞추기
+	int xL, yL;
+	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
+	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
 
-	public MList() {
+	public MList(Account account) {
+		super("MList");
+
 		this.setTitle("내 노트 리스트");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 		this.setLayout(null);
+		this.setSize(360, 600);
+		// 화면 정중앙
+		xL = screenSize.width / 2 - this.getWidth() / 2;
+		// y좌표구하기
+		yL = screenSize.height / 2 - this.getHeight() / 2;
+
+		setLocation(xL, yL); // 구한 좌표로 위치 지정
 
 		// 상단바 로고
 		try {
@@ -48,22 +67,21 @@ public class MList extends JFrame {
 			e.printStackTrace();
 		}
 
-		InitialScreen is = new InitialScreen();
+		InitialScreen is = new InitialScreen(account);
 		setContentPane(is);
 
 		this.setResizable(false);
-		this.setSize(360, 600);
 		this.setVisible(true);
 	}
 
 	private class InitialScreen extends JPanel {
 		private JButton WriteBtn, DeleteBtn, editBtn, backBtn;
 		private JLabel titleLabel, timeLabel;
-		
-		public InitialScreen() {
+
+		public InitialScreen(Account account) {
 			this.setSize(360, 600);
 			this.setLayout(null);
-			this.setLocationRelativeTo(null);
+			this.setLocation(getLocation());
 			this.setBackground(new Color(249, 242, 242));
 
 //			JLabel label = new JLabel("내 노트");
@@ -74,10 +92,9 @@ public class MList extends JFrame {
 
 			JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 			bar.setBounds(0, 0, 360, 53);
-			bar.setText("내 노트  "); 
+			bar.setText("내 노트  ");
 			bar.setHorizontalTextPosition(JLabel.CENTER);
 			bar.setVerticalTextPosition(JLabel.CENTER);
-
 
 			// 상단바 메뉴 폰트
 			Font font = new Font("맑은 고딕", Font.BOLD, 20);
@@ -91,7 +108,7 @@ public class MList extends JFrame {
 
 			add(TitleList);
 			add(DateList);
-			
+
 			titleLabel = new JLabel("제목");
 			titleLabel.setBounds(90, 52, 100, 53);
 			timeLabel = new JLabel("작성 시간");
@@ -116,7 +133,6 @@ public class MList extends JFrame {
 			add(DeleteBtn);
 			add(backBtn);
 			add(bar);
-		
 
 			WriteBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -125,7 +141,7 @@ public class MList extends JFrame {
 								JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
-					Screen s = new Screen("새 글 쓰기");
+					Screen s = new Screen(account, "새 글 쓰기");
 					setContentPane(s);
 				}
 			});
@@ -134,7 +150,7 @@ public class MList extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					if (TitleList.isSelectionEmpty() == false) {
 						index = TitleList.getSelectedIndex();
-						Screen s = new Screen("수정");
+						Screen s = new Screen(account, "수정");
 						setContentPane(s);
 					}
 				}
@@ -163,7 +179,7 @@ public class MList extends JFrame {
 
 			backBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-//                    new MenuChoice();
+					new MenuChoice(account);
 				}
 			});
 		}
@@ -173,10 +189,6 @@ public class MList extends JFrame {
 
 		}
 
-		private void setLocationRelativeTo(Object object) {
-			// TODO Auto-generated method stub
-
-		}
 	}
 
 	private class Screen extends JPanel { // 글 작성 및 수정 GUI
@@ -189,7 +201,7 @@ public class MList extends JFrame {
 		JLabel titleLabel = new JLabel("제목");
 		JButton back = new JButton("취소"); // 뒤로가기 (or 메뉴)
 
-		public Screen(String str) {
+		public Screen(Account account, String str) {
 			this.setSize(360, 600);
 			this.setLocationRelativeTo(null);
 			this.setLayout(null);
@@ -217,7 +229,9 @@ public class MList extends JFrame {
 			memo = new JTextArea();
 			memo.setLocation(20, 130);
 			memo.setSize(300, 300);
+			memo.setToolTipText("이곳에 메모를 입력하세요"); // 커서 올리면 가이드
 			memo.setLineWrap(true);
+			
 
 			// 제목 패널1
 			titleLabel.setLocation(20, 50);
@@ -255,11 +269,29 @@ public class MList extends JFrame {
 						DateModel.addElement(format_time);
 						DateList.setModel(DateModel);
 
+						newMemo();
+						JOptionPane.showMessageDialog(null, "메모가 저장되었습니다!", "저장완료", JOptionPane.INFORMATION_MESSAGE);
+						
+						setVisible(false);
+						
 						v1.add(Title);
 						v2.add(memo);
 
-						InitialScreen is = new InitialScreen();
+						InitialScreen is = new InitialScreen(account);
 						setContentPane(is);
+					}
+
+					private void newMemo() {
+						String t = Title.getText();
+						String fileTitle = t + ".txt";
+						try {
+							BufferedWriter bw = new BufferedWriter(new FileWriter(fileTitle));
+							bw.write(memo.getText());
+							bw.close();
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						
 					}
 				});
 			}
@@ -281,14 +313,32 @@ public class MList extends JFrame {
 
 							DateModel.set(index, format_time);
 							DateList.setModel(DateModel);
-
+							
+							editMemo();
+							JOptionPane.showMessageDialog(null, "메모가 저장되었습니다!", "저장완료", JOptionPane.INFORMATION_MESSAGE);
+							
 							v1.set(index, Title);
 							v2.set(index, memo);
 
-							InitialScreen is = new InitialScreen();
+							InitialScreen is = new InitialScreen(account);
 							setContentPane(is);
 						}
 					}
+
+					private void editMemo() {
+						String t = Title.getText();
+						String fileTitle = t + ".txt";
+						try {
+							BufferedWriter bw = new BufferedWriter(new FileWriter(fileTitle, true));
+							bw.write(memo.getText());
+							bw.close();
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						
+					}
+						
+					
 				});
 			}
 
@@ -298,14 +348,13 @@ public class MList extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					if (e.getButton() == 1) {
 						JOptionPane.showMessageDialog(null, "메모가 취소되었습니다!", "취소", JOptionPane.WARNING_MESSAGE);
-						new MList();
+						new MList(account);
 						setVisible(false);
 					}
 				}
 
 			});
-			
-		
+
 		}
 
 		private void setLocationRelativeTo(Object object) {
@@ -335,7 +384,7 @@ public class MList extends JFrame {
 		}
 	}
 
-	public static void main(String[] args) {
-		new MList();
-	}
+//	public static void main(String[] args) {
+//		new MList();
+//	}
 }
