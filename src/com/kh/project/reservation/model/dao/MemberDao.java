@@ -139,10 +139,11 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 				System.out.println("성공적으로 로그아웃이 되었습니다.");
 				
 			}	
+			}	
 			// list에 변경사항 저장
 			oos.writeObject(list);
 			System.out.println(list);
-			}	
+			
 		}catch(FileNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.");
 		}catch(IOException e) {
