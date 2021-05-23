@@ -31,10 +31,9 @@ public class Account implements Serializable {
 	public Account() {
 	}
 
-	public Account(HashMap<String, Account> membership, String id, String pw, String name, String idNum, String pNum,
+	public Account( String id, String pw, String name, String idNum, String pNum,
 			String bank, String pay, int oneSeat, int stdRoom, int printPoint, int totalH, int coupon) {
 		super();
-		this.membership = membership;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;

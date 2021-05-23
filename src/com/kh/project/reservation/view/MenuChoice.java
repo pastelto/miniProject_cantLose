@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Board.MemoList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
@@ -198,7 +199,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용
-					
+					new MemberDao().reSaveAccount(account);
 					Login l = new Login();
 					
 					setVisible(false);

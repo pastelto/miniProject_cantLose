@@ -130,7 +130,7 @@ public class SignUp extends JFrame {
 						JOptionPane.showMessageDialog(null, "이미 가입된 주민번호 입니다.");
 					}
 					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF.getText(), 
-							phone.getText(), bankTF.getText(),bankNTF.getText(),0,0,0,1 ));
+							phone.getText(), bankTF.getText(),bankNTF.getText(),0,0,0,0,1 ));
 					ca.saveAccount();
 					
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
