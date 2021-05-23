@@ -7,9 +7,7 @@ import java.util.HashMap;
 
 public class Account implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -8415970906280605681L;
 
 	private HashMap<String, Account> membership;
