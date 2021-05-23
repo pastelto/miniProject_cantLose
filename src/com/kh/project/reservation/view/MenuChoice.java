@@ -171,7 +171,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					setVisible(false);
-					new BookView(account).checkBooking();
+					new BookView().checkBooking();
 				}
 			}
 		});

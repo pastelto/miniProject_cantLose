@@ -337,7 +337,6 @@ public class BookView extends JFrame implements ActionListener {
 	panel.setLayout(null);
 	panel.setBackground(new Color(249,242,242));
 	
-	/*
 	JButton A = new JButton("스터디룸 A");
 	JButton B = new JButton("스터디룸 B");
 	JButton C = new JButton("스터디룸 C");
@@ -358,7 +357,6 @@ public class BookView extends JFrame implements ActionListener {
 	study.add(B);
 	study.add(C); 
 	study.add(D);
-	*/
 	study.add(panel);
 	study.setVisible(true);
 	study.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -485,8 +483,8 @@ public class BookView extends JFrame implements ActionListener {
 		image.setBounds(34, 80, 54, 54);
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-
-		JLabel bInfo = new JLabel("<html>" + ac.getName() + "님께서는 [" + bk.getYourDate() + "] 에" + "<br>" + "[" + bk.getYourSeat()
+		System.out.println(bk.getYourDate() + " " + bk.getYourSeat());
+		JLabel bInfo = new JLabel("<html>" + ac.getName() + "님께서는 [" + yourDate + "] 에" + "<br>" + "[" + yourSeat
 				+ "] 좌석을" + "<br>" + "예약하셨습니다.</html>");
 		bInfo.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 
