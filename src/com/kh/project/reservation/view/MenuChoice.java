@@ -72,10 +72,7 @@ public class MenuChoice extends JFrame {
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 		mc.add(bar);
-		
-//		JLabel image = new JLabel(new ImageIcon("images/logoMini1.png"));
-//		image.setBounds(140, 430, 60, 60);
-//		mc.add(image);
+	
 		
 		String accountName = account.getName().toString();
 		userName = new JLabel("반갑습니다. " + accountName + "님");
