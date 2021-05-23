@@ -72,7 +72,6 @@ public class MenuChoice extends JFrame {
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 		mc.add(bar);
-	
 		
 		String accountName = account.getName().toString();
 		userName = new JLabel("반갑습니다. " + accountName + "님");
