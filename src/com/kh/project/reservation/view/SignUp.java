@@ -4,11 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,7 +40,8 @@ public class SignUp extends JFrame {
 	String cardN;
 	String bank;
 	String bankN;
-
+	String idNTF; 
+	
 	public SignUp() {
 
 		super("SignUp");
@@ -57,15 +62,27 @@ public class SignUp extends JFrame {
 		JLabel l5 = new JLabel("전화번호");
 		JLabel l6 = new JLabel("은행");
 		JLabel l7 = new JLabel("계좌번호");
-
+		JLabel l8 = new JLabel("-");
+		
 		JTextField idTF = new JTextField();
 		JPasswordField pwTF = new JPasswordField();
 		JTextField nameTF = new JTextField();
-		JPasswordField idNTF = new JPasswordField();
+		JTextField idNTF1 = new JTextField();
+		JPasswordField idNTF2 = new JPasswordField();
 		JTextField phone = new JTextField();
-		JTextField bankTF = new JTextField();
+		//JTextField bankTF = new JTextField();
 		JTextField bankNTF = new JTextField();
 
+		/*JComboBox bankTF = new JComboBox();
+		bankTF.addItem("신한");
+		bankTF.addItem("농협");
+		bankTF.addItem("국민");
+		bankTF.addItem("우리");
+		bankTF.addItem("카카오");*/
+		String bank[] = {"카드를 선택해 주세요","신한","농협","국민","우리","카카오","KB국민","하나","삼성","롯데"};
+		JComboBox bankTF= new JComboBox(bank);
+		
+		
 		p.add(bar);
 		p.add(l1);
 		p.add(l2);
@@ -74,10 +91,13 @@ public class SignUp extends JFrame {
 		p.add(l5);
 		p.add(l6);
 		p.add(l7);
+		p.add(l8);
+	
 		p.add(idTF);
 		p.add(pwTF);
 		p.add(nameTF);
-		p.add(idNTF);
+		p.add(idNTF1);
+		p.add(idNTF2);
 		p.add(phone);
 		p.add(bankTF);
 		p.add(bankNTF);
@@ -96,51 +116,76 @@ public class SignUp extends JFrame {
 		p.add(image);
 		
 		Font font = new Font("맑은 고딕", Font.BOLD, 20);
+		Font font2 = new Font("맑은 고딕", Font.PLAIN, 30);
 		l1.setBounds(120, 85, 45, 40);
-		l2.setBounds(40, 130, 85, 40);
-		l3.setBounds(40, 170, 65, 40);
-		l4.setBounds(40, 210, 85, 40);
-		l5.setBounds(40, 250, 65, 40);
-		l6.setBounds(40, 290, 45, 40);
-		l7.setBounds(40, 330, 65, 40);
-		idTF.setBounds(180, 90, 145, 30);
-		pwTF.setBounds(120, 130, 205, 30);
-		nameTF.setBounds(120, 170, 205, 30);
-		idNTF.setBounds(120, 210, 205, 30);
-		phone.setBounds(120, 250, 205, 30);
-		bankTF.setBounds(120, 290, 205, 30);
-		bankNTF.setBounds(120, 330, 205, 30);
-		j1.setBounds(80, 400, 80, 30);
-		j2.setBounds(195, 400, 80, 30);
+		l2.setBounds(40, 140, 85, 40);
+		l3.setBounds(40, 195, 65, 40);
+		l4.setBounds(40, 250, 85, 40);
+		l5.setBounds(40, 305, 65, 40);
+		l6.setBounds(40, 360, 45, 40);
+		l7.setBounds(40, 415, 65, 40);
+		l8.setBounds(213, 243, 65, 40);
+		l8.setFont(font2);
+		idTF.setBounds(180, 85, 140, 40);
+		pwTF.setBounds(120, 140, 200, 40);
+		nameTF.setBounds(120, 195, 200, 40);
+		idNTF1.setBounds(120, 250, 90, 40);
+		idNTF2.setBounds(230, 250, 90, 40);
+		phone.setBounds(120, 305, 200, 40);
+		bankTF.setBounds(120, 360, 200, 40);
+		bankNTF.setBounds(120, 415, 200, 40);
+		j1.setBounds(50, 485, 110, 35);
+		j2.setBounds(200, 485, 110, 35);
 		this.add(p);
 
 		       j1.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장
+					idNTF = idNTF1.getText()+"-"+idNTF2.getText();
 					
-					
-					if(idTF.getText().equals("")||pwTF.getText().equals("")|| nameTF.getText().equals("")||idNTF.getText().equals("")||
-						bankTF.getText().equals("")||bankNTF.getText().equals(""))
+					if(idTF.getText().equals("")||pwTF.getText().equals("")|| nameTF.getText().equals("")||idNTF1.equals("")||
+							idNTF2.equals("")||bankTF.getSelectedItem().equals("카드를 선택해 주세요")||bankNTF.getText().equals(""))//빈칸일 경우
 					{
-						JOptionPane.showMessageDialog(null, "정보를 입력해 주세요");
-					} else if( (ca.checkId(idTF.getText()))) { //아이디 주민번호 중복일경우
-						JOptionPane.showMessageDialog(null, "이미 가입된 아이디 입니다.");
-					} else if(ca.checkIdNum(idNTF.getText())) {
-						JOptionPane.showMessageDialog(null, "이미 가입된 주민번호 입니다.");
+						JOptionPane.showMessageDialog(null, "정보를 모두 입력해 주세요");
+					} else if(idNTF1.getText().length()!=6||idNTF2.getText().length()!=7) { // 글자갯수 제한
+						JOptionPane.showMessageDialog(null, "정확한 주민번호를 입력해주세요!");
+					} else if((ca.checkId(idTF.getText()))&&ca.checkIdNum(idNTF)) { //아이디 주민번호 중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '아이디'와 '주민번호'입니다.");
+					} else if((ca.checkId(idTF.getText()))) { //아이디중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '아이디'입니다.");
+					} else if(ca.checkIdNum(idNTF)) { //주민번호 중복일경우
+						JOptionPane.showMessageDialog(null, "이미 가입된 '주민번호'입니다.");
 					}
-					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF.getText(), 
-							phone.getText(), bankTF.getText(),bankNTF.getText(),0,0,0,0,1 ));
+
+					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF, 
+							phone.getText(), bankTF.getSelectedItem().toString(),bankNTF.getText(),0,0,0,0,1 ));
 					ca.saveAccount();
-					
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
-						setVisible(false);
 						new Login();
+						setVisible(false);
 					}
 				}
 				
 					
+				
 			});
+		       
+		       j2.addActionListener(new ActionListener() {
+		    	   public void actionPerformed(ActionEvent T) {//로그인 페이지로 돌아감
+		    		   setVisible(false);
+		    		   new Login();
+		    	   }
+		       });
+		       
+		    // 상단바 로고
+				try {
+					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 		       this.setVisible(true);
 				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}    

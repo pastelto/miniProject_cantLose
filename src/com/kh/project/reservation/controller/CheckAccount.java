@@ -16,8 +16,9 @@ public class CheckAccount {
 	public CheckAccount() {}
 	
 	public ArrayList<Account> searchAccount(String id, String pw) { // id 
-	   ArrayList<Account> list = md.searchAccount(id,pw);
-	return list;
+	   ArrayList<Account> a = md.searchAccount(id,pw);
+	   
+	return a;
 	}
 
 	public void writeAccount(Account account) {
@@ -31,6 +32,7 @@ public class CheckAccount {
 	public Boolean checkId(String id) { 
 		if(md.CheckId(id)) {
 			return true;
+			
 		}
 		return false;
 		
@@ -39,8 +41,17 @@ public class CheckAccount {
 	public Boolean checkIdNum(String idNum) { 
 		if(md.CheckIdNum(idNum)) {
 			return true;
+			
 		}
 		return false;
-		
-	}
 }
+	
+	
+	public ArrayList<Account> find(String name, String idNum) { // id 
+		   ArrayList<Account> a = md.Find(name,idNum);
+		   
+			return a;
+			}
+		
+}
+	

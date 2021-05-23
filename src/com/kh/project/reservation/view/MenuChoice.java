@@ -2,7 +2,9 @@
 package com.kh.project.reservation.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.Board.MemoList;
+import com.kh.project.reservation.view.Board.MList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
 
@@ -35,18 +37,29 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
+
 	private CheckAccount ca = new CheckAccount();
 	
+
+
+	int xL, yL;
+	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
+	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
+
+
 	public MenuChoice(Account account) {
 
 		// Menu 기본
 		super("MenuChoice");
 		this.setSize(360, 600);
-		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		mc.setBackground(new Color(249, 242, 242));
 		mc.setLayout(null);
 		mc.setSize(360, 600);
+		// 화면 정중앙
+		xL = screenSize.width / 2 - this.getWidth() / 2;
+		yL = screenSize.height / 2 - this.getHeight() / 2;
+		setLocation(xL, yL); // 화면 정중앙
 
 		// 메뉴 타이틀
 		this.setTitle("MENU");
@@ -188,7 +201,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getButton() == 1) {
-					new MemoList();
+					new MList(account);
 					setVisible(false);
 				}
 			}
