@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Board.MemoList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
@@ -33,7 +34,8 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
-
+	private CheckAccount ca = new CheckAccount();
+	
 	public MenuChoice(Account account) {
 
 		// Menu 기본
@@ -195,8 +197,10 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용
+					
 					Login l = new Login();
-
+					
 					setVisible(false);
 				}
 			}

@@ -21,6 +21,7 @@ public class PrintServiceManager {
 	public void prtPointInfo(Account account) { // 포인트조회
 
 		System.out.println("현재포인트 : " + account.getPrintPoint());
+		System.out.println(account.toString());
 
 	}
 
@@ -28,7 +29,9 @@ public class PrintServiceManager {
 
 		account.setPrintPoint(account.getPrintPoint() + count);
 		JOptionPane.showMessageDialog(null, "충전완료!!");
+		System.out.println(account.getPrintPoint());
 		prtPointInfo(account);
+
 	}
 
 	public int prtPointUse(Account account, int bkPage, int clPage) { // 프린트 포인트 사용

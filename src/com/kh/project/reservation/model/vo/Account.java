@@ -151,7 +151,7 @@ public class Account implements Serializable {
 
 	public String toString() {
 		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + oneSeat + ","
-				+ stdRoom + ","	+ printPoint + "," + totalH + "," + coupon;
+				+ stdRoom + "," + printPoint + "," + totalH + "," + coupon;
 	}
 
 

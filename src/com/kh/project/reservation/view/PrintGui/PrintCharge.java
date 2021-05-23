@@ -88,6 +88,7 @@ public class PrintCharge extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					psm.prtPointCharge(account, Integer.valueOf(count.getText())); // 포인트 충전연결
+					
 					new PrintServiceGui(account);
 					setVisible(false);
 				}
