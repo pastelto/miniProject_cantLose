@@ -13,24 +13,28 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
 
-public class PrintServiceGui extends JFrame {
+public class PrintCharge extends JFrame {
 
-	JLabel title = new JLabel("프린트서비스");// 타이틀
+	JLabel title = new JLabel("프린트 충전"); // 타이틀
+	JLabel message = new JLabel("충전할 금액을 입력해주세요."); 
+	JTextField count = new JTextField();
 	JButton prtPointCharge = new JButton("포인트 충전"); // 프린트포인트 충전버튼
-	JButton prtPointUse = new JButton("포인트 사용"); // 프린트포인트 사용버튼
 	JButton back = new JButton("< prev");
 	JPanel ps = new JPanel();
 	Font font = new Font("맑은 고딕", Font.BOLD, 30);
 	PrintServiceManager psm = new PrintServiceManager();
+	
+	
 
-	public PrintServiceGui(Account account) {
+	public PrintCharge(Account account) {
 
-		super("프린트서비스");
+		super("프린트 충전");
 		this.setSize(360, 600);
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
@@ -42,7 +46,7 @@ public class PrintServiceGui extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("프린트서비스");
+		bar.setText("프린트 충전");
 		bar.setFont(bar.getFont().deriveFont(17.0f));
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
@@ -54,30 +58,26 @@ public class PrintServiceGui extends JFrame {
 			e.printStackTrace();
 		}
 
-		// 프린트 정보조회- account에서 가지고 온 포인트 정보 보여주기
-		String point = Integer.toString(account.getPrintPoint());
-		JLabel prtPointInfo = new JLabel("나의 포인트 : " + point + " 점");// 내 현재 포인트 정보
-		prtPointInfo.setLocation(80, 140);
-		prtPointInfo.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
-		prtPointInfo.setFont(prtPointInfo.getFont().deriveFont(17.0f));
-		prtPointInfo.setSize(300, 100);
+		// 메세지 라벨 위치
+		message.setLocation(85, 140);
+		message.setBackground(new Color(248, 248, 248));
+		message.setSize(200, 50);
+		message.setFont(font.deriveFont(15.0f));
+
+		// 프린트포인트 입력
+		count.setLocation(110, 240);
+		count.setBackground(new Color(248, 248, 248));
+		count.setSize(140, 50);
+		count.setToolTipText("충전할 금액 입력");
 
 		// 프린트포인트 충전버튼
-		prtPointCharge.setLocation(100, 240);
+		prtPointCharge.setLocation(110, 340);
 		prtPointCharge.setBackground(new Color(248, 248, 248));
 		prtPointCharge.setFocusPainted(false);
-		prtPointCharge.setFont(prtPointCharge.getFont().deriveFont(17.0f));
 		prtPointCharge.setSize(140, 50);
 
-		// 프린트포인트 사용버튼
-		prtPointUse.setLocation(100, 340);
-		prtPointUse.setBackground(new Color(248, 248, 248));
-		prtPointUse.setFocusPainted(false);
-		prtPointUse.setFont(prtPointUse.getFont().deriveFont(15.0f));
-		prtPointUse.setSize(140, 50);
-
 		// 이전 버튼
-		back.setLocation(40, 500);
+		back.setLocation(30, 500);
 		back.setBackground(new Color(248, 248, 248));
 		back.setFocusPainted(false);
 		back.setFont(back.getFont().deriveFont(10.0f));
@@ -87,17 +87,9 @@ public class PrintServiceGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new PrintCharge(account);// 포인트 충전연결
-					setVisible(false);
-				}
-			}
-		});
-
-		prtPointUse.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-					new PrintUse(account);// 포인트 사용 연결
+					psm.prtPointCharge(account, Integer.valueOf(count.getText())); // 포인트 충전연결
+					
+					new PrintServiceGui(account);
 					setVisible(false);
 				}
 			}
@@ -107,17 +99,17 @@ public class PrintServiceGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice(account); // 메인메뉴
+					new MenuChoice(account); // 메인메뉴
 					setVisible(false);
 				}
 			}
 		});
 		ps.add(bar);
 		ps.add(title);
-		ps.add(prtPointInfo);
 		ps.add(prtPointCharge);
-		ps.add(prtPointUse);
 		ps.add(back);
+		ps.add(count);
+		ps.add(message);
 		this.add(ps);
 
 		this.setVisible(true);

@@ -11,7 +11,7 @@ import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.controller.ReservationManager;
 import com.kh.project.reservation.controller.TicketManager;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.model.vo.pay.Print;
+
 
 public class appMenu {
 
@@ -113,13 +113,13 @@ public class appMenu {
             //BookView();
             break;
          case 2: // 이용권 구매
-            buyTicket();
+            //buyTicket();
             break;
          case 3: // 음료 구매
             dm.select();
             break;
          case 4: // 프린트 서비스
-            printService();
+           //s printService();
             break;
          case 5: // 예약정보 확인
             rm.checkMyReservation();
@@ -128,7 +128,7 @@ public class appMenu {
          case 6: // 내정보
             break;
          case 7: // 체크인 / 체크아웃
-            io.checkInOutM();
+          //  io.checkInOutM();
             break;
          case 8: // 로그아웃
             return; // 또는 초기화면 이동
@@ -144,124 +144,124 @@ public class appMenu {
 
    
    // 체크인 
-   private void checkIn() {
-      io.checkInSave();
+//   private void checkIn() {
+//      io.checkInSave();
+//
+//      System.out.println("체크인 하시겠습니까? (Y/N)");
+//      String str = sc.nextLine();
+//
+//      if (str.equals("Y") || str.equals("y")) {
+//         io.checkInPrint();
+//         System.out.println("체크인 되었습니다.");
+//      } else if (str.equals("N") || str.equals("n")) {
+//         System.out.println("메인 메뉴로 돌아갑니다. ");
+//      }
+//
+//   }
+//
+//   // 체크아웃
+//   private void checkOut() {
+//      System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
+//      String str = sc.nextLine();
+//
+//      if (str.equals("Y") || str.equals("y")) {
+//         io.checkOutPrint();
+//         System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
+//      } else if (str.equals("N") || str.equals("n")) {
+//         System.out.println("메인 메뉴로 돌아갑니다. ");
+//      }
+//   }
 
-      System.out.println("체크인 하시겠습니까? (Y/N)");
-      String str = sc.nextLine();
-
-      if (str.equals("Y") || str.equals("y")) {
-         io.checkInPrint();
-         System.out.println("체크인 되었습니다.");
-      } else if (str.equals("N") || str.equals("n")) {
-         System.out.println("메인 메뉴로 돌아갑니다. ");
-      }
-
-   }
-
-   // 체크아웃
-   private void checkOut() {
-      System.out.println("체크아웃 시 재입실이 불가합니다." + "체크아웃 하시겠습니까? (Y/N)");
-      String str = sc.nextLine();
-
-      if (str.equals("Y") || str.equals("y")) {
-         io.checkOutPrint();
-         System.out.println("체크아웃 되었습니다." + "\n" + "고생하셨습니다 :) ");
-      } else if (str.equals("N") || str.equals("n")) {
-         System.out.println("메인 메뉴로 돌아갑니다. ");
-      }
-   }
-
-   // 프린트 서비스
-   private void printService() {
-      Print p = new Print();
-      PrintServiceManager psm = new PrintServiceManager();
-      while (true) {
-         System.out.println("***프린트 서비스***");
-         System.out.println("1. 프린트포인트 조회");
-         System.out.println("2. 프린트포인트 충전");
-         System.out.println("3. 프린트하기");
-         System.out.println("4. mainMenu");
-
-         System.out.println("메뉴선택: ");
-         int num1 = sc.nextInt();
-         sc.nextLine();
-
-         switch (num1) {
-         case 1:
-            psm.prtPointInfo();
-            break;
-         case 2:
-            System.out.println("충전금액: ");
-            int num2 = sc.nextInt();
-            sc.nextLine();
-            psm.prtPointCharge(num2);
-            System.out.println("충전완료. : " + p.getPrintPoint());
-            break;
-         case 3:
-            System.out.println("흑백 매수: ");
-            int b = sc.nextInt();
-            System.out.println("컬러 매수: ");
-            int c = sc.nextInt();
-            sc.nextLine();
-            psm.prtPointUse(b, c);
-            break;
-         case 4:
-            menu();
-            break;
-         default:
-            System.out.println("다시 입력해주세요.");
-            break;
-         }
-      }
-   }
+//   // 프린트 서비스
+//   private void printService() {
+//      Print p = new Print();
+//      PrintServiceManager psm = new PrintServiceManager();
+//      while (true) {
+//         System.out.println("***프린트 서비스***");
+//         System.out.println("1. 프린트포인트 조회");
+//         System.out.println("2. 프린트포인트 충전");
+//         System.out.println("3. 프린트하기");
+//         System.out.println("4. mainMenu");
+//
+//         System.out.println("메뉴선택: ");
+//         int num1 = sc.nextInt();
+//         sc.nextLine();
+//
+//         switch (num1) {
+//         case 1:
+//            psm.prtPointInfo();
+//            break;
+//         case 2:
+//            System.out.println("충전금액: ");
+//            int num2 = sc.nextInt();
+//            sc.nextLine();
+//            psm.prtPointCharge(num2);
+//            System.out.println("충전완료. : " + p.getPrintPoint());
+//            break;
+//         case 3:
+//            System.out.println("흑백 매수: ");
+//            int b = sc.nextInt();
+//            System.out.println("컬러 매수: ");
+//            int c = sc.nextInt();
+//            sc.nextLine();
+//            psm.prtPointUse(b, c);
+//            break;
+//         case 4:
+//            menu();
+//            break;
+//         default:
+//            System.out.println("다시 입력해주세요.");
+//            break;
+//         }
+//      }
+//   }
 
    // 이용권 구매
-   private void buyTicket() {
-      while (true) {
-         System.out.println("***이용권 구매***");
-         System.out.println("1. 1인좌석");
-         System.out.println("2. 스터디룸");
-         int num = sc.nextInt();
-         sc.nextLine();
-         int num1 = 0;
-
-         switch (num) {
-         case 1: // 기간에 따른 할인률 적용하여 반환
-            System.out.println("***기간 선택***");
-            System.out.println("1. 1 일권 ");
-            System.out.println("2. 1 개월권 ");
-            System.out.println("3. 6 개월권 ");
-            System.out.println("4. 1 년권 ");
-            int option = sc.nextInt();
-            sc.nextLine();
-
-            if (option == 1) {
-               System.out.println("수량 : ");
-               num1 = sc.nextInt();
-               tm.onePrice(option, num1);
-               tm.addCntTicket(num1);
-               System.out.println("총 금액은 " + tm.onePrice(option, num1) + " 입니다.");
-               break;
-            } else {
-               tm.onePrice(option);
-               System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
-               break;
-            }
-
-         case 2: // 스터디룸은 수량만 확인해서 반환
-            System.out.println("수량 : ");
-            int num2 = sc.nextInt();
-            sc.nextLine();
-            System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
-            break;
-         default:
-            System.out.println("다시입력해주세요.");
-            break;
-         }
-         menu();
-      }
-   }
+//   private void buyTicket() {
+//      while (true) {
+//         System.out.println("***이용권 구매***");
+//         System.out.println("1. 1인좌석");
+//         System.out.println("2. 스터디룸");
+//         int num = sc.nextInt();
+//         sc.nextLine();
+//         int num1 = 0;
+//
+//         switch (num) {
+//         case 1: // 기간에 따른 할인률 적용하여 반환
+//            System.out.println("***기간 선택***");
+//            System.out.println("1. 1 일권 ");
+//            System.out.println("2. 1 개월권 ");
+//            System.out.println("3. 6 개월권 ");
+//            System.out.println("4. 1 년권 ");
+//            int option = sc.nextInt();
+//            sc.nextLine();
+//
+//            if (option == 1) {
+//               System.out.println("수량 : ");
+//               num1 = sc.nextInt();
+//               tm.onePrice(option, num1);
+//               tm.addCntTicket(num1);
+//               System.out.println("총 금액은 " + tm.onePrice(option, num1) + " 입니다.");
+//               break;
+//            } else {
+//               tm.onePrice(option);
+//               System.out.println("총 금액은 " + tm.onePrice(option) + " 입니다.");
+//               break;
+//            }
+//
+//         case 2: // 스터디룸은 수량만 확인해서 반환
+//            System.out.println("수량 : ");
+//            int num2 = sc.nextInt();
+//            sc.nextLine();
+//            System.out.println("총 금액은 " + tm.strPrice(num2) + "입니다.");
+//            break;
+//         default:
+//            System.out.println("다시입력해주세요.");
+//            break;
+//         }
+//         menu();
+//      }
+//   }
 
    // 예약정보 
    private void checkMyReservation() {

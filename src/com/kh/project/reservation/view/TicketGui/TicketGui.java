@@ -20,16 +20,15 @@ import com.kh.project.reservation.view.MenuChoice;
 
 public class TicketGui extends JFrame {
 	JLabel title = new JLabel("이용권구매"); // 타이틀
-	JButton oneSeat = new JButton("1인석"); // 1인석
+	JButton oneSeatDay = new JButton("1인석(일일권)"); // 1인석(일일권)
+	JButton oneSeatMonth = new JButton("1인석(기간권)"); // 1인석(기간권)
 	JButton stdR = new JButton("스터디룸"); // 스터디룸
 	JButton back = new JButton("< prev");
 	JPanel t = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	TicketManager tm = new TicketManager();
 
-	Account a = new Account();
-	
-	public TicketGui() {
+	public TicketGui(Account account) {
 
 		super("이용권 구매");
 		this.setSize(360, 600);
@@ -55,16 +54,22 @@ public class TicketGui extends JFrame {
 			e.printStackTrace();
 		}
 
-		// 1인석
-		oneSeat.setLocation(110, 140);
-		oneSeat.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
-		// checkin.setBorderPainted(false); //버튼 테두리 설정
-		oneSeat.setFocusPainted(false);// 포커스 표시 설정
-		oneSeat.setFont(oneSeat.getFont().deriveFont(15.0f));
-		oneSeat.setSize(140, 50);
+		// 1인석(일일권)
+		oneSeatDay.setLocation(110, 140);
+		oneSeatDay.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
+		oneSeatDay.setFocusPainted(false);// 포커스 표시 설정
+		oneSeatDay.setFont(oneSeatDay.getFont().deriveFont(15.0f));
+		oneSeatDay.setSize(140, 50);
+		
+		// 1인석(기간권)
+		oneSeatMonth.setLocation(110, 240);
+		oneSeatMonth.setBackground(new Color(248, 248, 248)); 
+		oneSeatMonth.setFocusPainted(false);
+		oneSeatMonth.setFont(oneSeatDay.getFont().deriveFont(15.0f));
+		oneSeatMonth.setSize(140, 50);
 
 		// 스터디룸
-		stdR.setLocation(110, 240);
+		stdR.setLocation(110, 340);
 		stdR.setBackground(new Color(248, 248, 248));
 		stdR.setFocusPainted(false);
 		stdR.setFont(stdR.getFont().deriveFont(15.0f));
@@ -77,11 +82,21 @@ public class TicketGui extends JFrame {
 		back.setFont(back.getFont().deriveFont(10.0f));
 		back.setSize(70, 30);
 
-		oneSeat.addMouseListener(new MouseAdapter() {
+		oneSeatDay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 1인석
+					new OneSeatDay(account);// 1인석(일일권)
+					setVisible(false);
+				}
+			}
+		});
+		
+		oneSeatMonth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					new OneSeatMonth(account);// 1인석(기간권)
 					setVisible(false);
 				}
 			}
@@ -91,7 +106,7 @@ public class TicketGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 스터디룸
+					new StdRoom(account);// 스터디룸
 					setVisible(false);
 				}
 			}
@@ -101,7 +116,7 @@ public class TicketGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice(a);
+					MenuChoice mc = new MenuChoice(account);
 					setVisible(false);
 				}
 			}
@@ -109,7 +124,8 @@ public class TicketGui extends JFrame {
 
 		t.add(bar);
 		t.add(title);
-		t.add(oneSeat);
+		t.add(oneSeatDay);
+		t.add(oneSeatMonth);
 		t.add(stdR);
 		t.add(back);
 		this.add(t);
