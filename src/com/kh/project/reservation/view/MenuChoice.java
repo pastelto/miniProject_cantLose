@@ -67,6 +67,7 @@ public class MenuChoice extends JFrame {
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
 		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
+		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 

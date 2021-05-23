@@ -3,16 +3,15 @@ package com.kh.project.reservation.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,7 +57,10 @@ public class Login extends JFrame {
 		image.setBounds(95, 40, 150, 140);
 
 
-		
+		login.setBackground(new Color(220, 118, 112)); // 버튼색
+		signUp.setBackground(new Color(220, 118, 112));// 버튼색
+		login.setForeground(Color.white);
+		signUp.setForeground(Color.white);
 		
 		BoardManager bm1 = new BoardManager();
 		String mm = bm1.maxim();
@@ -102,6 +104,7 @@ public class Login extends JFrame {
 
 		find.setLocation(245, 385);
 		find.setSize(270, 54);
+		find.setOpaque(false);
 		find.setForeground(new Color(225, 118, 112));
 		
 		loginP.add(logTF);
@@ -126,7 +129,7 @@ public class Login extends JFrame {
 				if(logTF.getText().equals("")||pwTF.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 입력해주세요!");
 				}
-				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());	
+				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(), pwTF.getText());	
 				
 					if (check.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "회원 가입이 필요합니다.");
@@ -145,6 +148,7 @@ public class Login extends JFrame {
 				}
 					
 			}
+			
 		});
 
 
@@ -180,6 +184,31 @@ public class Login extends JFrame {
 			}
 			
 			}); 
+		login.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				login.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				login.setBackground(new Color(220, 118, 112)); // 버튼색
+			} 
+			
+	});
+		signUp.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				signUp.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				signUp.setBackground(new Color(220, 118, 112));// 버튼색
+			} 
+	});
 		
 		// 상단바 로고
 				try {
