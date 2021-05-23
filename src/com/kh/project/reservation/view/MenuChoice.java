@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Board.MList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
@@ -36,9 +38,14 @@ public class MenuChoice extends JFrame {
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
 
+	private CheckAccount ca = new CheckAccount();
+	
+
+
 	int xL, yL;
 	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
 	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
+
 
 	public MenuChoice(Account account) {
 
@@ -133,7 +140,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new TicketGui();// 이용권구매
+					new TicketGui(account);
 					setVisible(false);
 				}
 			}
@@ -153,7 +160,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new PrintServiceGui();// 프린트
+					new PrintServiceGui(account);
 					setVisible(false);
 				}
 			}
@@ -173,9 +180,8 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					// 내정보
+					new Check(account); 
 					setVisible(false);
-					new Check(account);
 				}
 			}
 		});
@@ -205,8 +211,10 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용
+					new MemberDao().reSaveAccount(account);
 					Login l = new Login();
-
+					
 					setVisible(false);
 				}
 			}

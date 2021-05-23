@@ -1,4 +1,4 @@
-package com.kh.project.reservation.view.PrintGui;
+package com.kh.project.reservation.view.TicketGui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,24 +13,29 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.PrintServiceManager;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.MenuChoice;
+import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 
-public class PrintServiceGui extends JFrame {
+public class OneSeatMonth extends JFrame {
 
-	JLabel title = new JLabel("프린트서비스");// 타이틀
-	JButton prtPointCharge = new JButton("포인트 충전"); // 프린트포인트 충전버튼
-	JButton prtPointUse = new JButton("포인트 사용"); // 프린트포인트 사용버튼
-	JButton back = new JButton("< prev");
+	JLabel title = new JLabel("1인석 이용권"); // 타이틀
+	JLabel black = new JLabel("흑백 : "); // 흑백
+	JLabel color = new JLabel("컬러 : "); // 컬러
+	JTextField bkPage = new JTextField(); // 흑백매수 입력
+	JTextField clPage = new JTextField(); // 컬러매수 입력
+	JButton prtPointUse = new JButton("프린트 하기"); // 프린트사용버튼
+	JButton back = new JButton("< prev"); // 뒤로
 	JPanel ps = new JPanel();
 	Font font = new Font("맑은 고딕", Font.BOLD, 30);
 	PrintServiceManager psm = new PrintServiceManager();
 
-	public PrintServiceGui(Account account) {
+	public OneSeatMonth(Account account) {
 
-		super("프린트서비스");
+		super("프린트 사용");
 		this.setSize(360, 600);
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
@@ -42,7 +47,7 @@ public class PrintServiceGui extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("프린트서비스");
+		bar.setText("프린트 사용");
 		bar.setFont(bar.getFont().deriveFont(17.0f));
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
@@ -54,50 +59,49 @@ public class PrintServiceGui extends JFrame {
 			e.printStackTrace();
 		}
 
-		// 프린트 정보조회- account에서 가지고 온 포인트 정보 보여주기
-		String point = Integer.toString(account.getPrintPoint());
-		JLabel prtPointInfo = new JLabel("나의 포인트 : " + point + " 점");// 내 현재 포인트 정보
-		prtPointInfo.setLocation(80, 140);
-		prtPointInfo.setBackground(new Color(248, 248, 248)); // 버튼 색상 변경
-		prtPointInfo.setFont(prtPointInfo.getFont().deriveFont(17.0f));
-		prtPointInfo.setSize(300, 100);
+		// 흑백 :
+		black.setLocation(70, 150);
+		black.setBackground(new Color(248, 248, 248));
+		black.setSize(200, 50);
+		black.setFont(font.deriveFont(15.0f));
 
-		// 프린트포인트 충전버튼
-		prtPointCharge.setLocation(100, 240);
-		prtPointCharge.setBackground(new Color(248, 248, 248));
-		prtPointCharge.setFocusPainted(false);
-		prtPointCharge.setFont(prtPointCharge.getFont().deriveFont(17.0f));
-		prtPointCharge.setSize(140, 50);
+		// 흑백 매수입력
+		bkPage.setLocation(150, 150);
+		bkPage.setBackground(new Color(248, 248, 248));
+		bkPage.setSize(140, 50);
+		bkPage.setToolTipText("흑백 매수 입력");
+
+		// 컬러:
+		color.setLocation(70, 220);
+		color.setBackground(new Color(248, 248, 248));
+		color.setSize(200, 50);
+		color.setFont(font.deriveFont(15.0f));
+
+		// 컬러 매수 입력
+		clPage.setLocation(150, 220);
+		clPage.setBackground(new Color(248, 248, 248));
+		clPage.setSize(140, 50);
+		clPage.setToolTipText("컬러 매수 입력");
 
 		// 프린트포인트 사용버튼
-		prtPointUse.setLocation(100, 340);
+		prtPointUse.setLocation(110, 340);
 		prtPointUse.setBackground(new Color(248, 248, 248));
 		prtPointUse.setFocusPainted(false);
-		prtPointUse.setFont(prtPointUse.getFont().deriveFont(15.0f));
 		prtPointUse.setSize(140, 50);
 
 		// 이전 버튼
-		back.setLocation(40, 500);
+		back.setLocation(30, 500);
 		back.setBackground(new Color(248, 248, 248));
 		back.setFocusPainted(false);
 		back.setFont(back.getFont().deriveFont(10.0f));
 		back.setSize(70, 30);
 
-		prtPointCharge.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() == 1) {
-					new PrintCharge(account);// 포인트 충전연결
-					setVisible(false);
-				}
-			}
-		});
-
 		prtPointUse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new PrintUse(account);// 포인트 사용 연결
+					psm.prtPointUse(account, Integer.valueOf(bkPage.getText()), Integer.valueOf(clPage.getText())); // 포인트
+					new PrintServiceGui(account); // 프린트메인
 					setVisible(false);
 				}
 			}
@@ -107,15 +111,17 @@ public class PrintServiceGui extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					MenuChoice mc = new MenuChoice(account); // 메인메뉴
+					new MenuChoice(account); // 메인메뉴
 					setVisible(false);
 				}
 			}
 		});
 		ps.add(bar);
 		ps.add(title);
-		ps.add(prtPointInfo);
-		ps.add(prtPointCharge);
+		ps.add(black);
+		ps.add(bkPage);
+		ps.add(color);
+		ps.add(clPage);
 		ps.add(prtPointUse);
 		ps.add(back);
 		this.add(ps);

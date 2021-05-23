@@ -157,11 +157,10 @@ public class SignUp extends JFrame {
 					} else if(ca.checkIdNum(idNTF)) { //주민번호 중복일경우
 						JOptionPane.showMessageDialog(null, "이미 가입된 '주민번호'입니다.");
 					}
-						else {
-							ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF,
-									phone.getText(), bankTF.getSelectedItem().toString(), bankNTF.getText(), 0, 0, 0, 1));
-							ca.saveAccount();
 
+					else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF, 
+							phone.getText(), bankTF.getSelectedItem().toString(),bankNTF.getText(),0,0,0,0,1 ));
+					ca.saveAccount();
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
 						new Login();
 						setVisible(false);
