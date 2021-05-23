@@ -127,20 +127,21 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 		}
 
 
-	public void reSaveAccount(Account account) {
+	public void reSaveAccount(Account account) { // 로그아웃하면서 정보갱신
 		try(ObjectOutputStream oos = new ObjectOutputStream
-				(new FileOutputStream("account.txt"))){
+				(new FileOutputStream("account.dat"))){
 			
 			for(int i = 0; i < list.size(); i++) {
 			if(list.get(i).getId().toString().equals(account.getId())){
 				list.remove(list.get(i));
 				list.add(account);
+				System.out.println(list);
 				System.out.println("성공적으로 로그아웃이 되었습니다.");
 				
 			}	
 			// list에 변경사항 저장
 			oos.writeObject(list);
-			
+			System.out.println(list);
 			}	
 		}catch(FileNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.");
