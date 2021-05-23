@@ -37,6 +37,7 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
+	JLabel userName = new JLabel();
 
 	private CheckAccount ca = new CheckAccount();
 	
@@ -66,23 +67,35 @@ public class MenuChoice extends JFrame {
 
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
+		bar.setText("MENU  ");
+		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-
-		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
-		image.setLocation(10, 300);
-		image.setSize(100, 100);
-
+		mc.add(bar);
+		
+//		JLabel image = new JLabel(new ImageIcon("images/logoMini1.png"));
+//		image.setBounds(140, 430, 60, 60);
+//		mc.add(image);
+		
+		String accountName = account.getName().toString();
+		userName = new JLabel("반갑습니다. " + accountName + "님");
+		userName.setBounds(105, 100, 300, 50);
+		userName.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		
+		
+		JLabel humanIcon = new JLabel(new ImageIcon("images/humanIcon3.png"));
+		humanIcon.setBounds(40,100,54,54);
+		
+		
 		// 메뉴 버튼
-		b1.setBounds(10, 80, 150, 50);
-		b2.setBounds(180, 80, 150, 50);
-		b3.setBounds(10, 140, 150, 50);
-		b4.setBounds(180, 140, 150, 50);
-		b5.setBounds(10, 200, 150, 50);
-		b6.setBounds(180, 200, 150, 50);
-		b7.setBounds(10, 260, 150, 50);
-		b8.setBounds(180, 260, 150, 50);
+		b1.setBounds(10, 180, 150, 50);
+		b2.setBounds(180, 180, 150, 50);
+		b3.setBounds(10, 240, 150, 50);
+		b4.setBounds(180, 240, 150, 50);
+		b5.setBounds(10, 300, 150, 50);
+		b6.setBounds(180, 300, 150, 50);
+		b7.setBounds(10, 360, 150, 50);
+		b8.setBounds(180, 360, 150, 50);
 		b9.setBounds(120, 500, 100, 30);
 
 		// 메뉴 색상 --> 원하는대로 바꿔주세요~
@@ -112,18 +125,22 @@ public class MenuChoice extends JFrame {
 		}
 
 		// 붙여넣기
-		this.add(bar);
-		this.add(b1);
-		this.add(b2);
-		this.add(b3);
-		this.add(b4);
-		this.add(b5);
-		this.add(b6);
-		this.add(b7);
-		this.add(b8);
-		this.add(b9);
+		mc.add(bar);
+		mc.add(b1);
+		mc.add(b2);
+		mc.add(b3);
+		mc.add(b4);
+		mc.add(b5);
+		mc.add(b6);
+		mc.add(b7);
+		mc.add(b8);
+		mc.add(b9);
+		mc.add(humanIcon);
+		mc.add(userName);
+
 		this.add(mc);
-		this.add(image);
+		
+ 
 
 		// 각 버튼 클릭시 연결 기능
 		b1.addMouseListener(new MouseAdapter() {
@@ -219,7 +236,8 @@ public class MenuChoice extends JFrame {
 				}
 			}
 		});
-
+		
+		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
