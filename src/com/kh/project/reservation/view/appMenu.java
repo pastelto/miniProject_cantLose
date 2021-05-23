@@ -1,7 +1,6 @@
 
 package com.kh.project.reservation.view;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -129,7 +128,7 @@ public class appMenu {
          case 6: // 내정보
             break;
          case 7: // 체크인 / 체크아웃
-            checkInOutM();
+            io.checkInOutM();
             break;
          case 8: // 로그아웃
             return; // 또는 초기화면 이동
@@ -141,36 +140,7 @@ public class appMenu {
    }
 
    // 체크인&체크아웃 메뉴
-   private void checkInOutM() {
-         ArrayList ss = io.checkInSave();
-         
-         if (ss.get(3).equals("")) {// 체크인 안했을 때 
-            while (true) {
-               System.out.println("체크인 또는 체크아웃 또는 이전을 입력하세요");
-               String str = sc.nextLine();
-               if (str.equals("체크인")) {
-                  checkIn(); // 체크인 메소드
-                  break;
-               } else if (str.equals("체크아웃")) {
-                  System.out.println("체크인 한 기록이 없습니다. 메인 화면으로 돌아갑니다.  ");
-                  break;
-               } else if (str.equals("이전")) {
-                  System.out.println("메인메뉴로 돌아갑니다.");
-               }
-            }
-         } else if (ss.get(3).equals("체크인")) {// 체크인 한 버전 // 상태 확인
-            io.chechkedIn();
-            String str = sc.nextLine();
-            if (str.equals("체크아웃")) {
-               checkOut(); // 체크아웃 메소드
-            }else if (str.equals("이전")) {
-               System.out.println("메인메뉴로 돌아갑니다.");
-            }
-         } else { 
-            System.out.println("체크아웃하여 재입실이 불가합니다." + " \n" + "메인 화면으로 돌아갑니다.");
-         }
-      }
-      
+  
 
    
    // 체크인 

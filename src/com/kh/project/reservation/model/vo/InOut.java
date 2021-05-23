@@ -5,54 +5,37 @@ import java.util.Date;
 import com.kh.project.reservation.model.vo.Account;
 
 public class InOut {
-	
-	private long checkIn = System.currentTimeMillis() ;
-	private long checkOut;
-	private String doubleCheck = ""; // 체크인 상태 
+	private String checkIn =  new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(System.currentTimeMillis());
+	//private long checkIn = System.currentTimeMillis() ;
+	//private String checkIn;
+	private String checkOut;
+	//private long checkOut;
+	//private String doubleCheck = ""; // 체크인 상태 
 	
 	public InOut() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public String getCheckIn() {
+		return checkIn;
+	}
+
+	public void setCheckIn(String checkIn) {
+		this.checkIn = checkIn;
+	}
+
+	public String getCheckOut() {
+		return checkOut;
+	}
+
+	public void setCheckOut(String checkOut) {
+		this.checkOut = checkOut;
+	}
 	
 
 
 
-	public long getCheckIn() {
-		return checkIn;
-	}
-
-
-
-
-	public void setCheckIn(long checkIn) {
-		this.checkIn = checkIn;
-	}
-
-
-
-
-	public long getCheckOut() {
-		return checkOut;
-	}
-
-
-
-
-	public void setCheckOut(long checkOut) {
-		this.checkOut = checkOut;
-	}
-
-
-
-
-	public String getDoubleCheck() {
-		return doubleCheck;
-	}
-
-
-	public void setDoubleCheck(String doubleCheck) {
-		this.doubleCheck = doubleCheck;
-	}
+	
 	
 
 	

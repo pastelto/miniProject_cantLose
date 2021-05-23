@@ -19,6 +19,8 @@ public class Run {
 
 
 		//DrinkBuy d = new DrinkBuy();
+		
+		//Drink d = new Drink();
 
 
 		//Login l = new Login();

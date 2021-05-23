@@ -159,7 +159,7 @@ public class SignUp extends JFrame {
 					}
 						else {
 							ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF,
-									phone.getText(), bankTF.getSelectedItem().toString(), bankNTF.getText(), 0, 0, 0, 1));
+									phone.getText(), bankTF.getSelectedItem().toString(), bankNTF.getText(), 0, 0,"",0, 1));
 							ca.saveAccount();
 
 						JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");

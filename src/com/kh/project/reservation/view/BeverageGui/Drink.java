@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +27,8 @@ public class Drink extends JFrame{
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
 	JPanel cc = new JPanel();
 	JPanel input = new JPanel(); // 레이블 박스
+	JLabel cnum = new JLabel("수량을 선택하세요 :)");
+	
 	Account ac = new Account();
 	DrinkManager dm = new DrinkManager();
 
@@ -39,8 +43,10 @@ public class Drink extends JFrame{
 	JButton h = new JButton("레몬에이드");
 	JButton i = new JButton("담기");
 	JButton k = new JButton("< prev");
-	JTextField tf = new JTextField();
-	JLabel jl = new JLabel("수량을 숫자로 입력하세요 :)");
+	//JTextField tf = new JTextField();
+	//JLabel jl = new JLabel("수량을 숫자로 입력하세요 :)");
+	String num[] = {"1","2","3","4","5"};
+	JComboBox combo= new JComboBox(num);
 
 	MyDialog dialog;
 	
@@ -66,75 +72,81 @@ public class Drink extends JFrame{
 
 	
 		// 버튼
-		a.setLocation(50, 70);
+		a.setLocation(50, 90);
 		a.setBackground(new Color(248, 248, 248));
 		a.setFocusPainted(false);
 		a.setFont(a.getFont().deriveFont(12.0f));
-		a.setSize(100, 60);
+		a.setSize(100, 50);
 
-		b.setLocation(200, 70);
+		b.setLocation(200, 90);
 		b.setBackground(new Color(248, 248, 248));
 		b.setFocusPainted(false);
 		b.setFont(b.getFont().deriveFont(12.0f));
-		b.setSize(100, 60);
+		b.setSize(100, 50);
 
-		c.setLocation(50, 160);
+		c.setLocation(50, 180);
 		c.setBackground(new Color(248, 248, 248));
 		c.setFocusPainted(false);
 		c.setFont(c.getFont().deriveFont(12.0f));
-		c.setSize(100, 60);
+		c.setSize(100, 50);
 
-		d.setLocation(200, 160);
+		d.setLocation(200, 180);
 		d.setBackground(new Color(248, 248, 248));
 		d.setFocusPainted(false);
 		d.setFont(d.getFont().deriveFont(12.0f));
-		d.setSize(100, 60);
+		d.setSize(100, 50);
 
-		e.setLocation(50, 250);
+		e.setLocation(50, 270);
 		e.setBackground(new Color(248, 248, 248));
 		e.setFocusPainted(false);
 		e.setFont(e.getFont().deriveFont(12.0f));
-		e.setSize(100, 60);
+		e.setSize(100, 50);
 
-		f.setLocation(200, 250);
+		f.setLocation(200, 270);
 		f.setBackground(new Color(248, 248, 248));
 		f.setFocusPainted(false);
 		f.setFont(f.getFont().deriveFont(12.0f));
-		f.setSize(100, 60);
+		f.setSize(100, 50);
 
-		g.setLocation(50, 340);
+		g.setLocation(50, 360);
 		g.setBackground(new Color(248, 248, 248));
 		g.setFocusPainted(false);
 		g.setFont(g.getFont().deriveFont(12.0f));
-		g.setSize(100, 60);
+		g.setSize(100, 50);
 
-		h.setLocation(200, 340);
+		h.setLocation(200, 360);
 		h.setBackground(new Color(248, 248, 248));
 		h.setFocusPainted(false);
 		h.setFont(h.getFont().deriveFont(12.0f));
-		h.setSize(100, 60);
+		h.setSize(100, 50);
 		
-		i.setLocation(230, 500);
+		i.setLocation(220, 490);
 		i.setBackground(new Color(146, 133, 132));
 		i.setFocusPainted(false);
-		i.setFont(i.getFont().deriveFont(15.0f));
-		i.setSize(100, 40);
+		i.setFont(i.getFont().deriveFont(17.0f));
+		i.setSize(115, 37);
 		
-		k.setLocation(10, 530);
+
+		k.setLocation(25, 520);
 		k.setBackground(new Color(248, 248, 248));
 		k.setFocusPainted(false);
 		k.setFont(k.getFont().deriveFont(10.0f));
 		k.setSize(70, 25);
 		
-		jl.setLocation(75, 430);
-		jl.setBackground(new Color(237, 243, 252));
-		jl.setFont(jl.getFont().deriveFont(16.0f));
-		jl.setSize(300, 30);
+//		jl.setLocation(75, 430);
+//		jl.setBackground(new Color(237, 243, 252));
+//		jl.setFont(jl.getFont().deriveFont(16.0f));
+//		jl.setSize(300, 30);
+		combo.setBounds(120, 450, 130, 27);
+		combo.setFont(combo.getFont().deriveFont(14.0f));
+//		tf.setLocation(150, 470);
+//		tf.setBackground(new Color(248, 248, 248));
+//		tf.setFont(tf.getFont().deriveFont(17.0f));
+//		tf.setSize(50, 30);
 		
-		tf.setLocation(150, 470);
-		tf.setBackground(new Color(248, 248, 248));
-		tf.setFont(tf.getFont().deriveFont(17.0f));
-		tf.setSize(50, 30);
+		cnum.setLocation(100, 420);
+		cnum.setFont(cnum.getFont().deriveFont(17.0f));
+		cnum.setSize(300, 25);
 		
 		
 		
@@ -165,6 +177,7 @@ public class Drink extends JFrame{
 				if (e.getButton() == 1) {
 				String str = "카페라떼";
 				dm.menuget(str);
+	
 				}
 			}
 		});
@@ -218,7 +231,11 @@ public class Drink extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					count();
-					dm.select();
+					System.out.println("********저장중");//테스트
+					//dm.select();
+					HashMap<String, Integer> select = dm.select();
+					System.out.println("이건 gui드링크에서 하는 dc카트 담긴 것"+select);
+					dm.totalmoney();
 					dialog.setVisible(true);
 				}
 			}
@@ -234,7 +251,7 @@ public class Drink extends JFrame{
 			}
 		});
 		
-		String count = tf.getText();
+		//String count = tf.getText();
 		
 		cc.add(bar);
 		cc.add(a);
@@ -246,12 +263,13 @@ public class Drink extends JFrame{
 		cc.add(g);
 		cc.add(h);
 		cc.add(i);
+		cc.add(cnum);
 
 
 		cc.add(k);
-		cc.add(tf);
-		cc.add(jl);
-		
+	//	cc.add(tf);
+		//cc.add(jl);
+		cc.add(combo);
 		
 
 		this.add(cc);
@@ -263,8 +281,8 @@ public class Drink extends JFrame{
 
 	public void count() {
 		//수량 넘기기 
-		String count = tf.getText();
-				dm.countsave(count);
+		String change = combo.getSelectedItem().toString();
+		dm.countsave(change);
 	}
 	
 }
@@ -290,7 +308,7 @@ class MyDialog extends JDialog {
 
 		label.setBounds(0, 0, 240, 50); // 레이블 위치 및 크기 지정
 		label.setHorizontalAlignment(JLabel.CENTER); // 가운데 정렬
-		label.setFont(label.getFont().deriveFont(17.0f));
+		label.setFont(label.getFont().deriveFont(15.0f));
 
 		okBtn.setBounds(20, 60, 70, 30); // 버튼 위치 및 크기 지정
 		okBtn.setBackground(new Color(220, 118, 112));
@@ -310,7 +328,8 @@ class MyDialog extends JDialog {
 				result = true;
 				
 				if (result) {
-					dm.select();
+				
+			
 					
 					setVisible(false);
 				}
@@ -321,10 +340,10 @@ class MyDialog extends JDialog {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-	
 
-				
-				new DrinkBuy(); // 이창 어케 꺼 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ어카운트 넣어야하나
+				dm.menusave();
+
+				new DrinkBuy(account); // 이창 어케 꺼 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ어카운트 넣어야하나
 				setVisible(false);
 
 			}

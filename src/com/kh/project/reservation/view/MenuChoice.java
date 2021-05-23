@@ -189,7 +189,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new CheckIn();
+					new CheckIn(account);
 					setVisible(false);
 				}
 			}
