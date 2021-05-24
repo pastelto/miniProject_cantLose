@@ -32,7 +32,6 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class Login extends JFrame { 
 
-	private Scanner sc = new Scanner(System.in);
 	private Account account = new Account();
 	JButton login = new JButton("로그인");
 	JButton signUp = new JButton("회원가입");
@@ -152,7 +151,7 @@ public class Login extends JFrame {
 		});
 
 
-		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기
+		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기 
 
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -9,9 +9,7 @@ import com.kh.project.reservation.model.vo.Account;
 public class CheckAccount {
 
 	private MemberDao md = new MemberDao();
-	HashMap<String, Account> membership= new HashMap<>();
-	
-	Account account = new Account();
+	private Account account = new Account();
 	
 	public CheckAccount() {}
 	

@@ -1,5 +1,6 @@
 package com.kh.project.reservation.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,6 +27,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.controller.UpdateAccount;
 import com.kh.project.reservation.model.vo.Account;
 
 public class SignUp extends JFrame {
@@ -32,7 +35,6 @@ public class SignUp extends JFrame {
 	private ArrayList<Account> check = new ArrayList<>();
 	private Account account = new Account();
 	private CheckAccount ca = new CheckAccount();
-	Scanner sc = new Scanner(System.in);
 
 	JPanel SignUp = new JPanel();
 	JLabel SignUp2 = new JLabel();
@@ -45,6 +47,7 @@ public class SignUp extends JFrame {
 	String bank;
 	String bankN;
 	String idNTF; 
+	CoffePop dialog;
 	
 	public SignUp() {
 
@@ -67,6 +70,7 @@ public class SignUp extends JFrame {
 		JLabel l7 = new JLabel("계좌번호");
 		JLabel l8 = new JLabel("-");
 		JLabel l9 = new JLabel("회원가입");
+		
 		
 		JTextField idTF = new JTextField();
 		JPasswordField pwTF = new JPasswordField();
@@ -158,6 +162,7 @@ public class SignUp extends JFrame {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장
+			
 				idNTF = idNTF1.getText()+"-"+idNTF2.getText(); //111111-1111111
 				
 				if(idTF.getText().equals("")||pwTF.getText().equals("")|| nameTF.getText().equals("")||idNTF1.equals("")||
@@ -177,13 +182,12 @@ public class SignUp extends JFrame {
 						ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF,
 								phone.getText(), bankTF.getSelectedItem().toString(), bankNTF.getText(),0 ,0, 0, 0, 1));
 						ca.saveAccount();
-
-					JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!");
-					new Login();
-					setVisible(false);
+						
+						new CoffePop();
+						setVisible(false);
 				}
 			}
-			
+
 		});
 		
 		idNTF1.addKeyListener(new KeyAdapter() { // 글자수 제한
@@ -248,12 +252,12 @@ public class SignUp extends JFrame {
 				try {
 					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+ 					e.printStackTrace();
 				}
 
 		       this.setVisible(true);
 				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}    
+	}
+
 }
 
