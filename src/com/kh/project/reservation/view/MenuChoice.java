@@ -17,15 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
-
 import com.kh.project.reservation.view.BeverageGui.Drink;
-
-
 import com.kh.project.reservation.view.Board.MList;
-
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
-import com.kh.project.reservation.view.TicketGui.TicketGui;
 
 public class MenuChoice extends JFrame {
 
@@ -158,7 +154,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-				//	new PrintServiceGui();// 프린트
+				new PrintServiceGui(account);// 프린트
 					setVisible(false);
 				}
 			}
@@ -210,6 +206,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					new MemberDao().reSaveAccount(account);
 					Login l = new Login();
 
 					setVisible(false);

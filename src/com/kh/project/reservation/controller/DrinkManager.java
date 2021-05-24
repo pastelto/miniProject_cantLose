@@ -67,6 +67,9 @@ public class DrinkManager {
 				Entry<String, Integer> entry = (Entry)it1.next();
 				System.out.println(entry.getKey() + " = " + entry.getValue());
 			}
+			
+			System.out.println("dc 투스트링 " + dc.toString());
+			System.out.println("dc " + dc);
 		return dc; // 저장된걸 반환 
 	}
 	
@@ -75,10 +78,20 @@ public class DrinkManager {
 	public void menusave() {
 		System.out.println("장바구니 메소드는 타고 있어 ");
 		
+		
+		
 		HashMap<String, Integer> dcNew = select();
+		
+		System.out.println(dcNew + "dcNew");
+		System.out.println(dcNew.toString() + "dcNew 투스트링");
 		
 		 Set< Entry<String, Integer> > eSet1 = dcNew.entrySet();
 
+		 System.out.println(eSet1 + "eSet1");
+			System.out.println(eSet1.toString() + "eSet1 투스트링");
+		 
+		 
+		 
 		Iterator<Entry<String, Integer>> it1 = eSet1.iterator();
 		while(it1.hasNext()) {
 			System.out.println("장바구니 메소드 이터레이터는 타고 있어 ");
