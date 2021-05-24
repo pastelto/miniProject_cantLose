@@ -6,13 +6,8 @@ import com.kh.project.reservation.model.vo.Book;
 
 public class ReservationManager {
 
-	//메소드 호출용 클래스
-	private Account ac = new Account();
-	private Book bk  = new Book(ac);
-	//private Ticket tk = new Ticket();
 	private String taken;
 	
-	//좌
 	private String[] seatsFF = { "1인 칸막이 좌석 (여성전용) a,a","1인 칸막이 좌석 (여성전용) a,b","1인 칸막이 좌석 (여성전용) a,c","1인 칸막이 좌석 (여성전용) a,d","1인 칸막이 좌석 (여성전용) a,e","1인 칸막이 좌석 (여성전용) a,f","1인 칸막이 좌석 (여성전용) a,g",
 			"1인 칸막이 좌석 (여성전용) a,h","1인 칸막이 좌석 (여성전용) a,i","1인 칸막이 좌석 (여성전용) a,j","1인 칸막이 좌석 (여성전용) a,k","1인 칸막이 좌석 (여성전용) a,l","1인 칸막이 좌석 (여성전용) a,m","1인 칸막이 좌석 (여성전용) a,n","1인 칸막이 좌석 (여성전용) a,o"
 			};
@@ -27,49 +22,43 @@ public class ReservationManager {
 
 	private String[] rooms = { "스터디룸 A (최대 4인)","스터디룸 B (최대 4인)","스터디룸 C (최대 4인)","스터디룸 D (최대 4인)"
 	};
-
+	
+	public String[] getSeatsFF() {
+		return seatsFF;
+	}
+	public void setSeatsFF(String[] seatsFF) {
+		this.seatsFF = seatsFF;
+	}
+	public String[] getSeatsFM() {
+		return seatsFM;
+	}
+	public void setSeatsFM(String[] seatsFM) {
+		this.seatsFM = seatsFM;
+	}
+	public String[] getSeatsFO() {
+		return seatsFO;
+	}
+	public void setSeatsFO(String[] seatsFO) {
+		this.seatsFO = seatsFO;
+	}
+	public String[] getRooms() {
+		return rooms;
+	}
+	public void setRooms(String[] rooms) {
+		this.rooms = rooms;
+	}
 	//생성자
 	public ReservationManager() {
 		
 	}
-	
-	//getter setter
-	public String[] getSeatsFF() {
-		return seatsFF;
-	}
+	public ReservationManager(Account account) {
 
-	public void setSeatsFF(String[] seatsFF) {
-		this.seatsFF = seatsFF;
-	}
-
-	public String[] getSeatsFM() {
-		return seatsFM;
-	}
-
-	public void setSeatsFM(String[] seatsFM) {
-		this.seatsFM = seatsFM;
-	}
-
-	public String[] getSeatsFO() {
-		return seatsFO;
-	}
-
-	public void setSeatsFO(String[] seatsFO) {
-		this.seatsFO = seatsFO;
-	}
-
-	public String[] getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(String[] rooms) {
-		this.rooms = rooms;
 	}
 	
-	/*
-	//티켓여부 확인
+	/* //티켓여부 확인
 	public Boolean ynTicket() {
-		if(tk.getTicket() > 0) {
+		if(ticket().getTicket().contains 1일권) {
+		 n개월
 			return true;
 		}else {
 			return false;
@@ -79,9 +68,12 @@ public class ReservationManager {
 	}
  */
 	//예약된 좌석 정리
-	public void taken() {
+	public void taken(Account account) {
+		
+		 Book bk = new Book(account);
+		 
 		for(int i = 0 ; i < seatsFF.length ; i++) {
-			if(bk.getYourDate().equals(seatsFF[i])) {
+			if(bk.getYourSeat().equals(seatsFF[i])) {
 				seatsFF[i] = "예약된 좌석입니다.";
 			}
 		}
@@ -95,8 +87,8 @@ public class ReservationManager {
 				seatsFO[i] = "예약된 좌석입니다.";
 			}
 		}
-		for(int i = 0 ; i < rooms.length ; i++) {
-			if(bk.getYourSeat().equals(rooms)) {
+		for(int i = 0 ; i < rooms.length; i++) {
+			if(bk.getYourSeat().equals(rooms[i])) {
 				rooms[i] = "예약된 좌석입니다.";
 			}
 		}

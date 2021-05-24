@@ -143,8 +143,9 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					setVisible(false);
 					new BookView(account);
+					setVisible(false);
+
 				}
 			}
 		});
@@ -183,8 +184,8 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					new BookView().checkBooking(account);
 					setVisible(false);
-					new BookView().checkBooking();
 				}
 			}
 		});
