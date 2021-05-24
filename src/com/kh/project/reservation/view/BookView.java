@@ -2,8 +2,11 @@ package com.kh.project.reservation.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,10 +14,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -26,6 +31,8 @@ public class BookView extends JFrame implements ActionListener {
 
 	private String yourDate;
 	private String yourSeat;
+	private FileWriter fw = null;
+	private FileReader fr = null;
 
 	// buttons
 	JButton block = new JButton("1인 칸막이 좌석");
@@ -34,41 +41,54 @@ public class BookView extends JFrame implements ActionListener {
 	JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 
 	// for color
-	JPanel panel = new JPanel();
 	JFrame bSearch = new JFrame();
-
+		
 	public BookView() {
 	}
 
 	public BookView(Account account) {
 		// if(bm.ynTicket() == true) {
-
+		
 		JFrame viewDao = new JFrame();
-		viewDao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		viewDao.setVisible(true);
-		viewDao.setSize(360, 600);
-		viewDao.setLocationRelativeTo(null);
+		JPanel panel = new JPanel();
 
-		bar.setBounds(0, 0, 360, 53);
-		bar.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-		bar.setText("예약일 선택");
-		bar.setForeground(Color.white);
-		bar.setHorizontalTextPosition(JLabel.CENTER);
-		bar.setVerticalTextPosition(JLabel.CENTER);
+ 		viewDao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 		viewDao.setVisible(true);
+ 		viewDao.setSize(360, 600);
+ 		viewDao.setLocationRelativeTo(null);
+ 		JLabel C = new JLabel(new ImageIcon("WangsImages/C.png"));
 
-		viewDao.add(panel);
-		panel.add(bar);
-		panel.setLayout(null);
-		panel.setBackground(new Color(249, 242, 242));
+ 		bar.setBounds(0, 0, 360, 53);
+ 		bar.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+ 		bar.setText("예약일 선택");
+ 		bar.setForeground(Color.white);
+ 		bar.setHorizontalTextPosition(JLabel.CENTER);
+ 		bar.setVerticalTextPosition(JLabel.CENTER);
 
-		// calendar
+ 		C.setSize(360,600);
+ 		C.setLocation(1, 25);
+ 		C.setHorizontalTextPosition(JLabel.CENTER);
+ 		C.setVerticalTextPosition(JLabel.CENTER);
+ 		
+ 		viewDao.add(panel);
+ 		panel.add(bar);
+ 		panel.add(C);
+ 		panel.setLayout(null);
+ 		panel.setBackground(new Color(249, 242, 242));
+ 		
 		String[] selDate = { "5월 28일", "5월 29일", "5월 30일", "5월 31일", "6월 1일", "6월 2일", "6월 3일", "6월 4일", "6월 5일",
 				"6월 6일", "6월 7일", "6월 8일", "6월 9일", "6월 10일", "6월 11일", "6월 12일", "6월 13일", "6월 14일", "6월 15일",
 				"6월 16일", "6월 17일", "6월 18일", "6월 19일", "6월 20일", "6월 21일", "6월 22일", "6월 23일", "6월 24일", "6월 25일",
 				"6월 26일", "6월 27일" };
 
-		yourDate = (String) JOptionPane.showInputDialog(null, "오늘 기준으로 하단에 보이는 날짜만 선택이 가능합니다.", " ",
-				JOptionPane.PLAIN_MESSAGE, null, selDate, "5월 28일");
+		yourDate = (String) JOptionPane.showInputDialog(null, 
+				"오늘 기준으로 하단에 보이는 날짜만 선택이 가능합니다.",
+				" ",
+				JOptionPane.PLAIN_MESSAGE, 
+				null, 
+				selDate, 
+				"5월 28일"
+				);
 		viewDao.setVisible(false);
 		cSeat(account);
 		/*
@@ -82,6 +102,8 @@ public class BookView extends JFrame implements ActionListener {
 
 	public void cSeat(Account account) {
 		JFrame seat = new JFrame();
+		JPanel panel = new JPanel();
+
 		seat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		seat.setVisible(true);
 		seat.setSize(360, 600);
@@ -93,7 +115,6 @@ public class BookView extends JFrame implements ActionListener {
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-
 		seat.add(bar);
 		panel.setLayout(null);
 		panel.setBackground(new Color(249, 242, 242));
@@ -166,16 +187,18 @@ public class BookView extends JFrame implements ActionListener {
 		ReservationManager bm = new ReservationManager(account);
 
 		JFrame ForWomen = new JFrame();
+		JPanel panel = new JPanel();
+		ForWomen.setTitle("1인 칸막이 좌석 (여성전용)");
 		ForWomen.setSize(360, 600);
 
-		bar.setBounds(0, 0, 360, 53);
-		bar.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-		bar.setText("1인 칸막이 좌석 (여성전용)");
-		bar.setForeground(Color.white);
-		bar.setHorizontalTextPosition(JLabel.CENTER);
-		bar.setVerticalTextPosition(JLabel.CENTER);
+		JLabel W = new JLabel(new ImageIcon("WangsImages/W.png"));
 
-		panel.add(bar);
+ 		W.setSize(360,600);
+ 		W.setLocation(1, 25);
+ 		W.setHorizontalTextPosition(JLabel.CENTER);
+ 		W.setVerticalTextPosition(JLabel.CENTER);
+ 		
+ 		panel.add(W);
 		panel.setBackground(new Color(249, 242, 242));
 		ForWomen.add(panel);
 		ForWomen.setLocationRelativeTo(null);
@@ -193,15 +216,18 @@ public class BookView extends JFrame implements ActionListener {
 		ReservationManager bm = new ReservationManager(account);
 
 		JFrame ForMen = new JFrame();
+		JPanel panel = new JPanel();
+		ForMen.setTitle("1인 칸막이 좌석 (남성전용)");
 		ForMen.setSize(360, 600);
-		bar.setBounds(0, 0, 360, 53);
-		bar.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-		bar.setText("1인 칸막이 좌석 (남성전용)");
-		bar.setForeground(Color.white);
-		bar.setHorizontalTextPosition(JLabel.CENTER);
-		bar.setVerticalTextPosition(JLabel.CENTER);
+	
+		JLabel M = new JLabel(new ImageIcon("WangsImages/M.png"));
 
-		panel.add(bar);
+ 		M.setSize(360,600);
+ 		M.setLocation(1, 25);
+ 		M.setHorizontalTextPosition(JLabel.CENTER);
+ 		M.setVerticalTextPosition(JLabel.CENTER);
+ 		
+ 		panel.add(M);
 		panel.setBackground(new Color(249, 242, 242));
 		ForMen.add(panel);
 		ForMen.setLocationRelativeTo(null);
@@ -219,16 +245,19 @@ public class BookView extends JFrame implements ActionListener {
 		ReservationManager bm = new ReservationManager(account);
 
 		JFrame open = new JFrame();
+		JPanel panel = new JPanel();
+		open.setTitle("1인 칸막이 좌석 (남성전용)");
 		open.setSize(360, 600);
-		bar.setBounds(0, 0, 360, 53);
-		bar.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-		bar.setText("1인 오픈형 좌석");
-		bar.setForeground(Color.white);
-		bar.setHorizontalTextPosition(JLabel.CENTER);
-		bar.setVerticalTextPosition(JLabel.CENTER);
+		
+		JLabel O = new JLabel(new ImageIcon("WangsImages/O.png"));
 
-		panel.add(bar);
-		panel.setBackground(new Color(249, 242, 242));
+ 		O.setSize(360,600);
+ 		O.setLocation(1, 25);
+ 		O.setHorizontalTextPosition(JLabel.CENTER);
+ 		O.setVerticalTextPosition(JLabel.CENTER);
+ 		
+ 		panel.add(O);
+ 		panel.setBackground(new Color(249, 242, 242));
 		open.add(panel);
 		open.setLocationRelativeTo(null);
 		open.setVisible(true);
@@ -245,6 +274,8 @@ public class BookView extends JFrame implements ActionListener {
 		ReservationManager bm = new ReservationManager(account);
 
 		JFrame study = new JFrame();
+		JPanel panel = new JPanel();
+
 		study.setSize(360, 600);
 		study.setLocationRelativeTo(null);
 		bar.setBounds(0, 0, 360, 53);
@@ -253,6 +284,15 @@ public class BookView extends JFrame implements ActionListener {
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
+		
+		JLabel S = new JLabel(new ImageIcon("WangsImages/S.png"));
+
+ 		S.setSize(360,600);
+ 		S.setLocation(1, 25);
+ 		S.setHorizontalTextPosition(JLabel.CENTER);
+ 		S.setVerticalTextPosition(JLabel.CENTER);
+ 		
+ 		panel.add(S);
 
 		panel.add(bar);
 		panel.setLayout(null);
@@ -272,14 +312,13 @@ public class BookView extends JFrame implements ActionListener {
 		 Book bk = new Book();
 		 bk.setYourDate(yourDate);
 		 bk.setYourSeat(yourSeat);
-		 FileWriter fw = null;
 		 
 		 try {
-			fw = new FileWriter(new File("YourBook.txt"));
-			
+			fw = new FileWriter(new File("YourBook.txt"), false);
 			fw.append(yourDate);
 			fw.append(",");
 			fw.append(yourSeat);
+
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -303,8 +342,8 @@ public class BookView extends JFrame implements ActionListener {
 	}
 
 	public void checkBooking(Account account) {
+		JPanel panel = new JPanel();
 
-		FileReader fr = null;
 		try {
 			fr = new FileReader("YourBook.txt");
 			
@@ -321,12 +360,13 @@ public class BookView extends JFrame implements ActionListener {
 				while(st.hasMoreElements()) {
 					array[i++] = st.nextToken();
 				}
+			
 				i=0;
 				
 				//버튼들
 				JButton modify = new JButton("예약 변경");
 				JButton cancel = new JButton("예약 취소");
-				JButton prev = new JButton("< 뒤로가기");
+				JButton prev = new JButton("< 뒤로");
 				
 				bSearch.setSize(360, 600);
 				
@@ -375,6 +415,25 @@ public class BookView extends JFrame implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					JButton modify = (JButton) e.getSource();
 					if (modify.getText().equals("예약 변경")) {
+						try {
+							fw = new FileWriter("YourBook.txt");
+							
+
+						} catch (FileNotFoundException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						} catch (IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}finally {
+							try {
+								fw.close();
+							} catch (IOException e2) {
+								// TODO Auto-generated catch block
+								e2.printStackTrace();
+							}
+						}
+						
 						JOptionPane.showMessageDialog(null, "기존 예약은 삭제되었으며 재 예약을 위해 예약화면으로 돌아갑니다.", "예약 변경",
 								JOptionPane.PLAIN_MESSAGE);
 						bSearch.setVisible(false);
@@ -390,9 +449,7 @@ public class BookView extends JFrame implements ActionListener {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					JButton cancel = (JButton) e.getSource();
-					if (cancel.getText().equals("예약 취소")) {
-						FileWriter fw = null;
-						 
+					if (cancel.getText().equals("예약 취소")) {						 
 						 try {
 							fw = new FileWriter("YourBook.txt");
 							
@@ -426,7 +483,7 @@ public class BookView extends JFrame implements ActionListener {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					JButton prev = (JButton) e.getSource();
-					if (prev.getText().equals("< 뒤로가기")) {
+					if (prev.getText().equals("< 뒤로")) {
 						new MenuChoice(account);
 
 					}
