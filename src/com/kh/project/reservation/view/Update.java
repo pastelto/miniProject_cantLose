@@ -19,7 +19,9 @@ public class Update extends JFrame {
 	static String pw2;
 	static String pnum;
 	static String pay;
+	static boolean flag = false;
 
+	static JFrame jframe = new JFrame();
 	MyDialog dialog;
 
 	public Update() {
@@ -27,8 +29,8 @@ public class Update extends JFrame {
 
 	public Update(Account account) {
 
-		this.setTitle("내 정보 수정");
-		this.setBounds(100, 100, 360, 600);
+		jframe.setTitle("내 정보 수정");
+		jframe.setBounds(100, 100, 360, 600);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -36,7 +38,7 @@ public class Update extends JFrame {
 		panel.setBackground(new Color(249, 242, 242));
 		// 컴포넌트 생성
 
-		dialog = new MyDialog(new JFrame(), account , "수정");
+		dialog = new MyDialog(new JFrame(), account, "수정");
 
 		JLabel label = new JLabel("내 정보 수정");
 		JLabel lb1 = new JLabel("아이디");
@@ -54,8 +56,8 @@ public class Update extends JFrame {
 		JLabel lb14 = new JLabel(account.getIdNum());
 		JTextField lb15 = new JTextField();
 		JTextField lb16 = new JTextField();
-		JLabel lb17 = new JLabel(account.getTotalH()+""); // 누적 이용시간
-		JLabel lb18 = new JLabel(account.getCoupon()+"장"); // 보유 커피 쿠폰
+		JLabel lb17 = new JLabel(account.getTotalH() + ""); // 누적 이용시간
+		JLabel lb18 = new JLabel(account.getCoupon() + "장"); // 보유 커피 쿠폰
 
 		JButton noBtn = new JButton("취소");
 		JButton okBtn = new JButton("확인");
@@ -120,7 +122,7 @@ public class Update extends JFrame {
 
 		// 프레임에 패널 적용
 
-		this.add(panel);
+		jframe.add(panel);
 
 		// 패널에 컴포넌트 적용
 
@@ -156,6 +158,9 @@ public class Update extends JFrame {
 				pay = lb16.getText(); // 입력 받은 카드 번호
 
 				dialog.setVisible(true);
+
+				
+
 			}
 
 		});
@@ -170,8 +175,8 @@ public class Update extends JFrame {
 
 		});
 
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jframe.setVisible(true);
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
@@ -183,12 +188,10 @@ class MyDialog extends JDialog {
 	JButton okBtn = new JButton("변경"); // 버튼 1
 	JButton noBtn = new JButton("취소"); // 버튼 2
 
-	boolean result;
-
-	public MyDialog(JFrame frame,Account account, String title) {
+	public MyDialog(JFrame frame, Account account, String title) {
 
 		super(frame, title);
-		setLocation(200,300); // 다이얼로그 위치
+		setLocation(200, 300); // 다이얼로그 위치
 		setSize(150, 150); // 다이얼로그 창 크기
 		setLayout(null); // 다이얼로그 프레임 종류
 
@@ -210,27 +213,16 @@ class MyDialog extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// 버튼 클릭시 발생 할 이벤트
-				result = true;
 
-				if (result) {
+				// 회원 비밀번호 = pw2;
+				System.out.println("비밀번호가 변경 되었습니다" + Update.pw2);
+				new UpdateAccount().update(account, Update.pw2, Update.pnum, Update.pay);
 
-					if (!Update.pw2.equals("")) {
-						// 회원 비밀번호 = pw2;
-						System.out.println("비밀번호가 변경 되었습니다"+Update.pw2);
-						new UpdateAccount().updatePW(account,Update.pw2);
-					}
-					if (!Update.pnum.equals("")) {
-						// 회원 전화번호 = pnum;
-						System.out.println("전화번호가 변경 되었습니다"+Update.pnum);
-						new UpdateAccount().updatePNum(account,Update.pnum);
-					}
-					if (!Update.pay.equals("")) {
-						// 회원 카드번호 = pay;
-						System.out.println("카드번호가 변경 되었습니다"+Update.pay);
-						new UpdateAccount().updatePay(account,Update.pay);
-					}
-					setVisible(false);
-				}
+				Update.jframe.setVisible(false);
+				setVisible(false);
+				Update.flag = true;
+				new Check(account);
+
 			}
 		});
 
@@ -246,4 +238,3 @@ class MyDialog extends JDialog {
 	}
 
 }
-
