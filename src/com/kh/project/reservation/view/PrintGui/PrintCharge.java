@@ -25,9 +25,11 @@ public class PrintCharge extends JFrame {
 	JLabel message = new JLabel("충전할 금액을 입력해주세요."); 
 	JTextField count = new JTextField();
 	JButton prtPointCharge = new JButton("포인트 충전"); // 프린트포인트 충전버튼
-	JButton back = new JButton("< prev");
+	JButton back = new JButton("뒤로");
 	JPanel ps = new JPanel();
-	Font font = new Font("맑은 고딕", Font.BOLD, 30);
+	Font font = new Font("맑은 고딕", Font.BOLD, 12);
+	Font font2 = new Font("맑은 고딕", Font.BOLD, 15);
+	Font font3 = new Font("맑은 고딕", Font.BOLD, 20);
 	PrintServiceManager psm = new PrintServiceManager();
 	
 	
@@ -46,8 +48,9 @@ public class PrintCharge extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("프린트 충전");
-		bar.setFont(bar.getFont().deriveFont(17.0f));
+		bar.setText("프린트포인트 충전             ");
+		bar.setFont(font3);
+		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
 
@@ -72,16 +75,19 @@ public class PrintCharge extends JFrame {
 
 		// 프린트포인트 충전버튼
 		prtPointCharge.setLocation(110, 340);
-		prtPointCharge.setBackground(new Color(248, 248, 248));
+		prtPointCharge.setBackground(new Color(220, 118, 112));
+		prtPointCharge.setForeground(Color.white);
+		prtPointCharge.setFont(font);
 		prtPointCharge.setFocusPainted(false);
-		prtPointCharge.setSize(140, 50);
-
+		prtPointCharge.setSize(140, 40);
+		
 		// 이전 버튼
-		back.setLocation(30, 500);
-		back.setBackground(new Color(248, 248, 248));
+		back.setLocation(30, 480);
+		back.setBackground(new Color(220, 118, 112));
 		back.setFocusPainted(false);
-		back.setFont(back.getFont().deriveFont(10.0f));
-		back.setSize(70, 30);
+		back.setFont(font);
+		back.setForeground(Color.white);
+		back.setSize(80, 35);
 
 		prtPointCharge.addMouseListener(new MouseAdapter() {
 			@Override

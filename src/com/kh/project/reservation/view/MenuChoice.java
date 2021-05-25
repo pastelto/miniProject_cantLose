@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.BeverageGui.Drink;
 import com.kh.project.reservation.view.Board.MList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
@@ -105,10 +106,20 @@ public class MenuChoice extends JFrame {
 		b8.setBackground(new Color(220, 118, 112));
 		b9.setBackground(new Color(220, 118, 112));
 
+		b1.setForeground(Color.white); // 택 (1) 색상 정하기
+		b2.setForeground(Color.white); // 택 (2)
+		b3.setForeground(Color.white);
+		b4.setForeground(Color.white);
+		b5.setForeground(Color.white);
+		b6.setForeground(Color.white);
+		b7.setForeground(Color.white);
+		b8.setForeground(Color.white);
+		b9.setForeground(Color.white);
+		
 		b1.setFocusPainted(true);
 
 		// 상단바 메뉴 폰트
-		Font font = new Font("맑은 고딕", Font.BOLD, 30);
+		Font font = new Font("맑은 고딕", Font.BOLD, 15);
 
 		// mTitle.setFont(font);
 		bar.setFont(font);
@@ -143,10 +154,20 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					setVisible(false);
 					new BookView(account);
+					setVisible(false);
+
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b1.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b1.setBackground(new Color(220, 118, 112)); // 버튼색yu	
+             } 
 		});
 
 		b2.addMouseListener(new MouseAdapter() { // 이용권구매
@@ -157,16 +178,34 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b2.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b2.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b3.addMouseListener(new MouseAdapter() { // 음료 구매
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new Drink();
+					new Drink(account);
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b3.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b3.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b4.addMouseListener(new MouseAdapter() { // 프린트
@@ -177,16 +216,34 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b4.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b4.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b5.addMouseListener(new MouseAdapter() { // 예약확인
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					new BookView().checkBooking(account);
 					setVisible(false);
-					new BookView().checkBooking();
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b5.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b5.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b6.addMouseListener(new MouseAdapter() { // 내정보
@@ -197,16 +254,34 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b6.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b6.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b7.addMouseListener(new MouseAdapter() { // 체크인/체크아웃
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new CheckIn();
+					new CheckIn(account);
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b7.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b7.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b8.addMouseListener(new MouseAdapter() { // 내노트
@@ -218,6 +293,15 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b8.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b8.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 
 		b9.addMouseListener(new MouseAdapter() { // 로그아웃 - 로그인화면
@@ -231,6 +315,15 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
+			 @Override
+             public void mouseEntered(MouseEvent e) {
+				 b9.setBackground(new Color(128, 128, 128)); // 버튼색
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+            	 b9.setBackground(new Color(220, 118, 112)); // 버튼색
+             } 
 		});
 		
 		
