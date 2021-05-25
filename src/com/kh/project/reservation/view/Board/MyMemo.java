@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -22,7 +21,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import com.kh.project.reservation.controller.MemoManager;
 import com.kh.project.reservation.model.vo.Account;
@@ -31,21 +29,14 @@ import com.kh.project.reservation.view.MenuChoice;
 
 public class MyMemo extends JFrame {
 
-	JLabel bar = new JLabel();
-	JPanel mc = new JPanel();
-	private JButton WriteBtn, DeleteBtn;
-	JButton saveM = new JButton("저장"); // 글 저장
-	JButton back = new JButton("뒤로가기"); // 뒤로가기 (or 메뉴)
-	private JTextField Title;
-	JTextArea memo = new JTextArea();
-//	JTextArea memo1 = new JTextArea();
-	JLabel memo1 = new JLabel();
-//	JLabel titleLabel = new JLabel("제목");
-	private ArrayList<Memo> list = new ArrayList<>();
+	private JLabel bar; 
+	private JPanel mc = new JPanel();
+	private JButton saveM = new JButton("저장"); // 글 저장
+	private JButton back = new JButton("뒤로가기"); // 뒤로가기 (or 메뉴)
+	private JTextArea memo = new JTextArea();
 
-//	ArrayList<Memo> m = new ArrayList<Memo>();
-	Memo m = new Memo();
 	MemoManager mm = new MemoManager();
+	Memo m = new Memo();
 	String str = "";
 
 	public MyMemo(Account account) {
@@ -77,7 +68,7 @@ public class MyMemo extends JFrame {
 		String accountName = account.getName().toString();
 		this.setTitle("내 노트 ");
 
-		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
+		bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
 		bar.setText(accountName + "님의 노트 ");
 		bar.setForeground(Color.white);
@@ -110,86 +101,81 @@ public class MyMemo extends JFrame {
 
 		// 붙여넣기
 		mc.add(bar);
-//		mc.add(title);
 		mc.add(memo);
-//		mc.add(titleLabel);
 		mc.add(saveM);
 		mc.add(back);
 
 		this.add(mc);
 
-		String str = callMyMemo(account);
-		if(!str.equals("")) {
-		memo.setText(str);
+		String str = mm.callMyMemo(account);
+		if (!str.equals("")) {
+			memo.setText(str);
 		}
+
 		// 버튼
-		// 각 버튼 클릭시 연결 기능
 		saveM.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 					String memoS = memo.getText();
-					System.out.println("메모 memoS : " + memoS);
-					saveMemo(account, memoS);
+					mm.saveMemo(account, memoS);
 					setVisible(false);
 				}
 			}
 		});
-		
-		// 각 버튼 클릭시 연결 기능
-				back.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						if (e.getButton() == 1) {
-							new MenuChoice(account);
-							setVisible(false);
-						}
-					}
-				});
+
+		back.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					new MenuChoice(account);
+					setVisible(false);
+				}
+			}
+		});
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
-	private String callMyMemo(Account account) {
-		String fileName = account.getId().toString() + ".dat";
-		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-
-			String temp = "";
-			while ((temp = br.readLine()) != null) {
-				
-				str += temp+"\n";
-				
-			}
-			
-			br.close();
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("존재하는 파일이 없습니다. ");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("temp? : " + str);
-		return str;
-		
-		
-	}
-
-	private void saveMemo(Account account, String memo) {
-		String fileName = account.getId().toString() + ".dat";
-		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
-
-			bw.write(memo);
-			System.out.println("메모 내용 " + memo);
-			System.out.println("입력받은 " + fileName + " 파일에 성공적으로 저장하였습니다. ");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		new MyMemo(account);
-	}
+//	private String callMyMemo(Account account) {
+//		String fileName = account.getId().toString() + ".dat";
+//		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+//
+//			String temp = "";
+//			while ((temp = br.readLine()) != null) {
+//
+//				str += temp + "\n";
+//
+//			}
+//
+//			br.close();
+//
+//		} catch (FileNotFoundException e) {
+//			System.out.println("존재하는 파일이 없습니다. ");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("temp? : " + str);
+//		return str;
+//
+//	}
+//
+//	private void saveMemo(Account account, String memo) {
+//		String fileName = account.getId().toString() + ".dat";
+//
+//		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+//
+//			bw.write(memo);
+//			System.out.println("메모 내용 " + memo);
+//			System.out.println("입력받은 " + fileName + " 파일에 성공적으로 저장하였습니다. ");
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		new MyMemo(account);
+//	}
 
 }

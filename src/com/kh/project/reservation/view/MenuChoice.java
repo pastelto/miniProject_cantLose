@@ -75,7 +75,7 @@ public class MenuChoice extends JFrame {
 		
 		String accountName = account.getName().toString();
 		userName = new JLabel("반갑습니다. " + accountName + "님");
-		userName.setBounds(105, 100, 300, 50);
+		userName.setBounds(105, 100, 300, 50);	
 		userName.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		
 		
