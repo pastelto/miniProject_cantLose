@@ -25,9 +25,9 @@ public class CheckIn extends JFrame {
 	InOut io = new InOut();
 	Account account = new Account();
 	InDialog dialog;
-	OutDialog outdialog;
+
 	String start = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckIn());
-	//String end = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckOut());
+
 	public CheckIn(Account account) {
 
 		super("checkIn & checkOut");
@@ -125,28 +125,6 @@ public class CheckIn extends JFrame {
 				}
 			}
 
-//			// 변경
-//			private String getCheckName(Account account) {
-//
-//				if (account.getdbCheck() == null) {
-//
-//					String ss = iom.checkin(account); //체크인 시간 잡아주는
-//					System.out.println("체크인시간 : " + ss);
-//
-//					dialog.setVisible(true); // 체크인 다이얼로그
-//
-//					String result = iom.changecheck(account);//상태 바꾸기 
-//					System.out.println("체크인 후 바뀐정보 : " + account.toString());
-//			
-//				} else if (account.getdbCheck().equals("체크인")) {
-//					JOptionPane.showMessageDialog(null, "이미 체크인 하셨습니다. 체크인 시간: " + start);
-//				} else if (account.getdbCheck().equals("체크인불가")) {
-//					JOptionPane.showMessageDialog(null, "체크아웃하여 재입실이 불가합니다.");
-//				}
-//
-//				return account.getdbCheck();
-//
-//			}
 		});
 		checkout.addMouseListener(new MouseAdapter() {
 			@Override
@@ -283,121 +261,4 @@ public class CheckIn extends JFrame {
 	
 
 }
-////체크아웃 다이얼로그
-//class OutDialog extends JDialog {
-//
-//	InOutManager iom = new InOutManager();
-//	InOut io = new InOut();
-//	String end = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckOut());
-//
-//	public OutDialog(JFrame frame, Account account, String title) {
-//
-//		super(frame, title);
-//		setLocation(600, 380); // 다이얼로그 위치
-//		setSize(260, 210); // 다이얼로그 창 크기
-//		setLayout(null); // 다이얼로그 프레임 종류
-//
-//		JLabel seat = new JLabel("1인석 {a,b}"); // 좌석 -> 가져오기
-//		JLabel check = new JLabel("체크아웃 하시겠습니까?");
-//
-//		// long ss = io.getCheckOut();// 시간
-//		JLabel time = new JLabel(end); // 시간
-//
-//		JButton okBtn = new JButton("OK"); // 버튼 1
-//
-//		seat.setBounds(25, 10, 210, 30);
-//		seat.setHorizontalAlignment(JLabel.CENTER);
-//		seat.setFont(seat.getFont().deriveFont(20.0f));
-//
-//		check.setBounds(20, 50, 210, 30);
-//		check.setHorizontalAlignment(JLabel.CENTER);
-//		check.setFont(check.getFont().deriveFont(17.0f));
-//
-//		time.setBounds(-50, 70, 350, 60);
-//		time.setHorizontalAlignment(JLabel.CENTER);
-//		time.setFont(time.getFont().deriveFont(15.0f));
-//
-//		okBtn.setBounds(85, 130, 70, 30); // 버튼 위치 및 크기 지정
-//		okBtn.setBackground(new Color(220, 118, 112));
-//
-//		add(seat);
-//		add(okBtn);
-//		add(check);
-//		add(time);
-//
-//		okBtn.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				String total = iom.checkOutPrint(account);
-//				JOptionPane.showMessageDialog(null, "체크아웃 되었습니다. 이용 시간: " + total);
-//				setVisible(false);
-//
-//			}
-//		});
-//
-//	}
-//
-//}
-
-class OutDialog extends JDialog {
-	
-	String start = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(System.currentTimeMillis());
-
-	InOutManager iom = new InOutManager();
-	InOut io = new InOut();
-
-	public OutDialog(JFrame frame, Account account, String title) {
-		
-	
-
-		super(frame, title);
-		setLocation(600, 380); // 다이얼로그 위치
-		setSize(260, 210); // 다이얼로그 창 크기
-		setLayout(null); // 다이얼로그 프레임 종류
-		System.out.println("다이얼로그는 실행되냐");
-		JLabel seat = new JLabel("1인석 {a,b}"); // 좌석 -> 가져오기
-		JLabel check = new JLabel("체크아웃 하시겠습니까?");
-
-		
-
-		long ss = io.getCheckIn();// 시간
-		String start = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초").format(io.getCheckIn());
-		JLabel time = new JLabel(start); // 시간
-
-		JButton okBtn = new JButton("OK"); // 버튼 1
-
-		seat.setBounds(25, 10, 210, 30);
-		seat.setHorizontalAlignment(JLabel.CENTER);
-		seat.setFont(seat.getFont().deriveFont(20.0f));
-
-		check.setBounds(20, 50, 210, 30);
-		check.setHorizontalAlignment(JLabel.CENTER);
-		check.setFont(check.getFont().deriveFont(17.0f));
-
-		time.setBounds(-50, 70, 350, 60);
-		time.setHorizontalAlignment(JLabel.CENTER);
-		time.setFont(time.getFont().deriveFont(15.0f));
-
-		okBtn.setBounds(85, 130, 70, 30); // 버튼 위치 및 크기 지정
-		okBtn.setBackground(new Color(220, 118, 112));
-
-		add(seat);
-		add(okBtn);
-		add(check);
-		add(time);
-
-		okBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//String ss = io.getCheckIn();
-				//JOptionPane.showMessageDialog(null, "체크인 되었습니다. 체크인 시간: " + start);
-				setVisible(false);
-
-			}
-		});
-
-	}
-
-}
-
 

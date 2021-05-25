@@ -85,10 +85,12 @@ public class InOutManager {
 //	}
 	
 	public int pluscoupon(Account account) {
+
+		System.out.println("쿠폰메소드 타고 있다!!!!!!!!");
+		
 		// 30초로 테스트 
 		if ((account.getTotalH() % 30 == 0)) {
 			
-			System.out.println("쿠폰메소드 타고 있다!!!!!!!!");
 			account.setCoupon(account.getCoupon() + 1);
 		}
 		
