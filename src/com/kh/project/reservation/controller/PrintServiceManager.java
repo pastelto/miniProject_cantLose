@@ -13,7 +13,7 @@ public class PrintServiceManager {
 	private int blackPrint = 50; // 흑백프린트 비용
 
 	public PrintServiceManager() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void prtPointCharge(Account account, int count) { // 프린트 포인트 충전

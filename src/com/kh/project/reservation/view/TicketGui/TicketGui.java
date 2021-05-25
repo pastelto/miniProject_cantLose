@@ -55,7 +55,7 @@ public class TicketGui extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("이용권 구매                        ");
+		bar.setText("이용권 구매 ");
 		bar.setFont(font3);
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);

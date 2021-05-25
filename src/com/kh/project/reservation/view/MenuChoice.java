@@ -21,7 +21,7 @@ import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.BeverageGui.Drink;
-import com.kh.project.reservation.view.Board.MList;
+import com.kh.project.reservation.view.Memo.MyMemo;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
 
@@ -68,7 +68,7 @@ public class MenuChoice extends JFrame {
 
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("MENU  ");
+		bar.setText("MENU   ");
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
@@ -76,7 +76,7 @@ public class MenuChoice extends JFrame {
 		
 		String accountName = account.getName().toString();
 		userName = new JLabel("반갑습니다. " + accountName + "님");
-		userName.setBounds(105, 100, 300, 50);
+		userName.setBounds(105, 100, 300, 50);	
 		userName.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		
 		
@@ -119,7 +119,7 @@ public class MenuChoice extends JFrame {
 		b1.setFocusPainted(true);
 
 		// 상단바 메뉴 폰트
-		Font font = new Font("맑은 고딕", Font.BOLD, 15);
+		Font font = new Font("맑은 고딕", Font.BOLD, 20);
 
 		// mTitle.setFont(font);
 		bar.setFont(font);
@@ -289,7 +289,7 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getButton() == 1) {
-					new MList(account);
+					new MyMemo(account);
 					setVisible(false);
 				}
 			}
@@ -308,8 +308,9 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용
-					new MemberDao().reSaveAccount(account);
+					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용 // 코드 정리 때 삭제 필요
+					
+					new MemberDao().reSaveAccount(account); // 앱 구동 중 변경사항 전체 저장
 					Login l = new Login();
 					
 					setVisible(false);

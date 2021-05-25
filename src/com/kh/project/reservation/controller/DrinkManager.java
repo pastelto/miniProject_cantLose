@@ -7,12 +7,11 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class DrinkManager {
 
-	private Scanner sc = new Scanner(System.in);
-	 ArrayList cart = new ArrayList();
+	private ArrayList cart = new ArrayList();
 	
-	int price = 2000; // 가격
-	int num; // gui에서 수량을 받아오는
-	String menu;// gui에서 메뉴를 받아오는
+	private	int price = 2000; // 가격
+	private int num; // gui에서 수량을 받아오는
+	private String menu;// gui에서 메뉴를 받아오는
 	
 
 	public DrinkManager() {

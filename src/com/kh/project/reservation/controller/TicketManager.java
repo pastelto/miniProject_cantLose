@@ -9,7 +9,7 @@ public class TicketManager {
 	private int onePrice = 5000;// 1인실 가격
 	private int strPrice = 10000; // 스터디룸 가격
 	private int result = 0; // 1인석 일일권 가격 담을 변수
-	
+
 	Account account = new Account();
 
 	public TicketManager() {
@@ -27,8 +27,7 @@ public class TicketManager {
 			if (oneSeatT >= 1 && oneSeatT < 30) { // 30 개 미만 할인없음
 				result = onePrice * oneSeatT;
 				JOptionPane.showMessageDialog(null,
-						"이용권 " + oneSeatT + " 장의 가격은 " + "\n" + result + " 원 입니다." + "\n" + "구매 하시겠습니까?"
-				);
+						"이용권 " + oneSeatT + " 장의 가격은 " + "\n" + result + " 원 입니다." + "\n" + "구매 하시겠습니까?");
 				myOneSeat(account, oneSeatT);
 			} else if (oneSeatT >= 30 && oneSeatT < 90) {
 				result = (int) Math.round(onePrice * oneSeatT * 0.70); // 30~90개 미만
@@ -69,7 +68,7 @@ public class TicketManager {
 	public void myStr(Account account, int stdRoomT) {
 		account.setStdRoom(account.getStdRoom() + stdRoomT); // 자기가 가지고 있던 티켓 + 구매한 수량만큼 더해줘서 넣기
 		System.out.println("스터디룸 이용권 수량 : " + account.getStdRoom()); // 누적갯수 확인(콘솔용)
-		System.out.println(account.toString());  // 누적갯수 확인(콘솔용)
+		System.out.println(account.toString()); // 누적갯수 확인(콘솔용)
 
 	}
 }

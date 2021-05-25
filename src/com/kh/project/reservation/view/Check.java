@@ -48,32 +48,14 @@ public class Check extends JFrame {
 		// 컴포넌트 생성
 
 		JLabel label = new JLabel("내 정보 확인");
-		
-
 		JLabel lb1 = new JLabel("아이디");
-		lb1.setForeground(Color.white);
-
 		JLabel lb2 = new JLabel("비밀번호");
-		lb2.setForeground(Color.white);
-
 		JLabel lb3 = new JLabel("이름");
-		lb3.setForeground(Color.white);
-
 		JLabel lb4 = new JLabel("주민번호");
-		lb4.setForeground(Color.white);
-
 		JLabel lb5 = new JLabel("전화번호");
-		lb5.setForeground(Color.white);
-
 		JLabel lb6 = new JLabel("계좌번호");
-		lb6.setForeground(Color.white);
-
 		JLabel lb7 = new JLabel("누적 이용 시간");
-		lb7.setForeground(Color.white);
-
 		JLabel lb8 = new JLabel("보유 커피 쿠폰");
-		lb8.setForeground(Color.white);
-
 
 		JLabel lb11 = new JLabel(account.getId());
 		JLabel lb12 = new JLabel("*********");
@@ -97,48 +79,56 @@ public class Check extends JFrame {
 		lb1.setHorizontalAlignment(JLabel.CENTER);
 		lb1.setBackground(new Color(220, 118, 112));
 		lb1.setFont(font2);
+		lb1.setForeground(Color.white);
 		
 		lb2.setBounds(18, 140, 100, 32);
 		lb2.setOpaque(true);
 		lb2.setHorizontalAlignment(JLabel.CENTER);
 		lb2.setBackground(new Color(220, 118, 112));
 		lb2.setFont(font2);
+		lb2.setForeground(Color.white);
 		
 		lb3.setBounds(18, 192, 100, 32);
 		lb3.setOpaque(true);
 		lb3.setHorizontalAlignment(JLabel.CENTER);
 		lb3.setBackground(new Color(220, 118, 112));
 		lb3.setFont(font2);
+		lb3.setForeground(Color.white);
 		
 		lb4.setBounds(18, 244, 100, 32);
 		lb4.setOpaque(true);
 		lb4.setHorizontalAlignment(JLabel.CENTER);
 		lb4.setBackground(new Color(220, 118, 112));
 		lb4.setFont(font2);
+		lb4.setForeground(Color.white);
 		
 		lb5.setBounds(18, 296, 100, 32);
 		lb5.setOpaque(true);
 		lb5.setHorizontalAlignment(JLabel.CENTER);
 		lb5.setBackground(new Color(220, 118, 112));
 		lb5.setFont(font2);
+		lb5.setForeground(Color.white);
 		
 		lb6.setBounds(18, 348, 100, 32);
 		lb6.setOpaque(true);
 		lb6.setHorizontalAlignment(JLabel.CENTER);
 		lb6.setBackground(new Color(220, 118, 112));
 		lb6.setFont(font2);
+		lb6.setForeground(Color.white);
 		
 		lb7.setBounds(18, 400, 100, 32);
 		lb7.setOpaque(true);
 		lb7.setHorizontalAlignment(JLabel.CENTER);
 		lb7.setBackground(new Color(220, 118, 112));
 		lb7.setFont(font);
+		lb7.setForeground(Color.white);
 		
 		lb8.setBounds(18, 452, 100, 32);
 		lb8.setOpaque(true);
 		lb8.setHorizontalAlignment(JLabel.CENTER);
 		lb8.setBackground(new Color(220, 118, 112));
 		lb8.setFont(font);
+		lb8.setForeground(Color.white);
 		
 		lb11.setBounds(130, 88, 200, 32);
 		lb11.setFont(font);

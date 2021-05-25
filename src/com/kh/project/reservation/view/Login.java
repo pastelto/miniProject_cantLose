@@ -25,8 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.kh.project.reservation.controller.BoardManager;
 import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.controller.MaximManager;
 import com.kh.project.reservation.model.vo.Account;
 
 
@@ -57,28 +57,34 @@ public class Login extends JFrame {
       image.setBounds(95, 40, 150, 140);
 
 
+
+		
+		MaximManager bm1 = new MaximManager();
+		String mm = bm1.maxim();
+		JLabel m = new JLabel(mm);
+		m.setLocation(10, 200);
+		m.setSize(360, 70);
+		loginP.add(m);
+		
+		Font font = new Font("맑은 고딕", Font.BOLD, 12);
+		Font font2 = new Font("맑은 고딕", Font.BOLD, 15);
+		
+		m.setFont(font);
+		idL.setFont(font2);
+		
+
       login.setBackground(new Color(220, 118, 112)); // 버튼색
       signUp.setBackground(new Color(220, 118, 112));// 버튼색
       login.setForeground(Color.white);
       signUp.setForeground(Color.white);
-      
-      BoardManager bm1 = new BoardManager();
-      String mm = bm1.maxim();
-      JLabel m = new JLabel(mm);
-      m.setLocation(10, 200);
-      m.setSize(360, 70);
-      loginP.add(m);
-      
-      Font font = new Font("맑은 고딕", Font.BOLD, 12);
-      Font font2 = new Font("맑은 고딕", Font.BOLD, 15);
+
       
       login.setFont(font);
       signUp.setFont(font);
-      m.setFont(font);
-      idL.setFont(font2);
       
       loginP.setLayout(null);
       loginP.setSize(getMaximumSize());
+
 
       logTF.setLocation(90, 290);
       logTF.setSize(220, 45);

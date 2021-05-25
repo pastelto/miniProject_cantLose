@@ -1,7 +1,9 @@
 package com.kh.project.reservation.view.BeverageGui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -22,7 +24,6 @@ import com.kh.project.reservation.view.MenuChoice;
 
 public class Drink extends JFrame {
 
-	//private Account ac = new Account();
 	private DrinkManager dm = new DrinkManager();
 
 	JLabel title = new JLabel("음료메뉴");// 타이틀
@@ -50,6 +51,7 @@ public class Drink extends JFrame {
 	String num[] = { "수량을 선택하세요", "1", "2", "3", "4", "5" };
 	JComboBox combo = new JComboBox(num);
 
+
 	public Drink() {
 	}
 
@@ -58,7 +60,7 @@ public class Drink extends JFrame {
 		this.setSize(360, 600);
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
-
+		
 		cc.setBackground(new Color(249, 242, 242)); // 배경색 설정
 		cc.setLayout(null);
 		cc.setSize(getMaximumSize());
@@ -79,7 +81,7 @@ public class Drink extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("음료구매                              ");
+		bar.setText("Beverage ");
 		bar.setForeground(Color.white);
 		bar.setFont(font3);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
@@ -273,6 +275,9 @@ public class Drink extends JFrame {
 					JOptionPane.showMessageDialog(null,
 							"<html> 결제금액은 " + num + "원 입니다.<br> 등록하신 " + account.getPay() + "로 자동결제 되었습니다.</html>");
 				}
+				
+				account.setBeverage(0);
+				
 				setVisible(false);
 				new MenuChoice(account);
 			}
@@ -302,7 +307,7 @@ public class Drink extends JFrame {
 							+ account.getPay() + "로 자동결제 되었습니다</html>");
 				}
 				
-				
+				account.setBeverage(0);
 				account.setCoupon(0); // 쿠폰쓴거 차감
 				
 				new MenuChoice(account);

@@ -17,12 +17,11 @@ public class UpdateAccount {
 	public UpdateAccount() {
 	}
 
-	public Account update(Account account, String pw, String pnum, String pay) {
+	public Account update(Account account, String pw, String pnum, String pay,String bank) {
 		int index=0;
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("account.dat"))) {
 			list.addAll((ArrayList<Account>) ois.readObject());
 
-//			System.out.println(list+"안녕");
 		} catch (ClassNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.1");
 		} catch (FileNotFoundException e) {
@@ -44,13 +43,10 @@ public class UpdateAccount {
 				}
 				if (!pay.equals("")) {
 					list.get(i).setPay(pay);
+					list.get(index).setBank(bank);
 					index=i;
-				}
-				
-				
+				}	
 			}
-			
-
 		}
 		try {
 			new FileOutputStream("account.dat").close();
@@ -65,7 +61,6 @@ public class UpdateAccount {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("account.dat"))) {
 			
 			oos.writeObject(list);
-//			System.out.println(list+"잘가");
 
 		} catch (FileNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.");

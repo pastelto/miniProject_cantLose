@@ -53,7 +53,7 @@ public class PrintUse extends JFrame {
 		// 상단바
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("프린트포인트 사용                 ");
+		bar.setText("프린트포인트 사용 ");
 		bar.setFont(font3);
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);

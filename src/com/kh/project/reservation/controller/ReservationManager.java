@@ -5,8 +5,6 @@ import java.util.Date;
 
 import com.kh.project.reservation.model.vo.Account;
 
-//import com.kh.project.reservation.model.vo.pay.Ticket;
-
 public class ReservationManager {
 
 	private String[] selDate = new String[32];
@@ -74,7 +72,6 @@ public class ReservationManager {
 	
 	public ReservationManager(Account account) {
 	}
-
 	public Boolean OneSeat(Account account) { 
 		if(account.getOneSeat()<= 0){
 			 return false;
@@ -84,7 +81,6 @@ public class ReservationManager {
 	  }
 	  
 	}
-	
 	public Boolean StdRoom(Account account) { 
 		if(account.getStdRoom()<= 0){
 			 return false;
@@ -97,7 +93,7 @@ public class ReservationManager {
 	}
 	
 	public void check(Account account) {
-		if(account.getYourSeat().contains("1")) {
+		if(account.getYourSeat().contains("좌석")) {
 			ticket = account.getOneSeat();
 			  account.setOneSeat(ticket--);
 		}else {
@@ -177,6 +173,4 @@ public class ReservationManager {
 		 
 	}
 	
-}	
-	
-
+}

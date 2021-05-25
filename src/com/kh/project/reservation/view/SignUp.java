@@ -35,6 +35,7 @@ public class SignUp extends JFrame {
    private Account account = new Account();
    private CheckAccount ca = new CheckAccount();
 
+
    public SignUp() {
 
       super("SignUp");
@@ -162,6 +163,7 @@ public class SignUp extends JFrame {
       j2.setBounds(200, 485, 110, 35);
       this.add(p);
 
+
       j1.addActionListener(new ActionListener() {
          @SuppressWarnings("deprecation")
          @Override
@@ -184,6 +186,7 @@ public class SignUp extends JFrame {
             }
                else {ca.writeAccount(new Account(idTF.getText(), pwTF.getText(), nameTF.getText(), idNTF, 
                      phone.getText(), bankTF.getSelectedItem().toString(),bankNTF.getText(),0,0,0,0,1,null, 0 ,null, null));
+
 
                   ca.saveAccount();
                   
