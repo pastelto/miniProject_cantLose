@@ -35,29 +35,28 @@ public class Account implements Serializable {
    }
 
    public Account(String id, String pw, String name, String idNum, String pNum, String bank, String pay, int oneSeat,
-         int stdRoom, int printPoint, int totalH, int coupon, String dbCheck, int beverage, String yourDate,
-         String yourSeat) {
-      super();
-      this.id = id;
-      this.pw = pw;
-      this.name = name;
-      this.idNum = idNum;
-      this.pNum = pNum;
-      this.bank = bank;
-      this.pay = pay;
-      this.oneSeat = oneSeat;
-      this.stdRoom = stdRoom;
-      this.printPoint = printPoint;
-      this.totalH = totalH;
-      this.coupon = coupon;
-      this.dbCheck = dbCheck;
-      this.beverage = beverage;
-      this.yourDate = yourDate;
-      this.yourSeat = yourSeat;
+		int stdRoom, int printPoint, int totalH, int coupon, String dbCheck, int beverage, String yourDate,
+		String yourSeat) {
+	super();
+	this.id = id;
+	this.pw = pw;
+	this.name = name;
+	this.idNum = idNum;
+	this.pNum = pNum;
+	this.bank = bank;
+	this.pay = pay;
+	this.oneSeat = oneSeat;
+	this.stdRoom = stdRoom;
+	this.printPoint = printPoint;
+	this.totalH = totalH;
+	this.coupon = coupon;
+	this.dbCheck = dbCheck;
+	this.beverage = beverage;
+	this.yourDate = yourDate;
+	this.yourSeat = yourSeat;
+}
 
-   }
-
-   public String getId() {
+public String getId() {
       return id;
    }
 

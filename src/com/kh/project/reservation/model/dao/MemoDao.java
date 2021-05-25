@@ -1,6 +1,5 @@
 package com.kh.project.reservation.model.dao;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,7 +27,7 @@ public class MemoDao {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
 
 			memoList.addAll((ArrayList<Memo>)ois.readObject());
-
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -54,9 +53,10 @@ public class MemoDao {
 	// 메모 저장
 	public void saveMemo(Account account) {
 		String fileName = account.getId().toString() + ".dat";
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(fileName)))) {
+		try(ObjectOutputStream oos = new ObjectOutputStream
+				(new FileOutputStream(fileName))){
 			
-			//oos.writeObject(memoList);
+			oos.writeObject(memoList);
 						
 			System.out.println(fileName + "에 성공적으로 저장되었습니다.");
 			
@@ -112,7 +112,7 @@ public class MemoDao {
 
 	public void saveListFile(Account account) {
 		String fileName = account.getId().toString() + ".dat";
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(fileName)))) { // true 삭제!!
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) { // true 삭제!!
 
 			oos.writeObject(memoList);
 			System.out.println(memoList);
