@@ -9,9 +9,7 @@ import com.kh.project.reservation.model.vo.Account;
 public class CheckAccount {
 
 	private MemberDao md = new MemberDao();
-	HashMap<String, Account> membership= new HashMap<>();
-	
-	Account account = new Account();
+	private Account account = new Account();
 	
 	public CheckAccount() {}
 	
@@ -49,7 +47,6 @@ public class CheckAccount {
 	
 	public ArrayList<Account> find(String name, String idNum) { // id 
 		   ArrayList<Account> a = md.Find(name,idNum);
-		   
 			return a;
 			}
 		

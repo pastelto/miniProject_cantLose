@@ -3,16 +3,15 @@ package com.kh.project.reservation.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,17 +32,8 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class Login extends JFrame { 
 
-	private Scanner sc = new Scanner(System.in);
 	private Account account = new Account();
-	JButton login = new JButton("로그인");
-	JButton signUp = new JButton("회원가입");
-	JLabel idL = new JLabel("ID : ");
-	JLabel pwL = new JLabel("PW : ");
-	JTextField logTF = new JTextField();
-	JPasswordField pwTF = new JPasswordField();
-	JPanel loginP = new JPanel();
-	CheckAccount ca = new CheckAccount();
-	JLabel find = new JLabel("ID/PW 찾기");
+	private CheckAccount ca = new CheckAccount();
 	
 	public Login() {
 
@@ -52,13 +42,25 @@ public class Login extends JFrame {
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
 
+		JButton login = new JButton("로그인");
+		JButton signUp = new JButton("회원가입");
+		JLabel idL = new JLabel("ID : ");
+		JLabel pwL = new JLabel("PW : ");
+		JTextField logTF = new JTextField();
+		JPasswordField pwTF = new JPasswordField();
+		JPanel loginP = new JPanel();
+		JLabel find = new JLabel("ID/PW 찾기");
+		
 		loginP.setBackground(new Color(249, 242, 242)); // 배경색 설정
 
 		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 		image.setBounds(95, 40, 150, 140);
 
 
-		
+		login.setBackground(new Color(220, 118, 112)); // 버튼색
+		signUp.setBackground(new Color(220, 118, 112));// 버튼색
+		login.setForeground(Color.white);
+		signUp.setForeground(Color.white);
 		
 		BoardManager bm1 = new BoardManager();
 		String mm = bm1.maxim();
@@ -73,11 +75,6 @@ public class Login extends JFrame {
 		m.setFont(font);
 		idL.setFont(font2);
 		
-		/* Image icon = new ImageIcon("images/커피.png").getImage().getScaledInstance(100,
-		 * 100, 0); imLabel = new JLabel(new ImageIcon(icon));
-		 * imLabel.setBounds(100,100,100,100);
-		 */// 이건 왜 안됨,,,,? */
-
 		loginP.setLayout(null);
 		loginP.setSize(getMaximumSize());
 
@@ -102,6 +99,7 @@ public class Login extends JFrame {
 
 		find.setLocation(245, 385);
 		find.setSize(270, 54);
+		find.setOpaque(false);
 		find.setForeground(new Color(225, 118, 112));
 		
 		loginP.add(logTF);
@@ -126,7 +124,7 @@ public class Login extends JFrame {
 				if(logTF.getText().equals("")||pwTF.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 입력해주세요!");
 				}
-				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(),pwTF.getText());	
+				else {ArrayList<Account> check= ca.searchAccount(logTF.getText(), pwTF.getText());	
 				
 					if (check.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "회원 가입이 필요합니다.");
@@ -145,10 +143,11 @@ public class Login extends JFrame {
 				}
 					
 			}
+			
 		});
 
 
-		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기
+		signUp.addMouseListener(new MouseAdapter() { // 회원가입 여기 
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -180,12 +179,36 @@ public class Login extends JFrame {
 			}
 			
 			}); 
+		login.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				login.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				login.setBackground(new Color(220, 118, 112)); // 버튼색
+			} 
+			
+	});
+		signUp.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				signUp.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				signUp.setBackground(new Color(220, 118, 112));// 버튼색
+			} 
+	});
 		
 		// 상단바 로고
 				try {
 					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
