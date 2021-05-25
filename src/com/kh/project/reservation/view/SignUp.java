@@ -132,6 +132,10 @@ public class SignUp extends JFrame {
       
       Font font = new Font("맑은 고딕", Font.BOLD, 20);
       Font font2 = new Font("맑은 고딕", Font.PLAIN, 30);
+      Font font3 = new Font("맑은 고딕", Font.BOLD, 12);
+      
+      j1.setFont(font3);
+      j2.setFont(font3);
       
       l1.setBounds(120, 85, 45, 40);
       l2.setBounds(40, 140, 85, 40);

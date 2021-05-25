@@ -42,7 +42,7 @@ public class BookView extends JFrame implements ActionListener {
              e.printStackTrace();
           }
 		
-		if(bm.OneSeat(account) == true || bm.StdRoom(account)) {
+		if(bm.OneSeat(account) == true || bm.StdRoom(account) == true) {
 		
 		JFrame viewDao = new JFrame();
 		JPanel panel = new JPanel();
@@ -208,12 +208,12 @@ public class BookView extends JFrame implements ActionListener {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				block.setBackground(new Color(128, 128, 128)); // 버튼색
+				open.setBackground(new Color(128, 128, 128)); // 버튼색
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				block.setBackground(new Color(220, 118, 112)); // 버튼색
+				open.setBackground(new Color(220, 118, 112)); // 버튼색
 			} 
 			
 	});
@@ -221,12 +221,12 @@ public class BookView extends JFrame implements ActionListener {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				block.setBackground(new Color(128, 128, 128)); // 버튼색
+				company.setBackground(new Color(128, 128, 128)); // 버튼색
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				block.setBackground(new Color(220, 118, 112)); // 버튼색
+				company.setBackground(new Color(220, 118, 112)); // 버튼색
 			} 
 			
 	});
@@ -636,6 +636,47 @@ public class BookView extends JFrame implements ActionListener {
 				bSearch.setVisible(true);
 				bSearch.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 
+				prev.addMouseListener(new MouseAdapter() { // 마우스 올리면 버튼 색상 변경됨
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						prev.setBackground(new Color(128, 128, 128)); // 버튼색
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						prev.setBackground(new Color(220, 118, 112)); // 버튼색
+					} 
+					
+			});
+				modify.addMouseListener(new MouseAdapter() { // 마우스 올리면 버튼 색상 변경됨
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						modify.setBackground(new Color(128, 128, 128)); // 버튼색
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						modify.setBackground(new Color(220, 118, 112)); // 버튼색
+					} 
+					
+			});
+				cancel.addMouseListener(new MouseAdapter() { // 마우스 올리면 버튼 색상 변경됨
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						cancel.setBackground(new Color(128, 128, 128)); // 버튼색
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						cancel.setBackground(new Color(220, 118, 112)); // 버튼색
+					} 
+					
+			});
+				
+				
 				modify.addActionListener(new ActionListener() {
 
 					@Override

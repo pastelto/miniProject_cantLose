@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.BeverageGui.Drink;
 import com.kh.project.reservation.view.Board.MList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
@@ -38,7 +37,6 @@ public class MenuChoice extends JFrame {
 	JButton b7 = new JButton("체크인 / 체크아웃");
 	JButton b8 = new JButton("내 노트");
 	JButton b9 = new JButton("로그아웃");
-	JLabel userName = new JLabel();
 
 	private CheckAccount ca = new CheckAccount();
 	
@@ -68,31 +66,24 @@ public class MenuChoice extends JFrame {
 
 		JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
 		bar.setBounds(0, 0, 360, 53);
-		bar.setText("MENU  ");
+		bar.setText("MENU  "); // 글씨색 바꾸고 싶다..
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-		mc.add(bar);
-		
-		String accountName = account.getName().toString();
-		userName = new JLabel("반갑습니다. " + accountName + "님");
-		userName.setBounds(105, 100, 300, 50);
-		userName.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		
-		
-		JLabel humanIcon = new JLabel(new ImageIcon("images/humanIcon3.png"));
-		humanIcon.setBounds(40,100,54,54);
-		
-		
+
+		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
+		image.setLocation(10, 300);
+		image.setSize(100, 100);
+
 		// 메뉴 버튼
-		b1.setBounds(10, 180, 150, 50);
-		b2.setBounds(180, 180, 150, 50);
-		b3.setBounds(10, 240, 150, 50);
-		b4.setBounds(180, 240, 150, 50);
-		b5.setBounds(10, 300, 150, 50);
-		b6.setBounds(180, 300, 150, 50);
-		b7.setBounds(10, 360, 150, 50);
-		b8.setBounds(180, 360, 150, 50);
+		b1.setBounds(10, 80, 150, 50);
+		b2.setBounds(180, 80, 150, 50);
+		b3.setBounds(10, 140, 150, 50);
+		b4.setBounds(180, 140, 150, 50);
+		b5.setBounds(10, 200, 150, 50);
+		b6.setBounds(180, 200, 150, 50);
+		b7.setBounds(10, 260, 150, 50);
+		b8.setBounds(180, 260, 150, 50);
 		b9.setBounds(120, 500, 100, 30);
 
 		// 메뉴 색상 --> 원하는대로 바꿔주세요~
@@ -106,20 +97,10 @@ public class MenuChoice extends JFrame {
 		b8.setBackground(new Color(220, 118, 112));
 		b9.setBackground(new Color(220, 118, 112));
 
-		b1.setForeground(Color.white); // 택 (1) 색상 정하기
-		b2.setForeground(Color.white); // 택 (2)
-		b3.setForeground(Color.white);
-		b4.setForeground(Color.white);
-		b5.setForeground(Color.white);
-		b6.setForeground(Color.white);
-		b7.setForeground(Color.white);
-		b8.setForeground(Color.white);
-		b9.setForeground(Color.white);
-		
 		b1.setFocusPainted(true);
 
 		// 상단바 메뉴 폰트
-		Font font = new Font("맑은 고딕", Font.BOLD, 15);
+		Font font = new Font("맑은 고딕", Font.BOLD, 30);
 
 		// mTitle.setFont(font);
 		bar.setFont(font);
@@ -132,42 +113,28 @@ public class MenuChoice extends JFrame {
 		}
 
 		// 붙여넣기
-		mc.add(bar);
-		mc.add(b1);
-		mc.add(b2);
-		mc.add(b3);
-		mc.add(b4);
-		mc.add(b5);
-		mc.add(b6);
-		mc.add(b7);
-		mc.add(b8);
-		mc.add(b9);
-		mc.add(humanIcon);
-		mc.add(userName);
-
+		this.add(bar);
+		this.add(b1);
+		this.add(b2);
+		this.add(b3);
+		this.add(b4);
+		this.add(b5);
+		this.add(b6);
+		this.add(b7);
+		this.add(b8);
+		this.add(b9);
 		this.add(mc);
-		
- 
+		this.add(image);
 
 		// 각 버튼 클릭시 연결 기능
 		b1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new BookView(account);
+					new BookView();
 					setVisible(false);
-
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b1.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b1.setBackground(new Color(220, 118, 112)); // 버튼색yu	
-             } 
 		});
 
 		b2.addMouseListener(new MouseAdapter() { // 이용권구매
@@ -178,34 +145,16 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b2.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b2.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b3.addMouseListener(new MouseAdapter() { // 음료 구매
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new Drink(account);
+					new Drink();
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b3.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b3.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b4.addMouseListener(new MouseAdapter() { // 프린트
@@ -216,34 +165,16 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b4.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b4.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b5.addMouseListener(new MouseAdapter() { // 예약확인
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new BookView().checkBooking(account);
+					new checkBooking();
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b5.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b5.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b6.addMouseListener(new MouseAdapter() { // 내정보
@@ -254,34 +185,16 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b6.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b6.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b7.addMouseListener(new MouseAdapter() { // 체크인/체크아웃
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new CheckIn(account);
+					new CheckIn();
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b7.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b7.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b8.addMouseListener(new MouseAdapter() { // 내노트
@@ -293,15 +206,6 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b8.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b8.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
 
 		b9.addMouseListener(new MouseAdapter() { // 로그아웃 - 로그인화면
@@ -315,18 +219,8 @@ public class MenuChoice extends JFrame {
 					setVisible(false);
 				}
 			}
-			 @Override
-             public void mouseEntered(MouseEvent e) {
-				 b9.setBackground(new Color(128, 128, 128)); // 버튼색
-             }
-
-             @Override
-             public void mouseExited(MouseEvent e) {
-            	 b9.setBackground(new Color(220, 118, 112)); // 버튼색
-             } 
 		});
-		
-		
+
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
