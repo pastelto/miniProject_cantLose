@@ -25,15 +25,6 @@ import com.kh.project.reservation.controller.UpdateAccount;
 
 class CoffePop extends JFrame {
 
-	JLabel label = new JLabel("Congratulation"); // 다이얼로그 문구
-	JLabel label2 = new JLabel("가입을 축하드립니다."); // 다이얼로그 문구
-	JLabel label3 = new JLabel("무료 커피 쿠폰 1회권이 발급되었습니다."); // 다이얼로그 문구
-	JLabel label4 = new JLabel("로그인 후 이용해주세요!"); // 다이얼로그 문구
-	
-	JButton okBtn = new JButton("확인"); // 버튼 
-	JPanel coffeeP = new JPanel();
-	
-
 	public CoffePop() {
 
 		super("Congraturation");
@@ -41,6 +32,14 @@ class CoffePop extends JFrame {
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
 
+		JLabel label = new JLabel("Congratulation"); // 다이얼로그 문구
+		JLabel label2 = new JLabel("가입을 축하드립니다."); // 다이얼로그 문구
+		JLabel label3 = new JLabel("무료 커피 쿠폰 1회권이 발급되었습니다."); // 다이얼로그 문구
+		JLabel label4 = new JLabel("로그인 후 이용해주세요!"); // 다이얼로그 문구
+		
+		JButton okBtn = new JButton("확인"); // 버튼 
+		JPanel coffeeP = new JPanel();
+		
 		coffeeP.setBackground(new Color(249, 242, 242)); // 배경색 설정
 		coffeeP.setLayout(null);
 		coffeeP.setSize(getMaximumSize());

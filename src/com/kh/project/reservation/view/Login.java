@@ -33,15 +33,7 @@ import com.kh.project.reservation.model.vo.Account;
 public class Login extends JFrame { 
 
 	private Account account = new Account();
-	JButton login = new JButton("로그인");
-	JButton signUp = new JButton("회원가입");
-	JLabel idL = new JLabel("ID : ");
-	JLabel pwL = new JLabel("PW : ");
-	JTextField logTF = new JTextField();
-	JPasswordField pwTF = new JPasswordField();
-	JPanel loginP = new JPanel();
-	CheckAccount ca = new CheckAccount();
-	JLabel find = new JLabel("ID/PW 찾기");
+	private CheckAccount ca = new CheckAccount();
 	
 	public Login() {
 
@@ -50,6 +42,15 @@ public class Login extends JFrame {
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
 
+		JButton login = new JButton("로그인");
+		JButton signUp = new JButton("회원가입");
+		JLabel idL = new JLabel("ID : ");
+		JLabel pwL = new JLabel("PW : ");
+		JTextField logTF = new JTextField();
+		JPasswordField pwTF = new JPasswordField();
+		JPanel loginP = new JPanel();
+		JLabel find = new JLabel("ID/PW 찾기");
+		
 		loginP.setBackground(new Color(249, 242, 242)); // 배경색 설정
 
 		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
@@ -74,11 +75,6 @@ public class Login extends JFrame {
 		m.setFont(font);
 		idL.setFont(font2);
 		
-		/* Image icon = new ImageIcon("images/커피.png").getImage().getScaledInstance(100,
-		 * 100, 0); imLabel = new JLabel(new ImageIcon(icon));
-		 * imLabel.setBounds(100,100,100,100);
-		 */// 이건 왜 안됨,,,,? */
-
 		loginP.setLayout(null);
 		loginP.setSize(getMaximumSize());
 
@@ -213,7 +209,6 @@ public class Login extends JFrame {
 				try {
 					this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 

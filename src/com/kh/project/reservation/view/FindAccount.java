@@ -27,14 +27,6 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class FindAccount extends JFrame{
 	
-	JPanel FindP = new JPanel();
-	JLabel l1 = new JLabel("이   름");
-	JLabel l2 = new JLabel("주민번호");
-	JTextField Name = new JTextField();
-	JTextField idNum1 = new JTextField();
-	JPasswordField idNum2 = new JPasswordField();
-	JLabel l3 = new JLabel("-");
-	JLabel l4 = new JLabel("ID/PW 찾기");
 	private CheckAccount ca = new CheckAccount();
 	private ArrayList<Account> checkName = new ArrayList<>();
 	private Account account = new Account();
@@ -46,6 +38,15 @@ public class FindAccount extends JFrame{
 		this.setLocationRelativeTo(null); // 창 가운데로 켜지게 설정
 		this.setLayout(null);
 
+		JPanel FindP = new JPanel();
+		JLabel l1 = new JLabel("이   름");
+		JLabel l2 = new JLabel("주민번호");
+		JTextField Name = new JTextField();
+		JTextField idNum1 = new JTextField();
+		JPasswordField idNum2 = new JPasswordField();
+		JLabel l3 = new JLabel("-");
+		JLabel l4 = new JLabel("ID/PW 찾기");
+		
 		FindP.setLayout(null);
 		FindP.setSize(getMaximumSize());
 		FindP.setBackground(new Color(249, 242, 242)); // 배경색 설정

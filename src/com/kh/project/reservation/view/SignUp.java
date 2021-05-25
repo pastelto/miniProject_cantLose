@@ -36,19 +36,6 @@ public class SignUp extends JFrame {
 	private Account account = new Account();
 	private CheckAccount ca = new CheckAccount();
 
-	JPanel SignUp = new JPanel();
-	JLabel SignUp2 = new JLabel();
-	String id;
-	String pw;
-	String name;
-	String idNum;
-	String phNum;
-	String cardN;
-	String bank;
-	String bankN;
-	String idNTF; 
-	CoffePop dialog;
-	
 	public SignUp() {
 
 		super("SignUp");
@@ -56,6 +43,17 @@ public class SignUp extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 
+		JPanel SignUp = new JPanel();
+		String id;
+		String pw;
+		String name;
+		String idNum;
+		String phNum;
+		String cardN;
+		String bank;
+		String bankN;
+		String idNTF; 
+		
 		JPanel p = new JPanel();
 		p.setLayout(null);
 		p.setSize(getMaximumSize());
@@ -86,8 +84,8 @@ public class SignUp extends JFrame {
 		bankTF.addItem("국민");
 		bankTF.addItem("우리");
 		bankTF.addItem("카카오");*/
-		String bank[] = {"카드를 선택해 주세요","신한","농협","국민","우리","카카오","KB국민","하나","삼성","롯데"};
-		JComboBox bankTF= new JComboBox(bank);
+		String bank1[] = {"카드를 선택해 주세요","신한","농협","국민","우리","카카오","KB국민","하나","삼성","롯데"};
+		JComboBox bankTF= new JComboBox(bank1);
 		
 		
 		p.add(l1);
@@ -163,10 +161,10 @@ public class SignUp extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장
 			
-				idNTF = idNTF1.getText()+"-"+idNTF2.getText(); //111111-1111111
+				String idNTF = idNTF1.getText()+"-"+idNTF2.getText(); //111111-1111111
 				
 				if(idTF.getText().equals("")||pwTF.getText().equals("")|| nameTF.getText().equals("")||idNTF1.equals("")||
-						idNTF2.equals("")||bankTF.getSelectedItem().equals("카드를 선택해 주세요")||bankNTF.getText().equals(""))//빈칸일 경우
+						idNTF2.equals("")||phone.equals("")||bankTF.getSelectedItem().equals("카드를 선택해 주세요")||bankNTF.getText().equals(""))//빈칸일 경우
 				{
 					JOptionPane.showMessageDialog(null, "정보를 모두 입력해 주세요");
 				} else if (idNTF1.getText().length() != 6 || idNTF2.getText().length() != 7) { // 글자갯수 제한
