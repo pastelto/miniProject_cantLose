@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.Board.MList;
+import com.kh.project.reservation.view.Board.MyMemo;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
 
@@ -203,7 +203,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new CheckIn();
+					new CheckIn(account);
 					setVisible(false);
 				}
 			}
@@ -214,7 +214,8 @@ public class MenuChoice extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getButton() == 1) {
-					new MList(account);
+//					new MList(account);
+					new MyMemo(account);
 					setVisible(false);
 				}
 			}
@@ -224,8 +225,9 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용
-					new MemberDao().reSaveAccount(account);
+					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용 // 코드 정리 때 삭제 필요
+					
+					new MemberDao().reSaveAccount(account); // 앱 구동 중 변경사항 전체 저장
 					Login l = new Login();
 					
 					setVisible(false);

@@ -23,9 +23,9 @@ public class CheckIn extends JFrame {
 	JButton back = new JButton("< prev");
 	JPanel cc = new JPanel();
 	Font font = new Font("함초롬돋움", Font.BOLD, 30);
-	Account a = new Account();
 	
-	public CheckIn() {
+	
+	public CheckIn(Account account) {
 
 		super("checkIn & checkOut");
 		this.setSize(360, 600);

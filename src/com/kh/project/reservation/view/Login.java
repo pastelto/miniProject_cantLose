@@ -7,12 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,8 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.kh.project.reservation.controller.BoardManager;
 import com.kh.project.reservation.controller.CheckAccount;
+import com.kh.project.reservation.controller.MaximManager;
 import com.kh.project.reservation.model.vo.Account;
 
 
@@ -60,7 +56,7 @@ public class Login extends JFrame {
 
 		
 		
-		BoardManager bm1 = new BoardManager();
+		MaximManager bm1 = new MaximManager();
 		String mm = bm1.maxim();
 		JLabel m = new JLabel(mm);
 		m.setLocation(10, 200);

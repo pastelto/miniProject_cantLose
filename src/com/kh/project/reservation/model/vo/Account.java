@@ -24,13 +24,15 @@ public class Account implements Serializable {
 	private int stdRoom; // 스터디룸 이용권개수
 	private int printPoint; // 프린트포인트
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
-	private int coupon = 2; // 회원가입시 주는 음료쿠폰
+	private int coupon = 1; // 회원가입시 주는 음료쿠폰
+	
+	private String dbCheck;
 
 	public Account() {
 	}
 
 	public Account( String id, String pw, String name, String idNum, String pNum,
-			String bank, String pay, int oneSeat, int stdRoom, int printPoint, int totalH, int coupon) {
+			String bank, String pay, int oneSeat, int stdRoom, int printPoint, int totalH, int coupon, String dbCheck) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -44,6 +46,7 @@ public class Account implements Serializable {
 		this.printPoint = printPoint;
 		this.totalH = totalH;
 		this.coupon = coupon;
+		this.dbCheck = dbCheck;
 	}
 
 	public String getId() {
@@ -146,9 +149,17 @@ public class Account implements Serializable {
 		this.totalH = totalH;
 	}
 
+	public String dbCheck() {
+		return id;
+	}
+
+	public void setDbCheck(String dbCheck) {
+		this.dbCheck = dbCheck;
+	}
+	
 	public String toString() {
 		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + oneSeat + ","
-				+ stdRoom + "," + printPoint + "," + totalH + "," + coupon;
+				+ stdRoom + "," + printPoint + "," + totalH + "," + coupon + "," + dbCheck;
 	}
 
 

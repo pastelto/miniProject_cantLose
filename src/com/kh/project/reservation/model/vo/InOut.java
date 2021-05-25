@@ -11,18 +11,11 @@ public class InOut {
 	private String doubleCheck = ""; // 체크인 상태 
 	
 	public InOut() {
-		// TODO Auto-generated constructor stub
 	}
-	
-
-
 
 	public long getCheckIn() {
 		return checkIn;
 	}
-
-
-
 
 	public void setCheckIn(long checkIn) {
 		this.checkIn = checkIn;

@@ -21,12 +21,21 @@ public class MemoDao {
 
 	ArrayList<Memo> memoList = new ArrayList<Memo>();
 
+	public MemoDao() {
+		
+	}
+	
 	public MemoDao(Account account) {
 		
 		String fileName = account.getId().toString() + ".dat";
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
 
-			memoList.addAll((ArrayList<Memo>)ois.readObject());
+//			memoList.addAll((ArrayList<Memo>)ois.readObject());
+			
+			Memo b;
+			while((b=(Memo)ois.readObject()) != null){
+				memoList.add(b);
+			}
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -37,26 +46,21 @@ public class MemoDao {
 			System.out.println("메모 리스트 읽기 완료");
 		}	
 	}
-
-	public int getLastMemoNo() {
-
-		return memoList.get(memoList.size() - 1).getMemoNo(); // size보다 1작은 수가 마지막 번호 cf. 배열길이
-
-	}
 	
-	public void writeMemo(Memo memo) {
+	public void writeMemo(Account account, Memo memo) {
 
 		memoList.add(memo);
 
 	}
 
 	// 메모 저장
-	public void saveMemo(Account account) {
+	public void saveMemo(Account account, Memo memo) {
 		String fileName = account.getId().toString() + ".dat";
 		try(ObjectOutputStream oos = new ObjectOutputStream
 				(new FileOutputStream(fileName))){
-			
+			System.out.println("memoList : " + memoList.toString());
 			oos.writeObject(memoList);
+			System.out.println("메모리스트 : " + memoList);
 						
 			System.out.println(fileName + "에 성공적으로 저장되었습니다.");
 			
@@ -64,68 +68,52 @@ public class MemoDao {
 			System.out.println("파일을 찾을 수 없습니다.");
 		}catch(IOException e) {
 			System.out.println("파일을 찾을 수 없습니다.2");
+		}catch(NullPointerException e) {
+			System.out.println("파일을 찾을 수 없습니다.3");
 		}
 		
 	}
-	public Memo displayBoard(int no) {
-		Memo b = null; // 번호에 맞는 내용이 저장
-		for (int i = 0; i < memoList.size(); i++) {
-			if (memoList.get(i).getMemoNo() == no) {
 
-				b = memoList.get(i);
-				break;
-
-			}
-
-		}
-		return b;
-	}
-
-
-	// 메모 제목 수정
-	public void editMemo(String title, String memo, String time) { 
-
-		for (int i = 0; i < memoList.size(); i++) {
-			if (memoList.get(i).getMemoNo() == no) {
-				memoList.get(i).setTitle(title);
-				memoList.get(i).setMemo(memo);
-				memoList.get(i).setTime(time);
-				break;
-			}
-		}
-
-	}
-
-
-	public void deleteBoard(int no) {
-
-		for (int i = 0; i < memoList.size(); i++) {
-			if (memoList.get(i).getMemoNo() == no) {
-				memoList.remove(i);
-				break;
-
-			}
-		}
-
-	}
-
-
-	public void saveListFile(Account account) {
+	public void editMemo(Account account, ArrayList<Memo> m) {
 		String fileName = account.getId().toString() + ".dat";
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) { // true 삭제!!
-
-			oos.writeObject(memoList);
-			System.out.println(memoList);
-
-			System.out.println(fileName + ".dat에 성공적으로 저장되었습니다.");
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		
+		try {
+	         new FileOutputStream(fileName).close();  //저장 되어 있던 파일 내용 다 지우기
+	      } catch (FileNotFoundException e1) {
+	         
+	      } catch (IOException e1) {
+	         
+	      }
+	
+		
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName, true))){
+			System.out.println("memoList : " + m.toString());
+			
+			oos.writeObject(m);
+			System.out.println("메모리스트 : " + m);
+						
+			System.out.println(fileName + "에 성공적으로 저장되었습니다.");
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.");
+		}catch(IOException e) {
+			System.out.println("파일을 찾을 수 없습니다.2");
+		}catch(NullPointerException e) {
+			System.out.println("파일을 찾을 수 없습니다.3");
 		}
+		
+	}
+	
+	public void deleteMemo(Account account, Memo memo) {
+		String fileName = account.getId().toString() + ".dat";
+		try {
+	         new FileOutputStream(fileName).close();  //저장 되어 있던 파일 내용 다 지우기
+	      } catch (FileNotFoundException e1) {
+	         
+	      } catch (IOException e1) {
+	         
+	      }
 
 	}
 
