@@ -1,4 +1,4 @@
-package com.kh.project.reservation.view.Board;
+package com.kh.project.reservation.view.Memo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,12 +6,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -19,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -31,8 +27,8 @@ public class MyMemo extends JFrame {
 
 	private JLabel bar; 
 	private JPanel mc = new JPanel();
-	private JButton saveM = new JButton("저장"); // 글 저장
-	private JButton back = new JButton("뒤로가기"); // 뒤로가기 (or 메뉴)
+	private JButton saveM; // 글 저장
+	private JButton back; // 뒤로가기 (or 메뉴)
 	private JTextArea memo = new JTextArea();
 
 	MemoManager mm = new MemoManager();
@@ -77,8 +73,8 @@ public class MyMemo extends JFrame {
 		mc.add(bar);
 
 		// 상단바 메뉴 폰트
-		Font font = new Font("맑은 고딕", Font.BOLD, 20);
-		bar.setFont(font);
+		Font font2 = new Font("맑은 고딕", Font.BOLD, 15);
+		bar.setFont(font2);
 
 		// 상단바 로고
 		try {
@@ -94,7 +90,12 @@ public class MyMemo extends JFrame {
 
 		// 버튼
 		saveM = new JButton("저장하기");
-
+		saveM.setForeground(Color.white); 
+		saveM.setBackground(new Color(220, 118, 112)); 
+		back = new JButton("뒤로가기");
+		back.setForeground(Color.white); 
+		back.setBackground(new Color(220, 118, 112)); 
+		
 		// 2. 버튼 위치
 		saveM.setBounds(90, 450, 150, 30);
 		back.setBounds(230, 500, 90, 30);
@@ -105,6 +106,13 @@ public class MyMemo extends JFrame {
 		mc.add(saveM);
 		mc.add(back);
 
+		// 상단바 로고
+        try {
+           this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+		
 		this.add(mc);
 
 		String str = mm.callMyMemo(account);
@@ -119,63 +127,50 @@ public class MyMemo extends JFrame {
 				if (e.getButton() == 1) {
 					String memoS = memo.getText();
 					mm.saveMemo(account, memoS);
+					JOptionPane.showMessageDialog(null, "    메모가 저장되었습니다.", "Message",
+							JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false);
 				}
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				saveM.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				saveM.setBackground(new Color(220, 118, 112)); // 버튼색
+			} 
 		});
 
 		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					JOptionPane.showMessageDialog(null, "       메뉴로 돌아갑니다.", "Message",
+							JOptionPane.INFORMATION_MESSAGE);
 					new MenuChoice(account);
 					setVisible(false);
 				}
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				back.setBackground(new Color(128, 128, 128)); // 버튼색
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				back.setBackground(new Color(220, 118, 112)); // 버튼색
+			} 
+			
 		});
+		
+		
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
-//	private String callMyMemo(Account account) {
-//		String fileName = account.getId().toString() + ".dat";
-//		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-//
-//			String temp = "";
-//			while ((temp = br.readLine()) != null) {
-//
-//				str += temp + "\n";
-//
-//			}
-//
-//			br.close();
-//
-//		} catch (FileNotFoundException e) {
-//			System.out.println("존재하는 파일이 없습니다. ");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("temp? : " + str);
-//		return str;
-//
-//	}
-//
-//	private void saveMemo(Account account, String memo) {
-//		String fileName = account.getId().toString() + ".dat";
-//
-//		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
-//
-//			bw.write(memo);
-//			System.out.println("메모 내용 " + memo);
-//			System.out.println("입력받은 " + fileName + " 파일에 성공적으로 저장하였습니다. ");
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		new MyMemo(account);
-//	}
 
 }

@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.Board.MyMemo;
+import com.kh.project.reservation.view.Memo.MyMemo;
 
 public class MemoManager {
 

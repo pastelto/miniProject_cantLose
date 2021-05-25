@@ -1,61 +1,74 @@
 
 package com.kh.project.reservation.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 import com.kh.project.reservation.model.vo.Account;
-import com.kh.project.reservation.view.Login;
 
 public class UpdateAccount {
+	private ArrayList<Account> list = new ArrayList<>();
 
 	public UpdateAccount() {
 	}
 
-	public void updatePW(Account account, String pw) {
-		
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.txt",true))){
-			account.setPw(pw);
-			oos.writeObject(account);
-			
-			System.out.println("비밀번호가 저장되었습니다.");
-			
-			new Login();
-		}catch (Exception ex){
-			System.out.println("비밀번호  저장을 실패 하였습니다.");
+	public Account update(Account account, String pw, String pnum, String pay,String bank) {
+		int index=0;
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("account.dat"))) {
+			list.addAll((ArrayList<Account>) ois.readObject());
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.1");
+		} catch (FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.2");
+		} catch (IOException e) {
+			System.out.println("파일을 찾을 수 없습니다.3");
 		}
-	
+
+		
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getId().equals(account.getId())) {
+
+				if (!pw.equals("")) {
+					list.get(i).setPw(pw);
+		
+				}
+				if (!pnum.equals("")) {
+					list.get(i).setpNum(pnum);
+				}
+				if (!pay.equals("")) {
+					list.get(i).setPay(pay);
+					list.get(index).setBank(bank);
+					index=i;
+				}	
+			}
+		}
+		try {
+			new FileOutputStream("account.dat").close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("account.dat"))) {
+			
+			oos.writeObject(list);
+
+		} catch (FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.");
+		} catch (IOException e) {
+			System.out.println("파일을 찾을 수 없습니다.2");
+		}
+		return list.get(index);
+
 	}
 
-	public void updatePay(Account account, String pnum) {
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.txt",true))){
-			account.setPw(pnum);
-			oos.writeObject(account);
-			
-			System.out.println("비밀번호가 저장되었습니다.");
-			
-			new Login();
-		}catch (Exception ex){
-			System.out.println("비밀번호  저장을 실패 하였습니다.");
-		}
-	
-	}
-
-	public void updatePNum(Account account, String pay) {
-		
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.txt",true))){
-			account.setPw(pay);
-			oos.writeObject(account);
-			
-			System.out.println("비밀번호가 저장되었습니다.");
-			
-			new Login();
-		}catch (Exception ex){
-			System.out.println("비밀번호  저장을 실패 하였습니다.");
-		}
-	
-	}
 }
-

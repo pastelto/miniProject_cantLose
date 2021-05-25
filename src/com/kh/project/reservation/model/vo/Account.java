@@ -1,12 +1,11 @@
 
 package com.kh.project.reservation.model.vo;
 
-import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Account implements Serializable {
-
 
 	private static final long serialVersionUID = -8415970906280605681L;
 
@@ -25,14 +24,19 @@ public class Account implements Serializable {
 	private int printPoint; // 프린트포인트
 	private int totalH = 0; // 누적시간 -> 초로 넘겨줄것
 	private int coupon = 1; // 회원가입시 주는 음료쿠폰
-	
-	private String dbCheck;
+
+	private String dbCheck; // 체크인상태
+	private int beverage; // 음료수량
+
+	private String yourDate; // 예약일
+	private String yourSeat; // 예약시간
 
 	public Account() {
 	}
 
-	public Account( String id, String pw, String name, String idNum, String pNum,
-			String bank, String pay, int oneSeat, int stdRoom, int printPoint, int totalH, int coupon, String dbCheck) {
+	public Account(String id, String pw, String name, String idNum, String pNum, String bank, String pay, int oneSeat,
+			int stdRoom, int printPoint, int totalH, int coupon, String dbCheck, int beverage, String yourDate,
+			String yourSeat) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -47,6 +51,10 @@ public class Account implements Serializable {
 		this.totalH = totalH;
 		this.coupon = coupon;
 		this.dbCheck = dbCheck;
+		this.beverage = beverage;
+		this.yourDate = yourDate;
+		this.yourSeat = yourSeat;
+
 	}
 
 	public String getId() {
@@ -149,19 +157,42 @@ public class Account implements Serializable {
 		this.totalH = totalH;
 	}
 
-	public String dbCheck() {
-		return id;
+	public String getdbCheck() {
+		return dbCheck;
 	}
 
 	public void setDbCheck(String dbCheck) {
 		this.dbCheck = dbCheck;
 	}
-	
-	public String toString() {
-		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + oneSeat + ","
-				+ stdRoom + "," + printPoint + "," + totalH + "," + coupon + "," + dbCheck;
+
+	public int getBeverage() {
+		return beverage;
 	}
 
+	public void setBeverage(int beverage) {
+		this.beverage = beverage;
+	}
 
+	public String getYourDate() {
+		return yourDate;
+	}
+
+	public void setYourDate(String yourDate) {
+		this.yourDate = yourDate;
+	}
+
+	public String getYourSeat() {
+		return yourSeat;
+	}
+
+	public void setYourSeat(String yourSeat) {
+		this.yourSeat = yourSeat;
+	}
+
+	public String toString() {
+		return id + "," + pw + "," + name + "," + idNum + "," + pNum + "," + bank + "," + pay + "," + oneSeat + ","
+				+ stdRoom + "," + printPoint + "," + totalH + "," + coupon + "," + dbCheck + "," + beverage + ","
+				+ yourDate + "," + yourSeat;
+	}
 
 }
