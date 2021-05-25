@@ -49,23 +49,21 @@ public class UpdateAccount {
 		try {
 			new FileOutputStream("account.dat").close();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			
 		}
 
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("account.dat"))) {
 			System.out.println(list);
 			oos.writeObject(list);
 
-			System.out.println("account.dat에 성공적으로 저장되었습니다.");
+			
 
 		} catch (FileNotFoundException e) {
-			System.out.println("파일을 찾을 수 없습니다.");
+			
 		} catch (IOException e) {
-			System.out.println("파일을 찾을 수 없습니다.2");
+			
 		}
 
 	}
