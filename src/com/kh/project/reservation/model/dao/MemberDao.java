@@ -1,16 +1,13 @@
 package com.kh.project.reservation.model.dao;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.kh.project.reservation.model.vo.Account;
 import com.kh.project.reservation.view.Login;
@@ -156,7 +153,6 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 
 	public ArrayList<Account> Find(String name,String idNum) {
 		ArrayList<Account> find = new ArrayList<>();
-		System.out.println(list.get(0));
 		for(int i =0; i<list.size();i++) {
 			System.out.println(list.get(i));
 			if((list.get(i).getName()).equals(name)&&(list.get(i).getIdNum()).equals(idNum)) {
@@ -165,6 +161,7 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
 			return find;
 			} 
 		}
+		System.out.println(find);
 		return find;
 		} 
 	

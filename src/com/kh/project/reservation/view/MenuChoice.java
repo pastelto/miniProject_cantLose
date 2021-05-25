@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import com.kh.project.reservation.controller.CheckAccount;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
+import com.kh.project.reservation.view.BeverageGui.Drink;
 import com.kh.project.reservation.view.Board.MList;
 import com.kh.project.reservation.view.PrintGui.PrintServiceGui;
 import com.kh.project.reservation.view.TicketGui.TicketGui;
@@ -164,7 +165,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new Drink();
+					new Drink(account);
 					setVisible(false);
 				}
 			}
@@ -204,7 +205,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					new CheckIn();
+					new CheckIn(account);
 					setVisible(false);
 				}
 			}

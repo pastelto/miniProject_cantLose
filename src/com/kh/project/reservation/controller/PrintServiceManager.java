@@ -9,8 +9,6 @@ import com.kh.project.reservation.model.vo.Account;
 
 public class PrintServiceManager {
 
-	//private int printPoint; // 프린트 포인트
-	//private int printCode; // 프린트 코드
 	private int colorPrint = 100; // 컬러프린트 비용
 	private int blackPrint = 50; // 흑백프린트 비용
 
@@ -18,19 +16,11 @@ public class PrintServiceManager {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void prtPointInfo(Account account) { // 포인트조회
-
-		System.out.println("현재포인트 : " + account.getPrintPoint());
-		System.out.println(account.toString());
-
-	}
-
 	public void prtPointCharge(Account account, int count) { // 프린트 포인트 충전
 
 		account.setPrintPoint(account.getPrintPoint() + count);
 		JOptionPane.showMessageDialog(null, "충전완료!!");
-		System.out.println(account.getPrintPoint());
-		prtPointInfo(account);
+		System.out.println(account.getPrintPoint()); // 잘들어갔나 콘솔확인용
 
 	}
 
@@ -46,7 +36,6 @@ public class PrintServiceManager {
 			JOptionPane.showMessageDialog(null, "충전이 필요합니다." + "\n" 
 										+ "현재포인트 : " + account.getPrintPoint() + "\n"
 										+ "필요한 포인트 : " + -(account.getPrintPoint() - total));
-
 		}
 
 		return account.getPrintPoint();
