@@ -338,7 +338,6 @@ public class BookView extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}
 		JPanel panel = new JPanel();
-		ForWomen.setTitle("1인 칸막이 좌석 (여성전용)");
 		ForWomen.setSize(360, 600);
 		JLabel W = new JLabel(new ImageIcon("WangsImages/W.png"));
 
@@ -391,7 +390,6 @@ public class BookView extends JFrame implements ActionListener {
 		}
 
 		JPanel panel = new JPanel();
-		ForMen.setTitle("1인 칸막이 좌석 (남성전용)");
 		ForMen.setSize(360, 600);
 
 		JLabel M = new JLabel(new ImageIcon("WangsImages/M.png"));
@@ -438,7 +436,6 @@ public class BookView extends JFrame implements ActionListener {
 		}
 
 		JPanel panel = new JPanel();
-		open.setTitle("1인 오픈형 좌석");
 		open.setSize(360, 600);
 
 		JLabel O = new JLabel(new ImageIcon("WangsImages/O.png"));

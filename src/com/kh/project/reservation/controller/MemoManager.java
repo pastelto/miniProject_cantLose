@@ -25,19 +25,15 @@ public class MemoManager {
 
 				String temp = "";
 				while ((temp = br.readLine()) != null) {
-
 					str += temp + "\n";
-
 				}
-
 				br.close();
-
 			} catch (FileNotFoundException e) {
 				System.out.println("존재하는 파일이 없습니다. ");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("temp? : " + str);
+			
 			return str;
  
 		}
