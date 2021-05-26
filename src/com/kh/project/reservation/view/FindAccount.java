@@ -137,7 +137,7 @@ public class FindAccount extends JFrame{
 		 idNum1.addKeyListener(new KeyAdapter() { // 글자수 제한 -6자
 
 				@Override
-				public void keyTyped(KeyEvent e) {
+				public void keyTyped(KeyEvent e) {  
 					if(idNum1.getText().length()>5) {
 						e.consume(); // 타이핑한게 입력되지 않는다.
 					JOptionPane.showMessageDialog(null, "글자수를 초과했습니다.");

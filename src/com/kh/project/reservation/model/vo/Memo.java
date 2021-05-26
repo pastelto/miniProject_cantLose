@@ -19,7 +19,7 @@ public class Memo implements Serializable{
 		super();
 		this.title = title;
 		this.memo = memo;
-	}
+	} 
 
 	public String getTitle() {
 		return title;

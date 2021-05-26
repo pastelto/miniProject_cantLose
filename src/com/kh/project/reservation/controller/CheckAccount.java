@@ -6,7 +6,7 @@ import java.util.HashMap;
 import com.kh.project.reservation.model.dao.MemberDao;
 import com.kh.project.reservation.model.vo.Account;
 
-public class CheckAccount {
+public class CheckAccount {   
 
 	private MemberDao md = new MemberDao();
 	private Account account = new Account();

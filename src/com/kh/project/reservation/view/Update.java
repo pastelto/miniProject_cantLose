@@ -76,7 +76,7 @@ public class Update extends JFrame {
 		JLabel lb6 = new JLabel("카드번호");
 		lb6.setForeground(Color.white);
 
-		JLabel lb7 = new JLabel("누적 이용 시간");
+		JLabel lb7 = new JLabel("누적 이용 시간"); 
 		lb7.setForeground(Color.white);
 
 		JLabel lb8 = new JLabel("보유 커피 쿠폰");

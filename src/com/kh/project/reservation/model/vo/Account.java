@@ -176,7 +176,7 @@ public class Account implements Serializable {
 	public String getYourDate() {
 		return yourDate;
 	}
-
+ 
 	public void setYourDate(String yourDate) {
 		this.yourDate = yourDate;
 	}

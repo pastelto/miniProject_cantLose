@@ -20,7 +20,7 @@ public class MaximManager { // 명언 & 보드
 		case 4:
 			maxim = "<html> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; 한번의 실패와 영원한 실패를 혼동하지 마라 <br><br>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  -F.스콧 핏제랄드</html>";
 			break;
-		case 5:
+		case 5: 
 			maxim = "<html>	&nbsp; &nbsp; &nbsp; &nbsp; 늦게 도착하는 것이 추하게 도착하는 것보다 낫다 <br><br>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-마릴린 먼로</html>";
 			break;
 		case 6:

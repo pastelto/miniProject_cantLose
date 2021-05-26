@@ -21,7 +21,7 @@ public class UpdateAccount {
 		int index=0;
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("account.dat"))) {
 			list.addAll((ArrayList<Account>) ois.readObject());
-
+ 
 		} catch (ClassNotFoundException e) {
 			System.out.println("파일을 찾을 수 없습니다.1");
 		} catch (FileNotFoundException e) {

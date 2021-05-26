@@ -68,7 +68,7 @@ public class CheckIn extends JFrame {
       JLabel bar = new JLabel(new ImageIcon("images/bar.png"));
       bar.setBounds(0, 0, 360, 53);
       bar.setText("Check In & Check Out");
-      bar.setFont(font3);
+      bar.setFont(font3); 
       bar.setForeground(Color.white);
       bar.setHorizontalTextPosition(JLabel.CENTER);
       bar.setVerticalTextPosition(JLabel.CENTER);

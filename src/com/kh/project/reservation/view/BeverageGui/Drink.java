@@ -98,7 +98,7 @@ public class Drink extends JFrame {
 		ia.setBackground(new Color(248, 248, 248));
 		ia.setFocusPainted(false);
 		ia.setFont(font);
-		ia.setSize(100, 50);
+		ia.setSize(100, 50); 
 
 		l.setLocation(50, 160);
 		l.setBackground(new Color(248, 248, 248));

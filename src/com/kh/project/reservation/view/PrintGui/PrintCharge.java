@@ -88,7 +88,7 @@ public class PrintCharge extends JFrame {
 		back.setFont(font);
 		back.setForeground(Color.white);
 		back.setSize(80, 35);
-
+ 
 		prtPointCharge.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

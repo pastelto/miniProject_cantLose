@@ -39,7 +39,7 @@ public class MemoManager {
 			}
 			System.out.println("temp? : " + str);
 			return str;
-
+ 
 		}
 
 		public void saveMemo(Account account, String memo) {

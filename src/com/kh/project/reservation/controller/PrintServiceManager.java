@@ -31,7 +31,7 @@ public class PrintServiceManager {
 			account.setPrintPoint(account.getPrintPoint() - total);
 			JOptionPane.showMessageDialog(null, "남은포인트 : " + account.getPrintPoint() + " 점" + "\n" 
 											+ "프린트 코드를 프린트에 입력해주세요! "+ "\n" 
-											+ "프린트코드 : " + prtCode());
+						 					+ "프린트코드 : " + prtCode());
 		} else { // 포인트 사용 불가능할때
 			JOptionPane.showMessageDialog(null, "충전이 필요합니다." + "\n" 
 										+ "현재포인트 : " + account.getPrintPoint() + "\n"

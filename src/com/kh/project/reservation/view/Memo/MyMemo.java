@@ -162,7 +162,7 @@ public class MyMemo extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				back.setBackground(new Color(220, 118, 112)); // 버튼색
 			} 
-			
+			 
 		});
 		
 		

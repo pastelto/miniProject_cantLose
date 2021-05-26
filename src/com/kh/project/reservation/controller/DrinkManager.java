@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.kh.project.reservation.model.vo.Account;
 
-public class DrinkManager {
+public class DrinkManager {   
 
 	private ArrayList cart = new ArrayList();
 	

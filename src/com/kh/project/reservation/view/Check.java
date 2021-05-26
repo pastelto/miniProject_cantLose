@@ -31,7 +31,7 @@ public class Check extends JFrame {
 		  
 		  
 		this.setTitle("내 정보");
-		this.setBounds(100, 100, 360, 600);
+		this.setBounds(100, 100, 360 , 600);
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		
@@ -50,7 +50,7 @@ public class Check extends JFrame {
 		JLabel label = new JLabel("내 정보 확인");
 		JLabel lb1 = new JLabel("아이디");
 		JLabel lb2 = new JLabel("비밀번호");
-		JLabel lb3 = new JLabel("이름");
+		JLabel lb3 = new JLabel("이름"); 
 		JLabel lb4 = new JLabel("주민번호");
 		JLabel lb5 = new JLabel("전화번호");
 		JLabel lb6 = new JLabel("계좌번호");

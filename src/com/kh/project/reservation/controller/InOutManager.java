@@ -62,7 +62,7 @@ public class InOutManager {
 		min = sec / 60;
 		hour = min / 60;
 		sec = sec % 60;
-		min = min % 60;
+		min = min % 60; 
 
 		String total = hour + "시 " + min + "분 " + sec + "초";
 

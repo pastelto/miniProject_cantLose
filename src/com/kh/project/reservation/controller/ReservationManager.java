@@ -146,7 +146,7 @@ public class ReservationManager {
 		 }
 		  return seatsFM;
 
-	}
+	} 
 	
 	public String[] takenO(Account account) {
 

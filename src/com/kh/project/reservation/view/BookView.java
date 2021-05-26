@@ -40,7 +40,7 @@ public class BookView extends JFrame implements ActionListener {
 
 		if (bm.OneSeat(account) == true || bm.StdRoom(account) == true) {
 
-			
+			 
 			JFrame viewDao = new JFrame();
 			JPanel panel = new JPanel();
 			JButton prev = new JButton("< 뒤로");
