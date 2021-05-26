@@ -31,8 +31,8 @@ public class MyMemo extends JFrame {
 	private JButton back; // 뒤로가기 (or 메뉴)
 	private JTextArea memo = new JTextArea();
 
-	MemoManager mm = new MemoManager();
-	Memo m = new Memo();
+	private MemoManager mm = new MemoManager();
+	private Memo m = new Memo();
 	String str = "";
 
 	public MyMemo(Account account) {
@@ -162,7 +162,7 @@ public class MyMemo extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				back.setBackground(new Color(220, 118, 112)); // 버튼색
 			} 
-			
+			 
 		});
 		
 		

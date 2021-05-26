@@ -106,7 +106,7 @@ class CoffePop extends JFrame {
 				okBtn.setBackground(new Color(220, 118, 112)); // 버튼색
 			} 
 
-		});
+		}); 
 
 	
 	// 상단바 로고

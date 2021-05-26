@@ -66,7 +66,7 @@ public class TicketGui extends JFrame {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 
 		JLabel name = new JLabel(account.getName() + " 님의"); // 이름
 		name.setLocation(130, 120);

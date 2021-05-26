@@ -46,7 +46,7 @@ public class TicketManager {
 				myOneSeat(account, oneSeatT);
 			}
 			break;
-		}
+		} 
 
 	}
 

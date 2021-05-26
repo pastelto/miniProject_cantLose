@@ -44,7 +44,7 @@ public class MenuChoice extends JFrame {
 	
 
 
-	int xL, yL;
+	private int xL, yL;
 	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
 	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
 
@@ -72,7 +72,7 @@ public class MenuChoice extends JFrame {
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-		mc.add(bar);
+		mc.add(bar); 
 		
 		String accountName = account.getName().toString();
 		userName = new JLabel("반갑습니다. " + accountName + "님");

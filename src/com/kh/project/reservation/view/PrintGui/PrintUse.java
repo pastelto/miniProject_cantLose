@@ -66,7 +66,7 @@ public class PrintUse extends JFrame {
 			e.printStackTrace();
 		}
 
-		// 흑백 :
+		// 흑백 : 
 		black.setLocation(70, 150);
 		black.setBackground(new Color(248, 248, 248));
 		black.setSize(200, 50);

@@ -164,7 +164,7 @@ public class SignUp extends JFrame {
       this.add(p);
 
 
-      j1.addActionListener(new ActionListener() {
+      j1.addActionListener(new ActionListener() {  
          @SuppressWarnings("deprecation")
          @Override
          public void actionPerformed(ActionEvent T) {//회원가입 데이터 저장

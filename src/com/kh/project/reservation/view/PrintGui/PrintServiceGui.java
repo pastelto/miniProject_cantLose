@@ -60,7 +60,7 @@ public class PrintServiceGui extends JFrame {
 		bar.setForeground(Color.white);
 		bar.setHorizontalTextPosition(JLabel.CENTER);
 		bar.setVerticalTextPosition(JLabel.CENTER);
-
+ 
 		try {
 			this.setIconImage(ImageIO.read(new File("images/logo.PNG")));
 		} catch (IOException e) {

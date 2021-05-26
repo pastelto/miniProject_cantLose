@@ -21,7 +21,7 @@ public class InOut {
 	}
 
 	public void setCheckIn(long checkIn) {
-		this.checkIn = checkIn;
+		this.checkIn = checkIn; 
 	}
 
 	public long getCheckOut() {
