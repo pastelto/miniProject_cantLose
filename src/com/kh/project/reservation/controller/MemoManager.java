@@ -20,7 +20,7 @@ public class MemoManager {
 		
 		public String callMyMemo(Account account) {
 			String str = "";
-			String fileName = account.getId().toString() + ".dat";
+			String fileName = account.getId().toString() + ".dat"; // 개인 메모만 읽기 가능
 			try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
 				String temp = "";

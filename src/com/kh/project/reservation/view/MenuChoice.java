@@ -44,7 +44,7 @@ public class MenuChoice extends JFrame {
 	
 
 
-	int xL, yL;
+	private int xL, yL;
 	Toolkit tk = Toolkit.getDefaultToolkit(); // 구현된 Toolkit객체를 얻는다.
 	Dimension screenSize = tk.getScreenSize();// 화면의 크기를 구한다.
 

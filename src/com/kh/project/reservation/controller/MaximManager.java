@@ -1,8 +1,5 @@
 package com.kh.project.reservation.controller;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-
 public class MaximManager { // 명언 & 보드
 	
 	public String maxim() {
