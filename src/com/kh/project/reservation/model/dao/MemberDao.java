@@ -22,10 +22,6 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
       try(ObjectInputStream ois = new ObjectInputStream (new FileInputStream("account.dat"))){
          list.addAll((ArrayList<Account>)ois.readObject());
          
-          //Account b; 
-         // while((b=(Account)ois.readObject()) != null) { 
-         //    list.add(b); }
-          
       }catch(ClassNotFoundException e) {
          System.out.println("파일을 찾을 수 없습니다.1");
       }catch(FileNotFoundException e) {
@@ -34,37 +30,6 @@ public class MemberDao { // file로 으로 저장해서 파일 불러와서 내�
          System.out.println("파일을 찾을 수 없습니다.3");
       }
    }
-
-      /*
-    public void fileSave(Account account) { // ArrayList로 넣어서 append(경로, true)로 넣어서 Input으로 넣기
-      try {
-         if(//폴더가 있면); { //폴더가 있면
-               list.add(account);
-         ObjectOutputStream loginFile = new ObjectOutputStream(new FileOutputStream("member.txt",true));
-         
-         loginFile.writeObject(membership);
-         System.out.println("성공정으로 저장되었습니다.");
-         loginFile.close();
-         
-         else { // 폴더가 없으면
-            
-         // memeber[i] = 에 id,password,idNum....이런식으로 생성하고 tokenizer나 spilt를 통해서 나눠서 담고
-         // bufferedreader readline으로 해서 읽어오고
-         // save할때 -member[i]이런식으로 해서 다시 .append(it, true) --> 이렇게 하면 한칸씩 띄어서 입력 (이거 시험)
-            
-            // true 미작성시 : 기존 해당 파일이 있을경우 덮어씌워짐 ( 기본값 false )
-            // true 작성시 : 기존 파일이 있는 경우 이어서 작성됨(append)
-            // ex) fout = new FileOutputStream("a_byte.txt",true); // FileNotFoundException 발생 : 없는 경로 제시시에 발생 (ex_ "")
-            
-         }
-      } catch (FileNotFoundException e) {
-         e.printStackTrace();
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
-      
-   } */
-
    
    public void writeAccount(Account account) {
       list.add(account);

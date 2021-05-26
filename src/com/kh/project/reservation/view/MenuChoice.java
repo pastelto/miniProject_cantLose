@@ -308,7 +308,7 @@ public class MenuChoice extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용 // 코드 정리 때 삭제 필요
+					System.out.println(account.toString()); // 로그아웃 전 저장되었는지 확인 출력용 
 					
 					new MemberDao().reSaveAccount(account); // 앱 구동 중 변경사항 전체 저장
 					Login l = new Login();
